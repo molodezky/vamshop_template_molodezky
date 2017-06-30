@@ -1,0 +1,9 @@
+<div class="pageItem">
+{foreach name=aussen item=module_data from=$module_content}
+<div class="CatList"><a href="{$module_data.CAT_LINK}">{$module_data.CAT_NAME}</a></div>
+{foreach key=key_data item=item_data from=$module_data.SCATS}
+<div class="subCatList"><a href="{$item_data.link}">{$item_data.text}</a></div>
+{/foreach}
+{/foreach}
+</div>
+<div class="clearfix"></div>

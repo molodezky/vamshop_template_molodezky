@@ -1,0 +1,14 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс Админ -->
+<div class="navbar navbar-default boxAdmin">
+<!-- заголовок бокса Админ -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxAdmin" aria-expanded="false"></button>
+<span class="box-title">{#heading_admin#}</span>
+</div>
+<!-- /заголовок бокса Админ -->
+<div class="collapse navbar-collapse" id="collapse-boxAdmin">
+{$BOX_CONTENT}
+</div>
+</div>
+<!-- /Бокс Админ -->

@@ -1,0 +1,19 @@
+{config_load file="$language/lang_$language.conf" section="sitemap"} 
+<div class="row">
+<div class="col-xs-12">
+<div class="h1">Каталог <span class="l">товаров</span></div>
+</div>
+{foreach name=aussen item=module_data from=$module_content}
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 Categories">
+<div class="Categories-int">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-66">
+<div class="CategoriesName"><a href="{$module_data.CAT_LINK}">{$module_data.CAT_NAME}</a></div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 thumbnail CategoriesImage"><a href="{$module_data.CAT_LINK}"><img src="{$module_data.CAT_IMAGE}" alt="{$module_data.CAT_NAME}" /></a></div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-66 CategoriesLink"><a href="{$module_data.CAT_LINK}" class="btn btn-link">Смотреть все <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</div>
+</div> 
+{/foreach}
+</div>

@@ -1,0 +1,21 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс лучшие товары -->
+<div class="navbar navbar-default boxBestsellers">
+<!-- заголовок бокса лучшие товары -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxBestsellers" aria-expanded="false"></button>
+<span class="box-title">{#heading_best_sellers#}</span>
+</div>
+<!-- /заголовок бокса лучшие товары -->
+<div class="collapse navbar-collapse" id="collapse-boxBestsellers">
+{foreach name=aussen item=box_data from=$box_content}
+<div class="ProductBest">
+<div class="ProductName">{$box_data.COUNT}.&nbsp;&nbsp;<a href="{$box_data.PRODUCTS_LINK}">{$box_data.PRODUCTS_NAME}</a></div>
+<div class="ProductPrice">{$box_data.PRODUCTS_PRICE}</div>
+{if $box_data.PRODUCTS_VPE}<div class="ProductPrice">{$box_data.PRODUCTS_VPE}</div>{/if}
+</div>
+{/foreach} 
+</div>
+</div>
+<!-- /Бокс лучшие товары -->
+

@@ -1,0 +1,30 @@
+{if $FREE_SHIPPING}
+<p><span class="bold">{$FREE_SHIPPING_TITLE}</span>&nbsp;{$FREE_SHIPPING_ICON}</p>
+<p>{$FREE_SHIPPING_DESCRIPTION}</p>
+{else}
+<div class="row">
+{foreach name=aussen item=module_data from=$module_content}
+
+<div class="col-xs-12 OrderBlock">
+<label>
+<div class="OrderBlock-int">
+<div class="OrderBlockName">{$module_data.module}</div>
+<div class="OrderBlockImage">{$module_data.icon}</div>
+<!-- QIWI Post code begin -->
+{if $module_data.id == 'qiwipost'}
+{$module_data.qiwipost}
+{/if}
+<!-- QIWI Post code end -->
+{if $module_data.error != ''}
+<p>{$module_data.error}</p>
+{else}
+{foreach name=aussen item=method_data from=$module_data.methods}
+<p>{$method_data.radio_field}&nbsp;{$method_data.title} - <strong>{$method_data.price}</strong></p>
+{/foreach}
+{/if}
+</div>
+</label>
+</div>
+{/foreach}
+</div>
+{/if}

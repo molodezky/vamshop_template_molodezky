@@ -1,0 +1,22 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс новости -->
+<div class="navbar navbar-default boxNews">
+<!-- заголовок бокса новости -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxNews" aria-expanded="false"></button>
+<span class="box-title">{#heading_news#}</span>
+</div>
+<!-- /заголовок бокса новости -->
+<div class="collapse navbar-collapse" id="collapse-boxNews">
+{foreach name=aussen item=module_data from=$module_content}
+<div class="NewsItem">
+<div class="NewsDate">{$module_data.NEWS_DATA}</div>
+<div class="NewsName"><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></div>
+<p>{$module_data.NEWS_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}</p>
+<div class="more"><a href="{$module_data.NEWS_LINK_MORE}" class="btn btn-link">Подробнее <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+{/foreach}
+<div class="all"><a href="{$NEWS_LINK}" class="btn btn-link btn-block">Читать все новости <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</div>
+<!-- /Бокс новости -->

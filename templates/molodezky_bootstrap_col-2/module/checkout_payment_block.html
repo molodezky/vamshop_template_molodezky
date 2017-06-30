@@ -1,0 +1,65 @@
+<script type="text/javascript">
+{literal}
+$(document).ready(function() {
+
+$("div#qiwi_rest").hide();
+$("div#schet").hide();
+$("div#kvitancia").hide();
+
+$("input#qiwi_rest").click(function (){
+$("div#qiwi_rest").toggle();
+});
+$("input#schet").click(function (){
+$("div#schet").toggle();
+});
+$("input#kvitancia").click(function (){
+$("div#kvitancia").toggle();
+});
+
+});
+
+$(document).ajaxStop(function() {
+
+if ($("input#qiwi_rest").is(":checked")) {
+$("div#qiwi_rest").show();
+} else {
+$("div#qiwi_rest").hide();
+}
+
+if ($("input#schet").is(":checked")) {
+$("div#schet").show();
+} else {
+$("div#schet").hide();
+}
+
+if ($("input#kvitancia").is(":checked")) {
+$("div#kvitancia").show();
+} else {
+$("div#kvitancia").hide();
+}
+
+});
+{/literal}
+</script>
+<div class="row">
+{foreach name=aussen item=module_data from=$module_content}
+<div class="col-xs-12 OrderBlock">
+<label for="{$module_data.id}">
+<div class="OrderBlock-int">
+<div class="OrderBlockName">{$module_data.selection} {$module_data.module} {$module_data.module_cost}</div>
+<div class="OrderBlockImage">{$module_data.icon}</div>
+{if $module_data.description}<p>{$module_data.description}</p>{/if}
+
+{if $module_data.error}
+<p>{$module_data.error}</p>
+{else} 
+{foreach name=aussen item=method_data from=$module_data.fields} 
+<p>{$method_data.title}&nbsp;{$method_data.field}</p> 
+{/foreach}
+{/if}
+</div>
+</label>
+</div>
+{/foreach}
+</div>
+<div class="clearfix"></div>

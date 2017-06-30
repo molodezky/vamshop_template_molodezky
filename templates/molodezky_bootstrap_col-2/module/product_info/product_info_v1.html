@@ -1,0 +1,191 @@
+{config_load file="$language/lang_$language.conf" section="product_info"}
+{if $PRODUCTS_MO_IMAGES}
+<link rel="stylesheet" href="{php} echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bxslider4/jquery.bxslider.css'; {/php}" type="text/css" />
+<script src="{php} echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bxslider4/jquery.bxslider.min.js'; {/php}" type="text/javascript"></script>
+{literal}
+<script type="text/javascript">
+jQuery(document).ready(function(){
+jQuery('#slider-moimages').bxSlider({
+minSlides:4,
+maxSlides:4,
+moveSlides: 1,
+slideWidth:108,
+slideMargin:9,
+adaptiveHeight: true,
+infiniteLoop: false,
+hideControlOnEnd:true,
+auto: false,
+controls:true,
+pager:false
+});
+});
+</script>
+{/literal}
+{/if}
+<div itemscope itemtype="http://schema.org/Product">
+{$FORM_ACTION}
+{if $info_message}<div class="contacterror">{$info_message}</div>{/if}
+{$PRODUCT_NAVIGATOR}
+
+<div class="row">
+<div class="col-xs-12 b1c-good">
+
+
+<div class="row">
+<!-- основное изображение -->
+<div class="col-xs-12 col-sm-5">
+<div class="ProductInfoImage">
+{if $LABEL_ID > 0}<div class="ProductLabel">{$PRODUCT_LABEL}</div>{/if}
+{if $PRODUCTS_SPECIAL}<div class="labelSpecials"><span class="label label-default">- {$PRODUCTS_SPECIAL|round}%</span></div>{/if}
+{if $PRODUCTS_IMAGE or $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox" {if $PRODUCTS_MO_IMAGES}rel="group"{/if} target="_blank">{/if}<img itemprop="image" id="img" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}{/if}
+</div>
+<!-- дополнительные изображения -->
+<div class="hidden-xs ProductInfoMO">
+<ul id="slider-moimages">
+{foreach name=mo_pic item=img_values from=$mo_img}
+<li>
+<div class="ProductInfoImageMO">{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox" rel="group" target="_blank">{/if}<img itemprop="image" src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}</div>
+</li>
+{/foreach}
+</ul>
+</div>
+</div>
+<!-- правый блок -->
+<div class="col-xs-12 col-sm-7">
+<h1 class="ProductInfoName b1c-name" itemprop="name">{$PRODUCTS_NAME}</h1>
+<div class="row">
+<div class="col-xs-12 col-sm-6">
+<div class="ProductInfoQTY"><span class="{if $PRODUCTS_QUANTITY < 1}qty-no{elseif $PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $PRODUCTS_QUANTITY < 1}<i class="fa fa-exclamation" aria-hidden="true"></i> Товар отсутствует{elseif $PRODUCTS_QUANTITY < 10}<i class="fa fa-phone" aria-hidden="true"></i> Под заказ{else}<i class="fa fa-check" aria-hidden="true"></i> Есть в наличии{/if}</span></div>
+<div class="ProductInfoPopUp"><a class="btn btn-default quest iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a></div>
+
+</div>
+<div class="col-xs-12 col-sm-6">
+<div class="ProductInfoPrice" itemprop="offers" itemscope itemtype="http://schema.org/Offer">{$PRODUCTS_PRICE}<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}"><meta itemprop="priceCurrency" content="{$smarty.session.currency}"></div>
+{if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
+{if $PRODUCTS_FSK18=='true'}<p><img src="{$tpl_path}img/fsk18.gif" alt="" /></p>{/if}
+{if $MODULE_graduated_price !=''}{$MODULE_graduated_price}{/if}
+{/if}
+{if $PRODUCTS_VPE}<p>{$PRODUCTS_VPE}</p>{/if}
+{if $PRODUCTS_DISCOUNT}<p>{#text_discount#}&nbsp;{$PRODUCTS_DISCOUNT}</p>{/if}
+
+<div class="ProductInfoSocials">
+Поделиться с друзьями:
+<script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus" data-yashareTheme="counter"></div>
+</div>
+
+<div class="ProductInfoRating">
+{if $REVIEWS_TOTAL > 0}<img src="{$tpl_path}img/stars_{$REVIEWS_RATING|number_format:0}.png" alt="{$REVIEWS_RATING|number_format:2}" title="{$REVIEWS_RATING|number_format:2}" /> {else}нет отзывов{/if}
+{if $REVIEWS_TOTAL > 0}{$REVIEWS_TOTAL} отзыв{if $REVIEWS_TOTAL%10 == 0}ов{elseif $REVIEWS_TOTAL%10 == 1}{elseif $REVIEWS_TOTAL%10 < 5}а{else}ов{/if}{/if}
+</div>
+</div>
+{if $PRODUCTS_SHORT_DESCRIPTION !=''}<div class="col-xs-12 ProductInfoShort">{$PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
+{if $MODULE_product_options !=''}<div class="col-xs-12 ProductInfoOption">{$MODULE_product_options}</div>{/if}
+<div class="ProductInfoQuantity">
+<span class="col-xs-4 col-sm-4 quantity-text">Количество</span>
+<span class="col-xs-8 col-sm-8">
+<span class="minus">-</span> {$ADD_QTY} <span class="plus">+</span>
+</span>
+<span class="clearfix"></span>
+</div>
+{if $PRODUCTS_QUANTITY > 0}
+<div class="col-xs-12 col-sm-6 ProductInfoButton">{$ADD_CART_BUTTON}</div>
+<div class="col-xs-12 col-sm-6 ProductInfoBuyOne"><a class="btn btn-info iframe" target="_blank" href="{$ASK_PRODUCT_BUY_LINK}">Быстрая покупка</a></div>
+{/if}
+</div>
+
+</div>
+</div>
+<div class="clearfix"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ProductInfoTabs">
+<!-- блок вкладок -->
+<div class="row-fluid">
+<div class="row-fluid product-tabs">
+<section class="widget">
+<ul class="nav nav-tabs">
+<li class="active"><a href="#description" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_DESCRIPTION}</a></li>
+{if $extra_fields_data or $specifications}<li><a href="#propertis" data-toggle="tab">Характеристики</a></li>{/if}
+<li><a href="#reviews" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_REVIEWS}{if $REVIEWS_TOTAL > 0} ({$REVIEWS_TOTAL}){/if}</a></li>
+<li><a href="#shipping" data-toggle="tab">Доставка и оплата</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane inner fade in notop active" id="description">
+{if $PRODUCTS_DESCRIPTION !=''}<div itemprop="description">{$PRODUCTS_DESCRIPTION}</div>{/if}
+{if $MODULE_tpt != ''}<p>{$MODULE_tpt}</p>{/if}
+{if $PRODUCTS_URL != ''}<p align="center">{$PRODUCTS_URL}</p>{/if}
+{if $PRODUCTS_DATE_AVIABLE != ''}<p align="center">{$PRODUCTS_DATE_AVIABLE}</p>{/if}
+
+{if $PRODUCTS_TAGS}
+<h3 class="ProductInfoHead">{#text_tags#}:</h3>
+{#text_tags#}: 
+{foreach name=tags item=tag from=$tags_data}
+<a href="{$tag.LINK}">{$tag.NAME}</a> 
+{/foreach}
+{/if}
+
+{if $MODULE_products_media != ''}{$MODULE_products_media}{/if}
+</div>
+
+{if $extra_fields_data or $specifications}
+<div class="tab-pane inner fade in notop" id="propertis">
+<table class="table">
+{foreach name=aussen item=extra_fields from=$extra_fields_data} 
+<tr><td class="ProductInfoDopName">{$extra_fields.NAME}:</td><td class="ProductInfoDopValue">{$extra_fields.VALUE}</td></tr> 
+{/foreach}
+{foreach name=outer item=spec_group from=$specifications_data}
+{foreach key=key_data item=spec from=$spec_group.DATA}
+<tr><td class="ProductInfoDopName">{$spec.NAME}:</td><td class="ProductInfoDopValue">{$spec.VALUE}</td></tr>
+{/foreach}
+{/foreach}
+<!-- /Specifications -->
+</table>
+</div>
+{/if}
+
+<div class="tab-pane inner fade in notop" id="reviews">{$MODULE_products_reviews}</div>
+<div class="tab-pane inner fade in notop" id="shipping">
+{php}
+$shop_content_query = vamDBquery("SELECT
+                      content_title,
+                      content_heading,
+                      content_text,
+                      content_file
+                      FROM ".TABLE_CONTENT_MANAGER."
+                      WHERE content_group='13'
+                      ".$group_check."
+                      AND languages_id='".$_SESSION['languages_id']."'");
+$shop_content_data = vam_db_fetch_array($shop_content_query,true);
+echo $shop_content_data['content_text'];
+{/php}
+</div>
+</div>
+
+</section>
+</div>
+</div>
+<!-- блок вкладок - конец -->
+<div class="clearfix"></div>
+</div>
+</div>
+</div>
+{$FORM_END}
+
+
+{if $MODULE_bundle != ''}{$MODULE_bundle}{/if}
+{if $MODULE_products_media != ''}{$MODULE_products_media}{/if}
+{if $MODULE_cross_selling != ''}{$MODULE_cross_selling}{/if}
+{if $MODULE_reverse_cross_selling != ''}{$MODULE_reverse_cross_selling}{/if}
+{if $MODULE_also_purchased != ''}{$MODULE_also_purchased}{/if}
+</div>

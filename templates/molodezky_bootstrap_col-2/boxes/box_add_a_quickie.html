@@ -1,0 +1,39 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс быстрый заказ -->
+<div class="navbar navbar-default boxAddQuickie">
+<!-- заголовок бокса быстрый заказ -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxAddQuickie" aria-expanded="false"></button>
+<span class="box-title">{#heading_add_a_quickie#}</span>
+</div>
+<!-- /заголовок бокса быстрый заказры -->
+<div class="collapse navbar-collapse" id="collapse-boxAddQuickie">
+<p>{#text_quickie#}</p>
+{$FORM_ACTION}
+<div class="form-group">
+<p class="addquickieform">{$INPUT_FIELD}</p>
+<div class="ajaxAddQuickie" id="ajaxAddQuickie" style="text-align: left;"></div>
+{$SUBMIT_BUTTON}
+</div>
+{$FORM_END}
+<script type="text/javascript">
+// <![CDATA[
+{literal}
+$(document).ready(function(){
+  $("#quick_add_quickie").keyup(function(){
+      var searchString = $("#quick_add_quickie").val(); 
+      $.ajax({
+      	url: "index_ajax.php",             
+      	dataType : "html",
+      	type: "POST",
+      	data: "q=includes/modules/ajax/ajaxAddQuickie.php&quickie="+searchString,
+      	success: function(msg){$("#ajaxAddQuickie").html(msg);}            
+ });     
+   });
+})
+{/literal}
+// ]]>
+</script>
+</div>
+</div>
+<!-- /Бокс быстрый заказ -->

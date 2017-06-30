@@ -1,0 +1,122 @@
+﻿{config_load file="$language/lang_$language.conf" section="account"}
+<h1><span>{#heading_account#}</span></h1>
+<!-- Приветствие -->
+{$error_message}
+<div class="page-content">
+<p>{#title_welcome#}</p>
+
+<p>{#text_welcome#}</p>
+{if $LINK_LOGIN}
+<ul class="accountLinks">
+<li class="accountLinks"><a href="{$LINK_LOGIN}">{#text_login#}</a></li>
+</ul>
+{/if}
+</div>
+<!-- /Приветствие -->
+
+<!-- Личные данные -->
+<div class="page-content">
+<div class="ProductInfoHead">{#title_account#}</div>
+
+<ul class="accountLinks">
+<li class="accountLinks"><a href="{$LINK_EDIT}">{#text_edit#}</a></li>
+<li class="accountLinks"><a href="{$LINK_ADDRESS}">{#text_address#}</a></li>
+<li class="accountLinks"><a href="{$LINK_PASSWORD}">{#text_password#}</a></li>
+</ul>
+
+</div>
+<!-- /Личные данные -->
+
+{if $order_content}
+<!-- Заказы -->
+<div class="page-content">
+<div class="ProductInfoHead">Последние заказы</div>
+<div class="table-responsive">
+<table class="table table-striped order-table">
+<thead>
+<tr>
+<th>Дата</th>
+<th>№ заказа</th>
+<th>Товаров</th>
+<th>Сумма</th>
+<th>Статус</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+{foreach name=aussen item=order_data from=$order_content} 
+<tr>
+<td>{$order_data.ORDER_DATE}</td>
+<td>{$order_data.ORDER_ID}</td>
+<td>{$order_data.ORDER_PRODUCTS}</td>
+<td>{$order_data.ORDER_TOTAL}</td>
+<td>{$order_data.ORDER_STATUS}</td>
+<td>
+<a onclick="javascript:window.open('print_order.php?oID={$order_data.ORDER_ID}', 'popup', 'toolbar=0, scrollbars=yes, width=640, height=600')" style="cursor:pointer"><i class="fa fa-print" aria-hidden="true"></i></a>
+<a href="{$order_data.ORDER_LINK}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+</td>
+</tr>
+{/foreach}
+</tbody>
+</table>
+</div>
+<a class="btn btn-primary" href="{$LINK_ALL}">{#text_all#}</a>
+</div>
+<!-- /Заказы -->
+{/if}
+
+<!-- Уведомления -->
+<div class="page-content">
+<div class="ProductInfoHead">{#title_notification#}</div>
+
+<ul class="accountLinks">
+<li class="accountLinks"><a href="{$LINK_NEWSLETTER}">{#text_newsletter#}</a></li>
+</ul>
+
+</div>
+<!-- /Уведомления -->
+
+{if $products_history}
+<!-- Просмотренные товары -->
+<div class="h1">{#title_viewed_products#}</div>
+<div class="row">
+{foreach name=history_products item=products from=$products_history} 
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-33 Product">
+<div class="Product-int">
+{if $products.PRODUCTS_IMAGE}
+<div class="thumbnail ProductImage">
+{if $products.PRODUCTS_LABEL}<div class="ProductLabel">{$products.PRODUCTS_LABEL}</div>{/if}
+{if $products.PRODUCTS_SPECIAL}<div class="labelSpecials"><span class="label label-default">- {$products.PRODUCTS_SPECIAL|round}%</span></div>{/if}
+<a href="{$products.PRODUCTS_LINK}"><img src="{$products.PRODUCTS_IMAGE}" alt="{$products.PRODUCTS_NAME}" title="{$products.PRODUCTS_NAME}" /></a>
+</div>
+{/if}
+<div class="ProductName"><a href="{$products.PRODUCTS_LINK}">{$products.PRODUCTS_NAME}</a></div>
+{if $products.PRODUCTS_MANUFACTURER}<div class="ProductManufacturer">Производитель: {$products.PRODUCTS_MANUFACTURER}</div>{/if}
+{if $products.PRODUCTS_SHORT_DESCRIPTION}
+<div class="ProductDesc">{$products.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</div>
+{/if}
+{if $products.EXTRA_FIELDS}
+<div class="ProductDop">
+<table class="table table-condensed">
+{foreach item=extra_fields from=$products.EXTRA_FIELDS}
+<tr><td>{$extra_fields.NAME}:</td><td>{$extra_fields.VALUE}</td></tr>
+{/foreach}
+</table>
+</div>
+{/if}
+<div class="ProductRating">{if $products.REVIEWS_TOTAL > 0}<img src="{$tpl_path}img/stars_{$products.REVIEWS_TOTAL_RATING|number_format:0}.png" alt="{$products.REVIEWS_TOTAL_RATING|number_format:2}" title="{$products.REVIEWS_TOTAL_RATING|number_format:2}" /> {else}нет отзывов{/if}
+{if $products.REVIEWS_TOTAL > 0}{$products.REVIEWS_TOTAL} отзыв{if $products.REVIEWS_TOTAL%10 == 0}ов{elseif $products.REVIEWS_TOTAL%10 == 1}{elseif $products.REVIEWS_TOTAL%10 < 5}а{else}ов{/if}{/if}
+</div>
+<div class="ProductPrice">{$products.PRODUCTS_PRICE}</div>
+<div class="ProductQuantity"><span class="{if $products.PRODUCTS_QUANTITY < 1}qty-no{elseif $products.PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $products.PRODUCTS_QUANTITY < 1}отсутствует{elseif $products.PRODUCTS_QUANTITY < 10}под заказ{else}в наличии{/if}</span></div>
+<div class="ProductMore"><a href="{$products.PRODUCTS_LINK}" class="btn btn-primary">Подробнее</a></div>
+{if $products.PRODUCTS_QUANTITY > 0}<div class="ProductButton">{$products.PRODUCTS_BUTTON_BUY_NOW}</div>{/if}
+<div class="clearfix"></div>
+</div>
+</div>
+{/foreach} 
+
+<div class="clearfix"></div>
+<!-- /Просмотренные товары -->
+</div>
+{/if}

@@ -1,0 +1,20 @@
+{config_load file="$language/lang_$language.conf" section="categorie_listing"}
+<h1><span>{$CATEGORIES_NAME}</span></h1>
+{if $CATEGORIES_HEADING_TITLE}<div class="CatDesc">{$CATEGORIES_HEADING_TITLE}</div>{/if}
+{if $CATEGORIES_DESCRIPTION}<div class="CatDesc">{$CATEGORIES_DESCRIPTION}</div>{/if}
+{if $module_content !=''}
+<div class="row">
+{foreach name=aussen item=module_data from=$module_content} 
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-33 Categories">
+<div class="Categories-int">
+<div class="thumbnail CategoriesImage"><a href="{$module_data.CATEGORIES_LINK}"><img src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME}" /></a></div>
+<div class="CategoriesName"><a href="{$module_data.CATEGORIES_LINK}">{$module_data.CATEGORIES_NAME}</a></div>
+</div>
+</div>
+{/foreach}
+{/if}
+<div class="clearfix"></div>
+</div>
+{$MODULE_featured_products}
+{$MODULE_new_products}
+<div class="clearfix"></div>

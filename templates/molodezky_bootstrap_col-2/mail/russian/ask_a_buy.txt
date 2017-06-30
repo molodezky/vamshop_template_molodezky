@@ -1,0 +1,8 @@
+Быстрая покупка {$PRODUCTS_NAME}
+
+Имя: {$TEXT_FIRSTNAME}
+Номер: {$TEXT_PHONE}
+Товар: {$PRODUCT_LINK}
+
+Комментарии:
+{$TEXT_MESSAGE}

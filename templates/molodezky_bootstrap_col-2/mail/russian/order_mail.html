@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+
+
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" style="margin:0; padding:0;" width="100%">
+<tr>
+<td align="center">
+<center style="max-width: 600px; width: 100%;line-height:1.6;">
+
+<!--[if gte mso 9]>
+<table border="0" cellpadding="0" cellspacing="0" width="600" style="margin:0; padding:0"><tr><td>
+<![endif]-->
+
+<table border="0" cellpadding="0" cellspacing="0" style="margin:0; padding:0" width="100%">
+<!-- шапка -->
+<tr>
+<td style="padding:20px 0;width:50%;">
+<a href="{$smarty.const.HTTP_SERVER}"><img src="{$smarty.const.HTTP_SERVER}/{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" style="border:none;"></a>
+</td>
+<td style="padding:20px 0; vertical-align:top;width:50%;">
+<p style="font-size:17px;font-family:Arial, sans-serif;text-align:right;"><strong>{$smarty.const.STORE_TELEPHONE}</strong></p>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<!-- меню -->
+<table width="100%" border="0" cellspacing="0" bgcolor="#d0d0d0" cellpadding="10">
+<tbody>
+<tr>
+<td><a href="{$smarty.const.HTTP_SERVER}/shop_content.php?coID=8" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Каталог</a></td>
+<td><a href="{$smarty.const.HTTP_SERVER}/featured.php" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Рекомендуем</a></td>
+<td><a href="{$smarty.const.HTTP_SERVER}/specials.php" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Скидки</a></td>
+<td><a href="{$smarty.const.HTTP_SERVER}/shop_content.php?coID=1" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Доставка</a></td>
+<td><a href="{$smarty.const.HTTP_SERVER}/shop_content.php?coID=2" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Оплата</a></td>
+<td><a href="{$smarty.const.HTTP_SERVER}/shop_content.php?coID=7" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Контакты</a></td>
+</tr>
+</tbody>
+</table>
+<!-- /меню -->
+</td>
+</tr>
+<tr>
+<td colspan="2" style="padding:30px 0 0">
+<div style="text-align:center;color:#333;font-size:16px;font-family:Arial, sans-serif;padding:0 0 15px;">Уважаемый(ая) <strong>{$NAME}!</strong><br />Вы оформили заказ в нашем интернет-магазине.</div>
+<div style="text-align:center;color:#000;font-size:17px;font-family:Arial, sans-serif;"><strong>Заказ №{$oID}</strong></div>
+<div style="text-align:center;color:#000;font-size:14px;font-family:Arial, sans-serif;">Дата: {$DATE}</div>
+{if $csID}<div style="text-align:center;color:#000;font-size:14px;font-family:Arial, sans-serif;">Код покупателя: {$csID}</div>{/if}
+{if $PHONE}<div style="text-align:center;color:#000;font-size:14px;font-family:Arial, sans-serif;">Телефон: {$PHONE}</div>{/if}
+<div style="text-align:center;color:#000;font-size:14px;font-family:Arial, sans-serif;">E-mail: {$EMAIL}</div>
+</td>
+</tr>
+<!-- /шапка -->
+<!-- товары -->
+<tr>
+<td colspan="2" valign="top" style="padding:30px 0 0">
+<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:30px 0 10px;">Пожалуйста, проверьте правильность следующей информации:</p>
+<p style="font-family:Arial, sans-serif;padding:30px 0 10px;color:#000;font-size:17px;"><strong>Состав заказа:</strong></p>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:#e9f3ee;border-left:1px solid #dfdfdf;border-right:1px solid #dfdfdf;border-top:1px solid #dfdfdf;">
+<tr>
+<td valign="top" style="border-bottom:1px solid #dfdfdf;background:#f8f7f3;text-transform:uppercase;font-family:Arial, sans-serif;font-size:12px;color:#000;text-align:center;padding:10px 14px;"><strong>Наименование</strong></td>
+<td valign="top" style="border-bottom:1px solid #dfdfdf;background:#f8f7f3;text-transform:uppercase;font-family:Arial, sans-serif;font-size:12px;color:#000;text-align:center;white-space:nowrap;padding:10px 14px;"><strong>К-во</strong></td>
+<td valign="top" style="border-bottom:1px solid #dfdfdf;background:#f8f7f3;text-transform:uppercase;font-family:Arial, sans-serif;font-size:12px;color:#000;text-align:center;padding:10px 14px;"><strong>Цена</strong></td>
+</tr>
+{foreach name=aussen item=order_values from=$order_data}
+<tr>
+<td valign="top" style="border-bottom:1px solid #dfdfdf;font-family:Arial, sans-serif;font-size:12px;color:#000;text-align:left;padding:10px 14px;">
+<p style="color:#000;font-size:14px;"><strong>{$order_values.PRODUCTS_NAME}</strong></p>
+{if $order_values.PRODUCTS_ATTRIBUTES}<p>{$order_values.PRODUCTS_ATTRIBUTES}</p>{/if}
+{if $order_values.PRODUCTS_MODEL}<p>Артикул: {$order_values.PRODUCTS_MODEL}</p>{/if}
+{if $order_values.PRODUCTS_ATTRIBUTES_MODEL}<p>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</p>{/if}
+</td>
+<td valign="top" style="border-bottom:1px solid #dfdfdf;font-family:Arial, sans-serif;font-size:12px;color:#000;text-align:center;padding:10px 14px;">{$order_values.PRODUCTS_QTY}</td>
+<td valign="top" style="border-bottom:1px solid #dfdfdf;font-family:Arial, sans-serif;font-size:12px;color:#000;text-align:right;padding:10px 14px;">{$order_values.PRODUCTS_SINGLE_PRICE}</td>
+</tr>
+{/foreach}
+<tr>
+<td colspan="3" valign="top" style="border-bottom:1px solid #dfdfdf;font-family:Arial, sans-serif;font-size:12px;color:#000;text-align:right;padding:10px 14px;">
+{foreach name=aussen item=order_total_values from=$order_total}
+<p>{$order_total_values.TITLE}{$order_total_values.TEXT}</p>
+{/foreach}
+</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+<!-- /товары -->
+<!-- доставка - оплата -->
+<tr>
+
+<td valign="top" style="padding:30px 10px 0 0">
+{if $SHIPPING_METHOD}
+<p style="padding:0 0 10px;color:#000;font-family:Arial, sans-serif;font-size:17px;"><strong>Доставка:</strong></p>
+<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:0 0 10px;"><strong>Способ доставки:</strong></p>
+<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;">{$SHIPPING_METHOD}</p>
+{/if}
+{if $address_label_shipping}
+<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:30px 0 10px;"><strong>Адрес доставки:</strong></p>
+<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;">{$address_label_shipping}</p>
+{/if}
+{if $customer_extra_fields}<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;">{$customer_extra_fields}</p>{/if}
+</td>
+<td valign="top" style="padding:30px 0 0 10px">
+{if $PAYMENT_METHOD}
+<p style="padding:0 0 10px;color:#000;font-family:Arial, sans-serif;font-size:17px;"><strong>Оплата:</strong></p>
+<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:0 0 10px;"><strong>Способ оплаты:</strong></p>
+<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;">{$PAYMENT_METHOD}</p>
+{/if}
+{if $PAYMENT_INFO_HTML}
+<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:30px 0 10px;"><strong>Информация для оплаты:</strong></p>
+<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:0 0 10px;">{$PAYMENT_INFO_HTML}</p>
+{/if}
+</td>
+
+</tr>
+<!-- /доставка - оплата -->
+
+<!-- комментарии -->
+{if $COMMENTS}
+<tr>
+<td colspan="2" valign="top" style="padding:30px 0 0">
+<p style="padding:0 0 10px;color:#000;font-family:Arial, sans-serif;font-size:17px;"><strong>Комментарии к заказу:</strong></p>
+<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:0 0 30px;">{$COMMENTS}</p>
+</td>
+</tr>
+{/if}
+<!-- /комментарии -->
+
+<tr>
+<td colspan="2" valign="top" style="padding:30px 0 0">
+<div style="border:1px solid #dfdfdf;padding:10px 20px;color:#000;font-family:Arial, sans-serif;font-size:12px;">В случае, если Вы обнаружите ошибку, сделанную при оформлении заказа - сообщите нам об этом как можно скорее в ответном письме.</div>
+</td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top" style="padding:30px 0 0"><p style=" text-align:right;color:#000;font-family:Arial, sans-serif;font-size:12px;padding:0 0 10px;">С уважением,<br /><strong>Ваш {$smarty.const.STORE_NAME}!</strong></p></td>
+</tr>
+
+</table>
+
+<!--[if gte mso 9]>
+</td></tr></table>
+<![endif]-->
+
+</center>  
+</td>
+</tr>
+</table>
+
+
+</body>
+</html>

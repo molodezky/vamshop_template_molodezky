@@ -1,0 +1,51 @@
+{config_load file="$language/lang_$language.conf" section="shopping_cart"}
+{config_load file="$language/lang_$language.conf" section="product_info"}
+
+{literal}
+<script type="text/javascript">
+$(document).ready( function() {
+$('#cart_quantity :checkbox').click(function() {
+  $('#cart_quantity').submit();
+});
+$('#cart_quantity .table-num').find('input').change(function() {
+	$('#cart_quantity').submit();
+});
+});
+function doClear(theText) { if (theText.value == theText.defaultValue) { theText.value = "" } }
+function doDefault(theText) { if (theText.value == "") { theText.value = theText.defaultValue } }	
+</script>
+{/literal}
+
+<div class="ShoppingCartListHead">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-7 ShoppingCartListHeadItem">Товар</div>
+<div class="hidden-xs hidden-sm col-md-4 col-lg-2 ShoppingCartListHeadQTY">К-во</div>
+<div class="hidden-xs hidden-sm hidden-md col-lg-1 ShoppingCartListHeadPrice">Цена</div>
+<div class="hidden-xs hidden-sm col-md-2 col-lg-1 ShoppingCartListHeadTotal">{#text_total#}</div>
+<div class="hidden-xs hidden-sm hidden-md hidden-lg ShoppingCartListHeadDel">{#text_remove#}</div>
+<div class="clearfix"></div>
+</div>
+{foreach name=aussen item=module_data from=$module_content}
+<div class="ShoppingCartList">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-7 ShoppingCartListItem">
+{if $module_data.PRODUCTS_IMAGE!=''}<div class="CartDetailsProductiImage"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.IMAGE_ALT}" /></div>{/if}
+<div class="CartDetailsProductName"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></div>
+{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<div>{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</div>{/if}
+{if $module_data.ATTRIBUTES!=''} 
+{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
+<div class="CartDetailsProductDop">{$item_data.NAME}: {$item_data.VALUE_NAME}</div>
+{/foreach} 
+{else}
+{/if}
+</div>
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2 ShoppingCartListQTY">
+<span class="minus">-</span> {$module_data.PRODUCTS_QTY} <span class="plus">+</span>
+<button type="submit" class="btn btn-link"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить к-во</button>
+</div>
+<div class="hidden-xs hidden-sm hidden-md col-lg-1 ShoppingCartListPrice">{$module_data.PRODUCTS_SINGLE_PRICE}</div>
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 ShoppingCartListTotal">{$module_data.PRODUCTS_PRICE}</div>
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 ShoppingCartListDel"><label><span class="del"><i class="fa fa-times-circle"></i>{$module_data.BOX_DELETE}</span></label></div>
+<div class="clearfix"></div>
+</div>
+{/foreach}
+<div class="ShoppingCartTotal">{$UST_CONTENT}<strong>{$TOTAL_CONTENT}</strong></div>
+<div class="clearfix"></div>

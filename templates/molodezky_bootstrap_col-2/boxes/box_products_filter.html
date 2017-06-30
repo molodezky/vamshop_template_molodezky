@@ -1,0 +1,14 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс фильтры -->
+<div class="navbar navbar-default boxFilters">
+<!-- заголовок бокса фильтры -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxFilters" aria-expanded="false"></button>
+<span class="box-title">{#heading_filters#}</span>
+</div>
+<!-- /заголовок бокса фильтры -->
+<div class="collapse navbar-collapse" id="collapse-boxFilters">
+{$BOX_CONTENT}
+</div>
+</div>
+<!-- /Бокс фильтры -->

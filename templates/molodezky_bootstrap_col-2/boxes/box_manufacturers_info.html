@@ -1,0 +1,17 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс информация о производителе -->
+<div class="navbar navbar-default boxManufacturersInfo">
+<!-- заголовок бокса информация о производителе -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxManufacturersInfo" aria-expanded="false"></button>
+<span class="box-title">{#heading_manufacturers_info#}</span>
+</div>
+<!-- /заголовок бокса информация о производителе -->
+<div class="collapse navbar-collapse" id="collapse-boxManufacturersInfo">
+<p>{if $IMAGE}<img src="{$IMAGE}" alt="{$NAME}" />{/if}</p>
+<p>{$NAME}</p>
+<p>{if $URL}{$URL}{/if}</p>
+<p>{$LINK_MORE}</p>
+</div>
+</div>
+<!-- /Бокс информация о производителе -->

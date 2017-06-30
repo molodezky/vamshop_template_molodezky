@@ -1,0 +1,15 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="$language/lang_$language.conf" section="index"}
+<!-- Бокс Контент -->
+<div class="navbar navbar-default boxContent">
+<!-- заголовок бокса Контент -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxContent" aria-expanded="false"></button>
+<span class="box-title">{#heading_content#}</span>
+</div>
+<!-- /заголовок бокса Контент -->
+<div class="collapse navbar-collapse" id="collapse-boxContent">
+<ul>{$BOX_CONTENT}</ul>
+</div>
+</div>
+<!-- /Бокс Контент -->

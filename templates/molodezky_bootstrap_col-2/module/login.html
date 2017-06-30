@@ -1,0 +1,57 @@
+{config_load file="$language/lang_$language.conf" section="login"}
+<script type="text/javascript" src="jscript/modified.js"></script>
+<script type="text/javascript">
+{literal}
+$(document).ready(function(){
+
+$(function () {
+    $('#login :input:text:visible:enabled:first').focus();
+})
+
+})
+{/literal}
+</script>
+<h1>{#heading_login#}</h1>
+{$FORM_ACTION}
+{if $info_message!=''}<div class="contacterror">{$info_message}</div>{/if}
+
+
+<div class="row">
+<!-- регистрация -->
+<div class="col-xs-12 col-sm-12 col-md-6">
+<div class="LoginHead">{#title_new#}</div>
+<div class="LoginContent">
+<p>{#text_new#}</p>
+<p align="right">{$BUTTON_NEW_ACCOUNT}</p>
+</div>
+</div>
+<!-- вход -->
+<div class="col-xs-12 col-sm-12 col-md-6">
+<div class="LoginHead">{#title_returning#}</div>
+<div class="LoginContent">
+
+<script type="text/javascript">
+{literal}
+src="captcha.php";
+function reload(){
+        document.captcha.src='loading.gif';
+        document.captcha.src=src+'?rand='+Math.random();
+}
+{/literal}
+</script>
+
+<!-- форма -->
+<fieldset class="form">
+
+{if $CAPTCHA_IMG !=''}<p>{$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a> {$CAPTCHA_INPUT}</p>{/if}
+<p><label>{#text_email#}</label> {$INPUT_MAIL}</p>
+<p><label>{#text_password#}</label> {$INPUT_PASSWORD}</p>
+</fieldset>
+<!-- /форма -->
+<p><a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a></p>
+<p align="right">{$BUTTON_LOGIN}</p>
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+{$FORM_END}

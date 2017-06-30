@@ -1,0 +1,55 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="$language/lang_$language.conf" section="index"}
+{if $deny_cart neq 'true'}
+<!-- Бокс корзина -->
+<div id="divShoppingCart">
+<div id="boxCart">
+<div class="dropdown">
+<button class="btn btn-cart dropdown-toggle btn-block" type="button" data-toggle="dropdown"><span class="badge"><!--{php}echo $_SESSION['cart']->count_contents();{/php}--></span><span class="cart-head-text">Ваша корзина</span></button>
+<div class="dropdown-menu">
+
+
+
+
+{if $empty=='false'}
+{foreach name=aussen item=products_data from=$products}
+<div class="CartItem clearfix">
+<div class="CartItemImage"><img src="{$products_data.IMAGE}" alt="{$products_data.NAME}" /></div>
+<div class="CartItemContent">
+{if $smarty.const.AJAX_CART == 'true'}
+<form id="update_cart{counter name=1}" class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelProduct({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}
+{/if}
+{if $smarty.const.AJAX_CART == 'true'}
+<span class="pull-right"><label><i class="fa fa-times-circle"></i><input type="image" src="images/delete.gif" title="{#text_delete#}" /></label></span></form>
+{/if}
+{$products_data.QTY}&nbsp;x&nbsp;&nbsp;<a href="{$products_data.LINK}" title="{$products_data.NAME}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a>&nbsp;
+{if $products_data.ATTRIBUTES!=''} 
+{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
+{$item_data.NAME}: {$item_data.VALUE}<br />
+{/foreach}
+{/if}
+</div>
+<div class="clear"></div>
+</div>
+{/foreach}
+
+<div class="CartTotal">
+{if $DISCOUNT}<p class="CartContent">{#text_discount#}&nbsp;{$DISCOUNT}</p>{/if}
+<p class="CartContent">В Вашей корзине: {php}echo $_SESSION['cart']->count_contents();{/php} тов.</p>
+<p class="CartContent">{$UST}{#text_total#}:&nbsp;<span>{$TOTAL}</span></p>
+<div class="CartButton"><a class="btn btn-primary btn-block" href="{$LINK_CART}"><span>В корзину</span></a></div>
+<div class="CartButton"><a class="btn btn-info btn-block" href="{$LINK_CHECKOUT}"><span>Оформить заказ</span></a></div>
+</div>
+
+{else} <!-- Пустая корзина --> 
+<div class="cartempty">{#text_empty_cart#}</div>
+{/if}
+
+
+
+</div>
+</div>
+</div>
+</div>
+<!-- /Бокс корзина -->
+{/if}

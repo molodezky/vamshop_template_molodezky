@@ -1,0 +1,19 @@
+{config_load file="$language/lang_$language.conf" section="faq"}
+<!-- Бокс вопросы и ответы -->
+<div class="navbar navbar-default boxFaq">
+<!-- заголовок бокса вопросы и ответы -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxFaq" aria-expanded="false"></button>
+<span class="box-title">{#heading_text#}</span>
+</div>
+<!-- /заголовок бокса вопросы и ответы -->
+<div class="collapse navbar-collapse" id="collapse-boxFaq">
+<ul>
+{foreach name=aussen item=module_data from=$module_content}
+<li><a href="{$module_data.FAQ_LINK_MORE}">{$module_data.FAQ_QUESTION}</a></li>
+{/foreach}
+</ul>
+<div class="all"><a href="faq.php" class="btn btn-link btn-block">Все вопросы и ответы <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</div>
+<!-- /Бокс вопросы и ответы -->

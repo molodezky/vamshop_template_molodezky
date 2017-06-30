@@ -1,0 +1,21 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс новые статьи -->
+<div class="navbar navbar-default boxArticlesNew">
+<!-- заголовок бокса новые статьи -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxArticlesNew" aria-expanded="false"></button>
+<span class="box-title">{#heading_articles_new#}</span>
+</div>
+<!-- /заголовок бокса новые статьи -->
+<div class="collapse navbar-collapse" id="collapse-boxArticlesNew">
+{foreach name=aussen item=articles from=$articles_content}
+<div class="NewsItem">
+<div class="NewsName"><a href="{$articles.ARTICLES_URL}">{$articles.ARTICLES_NAME}</a></div>
+<p>{$articles.ARTICLES_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_ARTICLES_CONTENT:" ..."}</p>
+<div class="more"><a href="{$articles.ARTICLES_URL}" class="btn btn-link">читать дальше <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+{/foreach}
+<div class="all"><a href="articles.php" class="btn btn-link btn-block">Читать все статьи <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</div>
+<!-- /Бокс новые статьи -->

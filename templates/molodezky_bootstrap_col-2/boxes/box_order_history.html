@@ -1,0 +1,14 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- Бокс история заказов -->
+<div class="navbar navbar-default boxOrderhistory">
+<!-- заголовок бокса партнёрка -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxOrderhistory" aria-expanded="false"></button>
+<span class="box-title">{#heading_order_history#}</span>
+</div>
+<!-- /заголовок бокса партнёрка -->
+<div class="collapse navbar-collapse" id="collapse-boxOrderhistory">
+{$BOX_CONTENT}
+</div>
+</div>
+<!-- /Бокс история заказов -->
