@@ -146,79 +146,25 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 .copyright br { display:none;}
 
 /* ------------ Боксы ------------ */
-.box-toggle:before {font-family: "FontAwesome";content:"\f055";}
-/* Аккаунт */
-.boxAccount {background:none;border:none;border-radius:0;min-height:0;}
-.boxAccount .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxAccount .box-title {color:#666; text-transform:uppercase; font-size:13px;padding:9px 0; display:inline-block; font-weight:600;}
-.boxAccount .navbar-collapse {border:none;box-shadow:none;padding:0;}
-.boxAccount .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxAccount .navbar-header .navbar-toggle:hover, .boxAccount .navbar-header .navbar-toggle:focus {background:none;color:#b70d0d;}
-.boxAccount .navbar-collapse ul {list-style-type: none;text-align: left;margin:0;padding:0;}
-.boxAccount .navbar-collapse ul li { display:block;margin:0;padding:3px 0;}
-.boxAccount .navbar-collapse ul li a {color:#999;}
-.boxAccount .navbar-collapse ul li a:hover {color:#b70d0d;}
-/* Быстрый заказ */
-.boxAddQuickie {background:none;min-height:0;border:none;}
-.boxAddQuickie .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxAddQuickie .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxAddQuickie .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxAddQuickie .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxAddQuickie .navbar-header .navbar-toggle:hover, .boxAddQuickie .navbar-header .navbar-toggle:focus {background:none;}
-/* Админка */
-.boxAdmin {background:none;min-height:0;border:none;}
-.boxAdmin .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxAdmin .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxAdmin .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxAdmin .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxAdmin .navbar-header .navbar-toggle:hover, .boxAdmin .navbar-header .navbar-toggle:focus {background:none;}
-/* Партнерка */
-.boxAffiliate {background:none;min-height:0;border:none;}
-.boxAffiliate .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxAffiliate .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxAffiliate .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxAffiliate .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxAffiliate .navbar-header .navbar-toggle:hover, .boxAffiliate .navbar-header .navbar-toggle:focus {background:none;}
-/* Статьи */
-.boxArticles {background:none;min-height:0;border:none;}
-.boxArticles .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxArticles .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxArticles .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxArticles .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxArticles .navbar-header .navbar-toggle:hover, .boxArticles .navbar-header .navbar-toggle:focus {background:none;}
-.boxArticles .navbar-collapse ul {list-style-type: none;text-align: left;margin:0;padding:0;}
-.boxArticles .navbar-collapse ul li { display:block;margin:0;padding:3px 0;}
-/* Новые статьи */
-.boxArticlesNew {background:none;min-height:0;border:none;}
-.boxArticlesNew .navbar-header {float:none;padding:0; margin:0;background:#212121;color:#fff;border-radius:3px 3px 0 0;}
-.boxArticlesNew .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxArticlesNew .navbar-collapse {border:none;box-shadow:none;padding:0;}
-.boxArticlesNew .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxArticlesNew .navbar-header .navbar-toggle:hover, .boxArticlesNew .navbar-header .navbar-toggle:focus {background:none;}
-.boxArticlesNew .navbar-collapse ul {list-style-type: none;text-align: left;margin:0;padding:0;}
-.boxArticlesNew .navbar-collapse ul li { display:block;margin:0;padding:3px 0;}
-/* Авторы */
-.boxAuthors {background:none;min-height:0;border:none;}
-.boxAuthors .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxAuthors .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxAuthors .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxAuthors .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxAuthors .navbar-header .navbar-toggle:hover, .boxAuthors .navbar-header .navbar-toggle:focus {background:none;}
-/* Лучшие товары */
-.boxBestsellers {background:none;min-height:0;border:none;}
-.boxBestsellers .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxBestsellers .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxBestsellers .navbar-collapse {border:none;box-shadow:none;padding:0;}
-.boxBestsellers .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxBestsellers .navbar-header .navbar-toggle:hover, .boxBestsellers .navbar-header .navbar-toggle:focus {background:none;}
-.boxBestsellers .carousel-control {width:10px;height:24px;top:57px;color:#333; text-shadow:none;}
-.boxBestsellers .carousel-control:hover {color:#4cb1cc;}
-.boxBestsellers .carousel-control.left {background:none;left:11px;}
-.boxBestsellers .carousel-control.right {background:none;right:10px;}
-.boxBestsellers .carousel-control i {font-size:48px;}
-.boxBestsellers .navbar-collapse .item {padding:13px;}
+.box {background:none;border:none;border-radius:0;min-height:0;}
+.box .navbar-header {float:none;padding:0; margin:0 0 10px;}
+.box .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
+.box .navbar-collapse {border:none;box-shadow:none;padding:0;}
+.box .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
+.box .box-toggle:before {font-family: "FontAwesome";content:"\f055";}
+.box .navbar-header .navbar-toggle:hover, .boxAccount .navbar-header .navbar-toggle:focus {background:none;color:#b70d0d;}
+.box .navbar-collapse ul {list-style-type: none;text-align: left;margin:0;padding:0;}
+.box .navbar-collapse ul li { display:block;margin:0;padding:3px 0;}
+.box .navbar-collapse ul li a {color:#999;}
+.box .navbar-collapse ul li a:hover {color:#b70d0d;}
+.box .carousel-control {width:10px;height:24px;top:57px;color:#333; text-shadow:none;}
+.box .carousel-control:hover {color:#4cb1cc;}
+.box .carousel-control.left {background:none;left:11px;}
+.box .carousel-control.right {background:none;right:10px;}
+.box .carousel-control i {font-size:48px;}
+.box .navbar-collapse .item {padding:13px;}
 @media (max-width: 767px) {
-.boxBestsellers .carousel-control {top:60px;}
+.box .carousel-control {top:60px;}
 }
 /* Корзина */
 #boxCart {}
@@ -242,13 +188,7 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 .CartButton {text-align:center;padding-bottom:10px;}
 .cartempty {padding:14px;}
 /* Разделы */
-.boxCategories {background:none;border:none;border-radius:0;min-height:0;}
-.boxCategories .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxCategories .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxCategories .navbar-collapse {border:none;box-shadow:none;padding:0;}
-.boxCategories .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxCategories .navbar-header .navbar-toggle:hover, .boxAccount .navbar-header .navbar-toggle:focus {background:none;color:#b70d0d;}
-.boxCategories #CatNavi, #boxCategories #CatNavi ul, #boxCategories #CatNavi li {margin: 0;padding:0;list-style-type: none;}
+.boxCategories #CatNavi, .boxCategories #CatNavi ul, .boxCategories #CatNavi li {margin: 0;padding:0;list-style-type: none;}
 .boxCategories #CatNavi li a {display: block;padding:3px 0;margin:0;}
 .boxCategories #CatNavi .CatLevel0 {padding-left:0;}
 .boxCategories #CatNavi .CatLevel1 {padding-left:20px;}
@@ -308,34 +248,6 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 .boxCategoriesLeft ul#navmenu-v ul ul, .boxCategoriesLeft ul#navmenu-v ul ul ul {display: none;position: absolute;top: 0;left:304px;border:none;}
 /* светим второй уровень при переходе на третий */
 .boxCategoriesLeft ul#navmenu-v ul li:hover > a {}
-/* Текстовый бокс боковой */
-.boxCol {margin:0 0 20px;border:1px solid #e3e3e3;}
-.boxCol-title {text-transform:uppercase; font-size:16px; display:block;padding:9px;background:#e3e3e3;color:#333;text-align:center;}
-.boxCol-content {padding:0;}
-/* Контакты */
-.boxContacts {background:none;border:none;border-radius:0;min-height:0;}
-.boxContacts .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxContacts .box-title {color:#666; text-transform:uppercase; font-size:13px;padding:9px 0; display:inline-block; font-weight:600;}
-.boxContacts .navbar-collapse {border:none;box-shadow:none;padding:0; font-size:13px;}
-.boxContacts .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxContacts .navbar-header .navbar-toggle:hover, .boxContacts .navbar-header .navbar-toggle:focus {background:none;color:#b70d0d;}
-.boxContacts .navbar-collapse ul {list-style-type: none;text-align: left;margin:0;padding:0;}
-.boxContacts .navbar-collapse ul li { display:block;margin:0;padding:3px 0;}
-.phone-text {float:left;padding:0 6px 0 0; font-size:14px;}
-.phone-number { display:block;overflow:hidden; font-size:15px;}
-.phone-work { font-size:13px;}
-.callback {padding:0 0 10px;}
-/* Контент */
-.boxContent {background:none;border:none;border-radius:0;min-height:0;}
-.boxContent .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxContent .box-title {color:#666; text-transform:uppercase; font-size:13px;padding:9px 0; display:inline-block; font-weight:600;}
-.boxContent .navbar-collapse {border:none;box-shadow:none;padding:0; font-size:13px;}
-.boxContent .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxContent .navbar-header .navbar-toggle:hover, .boxContent .navbar-header .navbar-toggle:focus {background:none;color:#b70d0d;}
-.boxContent .navbar-collapse ul {list-style-type: none;text-align: left;margin:0;padding:0;}
-.boxContent .navbar-collapse ul li { display:block;margin:0;padding:3px 0;}
-.boxContent .navbar-collapse ul li a {color:#999;}
-.boxContent .navbar-collapse ul li a:hover {color:#b70d0d;}
 /* Валюты */
 .navbar-default .head-login > li.head-currencies {padding-top:1px;}
 .navbar-default .head-login > li.head-currencies > a {text-decoration:none;}
@@ -348,154 +260,6 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 .navbar-default .head-login > li.head-currencies > .dropdown-menu.UAH li.UAH a {background:#222;color:#fff;}
 .navbar-default .head-login > li.head-currencies > .dropdown-menu.USD li.USD a {background:#222;color:#fff;}
 }
-/* Загрузки */
-.boxDownloads {background:none;min-height:0;border:none;}
-.boxDownloads .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxDownloads .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxDownloads .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxDownloads .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxDownloads .navbar-header .navbar-toggle:hover, .boxDownloads .navbar-header .navbar-toggle:focus {background:none;}
-/* Вопросы и ответы */
-.boxFaq {background:none;min-height:0;border:none;}
-.boxFaq .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxFaq .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxFaq .box-title a {color:#fff;}
-.boxFaq .navbar-collapse {border:none;box-shadow:none;padding:0;}
-.boxFaq .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxFaq .navbar-header .navbar-toggle:hover, .boxFaq .navbar-header .navbar-toggle:focus {background:none;}
-.boxFaq .navbar-collapse ul {list-style-type: none;text-align: left;margin:0;padding:14px;}
-.boxFaq .navbar-collapse ul li { display:block;margin:0;padding:3px 0;}
-/* Рекомендуемые */
-.boxFeatured {background:none;min-height:0;border:none;}
-.boxFeatured .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxFeatured .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxFeatured .box-title a {}
-.boxFeatured .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxFeatured .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxFeatured .navbar-header .navbar-toggle:hover, .boxAccount .navbar-header .navbar-toggle:focus {background:none;}
-/* Рекомендуемые с несколькими товарами слайдером */
-.boxFeatured-multiproduct {background:none;min-height:0;border:none;}
-.boxFeatured-multiproduct .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxFeatured-multiproduct .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxFeatured-multiproduct .box-title a {}
-.boxFeatured-multiproduct .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxFeatured-multiproduct .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxFeatured-multiproduct .navbar-header .navbar-toggle:hover, .boxFeatured-multiproduct .navbar-header .navbar-toggle:focus {background:none;}
-.boxFeatured-multiproduct .carousel-control {width:10px;height:24px;top:57px;color:#333; text-shadow:none;}
-.boxFeatured-multiproduct .carousel-control:hover {color:#4cb1cc;}
-.boxFeatured-multiproduct .carousel-control.left {background:none;left:11px;}
-.boxFeatured-multiproduct .carousel-control.right {background:none;right:10px;}
-.boxFeatured-multiproduct .carousel-control i {font-size:48px;}
-.boxFeatured-multiproduct .navbar-collapse .item {}
-@media (max-width: 767px) {
-.boxFeatured-multiproduct .carousel-control {top:60px;}
-}
-/* Инофрмация о группе */
-.boxGroupInfo {background:none;min-height:0;border:none;}
-.boxGroupInfo .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxGroupInfo .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxGroupInfo .navbar-collapse {border:none;box-shadow:none;padding:0;text-align:center;}
-.boxGroupInfo .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxGroupInfo .navbar-header .navbar-toggle:hover, .boxGroupInfo .navbar-header .navbar-toggle:focus {background:none;}
-/* Информация */
-.boxInformation {background:none;border:none;border-radius:0;min-height:0;}
-.boxInformation .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxInformation .box-title {color:#666; text-transform:uppercase; font-size:13px;padding:9px 0; display:inline-block; font-weight:600;}
-.boxInformation .navbar-collapse {border:none;box-shadow:none;padding:0; font-size:13px;}
-.boxInformation .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxInformation .navbar-header .navbar-toggle:hover, .boxInformation .navbar-header .navbar-toggle:focus {background:none;color:#b70d0d;}
-.boxInformation .navbar-collapse ul {list-style-type: none;text-align: left;margin:0;padding:0;}
-.boxInformation .navbar-collapse ul li { display:block;margin:0;padding:3px 0;}
-.boxInformation .navbar-collapse ul li a {color:#999;}
-.boxInformation .navbar-collapse ul li a:hover {color:#b70d0d;}
-/* Языки */
-.boxLanguages {background:none;min-height:0;border:none;}
-.boxLanguages .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxLanguages .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxLanguages .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxLanguages .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxLanguages .navbar-header .navbar-toggle:hover, .boxLanguages .navbar-header .navbar-toggle:focus {background:none;}
-/* Просмотренные */
-.boxLastViewed {background:none;min-height:0;border:none;}
-.boxLastViewed .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxLastViewed .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxLastViewed .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxLastViewed .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxLastViewed .navbar-header .navbar-toggle:hover, .boxLastViewed .navbar-header .navbar-toggle:focus {background:none;}
-/* Вход */
-.boxLogin {background:none;min-height:0;border:none;}
-.boxLogin .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxLogin .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxLogin .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxLogin .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxLogin .navbar-header .navbar-toggle:hover, .boxAccount .navbar-header .navbar-toggle:focus {background:none;}
-/* Производители */
-.boxManufacturers {background:none;min-height:0;border:none;}
-.boxManufacturers .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxManufacturers .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxManufacturers .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxManufacturers .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxManufacturers .navbar-header .navbar-toggle:hover, .boxManufacturers .navbar-header .navbar-toggle:focus {background:none;}
-@media (min-width: 768px) {
-.boxManufacturers {margin:0 0 20px;}
-.boxManufacturers .navbar-header {}
-.boxManufacturers .navbar-collapse {}
-}
-/* Информация о производителе */
-.boxManufacturersInfo {background:none;min-height:0;border:none;}
-.boxManufacturersInfo .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxManufacturersInfo .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxManufacturersInfo .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxManufacturersInfo .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxManufacturersInfo .navbar-header .navbar-toggle:hover, .boxManufacturersInfo .navbar-header .navbar-toggle:focus {background:none;}
-/* Новости */
-.boxNews {background:none;min-height:0;border:none;}
-.boxNews .navbar-header {float:none;padding:0; margin:0;background:#212121;color:#fff;border-radius:3px 3px 0 0;}
-.boxNews .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxNews .box-title a {color:#fff;}
-.boxNews .navbar-collapse {border:none;box-shadow:none;padding:0;}
-.boxNews .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxNews .navbar-header .navbar-toggle:hover, .boxNews .navbar-header .navbar-toggle:focus {background:none;}
-.NewsItem {padding:14px;}
-.NewsItem:hover {background:#f4f4f4;}
-.NewsDate {color:#999;padding:4px 0 0;}
-.NewsName {font-weight:600;padding:0 0 8px;color:#212121; font-size:14px;}
-.NewsName a { text-decoration:underline;color:#212121;}
-.NewsName a:hover { text-decoration:none;color:#b70d0d;}
-.more .btn {padding:0; font-size:13px;color:#b70d0d; text-decoration:underline; font-weight:600;}
-.more .btn:hover {text-decoration:none;}
-.all {border-top:1px solid #e9e9e9;}
-.all .btn {padding:14px; font-size:13px;color:#999; text-decoration:underline; font-weight:600;}
-.all .btn:hover {text-decoration:none;}
-/* Рассылки */
-.boxNewsletter {background:none;min-height:0;border:none;}
-.boxNewsletter .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxNewsletter .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxNewsletter .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxNewsletter .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxNewsletter .navbar-header .navbar-toggle:hover, .boxOrderhistory .navbar-header .navbar-toggle:focus {background:none;}
-/* История заказов */
-.boxOrderhistory {background:none;min-height:0;border:none;}
-.boxOrderhistory .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxOrderhistory .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxOrderhistory .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxOrderhistory .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxOrderhistory .navbar-header .navbar-toggle:hover, .boxOrderhistory .navbar-header .navbar-toggle:focus {background:none;}
-/* Фильтры */
-.boxFilters {background:none;min-height:0;border:none;}
-.boxFilters .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxFilters .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxFilters .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxFilters .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxFilters .navbar-header .navbar-toggle:hover, .boxFilters .navbar-header .navbar-toggle:focus {background:none;}
-/* Отзывы */
-.boxReviews {background:none;min-height:0;border:none;}
-.boxReviews .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxReviews .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxReviews .navbar-collapse {border:none;box-shadow:none;padding: 0;}
-.boxReviews .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxReviews .navbar-header .navbar-toggle:hover, .boxReviews .navbar-header .navbar-toggle:focus {background:none;}
-.boxReviews .ProductDesc {display:block;}
 /* Поиск */
 .boxSearch {padding:0; height:34px; position:relative;}
 .boxSearchContent {border-radius: 2px;background:#fff;border:1px solid #e3e3e3;}
@@ -511,67 +275,7 @@ li.ajaxQuickFind {font-size: 80%;padding:2px 0 5px;}
 @media (max-width: 767px) {
 .boxSearch { display:none;}
 }
-/* Скидки */
-.boxSpecials {background:none;min-height:0;border:none;}
-.boxSpecials .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxSpecials .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxSpecials .box-title a {}
-.boxSpecials .navbar-collapse {border:none;box-shadow:none;padding:0;}
-.boxSpecials .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxSpecials .navbar-header .navbar-toggle:hover, .boxSpecials .navbar-header .navbar-toggle:focus {background:none;}
-/* Скидки с несколькими товарами слайдером */
-.boxSpecials-multiproduct {background:none;min-height:0;border:none;}
-.boxSpecials-multiproduct .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxSpecials-multiproduct .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxSpecials-multiproduct .box-title a {}
-.boxSpecials-multiproduct .navbar-collapse {border:none;box-shadow:none;padding:0;}
-.boxSpecials-multiproduct .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxSpecials-multiproduct .navbar-header .navbar-toggle:hover, .boxSpecials-multiproduct .navbar-header .navbar-toggle:focus {background:none;}
-.boxSpecials-multiproduct .carousel-control {width:17px;height:27px;top:57px;color:#333; text-shadow:none;}
-.boxSpecials-multiproduct .carousel-control:hover {color:#4cb1cc;}
-.boxSpecials-multiproduct .carousel-control.left {background:none;left:11px;}
-.boxSpecials-multiproduct .carousel-control.right {background:none;right:10px;}
-.boxSpecials-multiproduct .carousel-control i {font-size:48px;}
-.boxSpecials-multiproduct .navbar-collapse .item {}
-@media (max-width: 767px) {
-.boxSpecials-multiproduct .carousel-control {top:60px;}
-}
-/* Новинки */
-.boxWhatsNew {background:none;min-height:0;border:none;}
-.boxWhatsNew .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxWhatsNew .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxWhatsNew .box-title a {}
-.boxWhatsNew .navbar-collapse {border:none;box-shadow:none;padding:0;}
-.boxWhatsNew .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxWhatsNew .navbar-header .navbar-toggle:hover, .boxWhatsNew .navbar-header .navbar-toggle:focus {background:none;}
-.boxWhatsNew .carousel-control {width:10px;height:24px;top:57px;color:#333; text-shadow:none;}
-.boxWhatsNew .carousel-control:hover {color:#4cb1cc;}
-.boxWhatsNew .carousel-control.left {background:none;left:11px;}
-.boxWhatsNew .carousel-control.right {background:none;right:10px;}
-.boxWhatsNew .carousel-control i {font-size:48px;}
-.boxWhatsNew .navbar-collapse .item {}
-/* Новинки с несколькими товарами слайдером */
-.boxWhatsNew-multiproduct {background:none;min-height:0;border:none;}
-.boxWhatsNew-multiproduct .navbar-header {float:none;padding:0; margin:0 0 10px;}
-.boxWhatsNew-multiproduct .box-title { font-size:16px; display:block;padding:9px 9px 9px 0;border-bottom:1px solid #ccc;}
-.boxWhatsNew-multiproduct .box-title a {}
-.boxWhatsNew-multiproduct .navbar-collapse {border:none;box-shadow:none;padding:0;}
-.boxWhatsNew-multiproduct .navbar-header .navbar-toggle {border:none;border-radius:0;background:none;margin:0;font-size:18px;}
-.boxWhatsNew-multiproduct .navbar-header .navbar-toggle:hover, .boxWhatsNew-multiproduct .navbar-header .navbar-toggle:focus {background:none;}
-.boxWhatsNew-multiproduct .carousel-control {width:10px;height:24px;top:57px;color:#333; text-shadow:none;}
-.boxWhatsNew-multiproduct .carousel-control:hover {color:#4cb1cc;}
-.boxWhatsNew-multiproduct .carousel-control.left {background:none;left:11px;}
-.boxWhatsNew-multiproduct .carousel-control.right {background:none;right:10px;}
-.boxWhatsNew-multiproduct .carousel-control i {font-size:48px;}
-.boxWhatsNew-multiproduct .navbar-collapse .item {}
-@media (max-width: 767px) {
-.boxWhatsNew-multiproduct .carousel-control {top:60px;}
-}
-@media (max-width: 767px) {
-.boxAddQuickie, .boxAdmin, .boxAffiliate, .boxArticles, .boxArticlesNew, .boxAuthors, .boxBestsellers, .boxCategories, .boxCategories2, .boxDownloads, .boxFaq, .boxFeatured, .boxGroupInfo, .boxLanguages, .boxLastViewed, .boxNews, .boxLogin, .boxManufacturers, .boxManufacturersInfo, .boxNewsletter, .boxOrderhistory, .boxFilters, .boxReviews, .boxSpecials, .boxWhatsNew, {margin-bottom:10px;}
-.boxAccount, .boxContacts, .boxContent, .boxInformation {margin-bottom:0;}
-.boxAccount .navbar-header, .boxAddQuickie .navbar-header, .boxAdmin .navbar-header, .boxAffiliate .navbar-header, .boxArticles .navbar-header, .boxArticlesNew .navbar-header, .boxAuthors .navbar-header, .boxBestsellers .navbar-header, .boxCategories .navbar-header, .boxCategories2 .navbar-header, .boxContacts .navbar-header, .boxContent .navbar-header, .boxDownloads .navbar-header, .boxFaq .navbar-header, .boxFeatured .navbar-header, .boxGroupInfo .navbar-header, .boxInformation .navbar-header, .boxLanguages .navbar-header, .boxLastViewed .navbar-header, .boxNews .navbar-header, .boxLogin .navbar-header, .boxManufacturers .navbar-header, .boxManufacturersInfo .navbar-header, .boxNewsletter .navbar-header, .boxOrderhistory .navbar-header, .boxFilters .navbar-header, .boxReviews .navbar-header, .boxSpecials .navbar-header, .boxWhatsNew .navbar-header {margin:0;}
-}
+
 /* ------------ Категории ------------ */
 .Categories {position:relative;}
 .Categories-int {margin:15px 0;text-align:center;}
