@@ -68,12 +68,13 @@
 <div class="col-xs-12 slider-banners">
 <div id="carousel-Banners" class="carousel slide" data-ride="carousel">
 <!-- Indicators -->
+<meta content="{counter start=-1}">
 <ol class="carousel-indicators">
-{if $BANNER}<li data-target="#carousel-Banners" data-slide-to="0"></li>{/if}
-{if $BANNER1}<li data-target="#carousel-Banners" data-slide-to="1"></li>{/if}
-{if $BANNER2}<li data-target="#carousel-Banners" data-slide-to="2"></li>{/if}
-{if $BANNER3}<li data-target="#carousel-Banners" data-slide-to="3"></li>{/if}
-{if $BANNER4}<li data-target="#carousel-Banners" data-slide-to="4 "></li>{/if}
+{if $BANNER}<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>{/if}
+{if $BANNER1}<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>{/if}
+{if $BANNER2}<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>{/if}
+{if $BANNER3}<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>{/if}
+{if $BANNER4}<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>{/if}
 </ol>
 
 <!-- Wrapper for slides -->
