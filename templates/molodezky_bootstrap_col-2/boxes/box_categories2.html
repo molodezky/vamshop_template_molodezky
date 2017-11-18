@@ -3,4 +3,21 @@
 <li class="dropdown" id="boxCategories2"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Каталог<span class="caret pull-right"></span></a>
 <ul class="dropdown-menu">{$BOX_CONTENT}</ul>
 </li>
+<script>
+{literal}
+$(document).ready(function(){
+	$("#navmenu-v a").next("ul").addClass("dropdown-menu");
+    $("#navmenu-v ul").prev("a").addClass("subcat");
+	$(".subcat").attr("href", "#");
+	$(".subcat").append('<span class="caret pull-right"></span>');
+
+	$('.dropdown a.subcat').on("click", function(e){
+		$(this).next('ul').toggle();
+    	e.stopPropagation();
+    	e.preventDefault();
+  	});
+	
+});	
+{/literal}
+</script>
 <!-- /Бокс разделы  со всплывающими подменю -->
