@@ -21,8 +21,8 @@ h1 a:hover, .h1 a:hover {}
 .video iframe, .video object, .video embed {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
 /* ------------ кнопки ------------ */
 .btn {margin-bottom:5px;}
-.btn-primary {}
 .btn:focus, .btn:focus:active, .btn.active:focus, .btn.focus, .btn.focus:active, .btn.active.focus {outline:none;}
+.btn-primary {}
 .btn-primary:hover {}
 .btn-primary:focus, .btn-primary:focus:active, .btn-primary.active:focus, .btn-primary.focus, .btn-primary.focus:active, .btn-primary.active.focus {}
 .btn-info {}
