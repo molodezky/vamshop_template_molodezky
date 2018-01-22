@@ -24,6 +24,11 @@ $(window).load(function() {
     $('.ProductManufacturer').matchHeight();
     $('.OrderBlock').matchHeight();
     $('.OrderBlock-int').matchHeight();
-    $('.filter').matchHeight();	
+    $('.filter').matchHeight();
+    // новости и статьи
+    $('.NewsImage').matchHeight();
+    $('.NewsName').matchHeight();
+    // общее равнение
+    $('.equal-block').matchHeight();
 });
 }
