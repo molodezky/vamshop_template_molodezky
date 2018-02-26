@@ -168,7 +168,9 @@ $(document).ready(function(){
 <!-- /заголовок бокса Аккаунт -->
 <div class="collapse navbar-collapse" id="collapse-boxAccount">
 <ul>
-{php}if ($_SESSION['customers_status']['customers_status_id'] == 0) echo '<li><a href="admin/start.php"><span>Админка</span></a></li>';{/php}
+{if $smarty.session.customers_status.customers_status_id == 0}
+<li><a href="admin/start.php"><span>Админка</span></a></li>
+{/if}
 {if $smarty.session.customer_id}
 <li><a href="{$account}">{#link_account#}</a></li>
 <li><a href="address_book.php">Адресная книга</a></li>
