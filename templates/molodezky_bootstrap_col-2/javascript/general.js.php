@@ -18,18 +18,10 @@
    // this javascriptfile get includes at every template page in shop, you can add your template specific
    // js scripts here
 ?>
-<script type="text/javascript" src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bootstrap/bootstrap.min.js'; ?>"></script> 
+<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bootstrap/bootstrap.min.js'; ?>"></script> 
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
-<?php
-if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
-?>
-<script type="text/javascript" src="/buyme/js/buyme.js" encoding="utf-8"></script>
-<?php
-}
-?>
 
-
-<script type="text/javascript">
+<script>
 $(document).ready(function(){
 	// hide #back-top first
 	$("#back-top").css('visibility', 'visible');	
@@ -61,7 +53,7 @@ $(document).ready(function(){
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) or strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
 ?>
  
-<script type="text/javascript">
+<script>
 $(document).ready(function() {
                 $('.minus').click(function () {
                         var $input = $(this).parent().find('input[type=text]');
@@ -85,7 +77,7 @@ $(document).ready(function() {
 }
 ?>
 
-<script type="text/javascript">
+<script>
 	
 	function CartFade() {
 		$('div.reg_form').fadeIn(500);

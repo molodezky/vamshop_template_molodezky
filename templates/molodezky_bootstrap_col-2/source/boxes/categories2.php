@@ -169,7 +169,7 @@ if( !$box->isCached( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_id
   
 
 
-$box->assign( 'BOX_CONTENT', '<ul id="navmenu-v">' . $categories_string2 . '</ul>' );
+$box->assign( 'BOX_CONTENT', $categories_string2 );
 
 };  // if( !$box->isCached( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_id ) || !$cache )
 

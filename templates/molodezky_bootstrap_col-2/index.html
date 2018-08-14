@@ -60,7 +60,6 @@
 </header>
 <!-- /шапка -->
 <!-- центральная секция -->
-<section>
 <div class="container">
 <div class="row">
 {if in_array($smarty.server.REQUEST_URI, array('/_bootstrap/', '/_bootstrap/index.php', '/_bootstrap/index.php?currency=USD', '/_bootstrap/index.php?currency=RUR'))}
@@ -149,7 +148,6 @@ $(document).ready(function(){
 <!-- /левая колонка -->
 </div>
 </div>
-</section>
 <!-- /центральная секция -->
 
 <footer>
@@ -209,7 +207,7 @@ $(document).ready(function(){
 </div>
 </div>
 <!-- копирайт -->
-<section class="copyright">
+<div class="copyright">
 <div class="container">
 <div class="row">
 <div class="col-xs-12  text-center">
@@ -217,7 +215,7 @@ Copyright © 2017{php}if (date('Y') != '2017') echo '-'.date('Y');{/php}. <a hre
 </div>
 </div>
 </div>
-</section>
+</div>
 </footer>
 <div class="popup reg_form"><!-- попап корзины -->
 <div class="cproduct"></div>
