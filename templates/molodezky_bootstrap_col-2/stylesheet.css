@@ -30,8 +30,9 @@ h1 a:hover, .h1 a:hover {}
 .btn-info:focus, .btn-info:focus:active, .btn-info.active:focus, .btn-info.focus, .btn-info.focus:active, .btn-info.active.focus {}
 .btn-link {}
 /* ------------ формы ------------ */
-.form-control {color:#666;border-radius:2px;height:32px;border-color:#e3e3e3; font-size:13px;}
+.form-control {color:#666;border-radius:2px;border-color:#e3e3e3; font-size:13px;}
 .form-control:focus {border-color: #4cb1cc;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(121, 192, 213, .6);box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(121, 192, 213, .6);}
+.input-group .btn {margin-bottom:0;}
 /* ------------ хлебные крошки ------------ */
 .breadcrumb {border-radius:0;background:none;padding:0 0 8px;color:#999;}
 .breadcrumb a {color:#999;}

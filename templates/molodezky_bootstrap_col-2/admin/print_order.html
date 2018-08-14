@@ -1,5 +1,14 @@
-{config_load file="$language/lang_$language.conf" section="print_order"} {config_load file="$language/lang_$language.conf" section="product_info"}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>{#title#} {$oID}</title><meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
-<link rel="stylesheet" type="text/css" href="{$tpl_path}/stylesheet.css" /></head><body onload="window.print()">
+{config_load file="$language/lang_$language.conf" section="print_order"} 
+{config_load file="$language/lang_$language.conf" section="product_info"}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{#title#} {$oID}</title>
+<meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+<link rel="stylesheet" type="text/css" href="{$tpl_path}/stylesheet.css" />
+</head>
+
+<body onload="window.print()">
 <!-- Информация о заказе -->
 <div class="page">
 
@@ -38,7 +47,7 @@
 <hr>
 <p><b><font size="5">Счет № {$oID} от {$DATE}</font></b></p>
 <p>&nbsp;</p>
-<table border="0" width="92%" id="table1" cellspacing="0">
+<table border="0" width="99%" id="table1" cellspacing="0">
 	<tr>
 		<td width="5%" style="border-style: solid; border-width: 1px" align="center"><b>№ п/п</b></td>
 		<td width="17%" style="border-style: solid; border-width: 1px" align="center">
@@ -80,4 +89,6 @@
 
 </div>
 <!-- /Информация о заказе -->
-</body></html>
+
+</body>
+</html>

@@ -27,9 +27,7 @@
 </table>
 </div>
 {/if}
-<div class="ProductRating">{if $products_data.REVIEWS_TOTAL > 0}<img src="{$tpl_path}img/stars_{$products_data.REVIEWS_TOTAL_RATING|number_format:0}.png" alt="{$products_data.REVIEWS_TOTAL_RATING|number_format:2}" title="{$products_data.REVIEWS_TOTAL_RATING|number_format:2}" /> {else}нет отзывов{/if}
-{if $products_data.REVIEWS_TOTAL > 0}{$products_data.REVIEWS_TOTAL} отзыв{if $products_data.REVIEWS_TOTAL%10 == 0}ов{elseif $products_data.REVIEWS_TOTAL%10 == 1}{elseif $products_data.REVIEWS_TOTAL%10 < 5}а{else}ов{/if}{/if}
-</div>
+<div class="ProductRating">{if $products_data.REVIEWS_TOTAL > 0}{$products_data.REVIEWS_STAR_RATING}{/if}</div>
 <div class="ProductPrice" itemprop="offers" itemscope itemtype="http://schema.org/Offer">{$products_data.PRODUCTS_PRICE}<meta itemprop="price" content="{$products_data.PRODUCTS_PRICE_PLAIN}"><meta itemprop="priceCurrency" content="{$smarty.session.currency}"></div>
 <div class="ProductQuantity"><span class="{if $products_data.PRODUCTS_QUANTITY < 1}qty-no{elseif $products_data.PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $products_data.PRODUCTS_QUANTITY < 1}отсутствует{elseif $products_data.PRODUCTS_QUANTITY < 10}под заказ{else}в наличии{/if}</span></div>
 <div class="ProductMore"><a href="{$products_data.PRODUCTS_LINK}" class="btn btn-primary">Подробнее</a></div>

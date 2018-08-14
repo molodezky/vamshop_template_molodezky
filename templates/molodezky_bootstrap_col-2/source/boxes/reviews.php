@@ -48,7 +48,15 @@ $box_content='';
 $products_image = DIR_WS_THUMBNAIL_IMAGES . $random_product['products_image'];
 if (!file_exists($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
 
-$box_content = '<div class="thumbnail ProductImage"><a href="' . vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id=' . $random_product['products_id'] . '&reviews_id=' . $random_product['reviews_id']) . '">' . vam_image($products_image, $random_product['products_name']) . '</a></div><div class="ProductDesc"><a href="' . vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id=' . $random_product['products_id'] . '&reviews_id=' . $random_product['reviews_id']) . '">' . $review . ' ..</a></div><div class="ProductRating">' . vam_image('templates/' . CURRENT_TEMPLATE . '/img/stars_' . $random_product['reviews_rating'] . '.png' , sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, $random_product['reviews_rating'])) . '</div>';
+$star_rating = '';
+		for($i=0;$i<number_format($random_product['reviews_rating']);$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+		}
+		for($i=0;$i<(5 - number_format($random_product['reviews_rating']));$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
+		}
+
+$box_content = '<div class="thumbnail ProductImage"><a href="' . vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id=' . $random_product['products_id'] . '&reviews_id=' . $random_product['reviews_id']) . '">' . vam_image($products_image, $random_product['products_name']) . '</a></div><div class="ProductDesc"><a href="' . vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id=' . $random_product['products_id'] . '&reviews_id=' . $random_product['reviews_id']) . '">' . $review . ' ..</a></div><div class="ProductRating">' . $star_rating . '</div>';
 
   } elseif ($product->isProduct()) {
     // display 'write a review' box
@@ -67,6 +75,7 @@ $box_content = '<div class="thumbnail ProductImage"><a href="' . vam_href_link(F
   $box->caching = 1;
   $box->cache_lifetime=CACHE_LIFETIME;
   $box->cache_modified_check=CACHE_CHECK;
+  (!isset($random_product['reviews_id'])) ? $random_product['reviews_id'] = 0 : $random_product['reviews_id'];
   $cache_id = $_SESSION['language'].$random_product['reviews_id'].$product->data['products_id'].$_SESSION['language'];
   $box_reviews= $box->fetch(CURRENT_TEMPLATE.'/boxes/box_reviews.html',$cache_id);
   }

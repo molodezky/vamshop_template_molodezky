@@ -104,9 +104,7 @@
 </table>
 </div>
 {/if}
-<div class="ProductRating">{if $products.REVIEWS_TOTAL > 0}<img src="{$tpl_path}img/stars_{$products.REVIEWS_TOTAL_RATING|number_format:0}.png" alt="{$products.REVIEWS_TOTAL_RATING|number_format:2}" title="{$products.REVIEWS_TOTAL_RATING|number_format:2}" /> {else}нет отзывов{/if}
-{if $products.REVIEWS_TOTAL > 0}{$products.REVIEWS_TOTAL} отзыв{if $products.REVIEWS_TOTAL%10 == 0}ов{elseif $products.REVIEWS_TOTAL%10 == 1}{elseif $products.REVIEWS_TOTAL%10 < 5}а{else}ов{/if}{/if}
-</div>
+<div class="ProductRating">{if $products.REVIEWS_TOTAL > 0}{$products.REVIEWS_STAR_RATING}{/if}</div>
 <div class="ProductPrice">{$products.PRODUCTS_PRICE}</div>
 <div class="ProductQuantity"><span class="{if $products.PRODUCTS_QUANTITY < 1}qty-no{elseif $products.PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $products.PRODUCTS_QUANTITY < 1}отсутствует{elseif $products.PRODUCTS_QUANTITY < 10}под заказ{else}в наличии{/if}</span></div>
 <div class="ProductMore"><a href="{$products.PRODUCTS_LINK}" class="btn btn-primary">Подробнее</a></div>
