@@ -74,10 +74,7 @@ pager:false
 <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus" data-yashareTheme="counter"></div>
 </div>
 
-<div class="ProductInfoRating">
-{if $REVIEWS_TOTAL > 0}<img src="{$tpl_path}img/stars_{$REVIEWS_RATING|number_format:0}.png" alt="{$REVIEWS_RATING|number_format:2}" title="{$REVIEWS_RATING|number_format:2}" /> {else}нет отзывов{/if}
-{if $REVIEWS_TOTAL > 0}{$REVIEWS_TOTAL} отзыв{if $REVIEWS_TOTAL%10 == 0}ов{elseif $REVIEWS_TOTAL%10 == 1}{elseif $REVIEWS_TOTAL%10 < 5}а{else}ов{/if}{/if}
-</div>
+{if $REVIEWS_TOTAL > 0}<div class="ProductInfoRating">{$STAR_RATING}</div>{/if}
 </div>
 {if $PRODUCTS_SHORT_DESCRIPTION !=''}<div class="col-xs-12 ProductInfoShort">{$PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
 {if $MODULE_product_options !=''}<div class="col-xs-12 ProductInfoOption">{$MODULE_product_options}</div>{/if}
