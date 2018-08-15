@@ -357,7 +357,7 @@ require(DIR_WS_INCLUDES.'google_conversiontracking.js.php');
   }
 
 
-$vamTemplate->assign('navtrail',$breadcrumb->trail(' &raquo; '));
+$vamTemplate->assign('navtrail',$breadcrumb->trail(' &nbsp;/&nbsp; '));
 if (isset($_SESSION['customer_id'])) {
 
 $vamTemplate->assign('logoff',vam_href_link(FILENAME_LOGOFF, '', 'SSL'));

@@ -1,4 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/template_lang_$language.conf" section="template"}
 <!-- шапка -->
 <header>
 <div class="head-menu-line"></div>
@@ -157,7 +158,7 @@ $(document).ready(function(){
 <div class="col-xs-12 col-sm-4 col-md-3">{$box_INFORMATION}</div>
 <div class="col-xs-12 col-sm-4 col-md-3">
 <!-- бокс Аккаунт -->
-<div class="navbar navbar-default boxAccount">
+<div class="navbar navbar-default box boxAccount">
 <!-- заголовок бокса Аккаунт -->
 <div class="navbar-header">
 <button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxAccount" aria-expanded="false"></button>
@@ -186,7 +187,7 @@ $(document).ready(function(){
 </div>
 <div class="col-xs-12 col-sm-12 col-md-3">
 <!-- Контакты -->
-<div class="navbar navbar-default boxContacts">
+<div class="navbar navbar-default box boxContacts">
 <!-- заголовок бокса Контакты -->
 <div class="navbar-header">
 <button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxContacts" aria-expanded="false"></button>
@@ -197,7 +198,7 @@ $(document).ready(function(){
 <meta itemprop="name" content="{$store_name}">
 {if $smarty.const.STORE_NAME_ADDRESS}<p>Адрес: {$smarty.const.STORE_NAME_ADDRESS}</p>{/if}
 {if $smarty.const.STORE_TELEPHONE}<div class="telnumber">Телефоны: {$smarty.const.STORE_TELEPHONE}<meta itemprop="telephone" content="{$smarty.const.STORE_TELEPHONE|strip_tags|replace:' ':''}"></div>{/if}
-<div class="foot-callback"><a href="call_back.php" class="callback">Заказать звонок</a></div>
+<div class="foot-callback"><a href="call_back.php" class="btn btn-default callback">Заказать звонок</a></div>
 {if $smarty.const.STORE_SKYPE}<p>Skype: <span>{$smarty.const.STORE_SKYPE}</span></p>{/if}
 {if $smarty.const.STORE_ICQ}<p>ICQ: <span>{$smarty.const.STORE_ICQ}</span></p>{/if}
 </div>
@@ -224,3 +225,73 @@ Copyright © 2017{php}if (date('Y') != '2017') echo '-'.date('Y');{/php}. <a hre
 <div class="popuplink"><a href="shopping_cart.php" class="btn btn-primary">перейти в корзину</a> <a href="javascript:CartFadeOut()"  class="btn btn-info">продолжить покупки</a></div>
 </div><!-- /попап корзины -->
 <p id="back-top" style="display: block;"><a href="#top"><i class="fa fa-angle-up"></i></a></p>
+
+
+
+
+<!-- Modal Товар в корзине -->
+<div class="modal fade" id="ProductAdded" tabindex="-1" role="dialog" aria-labelledby="ProductAddedTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<div class="h5 modal-title" id="ProductAddedTitle">{#product_added#}</div>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">{#text_product_added#}</div>
+<div class="modal-footer">
+<button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-secondary">{#link_continue#}</button>
+<a href="shopping_cart.php" class="btn btn-primary">{#link_in_cart#}</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Обратный звонок -->
+<div class="modal fade" id="CallBack" tabindex="-1" role="dialog" aria-labelledby="CallBackTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<div class="h5 modal-title" id="CallBackTitle">{#call_back#}</div>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+<form name="sentMessage" class="form form-register1" id="contactForm" novalidate>
+<div class="modal-body">
+<div class="control-group">
+<div class="controls">
+<label for="name">{#text_name#}:</label>
+<input type="text" class="form-control" placeholder="{#placeholder_name#}" id="name" required data-validation-required-message="{#required_name#}" />
+<div class="help-block"></div>
+</div>
+</div>  
+<div class="control-group">
+<div class="controls">
+<label for="name">{#label_phone#}:</label>
+<input type="text" class="form-control" placeholder="{#placeholder_phone#}" id="phone" required data-validation-required-message="{#required_phone#}" />
+</div>
+</div>
+<div class="alert alert-info privacy" id="privacy" role="alert">{$smarty.const.PRIVACY_TEXT}</div>
+</div>
+
+<div class="modal-footer">
+<div id="success"></div> <!-- For success/fail messages -->
+<div id="sendbutton"><button type="submit" class="btn btn-primary">{#text_send#}</button></div>
+</div>
+<!-- блок антиспам -->
+<div class="form-anti-bot" style="clear:both;">
+<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
+<input type="text" name="anti_bot_q" id="anti_bot_q" size="30" value="19" />
+</div>
+<div class="form-anti-bot-2" style="display:none;">
+<strong>Leave this field empty</strong> <span class="required">*</span>
+<input type="text" name="anti_bot_e_email_url" id="anti_bot_e_email_url" size="30" value=""/>
+</div>
+<!-- /блок антиспам -->
+</form>
+<!-- антибот -->
+
+
+<!-- /антибот -->
+</div>
+</div>
+</div>
+<!-- /Modal Обратный звонок -->
