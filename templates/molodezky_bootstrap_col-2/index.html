@@ -17,20 +17,20 @@
 <ul class="nav navbar-nav head-menu">
 <li><a href="{$mainpage}" class="home-link"><span>{#text_mainpage#}</span></a></li>
 {$box_CATEGORIES2}
-<li><a href="shop_content.php?coID=4"><span>О магазине</span></a></li>
-<li><a href="shop_content.php?coID=1"><span>Доставка и оплата</span></a></li>
-<li><a href="shop_content.php?coID=6"><span>Гарантия</span></a></li>
-<li><a href="articles.php"><span>Статьи</span></a></li>
-<li><a href="shop_content.php?coID=7"><span>Контакты</span></a></li>
+<li{$content_4_current}><a href="shop_content.php?coID=4"><span>О магазине</span></a></li>
+<li{$content_1_current}><a href="shop_content.php?coID=1"><span>Доставка и оплата</span></a></li>
+<li{$content_6_current}><a href="shop_content.php?coID=6"><span>Гарантия</span></a></li>
+<li{$articles_current}><a href="articles.php"><span>Статьи</span></a></li>
+<li{$content_7_current}><a href="shop_content.php?coID=7"><span>Контакты</span></a></li>
 </ul>
 <!-- меню акаунт -->
 <ul class="nav navbar-nav head-login">
 {if $smarty.session.customer_id}
-<li><a href="{$account}">{#link_account#}</a><span class="menu-separator"></span></li>
-<li><a href="{$logoff}">{#link_logoff#}</a></li>
+<li{$account_current}><a href="{$account}">{#link_account#}</a><span class="menu-separator"></span></li>
+<li{$logoff_current}><a href="{$logoff}">{#link_logoff#}</a></li>
 {else}
-<li><a href="create_account.php">Регистрация</a><span class="menu-separator"></span></li>
-<li><a href="{$login}">{#link_login#}</a></li>
+<li{$create_account_current}><a href="create_account.php">Регистрация</a><span class="menu-separator"></span></li>
+<li{$login_current}><a href="{$login}">{#link_login#}</a></li>
 {/if}
 {$box_CURRENCIES}
 </ul>
@@ -198,7 +198,7 @@ $(document).ready(function(){
 <meta itemprop="name" content="{$store_name}">
 {if $smarty.const.STORE_NAME_ADDRESS}<p>Адрес: {$smarty.const.STORE_NAME_ADDRESS}</p>{/if}
 {if $smarty.const.STORE_TELEPHONE}<div class="telnumber">Телефоны: {$smarty.const.STORE_TELEPHONE}<meta itemprop="telephone" content="{$smarty.const.STORE_TELEPHONE|strip_tags|replace:' ':''}"></div>{/if}
-<div class="foot-callback"><a href="call_back.php" class="btn btn-default callback">Заказать звонок</a></div>
+<div class="foot-callback"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CallBack">{#call_back#}</button></div>
 {if $smarty.const.STORE_SKYPE}<p>Skype: <span>{$smarty.const.STORE_SKYPE}</span></p>{/if}
 {if $smarty.const.STORE_ICQ}<p>ICQ: <span>{$smarty.const.STORE_ICQ}</span></p>{/if}
 </div>
@@ -218,40 +218,30 @@ Copyright © 2017{php}if (date('Y') != '2017') echo '-'.date('Y');{/php}. <a hre
 </div>
 </div>
 </footer>
-<div class="popup reg_form"><!-- попап корзины -->
-<div class="cproduct"></div>
-<a class="close2" href="javascript: $(this).parent().fadeOut(100); $('#overlay').remove('#overlay');"><i class="fa fa-times-circle"></i></a>
-<div class="popuptext">Товар добавлен в корзину</div>
-<div class="popuplink"><a href="shopping_cart.php" class="btn btn-primary">перейти в корзину</a> <a href="javascript:CartFadeOut()"  class="btn btn-info">продолжить покупки</a></div>
-</div><!-- /попап корзины -->
-<p id="back-top" style="display: block;"><a href="#top"><i class="fa fa-angle-up"></i></a></p>
-
-
-
-
+<div id="back-top" style="display: block;"><a href="#top" class="btn btn-primary"><i class="fa fa-angle-up"></i></a></div>
 <!-- Modal Товар в корзине -->
-<div class="modal fade" id="ProductAdded" tabindex="-1" role="dialog" aria-labelledby="ProductAddedTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="ProductAdded" role="dialog">
+<div class="modal-dialog modal-dialog-centered">
 <div class="modal-content">
 <div class="modal-header">
-<div class="h5 modal-title" id="ProductAddedTitle">{#product_added#}</div>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">{#product_added#}</h4>
 </div>
 <div class="modal-body">{#text_product_added#}</div>
 <div class="modal-footer">
-<button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-secondary">{#link_continue#}</button>
+<button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-default">{#link_continue#}</button>
 <a href="shopping_cart.php" class="btn btn-primary">{#link_in_cart#}</a>
 </div>
 </div>
 </div>
 </div>
 <!-- Modal Обратный звонок -->
-<div class="modal fade" id="CallBack" tabindex="-1" role="dialog" aria-labelledby="CallBackTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="CallBack" role="dialog">
+<div class="modal-dialog modal-dialog-centered">
 <div class="modal-content">
 <div class="modal-header">
-<div class="h5 modal-title" id="CallBackTitle">{#call_back#}</div>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">{#call_back#}</h4>
 </div>
 <form name="sentMessage" class="form form-register1" id="contactForm" novalidate>
 <div class="modal-body">
@@ -270,7 +260,6 @@ Copyright © 2017{php}if (date('Y') != '2017') echo '-'.date('Y');{/php}. <a hre
 </div>
 <div class="alert alert-info privacy" id="privacy" role="alert">{$smarty.const.PRIVACY_TEXT}</div>
 </div>
-
 <div class="modal-footer">
 <div id="success"></div> <!-- For success/fail messages -->
 <div id="sendbutton"><button type="submit" class="btn btn-primary">{#text_send#}</button></div>
@@ -287,10 +276,6 @@ Copyright © 2017{php}if (date('Y') != '2017') echo '-'.date('Y');{/php}. <a hre
 </div>
 <!-- /блок антиспам -->
 </form>
-<!-- антибот -->
-
-
-<!-- /антибот -->
 </div>
 </div>
 </div>

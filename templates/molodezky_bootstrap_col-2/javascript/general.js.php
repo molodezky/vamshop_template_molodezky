@@ -77,73 +77,41 @@ $(document).ready(function() {
 }
 ?>
 
-<script>
-	
-	function CartFade() {
-		$('div.reg_form').fadeIn(500);
-		$("body").append("<div id='overlay'></div>");
-		$('#overlay').show().css({'filter' : 'alpha(opacity=80)'});
-	};	
-
-	function CartFadeOut() {
-		$('div.reg_form').fadeOut(100);
-		$('#overlay').remove('#overlay');
-
-	};	
-
-
-$(function () {
-
-	$('a.show_popup').click(function () {
-
-		$('div.'+$(this).attr("rel")).fadeIn(500);
-		$("body").append("<div id='overlay'></div>");
-		$('#overlay').show().css({'filter' : 'alpha(opacity=80)'});
-		return false;				
-	});	
-	$('a.close2').click(function () {
-		$(this).parent().fadeOut(100);
-		$('#overlay').remove('#overlay');
-		return false;
-	});
-
-	
-});	
-
-</script>
-
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCTS_NEW)) {
-$vamTemplate->assign('11',' class="current"');
+$vamTemplate->assign('products_new_current',' class="current"');
 }
 if (strstr($PHP_SELF, FILENAME_SPECIALS)) {
-$vamTemplate->assign('12',' class="current"');
+$vamTemplate->assign('special_current',' class="current"');
 }
 if (strstr($PHP_SELF, FILENAME_REVIEWS)) {
-$vamTemplate->assign('13',' class="current"');
+$vamTemplate->assign('reviews_current',' class="current"');
 }
 if (strstr($PHP_SELF, FILENAME_NEWS)) {
-$vamTemplate->assign('14',' class="current"');
+$vamTemplate->assign('news_current',' class="current"');
 }
 if (strstr($PHP_SELF, FILENAME_ARTICLE_INFO) or strstr($PHP_SELF, FILENAME_ARTICLES) or strstr($PHP_SELF, FILENAME_ARTICLES_NEW)) {
-$vamTemplate->assign('15',' class="current"');
+$vamTemplate->assign('articles_current',' class="current"');
 }
 if (strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT)) {
-$vamTemplate->assign('16',' class="current"');
+$vamTemplate->assign('create_account_current',' class="current"');
 }
 if (strstr($PHP_SELF, FILENAME_ADVANCED_SEARCH)) {
-$vamTemplate->assign('17',' class="current"');
+$vamTemplate->assign('advanced_search_current',' class="current"');
 }
 if (strstr($PHP_SELF, FILENAME_FEATURED)) {
-$vamTemplate->assign('18',' class="current"');
+$vamTemplate->assign('featured_current',' class="current"');
 }
 if (strstr($PHP_SELF, FILENAME_CONTENT) && $_GET['coID'] == 1) {
-$vamTemplate->assign('21',' class="current"');
+$vamTemplate->assign('content_1_current',' class="current"');
 }
 if (strstr($PHP_SELF, FILENAME_CONTENT) && $_GET['coID'] == 4) {
-$vamTemplate->assign('24',' class="current"');
+$vamTemplate->assign('content_4_current',' class="current"');
+}
+if (strstr($PHP_SELF, FILENAME_CONTENT) && $_GET['coID'] == 6) {
+$vamTemplate->assign('content_6_current',' class="current"');
 }
 if (strstr($PHP_SELF, FILENAME_CONTENT) && $_GET['coID'] == 7) {
-$vamTemplate->assign('27',' class="current"');
+$vamTemplate->assign('content_7_current',' class="current"');
 }
 ?>

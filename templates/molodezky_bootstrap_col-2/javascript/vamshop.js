@@ -32,3 +32,87 @@ $(window).load(function() {
     $('.equal-block').matchHeight();
 });
 }
+
+// антиспам Перезвоните мне
+$(function($){
+
+    $('.form-anti-bot, .form-anti-bot-2').hide(); // hide inputs from users
+    var answer = $('.form-anti-bot input#anti-bot-a').val(); // get answer
+    $('.form-anti-bot input#anti_bot_q').val( answer ); // set answer into other input
+
+    if ( $('form#contactForm input#anti_bot_q').length == 0 ) {
+        var current_date = new Date();
+        var current_year = current_date.getFullYear();
+        $('form#contactForm').append('<input type="hidden" name="anti_bot_q" id="anti_bot_q" value="'+current_year+'" />'); // add whole input with answer via javascript to form
+    }
+
+});
+
+// Форма Перезвоните мне
+$(function() {
+$("#CallBack input, #CallBack textarea").jqBootstrapValidation(
+{
+  preventSubmit: true,
+  submitError: function($form, event, errors) {
+},
+submitSuccess: function($form, event) {
+  event.preventDefault();
+  var name = $("input#name").val();  
+  var phone = $("input#phone").val(); 
+  var email = $("input#email").val(); 
+  var message = $("textarea#message").val();
+  var anti_bot_q = $("input#anti_bot_q").val();
+  var anti_bot_e_email_url = $("input#anti_bot_e_email_url").val();
+  var firstName = name;
+  if (firstName.indexOf(' ') >= 0) {
+  firstName = name.split(' ').slice(0, -1).join(' ');
+  }
+
+$.ajax({
+ url: "call_back.php",
+ type: "POST",
+ data: {name: name, phone: phone, anti_bot_q: anti_bot_q, anti_bot_e_email_url: anti_bot_e_email_url},
+ cache: false,
+ success: function() {  
+ // Success message
+ $('#success').html("<div class='alert alert-success'>");
+ $('#success > .alert-success')
+ .append("Спасибо! Ваше сообщение отправлено.");
+ $('#success > .alert-success')
+  .append('</div>');
+$('#sendbutton').remove();  
+//clear all fields
+$('#contactForm').trigger("reset");
+setTimeout(function() {
+  $("#CallBack").modal('hide');
+}, 3000);
+},
+
+error: function() { 
+// Fail message
+//$('#success').html("<div class='alert alert-danger'>");
+//$('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+//.append( "</button>");
+//$('#success > .alert-danger').append("<strong>Извините "+firstName+" кажется проблемы на сервере отправки писем...</strong> Вы не могли бы написать напрямую на адрес <a href='youremail@mail.com?Subject=Перезвоните мне'>youremail@mail.com</a> ? Приносим извинения за это неудобство!");
+//$('#success > .alert-danger').append('</div>');
+  //clear all fields
+$('#contactForm').trigger("reset");
+   },
+     });
+         },
+         filter: function() {
+                   return $(this).is(":visible");
+         },
+       });
+
+      $("a[data-toggle=\"tab\"]").click(function(e) {
+                    e.preventDefault();
+                    $(this).tab("show");
+        });
+  });
+
+
+/*When clicking on Full hide fail/success boxes */ 
+$('#name').focus(function() {
+     $('#success').html('');
+  });

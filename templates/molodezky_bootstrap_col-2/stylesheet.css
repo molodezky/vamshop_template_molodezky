@@ -33,6 +33,10 @@ h1 a:hover, .h1 a:hover {}
 .form-control {color:#666;border-radius:2px;border-color:#e3e3e3; font-size:13px;}
 .form-control:focus {border-color: #4cb1cc;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(121, 192, 213, .6);box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(121, 192, 213, .6);}
 .input-group .btn {margin-bottom:0;}
+/* ------------ модальные окна ------------ */
+.modal-dialog-centered {margin-top: 0;margin-bottom: 0;height: 100vh;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-box-pack: center;-webkit-justify-content: center;-ms-flex-pack: center;justify-content: center;}
+.modal.fade .modal-dialog-centered {-webkit-transform: translate(0, -100%);transform: translate(0, -100%);}
+.modal.in .modal-dialog-centered {-webkit-transform: translate(0, 0);transform: translate(0, 0);}
 /* ------------ хлебные крошки ------------ */
 .breadcrumb {border-radius:0;background:none;padding:0 0 8px;color:#999;}
 .breadcrumb a {color:#999;}
@@ -510,18 +514,11 @@ div.contacterror {border: 1px solid;border-color: #ff0000;background-color: #FFC
 #load_status_bg .load_status_image {background:url(img/ajax-loader.gif);width:100%; margin: 270px auto 0;z-index: 2300;width: 54px;height: 55px;}
 /* кнопка вверх */
 #back-top {bottom:20px;right:20px;position: fixed;z-index: 9999;visibility:hidden;}
-#back-top a {transition: all 0.1s ease-in 0s;display: block;height:30px;width:30px; text-align:center;color: #fff;font-size:24px;line-height:24px;opacity: 0.4;background: none repeat scroll 0 0 #b70d0d;}
+#back-top a {opacity: 0.4;}
 #back-top a:hover { opacity:1}
 @media (max-width: 767px) {
 #back-top {bottom:4px;right:18px;}
 }
-/* Попап Товар добавлен в корзину */
-.popup {z-index:1002;display:none;overflow:hidden;background:#fff;box-shadow: 0.2em 0.2em 0.2em 3px rgba(122, 122, 122, 0.5);left: 50%;line-height: 18px;padding: 15px 10px 5px 10px;position: fixed;top: 50%;transition: all 0.3s ease-in-out 0s; font-size:14px;}
-.popuptext { font-size:18px;padding:0 0 22px;color:#000;}
-.popuplink .btn { width:100%;margin-bottom:6px;}
-.popup a.close2 {width:18px;height:18px;display:block;position:absolute;top:17px;right:10px;font-size:18px;}
-.reg_form {margin-left: -145px;margin-top: -70px;width: 290px;}
-#overlay {width:100%;height:100%;position:fixed;top:0;left:0;display:none;background:#000;opacity:.3;z-index:1001;}
 /* DaData */
 .suggestions-nowrap {white-space: nowrap;}
 .suggestions-input {-ms-box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;height: 30px !important;}

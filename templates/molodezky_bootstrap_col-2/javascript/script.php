@@ -1,1 +1,2 @@
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop.js'; ?>"></script>
+<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bootstrap/jqBootstrapValidation/jqBootstrapValidation.js'; ?>"></script>
