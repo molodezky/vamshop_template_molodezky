@@ -21,7 +21,7 @@
 </div>
 {/if}
 <div class="ProductName"><a href="{$box_data.PRODUCTS_LINK}">{$box_data.PRODUCTS_NAME}</a></div>
-<div class="ProductRating">{if $box_data.REVIEWS_TOTAL > 0}<img src="{$tpl_path}img/stars_{$box_data.REVIEWS_TOTAL_RATING|number_format:0}.png" alt="{$box_data.REVIEWS_TOTAL_RATING|number_format:2}" title="{$box_data.REVIEWS_TOTAL_RATING|number_format:2}" /> {else}нет отзывов{/if}</div>
+{if $box_data.REVIEWS_TOTAL > 0}<div class="ProductRating">{$box_data.REVIEWS_STAR_RATING}</div>{/if}
 <div class="ProductPrice">{$box_data.PRODUCTS_PRICE}</div>
 {if $box_data.PRODUCTS_VPE}<div class="ProductPrice">{$box_data.PRODUCTS_VPE}</div>{/if}
 <div class="ProductQuantity"><span class="{if $box_data.PRODUCTS_QUANTITY < 1}qty-no{elseif $box_data.PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $box_data.PRODUCTS_QUANTITY < 1}отсутствует{elseif $box_data.PRODUCTS_QUANTITY < 10}под заказ{else}в наличии{/if}</span></div>

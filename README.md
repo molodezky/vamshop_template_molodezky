@@ -12,4 +12,7 @@
  5. \inc\vam_draw_input_field.inc.php, \inc\vam_draw_pull_down_menu.inc.php, \inc\vam_draw_textarea_field.inc.php - элементам форм добавлены классы bootstrap
  6. \inc\vam_image_button.inc.php, \inc\vam_image_submit.inc.php - кнопкам добавлены классы bootstrap
  7. \javascript\jscript_ajax_cart.js - добавлен вызов модального окна "Товар в корзине"
- 8. \shop_content.php - раскомментирован вывод хлебных крошек
+ 8. \article_info.php - рейтинг звездами выведен шрифтом FontAwesome 4.x.
+ 9. \article.php - рейтинг звездами выведен шрифтом FontAwesome 4.x.
+ 10. \article_new.php - рейтинг звездами выведен шрифтом FontAwesome 4.x.
+ 11. \shop_content.php - раскомментирован вывод хлебных крошек
