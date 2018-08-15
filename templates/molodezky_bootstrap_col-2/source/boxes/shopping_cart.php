@@ -38,7 +38,7 @@ if ($_SESSION['cart']->count_contents() > 0) {
 		$product_attributes_in_cart = "";
 
 		if (isset ($products[$i]['attributes'])) {
-			while (list ($option, $value) = each($products[$i]['attributes'])) {
+			foreach ($products[$i]['attributes'] as $option => $value) {
 				//$hidden_options .= vam_draw_hidden_field('id['.$products[$i]['id'].']['.$option.']', $value);
 				$attributes = vam_db_query("select popt.products_options_name, popt.products_options_type, poval.products_options_values_name, pa.options_values_price, pa.price_prefix,pa.attributes_stock,pa.products_attributes_id,pa.attributes_model , pa.options_values_id
 				                                      from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_OPTIONS_VALUES." poval, ".TABLE_PRODUCTS_ATTRIBUTES." pa
@@ -59,13 +59,12 @@ if ($_SESSION['cart']->count_contents() > 0) {
 				    $attr_value = $attributes_values['products_options_values_name'];
 				}
 				$product_attributes[$option]['NAME']  = $attributes_values['products_options_name'];
-				$product_attributes[$option]['VALUE'] = $attributes_values['products_options_values_name'];
+				$product_attributes[$option]['VALUE'] = $attr_value;
 				$product_attributes_in_cart .= vam_draw_hidden_field('id[' . $products[$i]['id'] . '][' . $option . ']', $attributes_values['options_values_id']);
 			}
 		}
 		// Push all attributes information in an array
-		$products_in_cart[] = array ('QTY' => $products[$i]['quantity'],
-									 'IMAGE' => DIR_WS_INFO_IMAGES.$products[$i]['image'],
+		$products_in_cart[] = array ('QTY' => $products[$i]['quantity'], 
 									 'PRICE' => $products[$i]['price'] * $products[$i]['quantity'], 
 									 'LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'],$products[$i]['name'])), 
 'PRODUCTS_QTY' => $product_attributes_in_cart . vam_draw_hidden_field('cart_quantity[]', $products[$i]['quantity'] - 1) . vam_draw_hidden_field('products_id[]', $products[$i]['id']) . vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']) . ($products[$i]['quantity'] < 2 ? vam_draw_hidden_field('cart_delete[]', $products[$i]['id']) : ''),
