@@ -135,7 +135,16 @@ class product {
 			$data_reviews = array ();
 			while ($reviews = vam_db_fetch_array($reviews_query)) {
 				$row ++;
-				$data_reviews[] = array ('AUTHOR' => $reviews['customers_name'], 'DATE' => vam_date_short($reviews['date_added']), 'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])), 'RATING_TXT' => $reviews['reviews_rating'], 'TEXT' => vam_break_string(nl2br(htmlspecialchars($reviews['reviews_text'])), 60, '-<br />'));
+
+        $star_rating = '';
+		for($i=0;$i<number_format($reviews['reviews_rating']);$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+		}
+		for($i=0;$i<(5 - number_format($reviews['reviews_rating']));$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
+		}
+                
+				$data_reviews[] = array ('AUTHOR' => $reviews['customers_name'], 'DATE' => vam_date_short($reviews['date_added']), 'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])), 'STAR_RATING' => $star_rating, 'RATING_TXT' => $reviews['reviews_rating'], 'TEXT' => vam_break_string(nl2br(htmlspecialchars($reviews['reviews_text'])), 60, '-<br />'));
 				if ($row == PRODUCT_REVIEWS_VIEW)
 					break;
 			}
@@ -701,6 +710,9 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 		$star_rating = '';
 		for($i=0;$i<number_format($this->getReviewsRating($array['products_id']));$i++)	{
 		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+		}
+        for($i=0;$i<(5 - number_format($this->getReviewsRating($array['products_id'])));$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
 		}
 
 		return array ('PRODUCTS_NAME' => vam_parse_input_field_data($array['products_name'], array('"' => '&quot;')), 

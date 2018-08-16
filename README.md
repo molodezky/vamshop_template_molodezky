@@ -16,4 +16,7 @@
  9. \article_info.php - рейтинг звездами выведен шрифтом FontAwesome 4.x.
  10. \article.php - рейтинг звездами выведен шрифтом FontAwesome 4.x.
  11. \article_new.php - рейтинг звездами выведен шрифтом FontAwesome 4.x.
- 12. \shop_content.php - раскомментирован вывод хлебных крошек
+ 12. \product_reviews.php - рейтинг звездами выведен шрифтом FontAwesome 4.x.
+ 13. \product_reviews_info.php - рейтинг звездами выведен шрифтом FontAwesome 4.x.
+ 14. \reviews.php - рейтинг звездами выведен шрифтом FontAwesome 4.x.
+ 15. \shop_content.php - раскомментирован вывод хлебных крошек

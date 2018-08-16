@@ -123,6 +123,9 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		for($i=0;$i<number_format($product->getReviewsRating());$i++)	{
 		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
 		}
+		for($i=0;$i<(5 - number_format($product->getReviewsRating()));$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
+		}        
 
 		$info->assign('STAR_RATING', $star_rating);
 		$info->assign('REVIEWS_RATING', $product->getReviewsRating());
