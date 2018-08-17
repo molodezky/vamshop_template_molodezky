@@ -1,9 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 <script type="text/javascript" src="{php} echo 'templates/'.CURRENT_TEMPLATE.'/javascript/jquery-cookie/jquery.cookie.js'; {/php}"></script>
-
-{literal}
 <script>
-    jQuery(document).ready(function(){
+{literal}
+jQuery(document).ready(function(){
      var cookieName = 'productsheet';
      var cookieOptions = {expires: 7, path: '/'};
 
@@ -17,8 +16,25 @@ $(".selectstyle a").click(function(e){
           $("#productlist").addClass($.cookie(cookieName));
      });
 });
-</script>
 {/literal}
+</script>
+{if $CATEGORIES_NAME}
+<script>
+{literal}
+var count = 0;
+$(function() {
+	count = $('input[type=checkbox]#s_:checked').length;
+	displayCount();
+	$('input[type=checkbox]').bind('click' , function(e, a) {
+		if (this.checked) {count += a ? -1 : 1;} else {count += a ? 1 : -1;}
+	displayCount();
+	});
+});
+function displayCount() {$('#count').text(count);}
+{/literal}
+</script>
+{/if}
+
 {if $smarty.get.keywords}<h1>{$smarty.const.TEXT_BUY_BUTTON} {$smarty.get.keywords|capitalize} {if {$smarty.get.page} && {$smarty.get.page} > 0} {$smarty.const.TEXT_PAGE_IN_CAT} {$smarty.get.page}{/if}</h1>{/if}
 
 {if $CATEGORIES_NAME}<h1>{$CATEGORIES_NAME}{$FILTER}</h1>{/if}
@@ -46,7 +62,8 @@ $(".selectstyle a").click(function(e){
 {$FILTERS}
 </div>
 <div class="clearfix"></div>
-
+<input type="hidden" name="cat" value="{$smarty.get.cat}" />
+<div class="compareItem"><button type="submit" class="btn btn-primary"><i class="fa fa-exchange" aria-hidden="true"></i> (<span id="count"></span>)</button></div>
 
 {if $PRODUCTS_COUNT >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
 <span class="SortCount">{#text_products_per_page#} {if $PRODUCTS_COUNT > 9}<a href="{$LINK_PAGE}9">9</a>{/if}{if $PRODUCTS_COUNT > 21} | <a href="{$LINK_PAGE}21">21</a>{/if}{if $PRODUCTS_COUNT > 48} | <a href="{$LINK_PAGE}48">48</a>{/if}{if $PRODUCTS_COUNT > 99} | <a href="{$LINK_PAGE}99">99</a>{/if}</span>

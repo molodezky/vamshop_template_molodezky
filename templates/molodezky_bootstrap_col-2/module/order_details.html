@@ -36,6 +36,7 @@ function doDefault(theText) { if (theText.value == "") { theText.value = theText
 {/foreach} 
 {else}
 {/if}
+{if $module_data.PRODUCTS_STOCK}В наличии: {$module_data.PRODUCTS_STOCK}{/if}
 </div>
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-2 ShoppingCartListQTY">
 <span class="minus">-</span> {$module_data.PRODUCTS_QTY} <span class="plus">+</span>

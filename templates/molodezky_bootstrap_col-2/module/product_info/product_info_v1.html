@@ -89,6 +89,13 @@ pager:false
 <div class="col-xs-12 col-sm-6 ProductInfoButton">{$ADD_CART_BUTTON}</div>
 <div class="col-xs-12 col-sm-6 ProductInfoBuyOne"><a class="btn btn-info iframe" target="_blank" href="{$ASK_PRODUCT_BUY_LINK}">Быстрая покупка</a></div>
 {/if}
+<div class="col-xs-12">
+{if $PRODUCTS_WEIGHT}<p>Вес: {$PRODUCTS_WEIGHT} кг</p>{/if}
+{if $PRODUCTS_LENGTH}<p>Длина: {$PRODUCTS_LENGTH} см</p>{/if}
+{if $PRODUCTS_WIDTH}<p>Ширина: {$PRODUCTS_WIDTH} см</p>{/if}
+{if $PRODUCTS_HEIGHT}<p>Высота: {$PRODUCTS_HEIGHT} см</p>{/if}
+{if $PRODUCTS_VOLUME}<p>Объем: {$PRODUCTS_VOLUME} куб.м</p>{/if}
+</div>
 </div>
 
 </div>
