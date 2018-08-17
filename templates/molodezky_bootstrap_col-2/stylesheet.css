@@ -167,7 +167,7 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 .box .carousel-control.left {background:none;left:11px;}
 .box .carousel-control.right {background:none;right:10px;}
 .box .carousel-control i {font-size:48px;}
-.box .navbar-collapse .item {padding:13px;}
+.box .navbar-collapse .item {padding:13px 0;}
 @media (max-width: 767px) {
 .box .carousel-control {top:60px;}
 }
@@ -267,12 +267,6 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 }
 /* Поиск */
 .boxSearch {padding:0; height:34px; position:relative;}
-.boxSearchContent {border-radius: 2px;background:#fff;border:1px solid #e3e3e3;}
-.boxSearchContent label {float:right; display:block;height:20px;font-size:18px;color:#b70d0d;width:20px;text-align: center;margin:5px 10px 0 0;}
-.boxSearchContent label:hover {cursor:pointer;color:#212121;}
-.boxSearchContent .btn { display:none;}
-.boxSearchContent .searchboxform input {border:none;background:none;box-shadow:none; width:96%;}
-.searchboxlabel, .searchboxform {padding:0}
 /* Ajax quick find */
 div.ajaxQuickFind {text-align: left; z-index:1001; position:absolute; top:33px;left:0;padding:0 10px;background:#fff;border-left:1px solid #e7e7e7;border-right:1px solid #e7e7e7;border-bottom:1px solid #e7e7e7;}
 ul.ajaxQuickFind {list-style-type: none;list-style-image: none;padding-left: 0px;}
@@ -314,17 +308,25 @@ li.ajaxQuickFind {font-size: 80%;padding:2px 0 5px;}
 .sheetlist .ProductQuantity { text-align:left;}
 }
 .ProductImage {position:relative;}
+.CategoriesImage img, .ProductImage img {max-height:252px;}
+@media (min-width: 768px) and (max-width: 991px) {
+.CategoriesImage, .ProductImage { display:table-cell; height:220px; width:220px; vertical-align:middle;}
+.CategoriesImage img, .ProductImage img {max-height:210px;}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+.CategoriesImage, .ProductImage { display:table-cell; height:212px; width:212px; vertical-align:middle;}
+.CategoriesImage img, .ProductImage img {max-height:202px;}
+}
 @media (min-width: 1200px) {
-.CategoriesImage, .ProductImage { display:table-cell; height:204px; width:204px; vertical-align:middle;}
-.CategoriesImage img, .ProductImage img {max-height:192px;}
+.CategoriesImage, .ProductImage { display:table-cell; height:262px; width:262px; vertical-align:middle;}
 }
 .ProductLabel {position:absolute;left:10px;top:10px;}
-.ProductLabel .label {}
-.ProductLabel .label-danger {}
-.ProductLabel .label-primary {}
-.ProductLabel .label-success {}
+.ProductLabel .label {background-color: #777;}
+.ProductLabel .new {background-color: #5cb85c;}
+.ProductLabel .sale {background-color: #d9534f;}
+.ProductLabel .hit {background-color: #f0ad4e;}
 .labelSpecials {position:absolute;right:10px;top:10px;}
-.labelSpecials .label-default {}
+.labelSpecials .label {background-color: #f00;}
 .ProductName {padding:10px 0 0;font-size:14px;font-weight:600;text-align:center;}
 .ProductName a {color:#212121;}
 .ProductDesc {display: none;}
@@ -442,6 +444,7 @@ span.productNewPrice {color:#f63;}
 .ReviewProduct {padding:0 0 4px; font-weight:600;text-transform:uppercase;}
 .ReviewAuthor { font-weight:bold; text-transform:uppercase;padding:10px 0;color:#333;}
 .ReviewImage {border-radius:0;border:none;text-align:center;paddig:5px;position:relative;}
+.ReviewDesc {padding-top: 13px;}
 @media (min-width: 992px) and (max-width: 1199px) {
 .ReviewImage { display:table-cell; height:132px; width:132px; vertical-align:middle;}
 .ReviewImage img {max-height:122px;}
@@ -451,11 +454,14 @@ span.productNewPrice {color:#f63;}
 .ReviewImage img {max-height:170px;}
 }
 /* Сравнение товаров */
-table.productListingData td {border-bottom:1px solid #E9E9E9;padding:10px 0;vertical-align: top;}
-table.productListingData tr.itemEven td {vertical-align: middle;}
-.ProductCompareImage {}
-.ProductCompareBuy {}
-.ProductCompareDelete {}
+table.productListingData td {border-bottom:1px solid #E9E9E9;padding:10px 5px;}
+table.productListingData tr:first-child td {vertical-align: top;}
+.productListingData .ProductImage {}
+.productListingData .ProductName {text-align: left;}
+.productListingData .ProductPrice {text-align: left;}
+.productListingData .ProductButton {}
+.ProductDelete {}
+.CompareSpecName {font-weight:bold;}
 /* Вход, регистрация, чекаут */
 .LoginHead, .checkouthead {font-weight:bold;text-transform:uppercase;padding:20px 0 10px;color:#333;font-size:14px;}
 span.Requirement {color: red;}

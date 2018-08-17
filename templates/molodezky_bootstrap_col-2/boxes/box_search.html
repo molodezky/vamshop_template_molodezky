@@ -1,16 +1,13 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 <!-- Бокс поиск -->
 <div class="boxSearch">
-<div class="boxSearchContent">
-<div class="form-inline">
 {$FORM_ACTION}
-<span class="col-xs-10 col-md-10 col-lg-9 searchboxform">{$INPUT_SEARCH}</span>
-<span class="col-xs-2 col-md-2 col-lg-1 searchboxlabel"><label><i class="fa fa-search"></i>{$BUTTON_SUBMIT}</label></span>
-<div class="ajaxQuickFind" id="ajaxQuickFind" style="text-align: left;"></div>
-{$FORM_END}
+<div class="input-group">
+{$INPUT_SEARCH}
+<div class="input-group-btn">{$BUTTON_SUBMIT}</div>
 </div>
-
-
+{$FORM_END}
+<div class="ajaxQuickFind" id="ajaxQuickFind" style="text-align: left;"></div>
 <script>
 // <![CDATA[
 {literal}
@@ -29,7 +26,5 @@ $(document).ready(function(){
 {/literal}
 // ]]>
 </script>
-<div class="clearfix"></div>
-</div>
 </div>
 <!-- /Бокс поиск -->

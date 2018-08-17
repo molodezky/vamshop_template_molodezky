@@ -140,7 +140,7 @@ if ( $current_category_id != 0 )
                     $box_text .= '<br>(' . $specifications_heading['specification_suffix'] . ')';
                 }
 
-                $heading_cell = '        <td align="left" style="padding-left:5px;">' . $box_text . '</td>' . PHP_EOL;
+                $heading_cell = '        <td align="left" style="padding-left:5px;"><span class="CompareSpecName">' . $box_text . '</span></td>' . PHP_EOL;
 
                 $id = $specifications_heading[ 'specifications_id' ];
                 $group_id = $specifications_heading[ 'specification_group_id' ];
@@ -198,21 +198,21 @@ if ( $current_category_id != 0 )
                 $cPath_new = vam_get_product_path( $columns_array['products_id'] );
                 $product_link = vam_href_link( FILENAME_PRODUCT_INFO, 'cPath=' . $cPath_new . '&products_id=' . $tmp_products_id );
 
-                $products_image = '<div class="thumbnail ProductCompareImage"><a href="' . $product_link . '">' . vam_image(DIR_WS_IMAGES . 'product_images/thumbnail_images/' . trim($products_tax_class_id_arr[ 'products_image' ]), $products_tax_class_id_arr[ 'products_name' ]) . '</a></div>';
+                $products_image = '<div class="thumbnail ProductImage"><a href="' . $product_link . '">' . vam_image(DIR_WS_IMAGES . 'product_images/thumbnail_images/' . trim($products_tax_class_id_arr[ 'products_image' ]), $products_tax_class_id_arr[ 'products_name' ]) . '</a></div>';
 
               
               
               
                 if ( AJAX_CART == 'true' && !vam_has_product_attributes( $tmp_products_id ) )
                 {
-                    $buy_button = '<div class="ProductCompareBuy"><a class="btn btn-primary" href="'
+                    $buy_button = '<div class="ProductButton"><a class="btn btn-primary" href="'
                       . vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='
                       . $tmp_products_id.'&'.vam_get_all_get_params(array ('action')), 'NONSSL')
                       . '" onclick="doBuyNow(\''.$tmp_products_id.'\',\'1\'); return false;">Купить</a></div>';
                 }
                 else
                 {
-                    $buy_button = '<div class="ProductCompareBuy"><a class="btn btn-primary" href="'
+                    $buy_button = '<div class="ProductButton"><a class="btn btn-primary" href="'
                     . vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='
                     . $tmp_products_id.'&' . vam_get_all_get_params(array ('action')), 'NONSSL').'">Купить</a></div>';
                 }
@@ -232,7 +232,7 @@ if ( $current_category_id != 0 )
                     if ( $tmp2_products_id != $tmp_products_id ) $url_new_compare_params_arr[] = 'products[]=' . $tmp2_products_id;
                 };
 
-                $remove_button = '<div class="ProductCompareDelete"><a class="btn btn-primary" href="'
+                $remove_button = '<div class="ProductDelete"><a class="btn btn-primary" href="'
                   . vam_href_link( basename($PHP_SELF), implode( '&', $url_new_compare_params_arr ), 'NONSSL','','').'"><i class="fa fa-times" aria-hidden="true"></i></a></div>';
 
 
@@ -287,7 +287,7 @@ if ( $current_category_id != 0 )
             $module_contents .= '  </div>' . PHP_EOL;
             $module_contents .= '</div>' . PHP_EOL;
             
-            $module_contents .=  '<script type="text/javascript">' . PHP_EOL;
+            $module_contents .=  '<script>' . PHP_EOL;
             $module_contents .=  '$(\'.productListingData tr:nth-child(even)\').addClass(\'itemEven\');' . PHP_EOL;
             $module_contents .=  '$(\'.remove_spec_button\').click(function() {$(this).closest(\'tr\').hide();});' . PHP_EOL;
             $module_contents .=  '</script>' . PHP_EOL;
