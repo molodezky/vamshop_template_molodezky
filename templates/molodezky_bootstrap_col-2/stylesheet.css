@@ -173,7 +173,7 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 }
 /* Корзина */
 #boxCart {}
-#boxCart .dropdown-menu {left:auto;right:0;top:38px; width:262px;border-radius:0;border:none;box-shadow: 1px 3px 15px 0px rgba(0, 0, 0, 0.15);padding:0;}
+.head-cart-block .dropdown-menu {left:auto;right:0;top:38px; width:262px;border-radius:0;border:none;box-shadow: 1px 3px 15px 0px rgba(0, 0, 0, 0.15);padding:0;}
 .btn-cart {float:right; text-align:left;}
 .btn-cart .badge { float:right;}
 .btn-cart:hover, .btn-cart:focus, .btn-cart:focus:active, .btn-cart.active:focus, .btn-cart.focus, .btn-cart.focus:active, .btn-cart.active.focus {color:#fff; text-decoration:underline;}

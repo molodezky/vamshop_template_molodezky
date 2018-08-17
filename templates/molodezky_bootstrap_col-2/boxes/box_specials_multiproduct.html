@@ -25,7 +25,6 @@
 {if $box_data.REVIEWS_TOTAL > 0}<div class="ProductRating">{$box_data.REVIEWS_STAR_RATING}</div>{/if}
 <div class="ProductPrice">{$box_data.PRODUCTS_PRICE}</div>
 {if $box_data.PRODUCTS_VPE}<div class="ProductPrice">{$box_data.PRODUCTS_VPE}</div>{/if}
-<div class="ProductQuantity"><span class="{if $box_data.PRODUCTS_QUANTITY < 1}qty-no{elseif $box_data.PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $box_data.PRODUCTS_QUANTITY < 1}отсутствует{elseif $box_data.PRODUCTS_QUANTITY < 10}под заказ{else}в наличии{/if}</span></div>
 </div>
 {/foreach} 
 </div>

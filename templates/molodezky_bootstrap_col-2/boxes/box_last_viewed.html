@@ -8,6 +8,7 @@
 </div>
 <!-- /заголовок бокса просмотренные товары -->
 <div class="collapse navbar-collapse" id="collapse-boxLastViewed">
+<div class="item">
 {if $box_content.PRODUCTS_IMAGE}
 <div class="thumbnail ProductImage">
 {if $box_content.PRODUCTS_LABEL}<div class="ProductLabel">{$box_content.PRODUCTS_LABEL}</div>{/if}
@@ -19,7 +20,7 @@
 {if $box_content.REVIEWS_TOTAL > 0}<div class="ProductRating">{$box_content.REVIEWS_STAR_RATING}</div>{/if}
 <div class="ProductPrice">{$box_content.PRODUCTS_PRICE}</div>
 {if $box_content.PRODUCTS_VPE}<div class="ProductPrice">{$box_content.PRODUCTS_VPE}</div>{/if}
-<div class="ProductQuantity"><span class="{if $box_content.PRODUCTS_QUANTITY < 1}qty-no{elseif $box_content.PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $box_content.PRODUCTS_QUANTITY < 1}отсутствует{elseif $box_content.PRODUCTS_QUANTITY < 10}под заказ{else}в наличии{/if}</span></div>
+</div>
 <p><a href="{$MY_PERSONAL_PAGE}">{#text_my_page#}</a></p>
 <p>{#text_watch_category#} <a href="{$CATEGORY_LINK}">{$CATEGORY_NAME}</a></p>
 </div>
