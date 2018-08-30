@@ -1,4 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="$language/lang_$language.conf" section="latest_news"}
 <!-- Бокс новости -->
 <div class="navbar navbar-default box oxNews">
 <!-- заголовок бокса новости -->
@@ -12,11 +13,10 @@
 <div class="NewsItem">
 <div class="NewsDate">{$module_data.NEWS_DATA}</div>
 <div class="NewsName"><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></div>
-<p>{$module_data.NEWS_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}</p>
-<div class="more"><a href="{$module_data.NEWS_LINK_MORE}" class="btn btn-link">Подробнее <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+<div class="NewsDesc">{$module_data.NEWS_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}</div>
 </div>
 {/foreach}
-<div class="all"><a href="{$NEWS_LINK}" class="btn btn-link btn-block">Читать все новости <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+<div class="more"><a href="{$NEWS_LINK}" class="btn btn-primary">{#other_news#}</a></div>
 </div>
 </div>
 <!-- /Бокс новости -->

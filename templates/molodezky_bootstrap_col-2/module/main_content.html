@@ -5,8 +5,4 @@
 {$MODULE_new_products}
 {$MODULE_upcoming_products}
 {$MODULE_latest_news}
-<div class="row">
-<div class="col-xs-12">
-<div class="MainText">{$text}</div>
-</div>
-</div>
+{if $text}<div class="MainText">{$text}</div>{/if}

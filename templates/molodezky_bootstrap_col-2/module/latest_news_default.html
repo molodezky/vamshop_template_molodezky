@@ -1,10 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="latest_news"} 
-<div class="row">
-<div class="col-xs-12">
 <div class="h1"><a href="{$NEWS_LINK}">{#heading_text#}</a></div>
-</div>
+<div class="row">
 {foreach name=aussen item=module_data from=$module_content}
-<div class="col-xs-12 col-sm-6 col-md-3 NewsItem equal-block">
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 NewsItem equal-block">
 {if $module_data.NEWS_ICON}<div class="NewsImage">{$module_data.NEWS_ICON}</div>{/if}
 <div class="NewsDate">{$module_data.NEWS_DATA}</div>
 <div class="NewsName"><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></div>

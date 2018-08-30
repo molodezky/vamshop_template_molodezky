@@ -11,11 +11,10 @@
 {foreach name=aussen item=articles from=$articles_content}
 <div class="NewsItem">
 <div class="NewsName"><a href="{$articles.ARTICLES_URL}">{$articles.ARTICLES_NAME}</a></div>
-<p>{$articles.ARTICLES_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_ARTICLES_CONTENT:" ..."}</p>
-<div class="more"><a href="{$articles.ARTICLES_URL}" class="btn btn-link">читать дальше <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+<div class="NewsDesc">{$articles.ARTICLES_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_ARTICLES_CONTENT:" ..."}</div>
 </div>
 {/foreach}
-<div class="all"><a href="articles.php" class="btn btn-link btn-block">Читать все статьи <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+<div class="more"><a href="articles.php" class="btn btn-primary">Все статьи...</a></div>
 </div>
 </div>
 <!-- /Бокс новые статьи -->
