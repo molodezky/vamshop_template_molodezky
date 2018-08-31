@@ -27,10 +27,12 @@ $(function() {
 	displayCount();
 	$('input[type=checkbox]').bind('click' , function(e, a) {
 		if (this.checked) {count += a ? -1 : 1;} else {count += a ? 1 : -1;}
-	displayCount();
+    displayCount();
 	});
 });
-function displayCount() {$('#count').text(count);}
+function displayCount() {
+    $('#count').text(count);
+}
 {/literal}
 </script>
 {/if}
@@ -101,7 +103,7 @@ function displayCount() {$('#count').text(count);}
 {if $module_data.PRODUCTS_IMAGE}
 <div class="thumbnail ProductImage">
 {if $module_data.PRODUCTS_LABEL}<div class="ProductLabel">{$module_data.PRODUCTS_LABEL}</div>{/if}
-{if $module_data.PRODUCTS_SPECIAL}<div class="labelSpecials"><span class="label label-default">- {$module_data.PRODUCTS_SPECIAL|round}%</span></div>{/if}
+{if $module_data.PRODUCTS_SPECIAL}<div class="labelSpecials"><span class="label">- {$module_data.PRODUCTS_SPECIAL|round}%</span></div>{/if}
 <a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a>
 </div>
 {/if}
