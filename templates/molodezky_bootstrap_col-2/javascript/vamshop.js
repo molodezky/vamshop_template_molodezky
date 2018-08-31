@@ -33,6 +33,27 @@ $(window).load(function() {
 });
 }
 
+// смена табличного вывода на лист
+window.onload = function() {
+    if (localStorage.getItem('productsheet') !== null && localStorage.getItem('productsheet') !== 'sheettable') {
+        var productlist = localStorage.getItem('productsheet');
+        document.getElementById('productlist').className = productlist;
+    }
+    //удаляем класс для просмотра таблицей
+    document.getElementById('sheettable').onclick = function() {
+        console.log('work');
+        document.getElementById('productlist').className = 'sheettable';
+        localStorage.setItem('productsheet','sheettable');
+    }
+
+    // добавляем класс для просмотра списком
+    document.getElementById('sheetlist').onclick = function() {
+        console.log('work');
+        document.getElementById('productlist').className = 'sheetlist';
+        localStorage.setItem('productsheet','sheetlist');
+    }
+}
+
 // антиспам Перезвоните мне
 $(function($){
 

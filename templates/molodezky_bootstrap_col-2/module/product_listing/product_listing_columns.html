@@ -1,42 +1,4 @@
 {config_load file="$language/lang_$language.conf" section="index"}
-<script type="text/javascript" src="{php} echo 'templates/'.CURRENT_TEMPLATE.'/javascript/jquery-cookie/jquery.cookie.js'; {/php}"></script>
-<script>
-{literal}
-jQuery(document).ready(function(){
-     var cookieName = 'productsheet';
-     var cookieOptions = {expires: 7, path: '/'};
-
-$("#productlist").addClass($.cookie(cookieName));
-
-// создаем действие по клику и запись в куки         
-$(".selectstyle a").click(function(e){
-          e.preventDefault();
-          $("#productlist").removeClass();
-          $.cookie(cookieName, $(this).attr("id"), cookieOptions);
-          $("#productlist").addClass($.cookie(cookieName));
-     });
-});
-{/literal}
-</script>
-{if $CATEGORIES_NAME}
-<script>
-{literal}
-var count = 0;
-$(function() {
-	count = $('input[type=checkbox]#s_:checked').length;
-	displayCount();
-	$('input[type=checkbox]').bind('click' , function(e, a) {
-		if (this.checked) {count += a ? -1 : 1;} else {count += a ? 1 : -1;}
-    displayCount();
-	});
-});
-function displayCount() {
-    $('#count').text(count);
-}
-{/literal}
-</script>
-{/if}
-
 {if $smarty.get.keywords}<h1>{$smarty.const.TEXT_BUY_BUTTON} {$smarty.get.keywords|capitalize} {if {$smarty.get.page} && {$smarty.get.page} > 0} {$smarty.const.TEXT_PAGE_IN_CAT} {$smarty.get.page}{/if}</h1>{/if}
 
 {if $CATEGORIES_NAME}<h1>{$CATEGORIES_NAME}{$FILTER}</h1>{/if}
@@ -74,7 +36,9 @@ function displayCount() {
 <div class="ManufSort"><span class="form-inline">{$MANUFACTURER_DROPDOWN}</span></div>
 {/if}
 <div class="clearfix"></div>
-<div class="hidden-xs hidden-sm selectstyle"><a href="#sheettable" id="sheettable"><i class="fa fa-th-large"></i></a> <a href="#sheetlist" id="sheetlist"><i class="fa fa-th-list"></i></a></div>
+
+
+<div class="hidden-xs hidden-sm selectstyle"><button class="btn btn-primary" id="sheettable"><i class="fa fa-th-large"></i></button> <button class="btn btn-primary" id="sheetlist"><i class="fa fa-th-list"></i></button></div>
 
 <div class="SortLink">
 
@@ -94,11 +58,11 @@ function displayCount() {
 
 {/if}
 
-<div class="sheettable" id="productlist">
+<div id="productlist" class="sheettable">
 <div class="row">
 {if $CATEGORIES_NAME}<form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
 {foreach name=aussen item=module_data from=$module_content}
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-33 Product">
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 Product">
 <div class="Product-int">
 {if $module_data.PRODUCTS_IMAGE}
 <div class="thumbnail ProductImage">
@@ -151,3 +115,22 @@ function displayCount() {
 <div class="clearfix"></div>
 </div>
 </div>
+
+{if $CATEGORIES_NAME}
+<script>
+{literal}
+var count = 0;
+$(function() {
+	count = $('input[type=checkbox]#s_:checked').length;
+	displayCount();
+	$('input[type=checkbox]').bind('click' , function(e, a) {
+		if (this.checked) {count += a ? -1 : 1;} else {count += a ? 1 : -1;}
+    displayCount();
+	});
+});
+function displayCount() {
+    $('#count').text(count);
+}
+{/literal}
+</script>
+{/if}
