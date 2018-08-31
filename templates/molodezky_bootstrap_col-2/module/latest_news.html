@@ -7,17 +7,16 @@
 <div class="NewsDate">{$module_data.NEWS_DATA}</div>
 <div class="NewsName">{$module_data.NEWS_HEADING}</div>
 <p>{$module_data.NEWS_CONTENT}</p>
-<div class="all"><a href="{$NEWS_LINK}" class="btn btn-link btn-block">Читать все новости <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+<div class="all"><a href="{$NEWS_LINK}" class="btn btn-primary">Все новости...</a></div>
 {else}
 {foreach name=aussen item=module_data from=$module_content}
 <div class="NewsDate">{$module_data.NEWS_DATA}</div>
 <div class="NewsName"><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></div>
-<p>{$module_data.NEWS_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}</p>
-<div class="more"><a href="{$module_data.NEWS_LINK_MORE}" class="btn btn-link">Подробнее <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+<div class="NewsDesc">{$module_data.NEWS_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}</div>
 {/foreach} 
 
 <div class="clear"></div>
-<div class="navigation-page"><span class="right">{$NAVIGATION_BAR}</span>{$NAVIGATION_BAR_PAGES}</div>
+<div class="navigation-page"><span class="pull-right">{$NAVIGATION_BAR}</span>{$NAVIGATION_BAR_PAGES}</div>
 <div class="clear"></div>
 {/if}
 </div>
