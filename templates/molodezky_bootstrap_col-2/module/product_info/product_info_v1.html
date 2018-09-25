@@ -60,7 +60,12 @@ pager:false
 
 </div>
 <div class="col-xs-12 col-sm-6">
-<div class="ProductInfoPrice" itemprop="offers" itemscope itemtype="http://schema.org/Offer">{$PRODUCTS_PRICE}<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}"><meta itemprop="priceCurrency" content="{$smarty.session.currency}"></div>
+<div class="ProductInfoPrice" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+{$PRODUCTS_PRICE}
+<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
+<meta itemprop="priceCurrency" content="{$smarty.session.currency}">
+{if $PRODUCTS_QUANTITY > 0}<link itemprop="availability" href="http://schema.org/InStock" />{/if}
+</div>
 {if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
 {if $PRODUCTS_FSK18=='true'}<p><img src="{$tpl_path}img/fsk18.gif" alt="" /></p>{/if}
 {if $MODULE_graduated_price !=''}{$MODULE_graduated_price}{/if}
