@@ -10,7 +10,7 @@
 <div class="thumbnail ProductImage">
 {if $products_data.PRODUCTS_LABEL}<div class="ProductLabel">{$products_data.PRODUCTS_LABEL}</div>{/if}
 {if $products_data.PRODUCTS_SPECIAL}<div class="labelSpecials"><span class="label label-default">- {$products_data.PRODUCTS_SPECIAL|round}%</span></div>{/if}
-<a href="{$products_data.PRODUCTS_LINK}"><img itemprop="image" src="{$products_data.PRODUCTS_IMAGE}" alt="{$products_data.PRODUCTS_NAME}" title="{$products_data.PRODUCTS_NAME}" /></a>
+<a href="{$products_data.PRODUCTS_LINK}"><img itemprop="image" src="{$products_data.PRODUCTS_IMAGE}" alt="{$products_data.PRODUCTS_NAME}" /></a>
 </div>
 {/if}
 <div class="ProductName"><a itemprop="url" href="{$products_data.PRODUCTS_LINK}"><span itemprop="name">{$products_data.PRODUCTS_NAME}</span></a></div>
