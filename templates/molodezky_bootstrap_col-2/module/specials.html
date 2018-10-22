@@ -1,10 +1,10 @@
 {config_load file="$language/lang_$language.conf" section="specials"} 
 {config_load file="$language/lang_$language.conf" section="index"} 
 <h1>{#heading_text#}</h1>
-{$SPECIAL_CATEGORY}
+<div class="form-group">{$SPECIAL_CATEGORY}</div>
 <div class="row">
 {foreach name=aussen item=module_data from=$module_content}
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-33 Product">
+<div class="col-xs-12 col-sm-6 col-md-3 col-lg-4 Product">
 <div class="Product-int">
 {if $module_data.PRODUCTS_IMAGE}
 <div class="thumbnail ProductImage">
