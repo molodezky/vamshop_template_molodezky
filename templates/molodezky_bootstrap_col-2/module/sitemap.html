@@ -1,9 +1,13 @@
-<div class="pageItem">
+<div class="row">
 {foreach name=aussen item=module_data from=$module_content}
-<div class="CatList"><a href="{$module_data.CAT_LINK}">{$module_data.CAT_NAME}</a></div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 Categories">
+<div class="Categories-int">
+<div class="thumbnail CategoriesImage"><a href="{$module_data.CAT_LINK}">{if $module_data.CAT_IMAGE != 'images/categories/'}<img src="{$module_data.CAT_IMAGE}" alt="{$module_data.CAT_NAME}" />{else}<img src="images/product_images/noimage.gif" alt="{$module_data.CAT_NAME}" />{/if}</a></div>
+<div class="CategoriesName"><a href="{$module_data.CAT_LINK}">{$module_data.CAT_NAME}</a></div>
 {foreach key=key_data item=item_data from=$module_data.SCATS}
-<div class="subCatList"><a href="{$item_data.link}">{$item_data.text}</a></div>
-{/foreach}
+<div class="SubCategories"><a href="{$item_data.link}">{$item_data.text}</a></div>
 {/foreach}
 </div>
-<div class="clearfix"></div>
+</div> 
+{/foreach}
+</div>

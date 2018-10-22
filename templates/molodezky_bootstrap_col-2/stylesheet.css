@@ -292,6 +292,8 @@ li.ajaxQuickFind {font-size: 80%;padding:2px 0 5px;}
 .CategoriesName a {}
 .CategoriesName a:hover {}
 .CategoriesLink {}
+.CategoriesName + .SubCategories {padding-top: 15px;}
+.SubCategories {}
 /* Сортировки */
 .SortCount {float:right;padding:7px 0 7px 10px;}
 .ManufSort {float:left;padding-bottom:14px;}
