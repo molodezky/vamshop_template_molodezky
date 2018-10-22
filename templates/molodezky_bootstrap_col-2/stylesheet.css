@@ -288,6 +288,7 @@ li.ajaxQuickFind {font-size: 80%;padding:2px 0 5px;}
 .Categories {position:relative;}
 .Categories-int {margin:15px 0;text-align:center;}
 .CategoriesImage {}
+.CategoriesImage img {max-height: 180px;}
 .CategoriesName {padding:15px 0 0;}
 .CategoriesName a {}
 .CategoriesName a:hover {}
@@ -319,17 +320,22 @@ li.ajaxQuickFind {font-size: 80%;padding:2px 0 5px;}
 .sheetlist .ProductQuantity { text-align:left;}
 }
 .ProductImage {position:relative;}
-.CategoriesImage img, .ProductImage img {max-height:252px;}
+.ProductImage img {max-height:252px;}
 @media (min-width: 768px) and (max-width: 991px) {
-.CategoriesImage, .ProductImage { display:table-cell; height:220px; width:220px; vertical-align:middle;}
-.CategoriesImage img, .ProductImage img {max-height:210px;}
+.CategoriesImage { display:table-cell; height:220px; width:220px; vertical-align:middle;}
+.CategoriesImage img {max-height: 210px;}
+.ProductImage { display:table-cell; height:220px; width:220px; vertical-align:middle;}
+.ProductImage img {max-height:210px;}
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-.CategoriesImage, .ProductImage { display:table-cell; height:212px; width:212px; vertical-align:middle;}
-.CategoriesImage img, .ProductImage img {max-height:202px;}
+.CategoriesImage { display:table-cell; height:212px; width:212px; vertical-align:middle;}
+.CategoriesImage img {max-height: 202px;}
+.ProductImage { display:table-cell; height:212px; width:212px; vertical-align:middle;}
+.ProductImage img {max-height:202px;}
 }
 @media (min-width: 1200px) {
-.CategoriesImage, .ProductImage { display:table-cell; height:262px; width:262px; vertical-align:middle;}
+.CategoriesImage { display:table-cell; height:190px; width:190px; vertical-align:middle;}
+.ProductImage { display:table-cell; height:262px; width:262px; vertical-align:middle;}
 }
 .ProductLabel {position:absolute;left:10px;top:10px;}
 .ProductLabel .label {background-color: #777;}
