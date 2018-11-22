@@ -110,8 +110,9 @@ function showSelected(suggestion) {
 <br />
 <br />
 <!-- форма -->
-<h2 class="checkouthead">{#title_personal#}</h2>
-<div class="sm_layout_box">
+<div class="panel panel-default">
+<div class="panel-heading">{#title_personal#}</div>
+<div class="panel-body">
 <!-- личные данные -->
 <fieldset class="form-horizontal">
 <div class="form-group">
@@ -137,9 +138,11 @@ function showSelected(suggestion) {
 </fieldset>
 {/if}
 </div>
+</div>
 <!-- адрес -->
-<h2 class="checkouthead">{#title_address#}</h2>
-<div class="sm_layout_box">
+<div class="panel panel-default">
+<div class="panel-heading">{#title_address#}</div>
+<div class="panel-body">
 <fieldset class="form-horizontal">
 <div class="form-group">
 {if $street_address=='1'}<p><label for="address" class="col-xs-12 col-sm-12 col-md-4 col-lg-3">{#text_street#}</label> <span class="col-xs-12 col-sm-12 col-md-8 col-lg-7">{$INPUT_STREET}</span></p>{/if}
@@ -151,10 +154,12 @@ function showSelected(suggestion) {
 </div>
 </fieldset>
 </div>
+</div>
 <!-- телефон и факс -->
 {if $telephone=='1'}
-<h2 class="checkouthead">{#title_contact#}</h2>
-<div class="sm_layout_box">
+<div class="panel panel-default">
+<div class="panel-heading">{#title_contact#}</div>
+<div class="panel-body">
 <fieldset class="form-horizontal">
 <div class="form-group">
 {if $telephone=='1'}<p><label for="telephone" class="col-xs-12 col-sm-12 col-md-4 col-lg-3">{#text_tel#}</label> <span class="col-xs-12 col-sm-12 col-md-8 col-lg-7">{$INPUT_TEL}</span></p>{/if}
@@ -162,11 +167,13 @@ function showSelected(suggestion) {
 </div>
 </fieldset>
 </div>
+</div>
 {/if}
 
 {if $INPUT_CUSTOMERS_EXTRA_FIELDS}
-<h2 class="checkouthead">{#title_options#}</h2>
-<div class="sm_layout_box">
+<div class="panel panel-default">
+<div class="panel-heading">{#title_options#}</div>
+<div class="panel-body">
 <fieldset class="form-horizontal">
 <div class="form-group">
 {foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}
@@ -175,16 +182,19 @@ function showSelected(suggestion) {
 </div>
 </fieldset>
 </div>
+</div>
 {/if}
 
-<h2 class="checkouthead">{#title_password#}</h2>
-<div class="sm_layout_box">
+<div class="panel panel-default">
+<div class="panel-heading">{#title_password#}</div>
+<div class="panel-body">
 <fieldset class="form-horizontal">
 <div class="form-group">
 <p><label for="pass" class="col-xs-12 col-sm-12 col-md-4 col-lg-3">{#text_password#}</label> <span class="col-xs-12 col-sm-12 col-md-8 col-lg-7">{$INPUT_PASSWORD}</span></p>
 <p><label for="confirmation" class="col-xs-12 col-sm-12 col-md-4 col-lg-3">{#text_confirmation#}</label> <span class="col-xs-12 col-sm-12 col-md-8 col-lg-7">{$INPUT_CONFIRMATION}</span></p>
 </div>
 </fieldset>
+</div>
 </div>
 <!-- /форма -->
 
@@ -198,7 +208,7 @@ function showSelected(suggestion) {
 <input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
 </div>
 
-<div class="pagecontentfooter">{$BUTTON_SUBMIT}</div>
+<div class="text-right">{$BUTTON_SUBMIT}</div>
 <div class="alert alert-info privacy">{$smarty.const.PRIVACY_TEXT}</div>
 
 {$FORM_END}
