@@ -149,7 +149,9 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       }
     }
   }
+  if (vam_db_num_rows($topics_query,true)) {
   vam_show_topic($first_topic_element);
+  }
 
   $new_articles_string = '';
   $all_articles_string = '';
@@ -201,7 +203,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
   }
 
 
-  $box_content = $new_articles_string . $all_articles_string . $topics_string;
+  $box_content = '<ul>'.$new_articles_string . $all_articles_string . $topics_string.'</ul>';
 
     $box->assign('BOX_CONTENT', $box_content);
 
