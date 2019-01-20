@@ -16,7 +16,7 @@
 <form id="update_cart{counter name=1}" class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelProduct({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}
 {/if}
 {if $smarty.const.AJAX_CART == 'true'}
-<span class="pull-right"><label><i class="fa fa-times-circle"></i><input type="image" src="images/delete.gif" title="{#text_delete#}" /></label></span></form>
+<span class="pull-right"><label><i class="fa fa-times-circle"></i><input type="image" src="images/delete.gif" title="{#text_delete#}" alt="{#text_delete#}" /></label></span></form>
 {/if}
 {$products_data.QTY}&nbsp;x&nbsp;&nbsp;<a href="{$products_data.LINK}" title="{$products_data.NAME}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a>&nbsp;
 {if $products_data.ATTRIBUTES!=''} 
