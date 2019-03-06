@@ -103,7 +103,10 @@
 <div class="ProductPrice">{$module_data.PRODUCTS_PRICE}</div>
 <div class="ProductQuantity"><span class="{if $module_data.PRODUCTS_QUANTITY < 1}qty-no{elseif $module_data.PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $module_data.PRODUCTS_QUANTITY < 1}отсутствует{elseif $module_data.PRODUCTS_QUANTITY < 10}под заказ{else}в наличии{/if}</span></div>
 <div class="ProductMore"><a href="{$module_data.PRODUCTS_LINK}" class="btn btn-primary">Подробнее</a></div>
-{if $module_data.PRODUCTS_QUANTITY > 0}<div class="ProductButton">{$module_data.PRODUCTS_BUTTON_BUY_NOW}</div>{/if}
+{if $module_data.PRODUCTS_QUANTITY > 0}
+<div class="ProductButton">{$module_data.PRODUCTS_BUTTON_BUY_NOW}</div>
+<div class="ProductBuyOne"><a class="btn btn-primary"  data-toggle="modal" data-name="{$module_data.PRODUCTS_NAME}" data-link="{$module_data.PRODUCTS_LINK}" data-target="#BuyOne">Быстрый заказ</a></div>
+{/if}
 {if $CATEGORIES_NAME}
 <div class="clearfix"></div>
 <div class="ProductCompare"><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</div>{/if}

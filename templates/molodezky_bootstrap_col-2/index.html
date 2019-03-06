@@ -280,3 +280,56 @@ Copyright © 2017{php}if (date('Y') != '2017') echo '-'.date('Y');{/php}. <a hre
 </div>
 </div>
 <!-- /Modal Обратный звонок -->
+
+<!-- Modal Быстрый заказ -->
+<div class="modal fade" id="BuyOne" tabindex="-1" role="dialog" aria-labelledby="BuyOneTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<div class="h5 modal-title" id="BuyOneTitle">Быстрый заказ</div>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+<form name="sentMessage" class="form form-register1" id="buyoneForm" novalidate>
+<div class="modal-body">
+<p>Напишите свой телефон и жмите "Отправить". Мы вам перезвоним и сами оформим заказ!</p>
+<div class="control-group">
+<div class="input-group controls mb-3">
+<input type="text" class="form-control" placeholder="Ваше имя" id="namebo" aria-describedby="user-name" required data-validation-required-message="{#required_name#}" />
+<div class="input-group-append"><span class="input-group-text" id="user-name"><i class="fas fa-user"></i></span></div>
+<div class="help-block w-100"></div>
+</div>
+</div>
+<div class="control-group">
+<div class="input-group controls mb-3">
+<input type="text" class="form-control" placeholder="Ваш телефон" id="phonebo" aria-describedby="user-phonebo" required data-validation-required-message="{#required_phone#}" />
+<div class="input-group-append"><span class="input-group-text" id="user-phonebo"><i class="fas fa-phone"></i></span></div>
+<div class="help-block w-100"></div>
+</div>
+</div>
+<!-- данные по товару -->
+<input type="hidden" name="productbo" id="productbo" value="" />
+<input type="hidden" name="product_urlbo" id="product_urlbo" value="" />
+<!-- /данные по товару -->
+<div class="alert alert-info privacy" id="privacybo" role="alert">{$smarty.const.PRIVACY_TEXT}</div>
+</div>
+
+<div class="modal-footer">
+<div id="successbo"></div> <!-- For success/fail messages -->
+<div id="sendbuttonbo"><button type="submit" class="btn btn-primary btn-block">Отправить</button></div>
+</div>
+<!-- блок антиспам -->
+<div class="form-anti-botbo" style="clear:both;">
+<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+<input type="hidden" name="anti-bot-abo" id="anti-bot-abo" value="{$smarty.now|date_format:"%Y"}" />
+<input type="text" name="anti_bot_qbo" id="anti_bot_qbo" size="30" value="19" />
+</div>
+<div class="form-anti-bot-2bo" style="display:none;">
+<strong>Leave this field empty</strong> <span class="required">*</span>
+<input type="text" name="anti_bot_e_email_urlbo" id="anti_bot_e_email_urlbo" size="30" value=""/>
+</div>
+<!-- /блок антиспам -->
+</form>
+</div>
+</div>
+</div>
+<!-- /Modal Быстрый заказ -->

@@ -137,3 +137,173 @@ $('#contactForm').trigger("reset");
 $('#name').focus(function() {
      $('#success').html('');
   });
+	
+// антиспам Быстрый заказ
+$(function($){
+
+    $('.form-anti-botbo, .form-anti-bot-2bo').hide(); // hide inputs from users
+    var answer = $('.form-anti-botbo input#anti-bot-abo').val(); // get answer
+    $('.form-anti-botbo input#anti_bot_qbo').val( answer ); // set answer into other input
+
+    if ( $('form#buyoneForm input#anti_bot_qbo').length == 0 ) {
+        var current_date = new Date();
+        var current_year = current_date.getFullYear();
+        $('form#buyoneForm').append('<input type="hidden" name="anti_bot_qbo" id="anti_bot_qbo" value="'+current_year+'" />'); // add whole input with answer via javascript to form
+    }
+
+});
+
+// Передаем имя и ссылку в форму быстрого заказа
+$(document).ready(function(){
+    $('.ProductBuyOne .btn').on('click',function(){
+        var productsname = $(this).attr("data-name");
+        var productslink = $(this).attr("data-link");
+        $("#productbo").attr("value", productsname);
+        $("#product_urlbo").attr("value", productslink);
+    }); 
+});
+  
+// Форма Быстрый заказ
+$(function() {
+$("#BuyOne input, #BuyOne textarea").jqBootstrapValidation(
+{
+  preventSubmit: true,
+  submitError: function($form, event, errors) {
+},
+submitSuccess: function($form, event) {
+  event.preventDefault();
+  var namebo = $("input#namebo").val();  
+  var phonebo = $("input#phonebo").val(); 
+  var emailbo = $("input#emailbo").val(); 
+  var messagebo = $("textarea#messagebo").val();
+  var productbo = $("input#productbo").val();
+  var product_urlbo = $("input#product_urlbo").val();
+  var anti_bot_qbo = $("input#anti_bot_qbo").val();
+  var anti_bot_e_email_urlbo = $("input#anti_bot_e_email_urlbo").val();
+  var firstNamebo = name;
+  if (firstNamebo.indexOf(' ') >= 0) {
+  firstNamebo = namebo.split(' ').slice(0, -1).join(' ');
+  }
+
+$.ajax({
+ url: "buy_one.php",
+ type: "POST",
+ data: {namebo: namebo, phonebo: phonebo, productbo: productbo, product_urlbo: product_urlbo, anti_bot_qbo: anti_bot_qbo, anti_bot_e_email_urlbo: anti_bot_e_email_urlbo},
+ cache: false,
+ success: function() {  
+ // Success message
+ $('#successbo').html("<div class='alert alert-success'>");
+ $('#successbo > .alert-success')
+ .append("Спасибо! Мы свяжемся с Вами в ближайшее время для уточнения деталей заказа.");
+ $('#successbo > .alert-success')
+  .append('</div>');
+$('#sendbuttonbo').remove();  
+//clear all fields
+$('#buyoneForm').trigger("reset");
+setTimeout(function() {
+  $("#BuyOne").modal('hide');
+  $(".modal-backdrop").removeClass('show');
+}, 3000);
+},
+
+error: function() { 
+// Fail message
+//$('#success').html("<div class='alert alert-danger'>");
+//$('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+//.append( "</button>");
+//$('#success > .alert-danger').append("<strong>Извините "+firstName+" кажется проблемы на сервере отправки писем...</strong> Вы не могли бы написать напрямую на адрес <a href='youremail@mail.com?Subject=Перезвоните мне'>youremail@mail.com</a> ? Приносим извинения за это неудобство!");
+//$('#success > .alert-danger').append('</div>');
+  //clear all fields
+$('#buyoneForm').trigger("reset");
+   },
+     });
+         },
+         filter: function() {
+                   return $(this).is(":visible");
+         },
+       });
+
+      $("a[data-toggle=\"tab\"]").click(function(e) {
+                    e.preventDefault();
+                    $(this).tab("show");
+        });
+  });
+
+
+/*When clicking on Full hide fail/success boxes */ 
+$('#namebo').focus(function() {
+     $('#successbo').html('');
+  });  
+  
+  
+// Форма Быстрый заказ на карточке товара
+$(function() {
+$("#BuyOneProductInfo input, #BuyOneProductInfo textarea").jqBootstrapValidation(
+{
+  preventSubmit: true,
+  submitError: function($form, event, errors) {
+},
+submitSuccess: function($form, event) {
+  event.preventDefault();
+  var namebo = $("input#namebo").val();  
+  var phonebo = $("input#phonebo").val(); 
+  var emailbo = $("input#emailbo").val(); 
+  var messagebo = $("textarea#messagebo").val();
+  var productbo = $("input#productbo").val();
+  var product_urlbo = $("input#product_urlbo").val();
+  var anti_bot_qbo = $("input#anti_bot_qbo").val();
+  var anti_bot_e_email_urlbo = $("input#anti_bot_e_email_urlbo").val();
+  var firstNamebo = name;
+  if (firstNamebo.indexOf(' ') >= 0) {
+  firstNamebo = namebo.split(' ').slice(0, -1).join(' ');
+  }
+
+$.ajax({
+ url: "buy_one.php",
+ type: "POST",
+ data: {namebo: namebo, phonebo: phonebo, productbo: productbo, product_urlbo: product_urlbo, anti_bot_qbo: anti_bot_qbo, anti_bot_e_email_urlbo: anti_bot_e_email_urlbo},
+ cache: false,
+ success: function() {  
+ // Success message
+ $('#successbo').html("<div class='alert alert-success'>");
+ $('#successbo > .alert-success')
+ .append("Спасибо! Мы свяжемся с Вами в ближайшее время для уточнения деталей заказа.");
+ $('#successbo > .alert-success')
+  .append('</div>');
+$('#sendbuttonbo').remove();  
+//clear all fields
+$('#buyoneForm').trigger("reset");
+setTimeout(function() {
+  $("#BuyOneProductInfo").modal('hide');
+  $(".modal-backdrop").removeClass('show');
+}, 3000);
+},
+
+error: function() { 
+// Fail message
+//$('#success').html("<div class='alert alert-danger'>");
+//$('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+//.append( "</button>");
+//$('#success > .alert-danger').append("<strong>Извините "+firstName+" кажется проблемы на сервере отправки писем...</strong> Вы не могли бы написать напрямую на адрес <a href='youremail@mail.com?Subject=Перезвоните мне'>youremail@mail.com</a> ? Приносим извинения за это неудобство!");
+//$('#success > .alert-danger').append('</div>');
+  //clear all fields
+$('#buyoneForm').trigger("reset");
+   },
+     });
+         },
+         filter: function() {
+                   return $(this).is(":visible");
+         },
+       });
+
+      $("a[data-toggle=\"tab\"]").click(function(e) {
+                    e.preventDefault();
+                    $(this).tab("show");
+        });
+  });
+
+
+/*When clicking on Full hide fail/success boxes */ 
+$('#namebo').focus(function() {
+     $('#successbo').html('');
+  }); 	
