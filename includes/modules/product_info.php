@@ -117,6 +117,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
       $info->assign('PRODUCTS_PRINT', '<img src="images/icons/buttons/print.png" alt="" />');
 		$info->assign('PRODUCTS_PRINT_LINK', vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']));      
 		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
+		$info->assign('PRODUCTS_SHORT_DESCRIPTION', stripslashes($product->data['products_short_description']));
 		$image = '';
 
 		$star_rating = '';
@@ -170,7 +171,7 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 	   if (!file_exists($image)) $image = DIR_WS_INFO_IMAGES.'../noimage.gif';
 
 		$info->assign('PRODUCTS_IMAGE', $image);
-		$info->assign('PRODUCTS_IMAGE_DESCRIPTION', $product->data['products_image_description']);
+		$info->assign('PRODUCTS_IMAGE_DESCRIPTION', htmlentities(strip_tags($product->data['products_image_description'])));
 
 		$image_pop = DIR_WS_POPUP_IMAGES.$product->data['products_image'];
 		$info->assign('PRODUCTS_POPUP_IMAGE', $image_pop);
@@ -194,7 +195,7 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
                 $mo_img[] = array(
                 'PRODUCTS_MO_IMAGE' => DIR_WS_INFO_IMAGES . $img['image_name'],
                 'PRODUCTS_MO_POPUP_IMAGE' => $products_mo_popup_link,
-                'PRODUCTS_MO_IMAGE_DESCRIPTION' => $img['image_description'],
+                'PRODUCTS_MO_IMAGE_DESCRIPTION' => htmlentities(strip_tags($img['image_description'])),
                 'PRODUCTS_MO_POPUP_LINK' => $products_mo_popup_link);
         $info->assign('mo_img', $mo_img);
             }
@@ -256,6 +257,7 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
 
 		include (DIR_WS_MODULES.FILENAME_PRODUCTS_MEDIA);
 		include (DIR_WS_MODULES.FILENAME_ALSO_PURCHASED_PRODUCTS);
+		include (DIR_WS_MODULES.FILENAME_BUNDLE_PRODUCTS);
 		include (DIR_WS_MODULES.FILENAME_CROSS_SELLING);
 
 		include_once (DIR_WS_MODULES . FILENAME_PRODUCTS_SPECIFICATIONS);

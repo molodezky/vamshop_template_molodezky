@@ -111,7 +111,7 @@ $(document).ready(function(){
 {/if}
 
 <!-- Навигация -->
-{if $navtrail}<div class="col-xs-12"><div class="breadcrumb"><a href="{$mainpage}">Главная</a> &nbsp;/&nbsp; {$navtrail}</div></div>{/if}
+{if $navtrail}<div class="col-xs-12"><div class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><a href="{$mainpage}">Главная</a> &nbsp;/&nbsp; {$navtrail}</div></div>{/if}
 <!-- Навигация - конец -->
 <!-- центральный контент -->
 <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9 col-sm-push-4 col-md-push-3 col-lg-push-3 main-content">{$main_content}</div>

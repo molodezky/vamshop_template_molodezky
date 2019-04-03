@@ -489,6 +489,7 @@ span.Requirement {color: red;}
 .checkoutButton .btn-primary {background-color:#b70d0d;border-color:#b70d0d #b70d0d transparent;color:#fff;}
 .checkoutButton .btn-primary:hover {background-color:#212121;border-color:#212121 #212121 transparent;color:#fff;}
 .checkoutButton .btn-primary:focus, .checkoutButton .btn-primary:focus:active, .checkoutButton .btn-primary.active:focus, .checkoutButton .btn-primary.focus, .checkoutButton .btn-primary.focus:active, .checkoutButton .btn-primary.active.focus {background-color:#212121;border-color:#212121 #212121 transparent;color:#fff;}
+/*label.shipping.selected .OrderBlock-int, label.payment.selected .OrderBlock-int	{background: #f4f4f4;}*/
 /*- Подсветка ошибок формы */
 #errormsg {border: 2px solid #c00;padding: 5px;width: 96%;}  
 label.error {margin-left: 10px;width: auto;display: inline;color: red;font-weight: normal;background: transparent;border: 0px;}  

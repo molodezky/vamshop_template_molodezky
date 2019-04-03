@@ -1,7 +1,10 @@
-<script type="text/javascript">
+<script>
 {literal}
 $(document).ready(function() {
-
+$(".payment-method").on("click",function(){
+$(".payment-method").parent().removeClass("selected");
+$(this).parent().addClass("selected");
+});
 $("div#qiwi_rest").hide();
 $("div#schet").hide();
 $("div#kvitancia").hide();
@@ -44,8 +47,8 @@ $("div#kvitancia").hide();
 <div class="row">
 {foreach name=aussen item=module_data from=$module_content}
 <div class="col-xs-12 OrderBlock">
-<label for="{$module_data.id}">
-<div class="OrderBlock-int">
+<label for="{$module_data.id}" class="payment {$module_data.id}{if {$module_data.checked} == 1} selected{/if}">
+<div class="payment-method OrderBlock-int">
 <div class="OrderBlockName">{$module_data.selection} {$module_data.module} {$module_data.module_cost}</div>
 <div class="OrderBlockImage">{$module_data.icon}</div>
 {if $module_data.description}<p>{$module_data.description}</p>{/if}

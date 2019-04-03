@@ -16,7 +16,7 @@
 
 {if $AUTHOR_IMAGE}
 <p>
-<img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}/articles/{$AUTHOR_IMAGE}" alt="{$AUTHOR_NAME}" />
+<img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}/articles/{$AUTHOR_IMAGE}" class="img-responsive" alt="{$AUTHOR_NAME|htmlentities|strip_tags}" />
 </p>
 {/if}
 
@@ -35,7 +35,7 @@
 
 {foreach name=aussen item=module_data from=$module_content} 
 <div class="ArticlesItem">
-{if $module_data.ARTICLE_IMAGE}<p><a href="{$module_data.ARTICLE_LINK}"><img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$module_data.ARTICLE_IMAGE}" alt="{$module_data.ARTICLE_NAME}" /></a></p>{/if}
+{if $module_data.ARTICLE_IMAGE}<p><a href="{$module_data.ARTICLE_LINK}"><img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$module_data.ARTICLE_IMAGE}" class="img-responsive" alt="{$module_data.ARTICLE_NAME|htmlentities|strip_tags}" /></a></p>{/if}
 <div class="ArticlesName"><a href="{$module_data.ARTICLE_LINK}">{$module_data.ARTICLE_NAME}</a></div>
 {if $module_data.AUTHOR_NAME}<p>{#text_author#} <a href="{$module_data.AUTHOR_LINK}">{$module_data.AUTHOR_NAME}</a></p>{/if}
 {if {$module_data.ARTICLE_ID} > 0}

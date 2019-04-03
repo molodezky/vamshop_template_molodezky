@@ -1,3 +1,13 @@
+<script>
+{literal}
+$(document).ready(function() {
+$(".shipping-method").on("click",function(){
+$(".shipping-method").parent().removeClass("selected");
+$(this).parent().addClass("selected");
+});
+});
+{/literal}
+</script>
 {if $FREE_SHIPPING}
 <p><span class="bold">{$FREE_SHIPPING_TITLE}</span>&nbsp;{$FREE_SHIPPING_ICON}</p>
 <p>{$FREE_SHIPPING_DESCRIPTION}</p>
@@ -6,8 +16,8 @@
 {foreach name=aussen item=module_data from=$module_content}
 
 <div class="col-xs-12 OrderBlock">
-<label>
-<div class="OrderBlock-int">
+<label for="{$module_data.id}" class="shipping {$module_data.id}{if {$module_data.checked} == 1} selected{/if}">
+<div class="shipping-method OrderBlock-int">
 <div class="OrderBlockName">{$module_data.module}</div>
 <div class="OrderBlockImage">{$module_data.icon}</div>
 <!-- QIWI Post code begin -->
@@ -21,8 +31,8 @@
 {foreach name=aussen item=method_data from=$module_data.methods}
 <p>{$method_data.radio_field}&nbsp;{$method_data.title} - <strong>{$method_data.price}</strong></p>
 {if $method_data.id == "pickpoint"}
-<script type="text/javascript" src="https://www.pickpoint.ru/select/postamat.js"></script>
-<script type="text/javascript">
+<script src="https://www.pickpoint.ru/select/postamat.js"></script>
+<script>
 function pickpoint_call(id_this){
   PickPoint.open(pickpoint_callback_function, pickpoint_options);
 }
