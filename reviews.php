@@ -63,8 +63,9 @@ if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noi
 		'PRODUCTS_NAME' => $reviews['products_name'], 
 		'AUTHOR' => $reviews['customers_name'], 
 		'DATE' => vam_date_short($reviews['date_added']), 
-		'TEXT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..',
-        'STAR_RATING' => $star_rating,
+		'TEXT_BREAK' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
+		'TEXT' => $reviews['reviews_text'], 
+    'STAR_RATING' => $star_rating,
 		'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
 
 	}
