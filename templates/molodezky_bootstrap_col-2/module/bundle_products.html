@@ -1,0 +1,31 @@
+{config_load file="$language/lang_$language.conf" section="bundles"}
+<div class="h1">{#heading_text#} <span class="bandleSale"></span></div>
+<div class="row">
+{foreach name=aussen item=module_data from=$module_content}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-bandle.html"}
+{/foreach}
+</div>
+
+<script>
+{literal}
+$(document).ready(function(){
+	var bandleSumm = 0;
+	var bandleCur = $('.symbol_left:first').text();
+	if (bandleCur == '') {
+			bandleCur = $('.symbol_right:first').text();
+	}
+	var bandlePrice = $('.ProductInfoPrice').attr('data-price');
+	$(".ProductBandle-list .ProductPrice").each(function() {
+		bandleSumm += parseInt($(this).attr("data-price-plain"));
+	});
+	
+	if (bandlePrice < bandleSumm) {
+		var bandleSale = bandleSumm - bandlePrice;
+		$('.bandleSale').html('Вы экономите ' + bandleSale + ' ' + bandleCur);
+	}
+	//console.log(bandlePrice);
+	//console.log(bandleSumm);
+	//console.log(bandleCur);
+});
+{/literal}
+</script>

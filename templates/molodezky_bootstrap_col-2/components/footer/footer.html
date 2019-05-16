@@ -1,0 +1,185 @@
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-3">{$box_CONTENT}</div>
+			<div class="col-xs-12 col-sm-4 col-md-3">{$box_INFORMATION}</div>
+			<div class="col-xs-12 col-sm-4 col-md-3">
+			<!-- бокс Аккаунт -->
+			<div class="navbar navbar-default box boxAccount">
+				<!-- заголовок бокса Аккаунт -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxAccount" aria-expanded="false"></button>
+					<span class="box-title">Личный кабинет</span>
+				</div>
+				<!-- /заголовок бокса Аккаунт -->
+				<div class="collapse navbar-collapse" id="collapse-boxAccount">
+					<ul>
+						{if $smarty.session.customers_status.customers_status_id == 0}
+						<li><a href="admin/start.php"><span>Админка</span></a></li>
+						{/if}
+						{if $smarty.session.customer_id}
+						<li><a href="{$account}">{#link_account#}</a></li>
+						<li><a href="address_book.php">Адресная книга</a></li>
+						<li><a href="account_history.php">Ваши заказы</a></li>
+						<li><a href="{$logoff}">{#link_logoff#}</a></li>
+						{else}
+						<li><a href="create_account.php">Регистрация</a></li>
+						<li><a href="{$login}">{#link_login#}</a></li>
+						<li><a href="password_double_opt.php">Забыли пароль?</a></li>
+						{/if}
+					</ul>
+				</div>
+			</div>
+			<!-- /бокс Аккаунт -->
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-3">
+				<!-- Контакты -->
+				<div class="navbar navbar-default box boxContacts">
+				<!-- заголовок бокса Контакты -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxContacts" aria-expanded="false"></button>
+					<span class="box-title">Контакты</span>
+				</div>
+				<!-- /заголовок бокса Контакты -->
+				<div class="collapse navbar-collapse" id="collapse-boxContacts" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="{$store_name}">
+					{if $smarty.const.STORE_NAME_ADDRESS}<p>Адрес: {$smarty.const.STORE_NAME_ADDRESS}<meta itemprop="address" content="{$smarty.const.STORE_NAME_ADDRESS}"></p>{/if}
+					{if $smarty.const.STORE_TELEPHONE}<div class="telnumber">Телефоны: {$smarty.const.STORE_TELEPHONE}<meta itemprop="telephone" content="{$smarty.const.STORE_TELEPHONE|strip_tags|replace:' ':''}"></div>{/if}
+					<div class="foot-callback"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CallBack">{#call_back#}</button></div>
+					{if $smarty.const.STORE_SKYPE}<p>Skype: <span>{$smarty.const.STORE_SKYPE}</span></p>{/if}
+					{if $smarty.const.STORE_ICQ}<p>ICQ: <span>{$smarty.const.STORE_ICQ}</span></p>{/if}
+				</div>
+				</div>
+				<!-- /Контакты -->
+			</div>
+		</div>
+	</div>
+	<!-- копирайт -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12  text-center">
+				Copyright © 2017{php}if (date('Y') != '2017') echo '-'.date('Y');{/php}. <a href="{$mainpage}">{$store_name}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<div id="back-top" style="display: block;"><a href="#top" class="btn btn-primary"><i class="fa fa-angle-up"></i></a></div>
+
+<!-- Modal Товар в корзине -->
+<div class="modal fade" id="ProductAdded" role="dialog">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">{#product_added#}</h4>
+</div>
+<div class="modal-body">{#text_product_added#}</div>
+<div class="modal-footer">
+<button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-default">{#link_continue#}</button>
+<a href="shopping_cart.php" class="btn btn-primary">{#link_in_cart#}</a>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Modal Обратный звонок -->
+<div class="modal fade" id="CallBack" role="dialog">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">{#call_back#}</h4>
+</div>
+<form name="sentMessage" class="form form-register1" id="contactForm" novalidate>
+<div class="modal-body">
+<div class="control-group">
+<div class="controls">
+<label for="name">{#text_name#}:</label>
+<input type="text" class="form-control" placeholder="{#placeholder_name#}" id="name" required data-validation-required-message="{#required_name#}" />
+<div class="help-block"></div>
+</div>
+</div>  
+<div class="control-group">
+<div class="controls">
+<label for="name">{#label_phone#}:</label>
+<input type="text" class="form-control" placeholder="{#placeholder_phone#}" id="phone" required data-validation-required-message="{#required_phone#}" />
+</div>
+</div>
+<div class="alert alert-info privacy" id="privacy" role="alert">{$smarty.const.PRIVACY_TEXT}</div>
+</div>
+<div class="modal-footer">
+<div id="success"></div> <!-- For success/fail messages -->
+<div id="sendbutton"><button type="submit" class="btn btn-primary">{#text_send#}</button></div>
+</div>
+<!-- блок антиспам -->
+<div class="form-anti-bot" style="clear:both;">
+<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
+<input type="text" name="anti_bot_q" id="anti_bot_q" size="30" value="19" />
+</div>
+<div class="form-anti-bot-2" style="display:none;">
+<strong>Leave this field empty</strong> <span class="required">*</span>
+<input type="text" name="anti_bot_e_email_url" id="anti_bot_e_email_url" size="30" value=""/>
+</div>
+<!-- /блок антиспам -->
+</form>
+</div>
+</div>
+</div>
+<!-- /Modal Обратный звонок -->
+
+<!-- Modal Быстрый заказ -->
+<div class="modal fade" id="BuyOne" tabindex="-1" role="dialog" aria-labelledby="BuyOneTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<div class="h5 modal-title" id="BuyOneTitle">Быстрый заказ</div>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+<form name="sentMessage" class="form form-register1" id="buyoneForm" novalidate>
+<div class="modal-body">
+<p>Напишите свой телефон и жмите "Отправить". Мы вам перезвоним и сами оформим заказ!</p>
+<div class="control-group">
+<div class="input-group controls mb-3">
+<input type="text" class="form-control" placeholder="Ваше имя" id="namebo" aria-describedby="user-name" required data-validation-required-message="{#required_name#}" />
+<div class="input-group-append"><span class="input-group-text" id="user-name"><i class="fas fa-user"></i></span></div>
+<div class="help-block w-100"></div>
+</div>
+</div>
+<div class="control-group">
+<div class="input-group controls mb-3">
+<input type="text" class="form-control" placeholder="Ваш телефон" id="phonebo" aria-describedby="user-phonebo" required data-validation-required-message="{#required_phone#}" />
+<div class="input-group-append"><span class="input-group-text" id="user-phonebo"><i class="fas fa-phone"></i></span></div>
+<div class="help-block w-100"></div>
+</div>
+</div>
+<!-- данные по товару -->
+<input type="hidden" name="productbo" id="productbo" value="" />
+<input type="hidden" name="product_urlbo" id="product_urlbo" value="" />
+<!-- /данные по товару -->
+<div class="alert alert-info privacy" id="privacybo" role="alert">{$smarty.const.PRIVACY_TEXT}</div>
+</div>
+
+<div class="modal-footer">
+<div id="successbo"></div> <!-- For success/fail messages -->
+<div id="sendbuttonbo"><button type="submit" class="btn btn-primary btn-block">Отправить</button></div>
+</div>
+<!-- блок антиспам -->
+<div class="form-anti-botbo" style="clear:both;">
+<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+<input type="hidden" name="anti-bot-abo" id="anti-bot-abo" value="{$smarty.now|date_format:"%Y"}" />
+<input type="text" name="anti_bot_qbo" id="anti_bot_qbo" size="30" value="19" />
+</div>
+<div class="form-anti-bot-2bo" style="display:none;">
+<strong>Leave this field empty</strong> <span class="required">*</span>
+<input type="text" name="anti_bot_e_email_urlbo" id="anti_bot_e_email_urlbo" size="30" value=""/>
+</div>
+<!-- /блок антиспам -->
+</form>
+</div>
+</div>
+</div>
+<!-- /Modal Быстрый заказ -->

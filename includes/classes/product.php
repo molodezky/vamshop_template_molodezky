@@ -133,25 +133,34 @@ class product {
 		if (vam_db_num_rows($reviews_query)) {
 			$row = 0;
 			$data_reviews = array ();
+			$star_rating = '';
 			while ($reviews = vam_db_fetch_array($reviews_query)) {
 				$row ++;
 
-        $star_rating = '';
-		for($i=0;$i<number_format($reviews['reviews_rating']);$i++)	{
-		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
-		}
-		for($i=0;$i<(5 - number_format($reviews['reviews_rating']));$i++)	{
-		$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
-		}
-                
+				$star_rating = '';
+				for($i=0;$i<number_format($reviews['reviews_rating']);$i++)	{
+				$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+				}
+				for($i=0;$i<(5 - number_format($reviews['reviews_rating']));$i++)	{
+				$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
+				}
+		
 				$data_reviews[] = array (
+				
+				'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, 'products_id='.$reviews['products_id']), 
+				'REVIEWS_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
+				'REVIEWS_ALL_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$reviews['products_id']), 
 				'AUTHOR' => $reviews['customers_name'], 
+				'ID' => $reviews['reviews_id'], 
+				'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 				'DATE' => vam_date_short($reviews['date_added']), 
-				'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])), 
-				'STAR_RATING' => $star_rating, 
-				'RATING_TXT' => $reviews['reviews_rating'], 
-				'TEXT' => $reviews['reviews_text'],
-				'TEXT_BREAK' => vam_break_string(nl2br(htmlspecialchars($reviews['reviews_text'])), 60, '-<br />')				
+				//'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
+				'TEXT' => $reviews['reviews_text'], 
+				'RATING' => $reviews['reviews_rating'],
+				'STAR_RATING' => $star_rating,
+				'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))
+
+				
 				);
 				if ($row == PRODUCT_REVIEWS_VIEW)
 					break;
@@ -780,6 +789,7 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 		    'PRODUCTS_VOLUME'=>$array['products_volume'],
 		    'PRODUCTS_EAN'=>$array['products_ean'],
 		    'PRODUCTS_QUANTITY'=>$array['products_quantity'],
+		    'PRODUCTS_BANDLE_QTY'=>$array['subproduct_qty'],
 		    'REVIEWS_TOTAL'=> $this->getReviewsCount($array['products_id']), 
 		    'REVIEWS_TOTAL_RATING'=> $this->getReviewsRating($array['products_id']), 
 		    'REVIEWS_STAR_RATING'=> $star_rating, 
@@ -805,7 +815,7 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'PRODUCTS_SHIPPING_IMAGE'=>$shipping_status_image, 
 				'PRODUCTS_DESCRIPTION' => $array['products_description'],
 				'PRODUCTS_EXPIRES' => $array['expires_date'],
-				'PRODUCTS_DATE_AVAILABLE' => vam_date_short($array['products_date_available']),				
+				'PRODUCTS_DATE_AVAILABLE' => vam_date_short($array['products_date_available']),
 				'PRODUCTS_CATEGORY_URL'=>$array['cat_url'],
 				'PRODUCTS_SHORT_DESCRIPTION' => $array['products_short_description'], 
 				'PRODUCTS_FSK18' => $array['products_fsk18']);		

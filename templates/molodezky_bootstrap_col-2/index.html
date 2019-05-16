@@ -1,335 +1,57 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 {config_load file="$language/template_lang_$language.conf" section="template"}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/header/header.html"}
 <!-- шапка -->
-<header>
-<div class="head-menu-line"></div>
-
-<div class="navbar navbar-default">
-
-
-<div class="container"> 
-<div class="row">
-
-<!-- меню акаунт -->
-<div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-Account" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></button></div>
-<div class="collapse navbar-collapse" id="collapse-Account">
-<!-- общее меню -->
-<ul class="nav navbar-nav head-menu">
-<li><a href="{$mainpage}" class="home-link"><span>{#text_mainpage#}</span></a></li>
-{$box_CATEGORIES2}
-<li{$content_4_current}><a href="shop_content.php?coID=4"><span>О магазине</span></a></li>
-<li{$content_1_current}><a href="shop_content.php?coID=1"><span>Доставка и оплата</span></a></li>
-<li{$content_6_current}><a href="shop_content.php?coID=6"><span>Гарантия</span></a></li>
-<li{$articles_current}><a href="articles.php"><span>Статьи</span></a></li>
-<li{$content_7_current}><a href="shop_content.php?coID=7"><span>Контакты</span></a></li>
-</ul>
-<!-- меню акаунт -->
-<ul class="nav navbar-nav head-login">
-{if $smarty.session.customer_id}
-<li{$account_current}><a href="{$account}">{#link_account#}</a><span class="menu-separator"></span></li>
-<li{$logoff_current}><a href="{$logoff}">{#link_logoff#}</a></li>
-{else}
-<li{$create_account_current}><a href="create_account.php">Регистрация</a><span class="menu-separator"></span></li>
-<li{$login_current}><a href="{$login}">{#link_login#}</a></li>
-{/if}
-{$box_CURRENCIES}
-</ul>
-<!-- /меню акаунт -->
-</div>
-
-<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 head-logo"><a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" /></a></div>
-
-<div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
-<div class="head-phone"><i class="fa fa-phone" aria-hidden="true"></i> <span>{$smarty.const.STORE_TELEPHONE}</span></div>
-{$box_SEARCH}
-</div>
-
-<div class="col-xs-7 col-sm-4 col-md-3 col-lg-3 head-cart">
-<div class="head-cart-block">
-{$box_CART}
-<div class="visible-xs head-search-block pull-right"><a href="advanced_search.php"><i class="fa fa-search" aria-hidden="true"></i></a></div>
-<div class="visible-xs head-login-block pull-right"><a href="account.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
-</div>
-<div class="clearfix"></div>
-<div class="head-work">Наше время работы:<br />Пн-Пт: 9.00-18.00<br />Сб-Вс: выходной</div>
-</div>
-<div class="clearfix"></div>
-</div>
-</div>
-
-</div>
-</header>
-<!-- /шапка -->
 <!-- центральная секция -->
 <div class="container">
-<div class="row">
-{if in_array($smarty.server.REQUEST_URI, array('/_bootstrap/', '/_bootstrap/index.php', '/_bootstrap/index.php?currency=USD', '/_bootstrap/index.php?currency=RUR'))}
-{if $BANNER or $BANNER1 or $BANNER2 or $BANNER3 or $BANNER4}
-<div class="col-xs-12 slider-banners">
-<div id="carousel-Banners" class="carousel slide" data-ride="carousel">
-<!-- Indicators -->
-<meta content="{counter start=-1}">
-<ol class="carousel-indicators">
-{if $BANNER}<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>{/if}
-{if $BANNER1}<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>{/if}
-{if $BANNER2}<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>{/if}
-{if $BANNER3}<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>{/if}
-{if $BANNER4}<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>{/if}
-</ol>
-
-<!-- Wrapper for slides -->
-<div class="carousel-inner">
-{if $BANNER}<div class="item">{$BANNER}</div>{/if}
-{if $BANNER1}<div class="item">{$BANNER1}</div>{/if}
-{if $BANNER2}<div class="item">{$BANNER2}</div>{/if}
-{if $BANNER3}<div class="item">{$BANNER3}</div>{/if}
-{if $BANNER4}<div class="item">{$BANNER4}</div>{/if}
-</div>
-
-<!-- Controls -->
-<a class="left carousel-control" href="#carousel-Banners" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-Banners" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-
-{literal}
-<script>
-$(document).ready(function(){
-    $("ol.carousel-indicators li").first().addClass('active');
-    $(".item").first().addClass('active');
-});
-</script>
-{/literal}
-</div>
-</div>
-<div class="clearfix"></div>
-{/if}
-{/if}
-
-<!-- Навигация -->
-{if $navtrail}<div class="col-xs-12"><div class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><a href="{$mainpage}">Главная</a> &nbsp;/&nbsp; {$navtrail}</div></div>{/if}
-<!-- Навигация - конец -->
-<!-- центральный контент -->
-<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9 col-sm-push-4 col-md-push-3 col-lg-push-3 main-content">{$main_content}</div>
-<!-- /центральный контент -->
-<!-- левая колонка -->
-<aside class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-sm-pull-8 col-md-pull-9 col-lg-pull-9">
-{$_box_CATEGORIES_LEFT}
-{$box_CATEGORIES}
-{$box_FILTERS}
-{$box_MANUFACTURERS}
-{$box_ADD_QUICKIE}
-{$box_LAST_VIEWED}
-{$box_SPECIALS}
-{$box_SPECIALS_MULTIPRODUCT}
-{$box_FEATURED}
-{$box_FEATURED_MULTIPRODUCT}
-{$box_WHATSNEW}
-{$box_WHATSNEW_MULTIPRODUCT}
-{$box_REVIEWS}
-{$box_BESTSELLERS}
-{$box_ARTICLESNEW}
-{$box_ARTICLES}
-{$box_AUTHORS}
-{$box_LATESTNEWS}
-{$box_MANUFACTURERS_INFO}
-{$box_FAQ}
-{$box_LANGUAGES}
-{$box_DOWNLOADS}
-{$box_AFFILIATE}
-{$box_NEWSLETTER}
-{$box_INFOBOX}
-{$box_LOGIN}
-{$box_ADMIN}
-</aside>
-<!-- /левая колонка -->
-</div>
+	<div class="row">
+		{if in_array($smarty.server.REQUEST_URI, array('/_bootstrap/', '/_bootstrap/index.php', '/_bootstrap/index.php?currency=USD', '/_bootstrap/index.php?currency=RUR'))}
+			{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/slider/{$smarty.const.DEFAULT_SLIDER}.html"}
+		{/if}		
+		<!-- Навигация -->
+		{if $navtrail}
+		<div class="col-xs-12">
+			<div class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><a href="{$mainpage}">Главная</a> &nbsp;/&nbsp; {$navtrail}</div>
+		</div>
+		{/if}
+		<!-- Навигация - конец -->
+		<!-- центральный контент -->
+		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9 col-sm-push-4 col-md-push-3 col-lg-push-3 main-content">
+			{$main_content}
+		</div>
+		<!-- /центральный контент -->
+		<!-- левая колонка -->
+		<aside class="col-xs-12 col-sm-4 col-md-3 col-lg-3 col-sm-pull-8 col-md-pull-9 col-lg-pull-9">
+			{$_box_CATEGORIES_LEFT}
+			{$box_CATEGORIES}
+			{$box_FILTERS}
+			{$box_MANUFACTURERS}
+			{$box_ADD_QUICKIE}
+			{$box_LAST_VIEWED}
+			{$box_SPECIALS}
+			{$box_SPECIALS_MULTIPRODUCT}
+			{$box_FEATURED}
+			{$box_FEATURED_MULTIPRODUCT}
+			{$box_WHATSNEW}
+			{$box_WHATSNEW_MULTIPRODUCT}
+			{$box_REVIEWS}
+			{$box_BESTSELLERS}
+			{$box_ARTICLESNEW}
+			{$box_ARTICLES}
+			{$box_AUTHORS}
+			{$box_LATESTNEWS}
+			{$box_MANUFACTURERS_INFO}
+			{$box_FAQ}
+			{$box_LANGUAGES}
+			{$box_DOWNLOADS}
+			{$box_AFFILIATE}
+			{$box_NEWSLETTER}
+			{$box_INFOBOX}
+			{$box_LOGIN}
+			{$box_ADMIN}
+		</aside>
+		<!-- /левая колонка -->
+	</div>
 </div>
 <!-- /центральная секция -->
-
-<footer>
-<div class="container">
-<div class="row">
-<div class="col-xs-12 col-sm-4 col-md-3">{$box_CONTENT}</div>
-<div class="col-xs-12 col-sm-4 col-md-3">{$box_INFORMATION}</div>
-<div class="col-xs-12 col-sm-4 col-md-3">
-<!-- бокс Аккаунт -->
-<div class="navbar navbar-default box boxAccount">
-<!-- заголовок бокса Аккаунт -->
-<div class="navbar-header">
-<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxAccount" aria-expanded="false"></button>
-<span class="box-title">Личный кабинет</span>
-</div>
-<!-- /заголовок бокса Аккаунт -->
-<div class="collapse navbar-collapse" id="collapse-boxAccount">
-<ul>
-{if $smarty.session.customers_status.customers_status_id == 0}
-<li><a href="admin/start.php"><span>Админка</span></a></li>
-{/if}
-{if $smarty.session.customer_id}
-<li><a href="{$account}">{#link_account#}</a></li>
-<li><a href="address_book.php">Адресная книга</a></li>
-<li><a href="account_history.php">Ваши заказы</a></li>
-<li><a href="{$logoff}">{#link_logoff#}</a></li>
-{else}
-<li><a href="create_account.php">Регистрация</a></li>
-<li><a href="{$login}">{#link_login#}</a></li>
-<li><a href="password_double_opt.php">Забыли пароль?</a></li>
-{/if}
-</ul>
-</div>
-</div>
-<!-- /бокс Аккаунт -->
-</div>
-<div class="col-xs-12 col-sm-12 col-md-3">
-<!-- Контакты -->
-<div class="navbar navbar-default box boxContacts">
-<!-- заголовок бокса Контакты -->
-<div class="navbar-header">
-<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxContacts" aria-expanded="false"></button>
-<span class="box-title">Контакты</span>
-</div>
-<!-- /заголовок бокса Контакты -->
-<div class="collapse navbar-collapse" id="collapse-boxContacts" itemscope itemtype="http://schema.org/Organization">
-<meta itemprop="name" content="{$store_name}">
-{if $smarty.const.STORE_NAME_ADDRESS}<p>Адрес: {$smarty.const.STORE_NAME_ADDRESS}<meta itemprop="address" content="{$smarty.const.STORE_NAME_ADDRESS}"></p>{/if}
-{if $smarty.const.STORE_TELEPHONE}<div class="telnumber">Телефоны: {$smarty.const.STORE_TELEPHONE}<meta itemprop="telephone" content="{$smarty.const.STORE_TELEPHONE|strip_tags|replace:' ':''}"></div>{/if}
-<div class="foot-callback"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CallBack">{#call_back#}</button></div>
-{if $smarty.const.STORE_SKYPE}<p>Skype: <span>{$smarty.const.STORE_SKYPE}</span></p>{/if}
-{if $smarty.const.STORE_ICQ}<p>ICQ: <span>{$smarty.const.STORE_ICQ}</span></p>{/if}
-</div>
-</div>
-<!-- /Контакты -->
-</div>
-</div>
-</div>
-<!-- копирайт -->
-<div class="copyright">
-<div class="container">
-<div class="row">
-<div class="col-xs-12  text-center">
-Copyright © 2017{php}if (date('Y') != '2017') echo '-'.date('Y');{/php}. <a href="{$mainpage}">{$store_name}</a>
-</div>
-</div>
-</div>
-</div>
-</footer>
-<div id="back-top" style="display: block;"><a href="#top" class="btn btn-primary"><i class="fa fa-angle-up"></i></a></div>
-<!-- Modal Товар в корзине -->
-<div class="modal fade" id="ProductAdded" role="dialog">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal">&times;</button>
-<h4 class="modal-title">{#product_added#}</h4>
-</div>
-<div class="modal-body">{#text_product_added#}</div>
-<div class="modal-footer">
-<button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-default">{#link_continue#}</button>
-<a href="shopping_cart.php" class="btn btn-primary">{#link_in_cart#}</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Modal Обратный звонок -->
-<div class="modal fade" id="CallBack" role="dialog">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal">&times;</button>
-<h4 class="modal-title">{#call_back#}</h4>
-</div>
-<form name="sentMessage" class="form form-register1" id="contactForm" novalidate>
-<div class="modal-body">
-<div class="control-group">
-<div class="controls">
-<label for="name">{#text_name#}:</label>
-<input type="text" class="form-control" placeholder="{#placeholder_name#}" id="name" required data-validation-required-message="{#required_name#}" />
-<div class="help-block"></div>
-</div>
-</div>  
-<div class="control-group">
-<div class="controls">
-<label for="name">{#label_phone#}:</label>
-<input type="text" class="form-control" placeholder="{#placeholder_phone#}" id="phone" required data-validation-required-message="{#required_phone#}" />
-</div>
-</div>
-<div class="alert alert-info privacy" id="privacy" role="alert">{$smarty.const.PRIVACY_TEXT}</div>
-</div>
-<div class="modal-footer">
-<div id="success"></div> <!-- For success/fail messages -->
-<div id="sendbutton"><button type="submit" class="btn btn-primary">{#text_send#}</button></div>
-</div>
-<!-- блок антиспам -->
-<div class="form-anti-bot" style="clear:both;">
-<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
-<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
-<input type="text" name="anti_bot_q" id="anti_bot_q" size="30" value="19" />
-</div>
-<div class="form-anti-bot-2" style="display:none;">
-<strong>Leave this field empty</strong> <span class="required">*</span>
-<input type="text" name="anti_bot_e_email_url" id="anti_bot_e_email_url" size="30" value=""/>
-</div>
-<!-- /блок антиспам -->
-</form>
-</div>
-</div>
-</div>
-<!-- /Modal Обратный звонок -->
-
-<!-- Modal Быстрый заказ -->
-<div class="modal fade" id="BuyOne" tabindex="-1" role="dialog" aria-labelledby="BuyOneTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<div class="h5 modal-title" id="BuyOneTitle">Быстрый заказ</div>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-</div>
-<form name="sentMessage" class="form form-register1" id="buyoneForm" novalidate>
-<div class="modal-body">
-<p>Напишите свой телефон и жмите "Отправить". Мы вам перезвоним и сами оформим заказ!</p>
-<div class="control-group">
-<div class="input-group controls mb-3">
-<input type="text" class="form-control" placeholder="Ваше имя" id="namebo" aria-describedby="user-name" required data-validation-required-message="{#required_name#}" />
-<div class="input-group-append"><span class="input-group-text" id="user-name"><i class="fas fa-user"></i></span></div>
-<div class="help-block w-100"></div>
-</div>
-</div>
-<div class="control-group">
-<div class="input-group controls mb-3">
-<input type="text" class="form-control" placeholder="Ваш телефон" id="phonebo" aria-describedby="user-phonebo" required data-validation-required-message="{#required_phone#}" />
-<div class="input-group-append"><span class="input-group-text" id="user-phonebo"><i class="fas fa-phone"></i></span></div>
-<div class="help-block w-100"></div>
-</div>
-</div>
-<!-- данные по товару -->
-<input type="hidden" name="productbo" id="productbo" value="" />
-<input type="hidden" name="product_urlbo" id="product_urlbo" value="" />
-<!-- /данные по товару -->
-<div class="alert alert-info privacy" id="privacybo" role="alert">{$smarty.const.PRIVACY_TEXT}</div>
-</div>
-
-<div class="modal-footer">
-<div id="successbo"></div> <!-- For success/fail messages -->
-<div id="sendbuttonbo"><button type="submit" class="btn btn-primary btn-block">Отправить</button></div>
-</div>
-<!-- блок антиспам -->
-<div class="form-anti-botbo" style="clear:both;">
-<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
-<input type="hidden" name="anti-bot-abo" id="anti-bot-abo" value="{$smarty.now|date_format:"%Y"}" />
-<input type="text" name="anti_bot_qbo" id="anti_bot_qbo" size="30" value="19" />
-</div>
-<div class="form-anti-bot-2bo" style="display:none;">
-<strong>Leave this field empty</strong> <span class="required">*</span>
-<input type="text" name="anti_bot_e_email_urlbo" id="anti_bot_e_email_urlbo" size="30" value=""/>
-</div>
-<!-- /блок антиспам -->
-</form>
-</div>
-</div>
-</div>
-<!-- /Modal Быстрый заказ -->
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/footer/footer.html"}

@@ -1,0 +1,54 @@
+<header>
+	<div class="head-menu-line"></div>
+	<div class="navbar navbar-default">
+		<div class="container"> 
+			<div class="row">
+			<!-- меню акаунт -->
+			<div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-Account" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></button></div>
+			<div class="collapse navbar-collapse" id="collapse-Account">
+			<!-- общее меню -->
+			<ul class="nav navbar-nav head-menu">
+			<li><a href="{$mainpage}" class="home-link"><span>{#text_mainpage#}</span></a></li>
+			{$box_CATEGORIES2}
+			<li{$content_4_current}><a href="shop_content.php?coID=4"><span>О магазине</span></a></li>
+			<li{$content_1_current}><a href="shop_content.php?coID=1"><span>Доставка и оплата</span></a></li>
+			<li{$content_6_current}><a href="shop_content.php?coID=6"><span>Гарантия</span></a></li>
+			<li{$articles_current}><a href="articles.php"><span>Статьи</span></a></li>
+			<li{$content_7_current}><a href="shop_content.php?coID=7"><span>Контакты</span></a></li>
+			</ul>
+			<!-- меню акаунт -->
+			<ul class="nav navbar-nav head-login">
+			{if $smarty.session.customer_id}
+			<li{$account_current}><a href="{$account}">{#link_account#}</a><span class="menu-separator"></span></li>
+			<li{$logoff_current}><a href="{$logoff}">{#link_logoff#}</a></li>
+			{else}
+			<li{$create_account_current}><a href="create_account.php">Регистрация</a><span class="menu-separator"></span></li>
+			<li{$login_current}><a href="{$login}">{#link_login#}</a></li>
+			{/if}
+			{$box_CURRENCIES}
+			</ul>
+			<!-- /меню акаунт -->
+			</div>
+
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 head-logo"><a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" /></a></div>
+
+			<div class="col-xs-12 col-sm-5 col-md-6 col-lg-6">
+			<div class="head-phone"><i class="fa fa-phone" aria-hidden="true"></i> <span>{$smarty.const.STORE_TELEPHONE}</span></div>
+			{$box_SEARCH}
+			</div>
+
+			<div class="col-xs-7 col-sm-4 col-md-3 col-lg-3 head-cart">
+			<div class="head-cart-block">
+			{$box_CART}
+			<div class="visible-xs head-search-block pull-right"><a href="advanced_search.php"><i class="fa fa-search" aria-hidden="true"></i></a></div>
+			<div class="visible-xs head-login-block pull-right"><a href="account.php"><i class="fa fa-user" aria-hidden="true"></i></a></div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="head-work">Наше время работы:<br />Пн-Пт: 9.00-18.00<br />Сб-Вс: выходной</div>
+			</div>
+			<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- /шапка -->

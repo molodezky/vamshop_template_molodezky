@@ -1,0 +1,18 @@
+{config_load file="$language/template_lang_$language.conf" section="bandle_products"}
+<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 Product ProductBandle-list">
+<div class="Product-int">
+{if $module_data.PRODUCTS_IMAGE}
+<div class="thumbnail ProductImage">
+{if $module_data.PRODUCTS_LABEL}<div class="ProductLabel">{$module_data.PRODUCTS_LABEL}</div>{/if}
+{if $module_data.PRODUCTS_SPECIAL}<div class="labelSpecials"><span class="label label-default">- {$module_data.PRODUCTS_SPECIAL|round}%</span></div>{/if}
+<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a>
+</div>
+{/if}
+<div class="ProductName"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></div>
+<div class="ProductRating">{if $module_data.REVIEWS_TOTAL > 0}{$module_data.REVIEWS_STAR_RATING}{/if}</div>
+<div class="ProductPrice" data-price-plain="{$module_data.PRODUCTS_PRICE_PLAIN*$module_data.PRODUCTS_BANDLE_QTY}">{$module_data.PRODUCTS_PRICE}</div>
+<div class="ProductQuantity">{#text_qty_bandle#}<span>{$module_data.PRODUCTS_BANDLE_QTY}</span></div>
+<div class="clearfix"></div>
+</div>
+</div>
+		

@@ -105,7 +105,8 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 			$info->assign('PRODUCTS_SHIPPING_LINK',$main->getShippingLink());
 		}
 		$info->assign('PRODUCTS_MODEL', $product->data['products_model']);
-		$info->assign('PRODUCTS_URL_INFO', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])));		
+		$info->assign('PRODUCTS_URL_INFO', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])));
+		$info->assign('PRODUCTS_REVIEWS_URL', vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$product->data['products_id']));
 		$info->assign('PRODUCTS_EAN', $product->data['products_ean']);
 		$info->assign('PRODUCTS_QUANTITY', $product->data['products_quantity']);
 		$info->assign('PRODUCTS_LENGTH', $product->data['products_length']);
@@ -127,7 +128,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		}
 		for($i=0;$i<(5 - number_format($product->getReviewsRating()));$i++)	{
 		$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
-		}        
+		} 
 
 		$info->assign('STAR_RATING', $star_rating);
 		$info->assign('REVIEWS_RATING', $product->getReviewsRating());
@@ -165,9 +166,9 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 
 		$info->assign('CATEGORY', $cat_data['categories_name']);
 		$info->assign('CATEGORY_ID', $current_category_id);
-    $info->assign('MANUFACTURER_ID',$manufacturer['manufacturers_id']);
-    $info->assign('MANUFACTURER_IMAGE',$manufacturer['manufacturers_image']);		
-    $info->assign('MANUFACTURER',$manufacturer['manufacturers_name']);
+      $info->assign('MANUFACTURER_ID',$manufacturer['manufacturers_id']);
+      $info->assign('MANUFACTURER_IMAGE',$manufacturer['manufacturers_image']);
+      $info->assign('MANUFACTURER',$manufacturer['manufacturers_name']);
 
 		if ($product->data['products_image'] != '')
 			$image = DIR_WS_INFO_IMAGES.$product->data['products_image'];

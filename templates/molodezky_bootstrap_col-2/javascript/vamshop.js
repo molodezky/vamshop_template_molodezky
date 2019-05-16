@@ -35,6 +35,9 @@ $(window).load(function() {
 
 // смена табличного вывода на лист
 window.onload = function() {
+	if(document.getElementById('productlist')){
+
+
     if (localStorage.getItem('productsheet') !== null && localStorage.getItem('productsheet') !== 'sheettable') {
         var productlist = localStorage.getItem('productsheet');
         document.getElementById('productlist').className = productlist;
@@ -52,6 +55,8 @@ window.onload = function() {
         document.getElementById('productlist').className = 'sheetlist';
         localStorage.setItem('productsheet','sheetlist');
     }
+ }
+	
 }
 
 // антиспам Перезвоните мне

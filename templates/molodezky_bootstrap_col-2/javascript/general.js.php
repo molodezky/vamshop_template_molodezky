@@ -55,21 +55,41 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) or strstr($PHP_SELF, FILENAME_SHOPP
  
 <script>
 $(document).ready(function() {
-                $('.minus').click(function () {
-                        var $input = $(this).parent().find('input[type=text]');
-                        var count = parseInt($input.val()) - 1;
-                        count = count < 1 ? 1 : count;
-                        $input.val(count);
-                        $input.change();
-                        return false;
-                });
+	$('.minus').click(function () {
+  	var $input = $(this).parent().find('input[type=text]');
+    var count = parseInt($input.val()) - 1;
+    count = count < 1 ? 1 : count;
+    $input.val(count);
+    $input.change();
+    return false;
+   });
  
-                $('.plus').click(function () {
-                        var $input = $(this).parent().find('input[type=text]');
-                        $input.val(parseInt($input.val()) + 1);
-                        $input.change();
-                        return false;
-                });
+ $('.plus').click(function () {
+ 	var $input = $(this).parent().find('input[type=text]');
+  $input.val(parseInt($input.val()) + 1);
+  $input.change();
+  return false;
+ });
+});
+</script>
+
+<?php
+}
+?>
+
+<?php
+if (strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
+?>
+ 
+<script>
+$(document).ready( function() {
+	$('#cart_quantity :input').change(function(){ 
+		$('#cart_quantity').submit(); 
+	});
+	$('#cart_quantity :checkbox').click(function() {
+		$('#cart_quantity').submit();
+	});
+
 });
 </script>
 
