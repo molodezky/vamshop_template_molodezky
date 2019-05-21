@@ -3,28 +3,7 @@
 <div class="h1"><a href="{$REVIEWS_ALL_LINK}">{#heading_reviews#}</a></div>
 <div class="row">
 {foreach name=aussen item=module_data from=$module_content}
-<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 Product">
-<div class="Product-int">
-{if $module_data.PRODUCT.PRODUCTS_IMAGE}
-<div class="thumbnail ProductImage">
-{if $module_data.PRODUCT.PRODUCTS_LABEL}<div class="ProductLabel">{$module_data.PRODUCT.PRODUCTS_LABEL}</div>{/if}
-{if $module_data.PRODUCT.PRODUCTS_SPECIAL}<div class="labelSpecials"><span class="label label-default">- {$module_data.PRODUCT.PRODUCTS_SPECIAL|round}%</span></div>{/if}
-<a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}" /></a>
-</div>
-{/if}
-<div class="ProductName"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></div>
-<div class="ProductReview">
-<div class="ProductReview-title">{#heading_product_reviews#}</div>
-{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
-</div>
-<div class="ProductRating">{if $module_data.PRODUCT.REVIEWS_TOTAL > 0}{$module_data.PRODUCT.REVIEWS_STAR_RATING}{/if}</div>
-<div class="ProductPrice">{$module_data.PRODUCT.PRODUCTS_PRICE}</div>
-<div class="ProductQuantity"><span class="{if $module_data.PRODUCT.PRODUCTS_QUANTITY < 1}qty-no{elseif $module_data.PRODUCT.PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $module_data.PRODUCT.PRODUCTS_QUANTITY < 1}отсутствует{elseif $module_data.PRODUCT.PRODUCTS_QUANTITY < 10}под заказ{else}в наличии{/if}</span></div>
-<div class="ProductMore"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}" class="btn btn-info">Подробнее</a></div>
-{if $module_data.PRODUCT.PRODUCTS_QUANTITY > 0}<div class="ProductButton">{$module_data.PRODUCT.PRODUCTS_BUTTON_BUY_NOW}</div>{/if}
-<div class="clearfix"></div>
-</div>
-</div>
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-review-simple.html"}
 {/foreach}
 <div class="clearfix"></div>
 </div>

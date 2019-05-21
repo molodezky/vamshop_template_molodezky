@@ -16,7 +16,7 @@
  11. \includes\modules\reviews_all.php - рейтинг звездами выведен шрифтом FontAwesome 4.x. Добавлены контурные звезды для рейтинга меньше 5.
  12. \inc\vam_draw_input_field.inc.php, \inc\vam_draw_pull_down_menu.inc.php, \inc\vam_draw_textarea_field.inc.php - элементам форм добавлены классы bootstrap
  13. \inc\vam_image_button.inc.php, \inc\vam_image_submit.inc.php - кнопкам добавлены классы bootstrap
- 14. \media\content\sitemap.php - закомментирован вывод третьего и ниже уровня категорий
+ 14. \media\content\sitemap.php - устаревший файл, можно удалить. Вместо него используем \media\content\catalog.php - сменить в информационной странице с ID8, саму страницу переименовать в "Каталог".
  15. \article_info.php - рейтинг звездами выведен шрифтом FontAwesome 4.x. Добавлены контурные звезды для рейтинга меньше 5.
  16. \article.php - рейтинг звездами выведен шрифтом FontAwesome 4.x. Добавлены контурные звезды для рейтинга меньше 5.
  17. \article_new.php - рейтинг звездами выведен шрифтом FontAwesome 4.x. Добавлены контурные звезды для рейтинга меньше 5.

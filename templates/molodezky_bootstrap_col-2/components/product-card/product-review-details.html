@@ -1,0 +1,28 @@
+<div class="ReviewItem" itemprop="review" itemscope itemtype="http://schema.org/Review">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+<div class="thumbnail ReviewImage"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}" border="0" /></a></div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
+<div class="ReviewProduct" itemprop="itemReviewed"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></div>
+<div class="ReviewAuthor">
+<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.REVIEW.AUTHOR}</span></span> | <span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.REVIEW.DATE}</span>
+</div>
+<span class="bold">{#text_text#}</span>
+<div itemprop="reviewBody">
+{if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
+{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:240:"...":true}
+{else}
+{$module_data.REVIEW.TEXT|strip_tags}
+{/if}
+</div>
+<div>{#text_rating#} <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.REVIEW.RATING}">{$module_data.REVIEW.STAR_RATING}</span></span></div>
+{$module_data.PRODUCT.PRODUCTS_BUTTON_BUY_NOW}
+{if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}<a href="{$module_data.REVIEW.REVIEWS_LINK}" class="btn btn-info">{#text_read#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>{/if}
+
+{if $smarty.SERVER.SCRIPT_NAME != '/product_reviews.php'}<a href="{$module_data.REVIEW.REVIEWS_ALL_LINK}" class="btn btn-info">{#text_all#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>{/if}
+</div>
+<div class="clearfix"></div>
+</div>
+</div>

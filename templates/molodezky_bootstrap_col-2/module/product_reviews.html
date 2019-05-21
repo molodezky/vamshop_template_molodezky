@@ -1,14 +1,6 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
 <h1>{#heading_reviews#} {$PRODUCTS_NAME}</h1>
-<div class="page-content">
-<div>
-<span class="bold">{#title_nr#}</span>&nbsp;&nbsp;&nbsp;<span class="bold">{#title_author#}</span>&nbsp;&nbsp;&nbsp;<span class="bold">{#title_rating#}</span>&nbsp;&nbsp;&nbsp;<span class="bold">{#title_date#}</span>
-</div>
-
-{foreach name=aussen item=module_data from=$module_content} 
-<div itemprop="review" itemscope itemtype="http://schema.org/Review">
-{$module_data.ID}&nbsp;&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span>&nbsp;&nbsp;&nbsp;<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.STAR_RATING}</span></span>&nbsp;&nbsp;&nbsp;<span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE}</span>&nbsp;&nbsp;&nbsp;<span itemprop="reviewBody">{$module_data.TEXT}</span>
-</div>
-{/foreach} 
-
-</div>
+{foreach name=aussen item=module_data from=$module_content}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-review-details.html"}
+{/foreach}
+<div><a class="btn btn-primary" href="{$REVIEWS_ALL_LINK}">{#text_all#}</a></div>
