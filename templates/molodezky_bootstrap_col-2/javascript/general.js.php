@@ -135,7 +135,9 @@ if (strstr($PHP_SELF, FILENAME_CONTENT) && $_GET['coID'] == 7) {
 $vamTemplate->assign('content_7_current',' class="current"');
 }
 ?>
-
+<?php
+	if (ENABLE_SERVICE_WORKER == 'true') {
+?>
 <script>
 
 // Register service worker to control making site work offline
@@ -152,7 +154,7 @@ if('serviceWorker' in navigator) {
 
 let deferredPrompt;
 const addBtn = document.querySelector('.a2hs-button');
-addBtn.style.display = 'none';
+//addBtn.style.display = 'none';
 
 window.addEventListener('beforeinstallprompt', (e) => {
   // Prevent Chrome 67 and earlier from automatically showing the prompt
@@ -182,3 +184,19 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 </script>
+<?php
+	}
+?>
+<?php 
+
+//PHP < 7 compatibility 
+
+function dirname_r($path, $count=1){
+    if ($count > 1){
+       return dirname(dirname_r($path, --$count));
+    }else{
+       return dirname($path);
+    }
+}
+
+?>

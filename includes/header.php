@@ -41,7 +41,13 @@
 
 <link rel="shortcut icon" href="<?php echo DIR_WS_CATALOG; ?>favicon.ico"/>
 <link rel="manifest" href="<?php echo DIR_WS_CATALOG; ?>manifest.json">
+<?php
+if (ENABLE_SERVICE_WORKER == 'true') {
+?>
 <script src="<?php echo DIR_WS_CATALOG; ?>sw.js" defer></script>
+<?php
+ }
+?>
 
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
 
@@ -205,7 +211,7 @@ $vamTemplate->assign('error','
 
   }
 
-// Метки для закладок
+// РњРµС‚РєРё РґР»СЏ Р·Р°РєР»Р°РґРѕРє
 
 if (strstr($PHP_SELF, FILENAME_DEFAULT) && !$_GET['cat']) {
 $vamTemplate->assign('main_current',' class="current"');
@@ -240,7 +246,7 @@ $vamTemplate->assign('cart_total', $_SESSION['cart']->show_total());
 
 $vamTemplate->assign('current_category_id', $current_category_id);
 	
-// /Метки для закладок
+// /РњРµС‚РєРё РґР»СЏ Р·Р°РєР»Р°РґРѕРє
 
   include(DIR_WS_INCLUDES.FILENAME_BANNER);
 ?>

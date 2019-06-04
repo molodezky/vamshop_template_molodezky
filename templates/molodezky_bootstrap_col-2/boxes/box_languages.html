@@ -1,14 +1,15 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 <!-- Бокс языки -->
-<div class="navbar navbar-default box oxLanguages">
-<!-- заголовок бокса языки -->
-<div class="navbar-header">
-<button type="button" class="navbar-toggle collapsed box-toggle" data-toggle="collapse" data-target="#collapse-boxLanguages" aria-expanded="false"></button>
-<span class="box-title">{#heading_languages#}</span>
-</div>
-<!-- /заголовок бокса языки -->
-<div class="collapse navbar-collapse" id="collapse-boxLanguages">
+<li class="dropdown head-currencies"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">{if $smarty.session.language == 'russian'}
+RU
+{else if  $smarty.session.language == 'ukrainian'}
+UA
+{else}
+{$smarty.session.language}
+{/if}
+<span class="caret"></span></a>
+<ul class="dropdown-menu {$smarty.session.language}">
 {$BOX_CONTENT}
-</div>
-</div>
+</ul>
+</li>
 <!-- /Бокс языки -->
