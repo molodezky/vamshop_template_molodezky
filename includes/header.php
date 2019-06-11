@@ -211,7 +211,7 @@ $vamTemplate->assign('error','
 
   }
 
-// РњРµС‚РєРё РґР»СЏ Р·Р°РєР»Р°РґРѕРє
+// Метки для закладок
 
 if (strstr($PHP_SELF, FILENAME_DEFAULT) && !$_GET['cat']) {
 $vamTemplate->assign('main_current',' class="current"');
@@ -246,7 +246,7 @@ $vamTemplate->assign('cart_total', $_SESSION['cart']->show_total());
 
 $vamTemplate->assign('current_category_id', $current_category_id);
 	
-// /РњРµС‚РєРё РґР»СЏ Р·Р°РєР»Р°РґРѕРє
+// /Метки для закладок
 
   include(DIR_WS_INCLUDES.FILENAME_BANNER);
 ?>
