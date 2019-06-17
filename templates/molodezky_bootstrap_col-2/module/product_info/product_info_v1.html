@@ -140,7 +140,8 @@ pager:false
 <li class="active"><a href="#description" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_DESCRIPTION}</a></li>
 {if $extra_fields_data or $specifications}<li><a href="#propertis" data-toggle="tab">Характеристики</a></li>{/if}
 <li><a href="#reviews" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_REVIEWS}{if $REVIEWS_TOTAL > 0} ({$REVIEWS_TOTAL}){/if}</a></li>
-<li><a href="#shipping" data-toggle="tab">Доставка и оплата</a></li>
+<li><a href="#shipping" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_SHIPPING}</a></li>
+<li><a href="#payment" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_PAYMENT}</a></li>
 </ul>
 <div class="tab-content">
 <div class="tab-pane inner fade in notop active" id="description">
@@ -177,21 +178,8 @@ pager:false
 {/if}
 
 <div class="tab-pane inner fade in notop" id="reviews">{$MODULE_products_reviews}</div>
-<div class="tab-pane inner fade in notop" id="shipping">
-{php}
-$shop_content_query = vamDBquery("SELECT
-                      content_title,
-                      content_heading,
-                      content_text,
-                      content_file
-                      FROM ".TABLE_CONTENT_MANAGER."
-                      WHERE content_group='13'
-                      ".$group_check."
-                      AND languages_id='".$_SESSION['languages_id']."'");
-$shop_content_data = vam_db_fetch_array($shop_content_query,true);
-echo $shop_content_data['content_text'];
-{/php}
-</div>
+<div class="tab-pane inner fade in notop" id="shipping">{$text_shipping_info}</div>
+<div class="tab-pane inner fade in notop" id="payment">{$text_payment_info}</div>
 </div>
 
 </section>

@@ -78,7 +78,7 @@ $(document).ready(function() {
 ?>
 
 <?php
-if (strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
+if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
  
 <script>

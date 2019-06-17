@@ -275,8 +275,14 @@ $(function($){
 {/if}
 
 {if $shipping=='true'}
+{if $smarty.const.MODULE_SHIPPING_PICKPOINT_STATUS == 'True'}
 <input type="hidden" name="to_pickpoint_id" id="to_pickpoint_id" value="">
 <input type="hidden" name="to_pickpoint_address" id="to_pickpoint_address" value="">
+{/if}
+{if $smarty.const.MODULE_SHIPPING_BOXBERRY_STATUS == 'True'}
+<input type="hidden" name="to_boxberry_id" id="to_boxberry_id" value="">
+<input type="hidden" name="to_boxberry_address" id="to_boxberry_address" value="">
+{/if}
 <div id="shipping_modules_box" class="panel panel-default">
 <div class="panel-heading">{$TITLE_SHIPPING_MODULES}</div>
 <div class="panel-body">
@@ -293,6 +299,12 @@ $(function($){
 {$PAYMENT_BLOCK}
 </div>
 </div> <!--div end payment_options-->
+
+{if $GV_COVER!='true'}
+{$module_gift}
+{else}
+{#text_gccover#}
+{/if}
 
 {if $comments=='1'}
 <div id="comment_box" class="panel panel-default">

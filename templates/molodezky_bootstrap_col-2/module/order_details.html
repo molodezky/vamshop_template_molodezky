@@ -23,11 +23,11 @@
 {if $module_data.PRODUCTS_STOCK}В наличии: {$module_data.PRODUCTS_STOCK}{/if}
 </div>
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-2 ShoppingCartListQTY">
-<span class="minus">-</span> {$module_data.PRODUCTS_QTY} <span class="plus">+</span>
+{if $smarty.const.AJAX_CART == 'true'}{$module_data.MINUS}{/if} {$module_data.PRODUCTS_QTY} {if $smarty.const.AJAX_CART == 'true'}{$module_data.PLUS}{/if}
 </div>
 <div class="hidden-xs hidden-sm hidden-md col-lg-1 ShoppingCartListPrice">{$module_data.PRODUCTS_SINGLE_PRICE}</div>
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 ShoppingCartListTotal">{$module_data.PRODUCTS_PRICE}</div>
-<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 ShoppingCartListDel"><label><span class="del"><i class="fa fa-times-circle"></i>{$module_data.BOX_DELETE}</span></label></div>
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 ShoppingCartListDel">{$module_data.BOX_DELETE}</div>
 <div class="clearfix"></div>
 </div>
 {/foreach}
