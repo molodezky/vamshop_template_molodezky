@@ -30,7 +30,7 @@ if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/colorbox/i18n/jquery.colo
 	
 $(document).ready(function(){
   $(".lightbox").colorbox({rel:"lightbox", title: false});
-  $(".iframe").colorbox({iframe:true, width:"30%", height:"80%"});
+  $(".iframe").colorbox({iframe:true, width:"96%", height:"80%", maxWidth: "960px"});
 });
 </script>
 <?php
@@ -39,3 +39,7 @@ $(document).ready(function(){
 
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop.js'; ?>"></script>
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bootstrap/jqBootstrapValidation/jqBootstrapValidation.js'; ?>"></script>
+
+<?php
+if (file_exists(dirname(__FILE__) . '/local_footer.js.php')) include('local_footer.js.php');
+?>

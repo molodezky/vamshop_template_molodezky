@@ -24,6 +24,9 @@
   if ($banner = vam_banner_exists('dynamic', 'banner')) {
   $vamTemplate->assign('BANNER',vam_display_banner('static', $banner));
   }
+  if ($banner = vam_banner_exists('dynamic', 'slider_bootstrap')) {
+  $vamTemplate->assign('slider_bootstrap',vam_display_banners('dynamic', 'slider_bootstrap'));
+  }	
   if ($banner = vam_banner_exists('dynamic', 'banner1')) {
   $vamTemplate->assign('BANNER1',vam_display_banner('static', $banner));
   }

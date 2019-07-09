@@ -34,7 +34,6 @@
 </div>
 <div class="clearfix"></div>
 <input type="hidden" name="cat" value="{$smarty.get.cat}" />
-<div class="compareItem"><button type="submit" class="btn btn-primary"><i class="fa fa-exchange" aria-hidden="true"></i> (<span id="count"></span>)</button></div>
 
 {if $PRODUCTS_COUNT >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
 <span class="SortCount">{#text_products_per_page#} {if $PRODUCTS_COUNT > 9}<a href="{$LINK_PAGE}9">9</a>{/if}{if $PRODUCTS_COUNT > 21} | <a href="{$LINK_PAGE}21">21</a>{/if}{if $PRODUCTS_COUNT > 48} | <a href="{$LINK_PAGE}48">48</a>{/if}{if $PRODUCTS_COUNT > 99} | <a href="{$LINK_PAGE}99">99</a>{/if}</span>
@@ -67,7 +66,7 @@
 
 <div id="productlist" class="sheettable">
 <div class="row">
-{if $CATEGORIES_NAME}<form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
 {foreach name=aussen item=module_data from=$module_content}
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 Product">
 <div class="Product-int">
@@ -107,7 +106,7 @@
 <div class="ProductButton">{$module_data.PRODUCTS_BUTTON_BUY_NOW}</div>
 <div class="ProductBuyOne"><a class="btn btn-primary"  data-toggle="modal" data-name="{$module_data.PRODUCTS_NAME}" data-link="{$module_data.PRODUCTS_LINK}" data-target="#BuyOne">Быстрый заказ</a></div>
 {/if}
-{if $CATEGORIES_NAME}
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <div class="clearfix"></div>
 <div class="ProductCompare"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
 <div class="clearfix"></div>
@@ -117,7 +116,7 @@
 {/foreach}
 
 <div class="clearfix"></div>
-{if $CATEGORIES_NAME}
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <div class="col-xs-12 ProductCompareButton"><input type="hidden" name="cat" value="{$smarty.get.cat}" />{$BUTTON_COMPARE}</div>
 </form>
 {/if}
