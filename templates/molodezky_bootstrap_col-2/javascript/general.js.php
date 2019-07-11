@@ -78,26 +78,6 @@ $(document).ready(function() {
 ?>
 
 <?php
-if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
-?>
- 
-<script>
-$(document).ready( function() {
-	$('#cart_quantity :input').change(function(){ 
-		$('#cart_quantity').submit(); 
-	});
-	$('#cart_quantity :checkbox').click(function() {
-		$('#cart_quantity').submit();
-	});
-
-});
-</script>
-
-<?php
-}
-?>
-
-<?php
 if (strstr($PHP_SELF, FILENAME_PRODUCTS_NEW)) {
 $vamTemplate->assign('products_new_current',' class="current"');
 }

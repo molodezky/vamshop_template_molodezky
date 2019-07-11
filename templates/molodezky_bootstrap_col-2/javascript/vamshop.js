@@ -59,6 +59,24 @@ window.onload = function() {
 	
 }
 
+// переключение в корзине
+ $('#cart_quantity.change-submit :input').change(function(){ $('#cart_quantity.change-submit').submit(); });
+ $('.product-table-quantity__btn').click(function() {
+  var $input=$(this).parent().find('.product-table-quantity__value input.form-control'),
+    val = parseInt($input.val()),
+    min = parseInt($input.attr('min')),
+    max = parseInt($input.attr('max')),
+    step = parseInt($input.attr('step'));
+  if($(this).hasClass('btn-minus')){
+   if (val == min) return false; $input.val(val-step);
+   //var temp = val - step; $input.val(temp >= min ? temp : min);
+  }else{
+   if (val == max) return false; $input.val(val+step);
+   //var temp = val + step; $input.val(temp <= max ? temp : max);
+  }
+  $input.change();
+ });
+
 // антиспам Перезвоните мне
 $(function($){
 
