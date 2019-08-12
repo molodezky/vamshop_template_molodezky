@@ -61,7 +61,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 			// fsk18
 			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
 				if ($product->data['products_fsk18'] == '0') {
-					$info->assign('ADD_QTY', vam_draw_input_field('products_qty', $product->data['products_quantity_min'], 'size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
+					$info->assign('ADD_QTY', vam_draw_input_field('products_qty', $product->data['products_quantity_min'], 'class="col-sm-1 form-control text-center" id="quantity'.$product->data['products_id'].'" size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
 					$info->assign('ADD_CART_BUTTON', vam_image_submit('buy.png', IMAGE_BUTTON_IN_CART, 'id="add_to_cart"'));
 				}
 			} else {
@@ -81,7 +81,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 			$info->assign('SHIPPING_IMAGE', $main->getShippingStatusImage($product->data['products_shippingtime']));
 		}
 		if (AJAX_CART == 'true') {
-		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product'), 'post', 'onsubmit="doAddProduct(this); return false;" class="form-inline"'));
+		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product'), 'post', 'onsubmit="doAddProduct(\'\'); return false;" class="form-inline"'));
 		} else {
 		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product'), 'post', 'class="form-inline"'));
 		}
@@ -126,9 +126,6 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		for($i=0;$i<number_format($product->getReviewsRating());$i++)	{
 		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
 		}
-		for($i=0;$i<(5 - number_format($product->getReviewsRating()));$i++)	{
-		$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
-		} 
 
 		$info->assign('STAR_RATING', $star_rating);
 		$info->assign('REVIEWS_RATING', $product->getReviewsRating());
@@ -168,6 +165,7 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 		$info->assign('CATEGORY_ID', $current_category_id);
       $info->assign('MANUFACTURER_ID',$manufacturer['manufacturers_id']);
       $info->assign('MANUFACTURER_IMAGE',$manufacturer['manufacturers_image']);
+			$info->assign('MANUFACTURER_LINK',vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$manufacturer['manufacturers_id']));
       $info->assign('MANUFACTURER',$manufacturer['manufacturers_name']);
 
 		if ($product->data['products_image'] != '')
@@ -255,7 +253,8 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
   }
 
   $info->assign('extra_fields_data', $extra_fields_data);
-	
+
+
   if (GROUP_CHECK == 'true') {
   $group_check = "and group_ids LIKE '%c_".$_SESSION['customers_status']['customers_status_id']."_group%'";
   }
@@ -283,7 +282,7 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
                       AND languages_id='".$_SESSION['languages_id']."'");
   $shop_content_data_payment = vam_db_fetch_array($shop_content_query_payment,true);
 
-  $info->assign('text_payment_info', $shop_content_data_payment['content_text']);	
+  $info->assign('text_payment_info', $shop_content_data_payment['content_text']);
 
   $info->assign('info_message', $_SESSION['error_cart_msg']);
 
