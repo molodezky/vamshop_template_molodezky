@@ -20,7 +20,7 @@
 </p>
 {/if}
 
-{if $ARTICLE_KEYWORDS_ARRAY_TAGS}
+{if $ARTICLE_KEYWORDS_ARRAY_TAGS|@count > 1}
 <h4>Тэги:</h4> 
 <p>
 {foreach item=tags from=$ARTICLE_KEYWORDS_ARRAY_TAGS}

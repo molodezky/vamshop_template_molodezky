@@ -63,17 +63,13 @@ function reload(){
 </div>
 </div>
 
-<div class="clear"></div>
 <div class="navigation">
-<span class="right">{$BUTTON_SUBMIT}</span>
-{$BUTTON_BACK}
+<div class="row">
+<span class="col-xs-5">{$BUTTON_BACK}</span>
+<span class="col-xs-7 text-right">{$BUTTON_SUBMIT}</span>
 </div>
-<div class="clear"></div>
-
-<br />
-<div>
-{$smarty.const.PRIVACY_TEXT}
 </div>
-
+<div class="clearfix"></div>
+<div class="alert alert-info privacy">{$smarty.const.PRIVACY_TEXT}</div>
 {$FORM_END}
 {/if}

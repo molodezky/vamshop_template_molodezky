@@ -4,7 +4,7 @@
 <p>{#text_no_new_articles#}</p>
 {else}
 {if $AUTHOR_IMAGE}<p><img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}/articles/{$AUTHOR_IMAGE}" class="img-responsive" alt="{$AUTHOR_NAME|htmlentities|strip_tags}" /></p>{/if}
-{if $ARTICLE_KEYWORDS_ARRAY_TAGS}
+{if $ARTICLE_KEYWORDS_ARRAY_TAGS|@count > 1}
 <h4>Теги:</h4> 
 <p>
 {foreach item=tags from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
