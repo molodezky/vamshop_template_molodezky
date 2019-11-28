@@ -37,6 +37,7 @@ h1 a:hover, .h1 a:hover {}
 .modal-dialog-centered {margin-top: 0;margin-bottom: 0;height: 100vh;display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-webkit-flex-direction: column;-ms-flex-direction: column;flex-direction: column;-webkit-box-pack: center;-webkit-justify-content: center;-ms-flex-pack: center;justify-content: center;}
 .modal.fade .modal-dialog-centered {-webkit-transform: translate(0, -100%);transform: translate(0, -100%);}
 .modal.in .modal-dialog-centered {-webkit-transform: translate(0, 0);transform: translate(0, 0);}
+.modal-footer .btn+.btn {margin-bottom: 5px;}
 /* ------------ хлебные крошки ------------ */
 .breadcrumb {border-radius:0;background:none;padding:0 0 8px;color:#999;}
 .breadcrumb a {color:#999;}
@@ -75,22 +76,24 @@ header {padding-top:7px; background:#fff;}
 .head-logo img { max-width:170px;}
 }
 /* контакты в шапке */
-.head-phone {font-size:17px;font-weight:300;padding-top:12px; text-align:center;}
-.head-phone i {color:#c2c2c2;}
-.head-phone p { display:inline-block;color:#212121;padding:12px 20px 12px 4px;margin-bottom:0;}
-.head-phone p {}
+.head-contacts {font-size:17px;font-weight:300;padding-top:12px; text-align:center;}
+.head-contacts i {color:#c2c2c2;}
+.head-contacts p { display:inline-block;color:#212121;padding:12px 20px 12px 4px;margin-bottom:0;}
+.head-contacts p {}
+.head-city {padding: 0 5px;}
+.head-phone {padding: 0 5px;}
 @media (max-width: 991px) {
 .head-phone {padding-top:0;}
 .head-phone p {display:none;}
 .head-phone p:first-child {background:none;padding:12px 0;display:inline-block;}
 }
 @media (max-width: 767px) {
-.head-phone {border-top:1px solid #dcdbdb; font-size:20px;}
+.head-contacts {border-top:1px solid #dcdbdb; font-size:20px;}
 }
 @media (min-width: 768px) and (max-width: 991px) {
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-.head-phone {font-size:13px;padding-top:10px;}
+.head-contacts {font-size:13px;padding-top:10px;}
 }
 .head-skype {margin:14px 0 24px;}
 .head-skype i {color:#c2c2c2; font-size:22px;padding-right:10px;float:left;}
@@ -372,12 +375,10 @@ input[type="checkbox"].chk_compare:checked + label.chk_compare {background-posit
 .ProductInfoImage img {max-height:270px;}
 .ProductInfoImage .ProductLabel {left:0;top:14px;}
 .ProductInfoImage .labelSpecials {right:0;top:14px;}
-.ProductInfoMO {padding-top:10px;}
-.ProductInfoImageMO {width:108px; height:108px;padding:0;margin:0;zoom:1;*display:inline;background:#fff;}
-.ProductInfoImageMO img {max-height:98px; margin:0 auto;}
-.ProductInfoImageMO a { display:table-cell !important;width:108px;height:108px;vertical-align:middle;}
-#slider-moimages, #slider-moimages li {list-style: none;margin: 0;padding: 0;}
-#slider-moimages li {display:block}
+.ProductInfoMO-block {padding:10px 25px;width:auto;font-size: 0;}
+.ProductInfoImageMO {padding: 5px;}
+.ProductInfoImageMO img {}
+.ProductInfoImageMO a {display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;justify-content: center;align-items: center;border:1px solid #ccc;min-height: 68px;background: #fff;}
 .ProductInfoName {margin-bottom:38px;}
 .ProductInfoPrice {padding:0 0 24px; font-size:2.4615em;font-weight:700; text-align:right;color:#b70d0d;}
 .ProductInfoPrice br { display:none;}
@@ -429,25 +430,34 @@ input[type="checkbox"].chk_compare:checked + label.chk_compare {background-posit
 .ProductInfoTabs .nav-tabs > li > a:hover {border-color:#dbdbdb;color:#212121; background:#fff;}
 .ProductInfoTabs .nav-tabs > li.active { background:#fff;border-radius:3px 3px 0 0;}
 .ProductInfoTabs .nav-tabs > li.active > a, .ProductInfoTabs .nav-tabs > li.active > a:hover, .ProductInfoTabs .nav-tabs > li.active > a:focus {color: #212121; border: 1px solid #fff;}
+@media (max-width: 375px) {
+	.ProductInfoImageMO img {max-height: 128px;}
+	.ProductInfoImageMO a {min-height: 130px;}
+}
+@media (min-width: 376px) and (max-width: 574px) {
+	.ProductInfoImageMO img {max-height: 128px;}
+	.ProductInfoImageMO a {min-height: 130px;}
+}
+@media (min-width: 575px) and (max-width: 767px) {
+	.ProductInfoImageMO img {max-height: 128px;}
+	.ProductInfoImageMO a {min-height: 130px;}
+}
 @media (min-width: 768px) and (max-width: 991px) {
-.ProductInfoImage {background:#fff;display:table-cell;width:282px;height:282px;vertical-align:middle;}
-.ProductInfoImage img {max-height:272px;}
-#slider-moimages li {width:63px !important;}
-.ProductInfoImageMO {width:63px; height:63px;}
-.ProductInfoImageMO img {max-height:53px;}
-.ProductInfoImageMO a {width:63px;height:63px;}
+	.ProductInfoImage {background:#fff;display:table-cell;width:282px;height:282px;vertical-align:middle;}
+	.ProductInfoImage img {max-height:272px;}
+	.ProductInfoImageMO img {max-height: 73px;}
+	.ProductInfoImageMO a {min-height: 75px;}
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-.ProductInfoImage {background:#fff;display:table-cell;width:374px;height:374px;vertical-align:middle;}
-.ProductInfoImage img {max-height:364px;}
-#slider-moimages li {width:86px !important;}
-.ProductInfoImageMO {width:86px; height:86px;}
-.ProductInfoImageMO img {max-height:76px;}
-.ProductInfoImageMO a {width:86px;height:86px;}
+	.ProductInfoImage {background:#fff;display:table-cell;width:374px;height:374px;vertical-align:middle;}
+	.ProductInfoImage img {max-height:364px;}
+	.ProductInfoImageMO img {max-height: 66px;}
+	.ProductInfoImageMO a {min-height: 68px;}
 }
 @media (min-width: 1200px) {
-.ProductInfoImage {background:#fff;display:table-cell;width:457px;height:457px;vertical-align:middle;}
-.ProductInfoImage img {max-height:447px;}
+	.ProductInfoImage {background:#fff;display:table-cell;width:457px;height:457px;vertical-align:middle;}
+	.ProductInfoImage img {max-height:447px;}
+	.ProductInfoImageMO img {max-height: 66px;}
 }
 /*- Цены */
 span.markProductOutOfStock {color:#c76170;font-weight:bold;}
@@ -553,7 +563,15 @@ div.contacterror {border: 1px solid;border-color: #ff0000;background-color: #FFC
 @media (max-width: 767px) {
 #back-top {bottom:4px;right:18px;}
 }
-
+/* Согласие на использование cookie */
+.cookie-alert{
+    position: fixed;
+    z-index: 9999999;
+    bottom: 0px;
+    left:2%;
+    width: 96%;
+    opacity: 0.9;
+}
 @media (max-width: 767px) {
 }
 @media (min-width: 768px) and (max-width: 991px) {
