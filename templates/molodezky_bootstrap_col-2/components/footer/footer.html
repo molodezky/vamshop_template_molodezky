@@ -118,8 +118,12 @@
 <!-- Modal Согласие на использование cookie -->
 {if $smarty.const.ENABLE_COOKIE_ALERT == 'true' && {cookie name="cookie-alert"} != 1}
 <div class="alert cookie-alert" id="cookie-alert" role="alert">
-  {$smarty.const.TEXT_ALERT_COOKIE}
-  <button type="button" class="btn btn-inverse btn-sm" data-dismiss="alert" aria-label="{$smarty.const.TEXT_COOKIE_CLOSE}">{$smarty.const.TEXT_COOKIE_OK}</button>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-8 col-sm-10">{$smarty.const.TEXT_ALERT_COOKIE}</div>
+			<div class="col-xs-4 col-sm-2"><button type="button" class="btn btn-primary btn-sm" data-dismiss="alert" aria-label="{$smarty.const.TEXT_COOKIE_CLOSE}">{$smarty.const.TEXT_COOKIE_OK}</button></div>			
+		</div>
+	</div>
 </div>
 {/if}
 
