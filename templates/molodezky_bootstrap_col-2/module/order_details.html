@@ -1,40 +1,35 @@
 {config_load file="$language/lang_$language.conf" section="shopping_cart"}
 {config_load file="$language/lang_$language.conf" section="product_info"}
 <div class="ShoppingCartListHead">
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-7 ShoppingCartListHeadItem">Товар</div>
-<div class="hidden-xs hidden-sm col-md-4 col-lg-2 ShoppingCartListHeadQTY">К-во</div>
-<div class="hidden-xs hidden-sm hidden-md col-lg-1 ShoppingCartListHeadPrice">Цена</div>
-<div class="hidden-xs hidden-sm col-md-2 col-lg-1 ShoppingCartListHeadTotal">{#text_total#}</div>
-<div class="hidden-xs hidden-sm hidden-md hidden-lg ShoppingCartListHeadDel">{#text_remove#}</div>
-<div class="clearfix"></div>
+	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-7 ShoppingCartListHeadItem">Товар</div>
+	<div class="hidden-xs hidden-sm col-md-4 col-lg-2 ShoppingCartListHeadQTY">К-во</div>
+	<div class="hidden-xs hidden-sm hidden-md col-lg-1 ShoppingCartListHeadPrice">Цена</div>
+	<div class="hidden-xs hidden-sm col-md-2 col-lg-1 ShoppingCartListHeadTotal">{#text_total#}</div>
+	<div class="hidden-xs hidden-sm hidden-md hidden-lg ShoppingCartListHeadDel">{#text_remove#}</div>
+	<div class="clearfix"></div>
 </div>
 {foreach name=aussen item=module_data from=$module_content}
 <div class="ShoppingCartList">
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-7 ShoppingCartListItem">
-{if $module_data.PRODUCTS_IMAGE!=''}<div class="CartDetailsProductiImage"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.IMAGE_ALT}" /></div>{/if}
-<div class="CartDetailsProductName"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></div>
-{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<div>{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</div>{/if}
-{if $module_data.ATTRIBUTES!=''} 
-{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
-<div class="CartDetailsProductDop">{$item_data.NAME}: {$item_data.VALUE_NAME}</div>
-{/foreach} 
-{else}
-{/if}
-{if $module_data.PRODUCTS_STOCK}В наличии: {$module_data.PRODUCTS_STOCK}{/if}
-</div>
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2 ShoppingCartListQTY">
-	{if {$module_data.ATTRIBUTES|@count} > 1}
-	<div class="product-table-quantity">
-		 <button class="product-table-quantity__btn btn btn-primary btn-minus" tabindex="-1">-</button> <span class="product-table-quantity__value">{$module_data.PRODUCTS_QTY_MULTI_ATTRIBUTES}</span> <button class="product-table-quantity__btn btn btn-primary btn-plus" tabindex="-1">+</button>
-		</div>
-	{else}
-		{if $smarty.const.AJAX_CART == 'true'}{$module_data.MINUS}{/if} {$module_data.PRODUCTS_QTY} {if $smarty.const.AJAX_CART == 'true'}{$module_data.PLUS}{/if}
-	{/if} 
-</div>
-<div class="hidden-xs hidden-sm hidden-md col-lg-1 ShoppingCartListPrice">{$module_data.PRODUCTS_SINGLE_PRICE}</div>
-<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 ShoppingCartListTotal">{$module_data.PRODUCTS_PRICE}</div>
-<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 ShoppingCartListDel">{$module_data.BOX_DELETE}</div>
-<div class="clearfix"></div>
+	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-7 ShoppingCartListItem">
+		{if $module_data.PRODUCTS_IMAGE!=''}<div class="CartDetailsProductiImage"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.IMAGE_ALT}" /></div>{/if}
+		<div class="CartDetailsProductName"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></div>
+		{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<div>{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</div>{/if}
+		{if $module_data.ATTRIBUTES!=''} 
+			{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
+				<div class="CartDetailsProductDop">{$item_data.NAME}: {$item_data.VALUE_NAME}</div>
+			{/foreach} 
+		{/if}
+		{if $module_data.PRODUCTS_STOCK}В наличии: {$module_data.PRODUCTS_STOCK}{/if}
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2 ShoppingCartListQTY">
+		{if $smarty.const.AJAX_CART == 'true'}{$module_data.MINUS}{/if}
+		{$module_data.PRODUCTS_QTY}
+		{if $smarty.const.AJAX_CART == 'true'}{$module_data.PLUS}{/if}
+	</div>
+	<div class="hidden-xs hidden-sm hidden-md col-lg-1 ShoppingCartListPrice">{$module_data.PRODUCTS_SINGLE_PRICE}</div>
+	<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 ShoppingCartListTotal">{$module_data.PRODUCTS_PRICE}</div>
+	<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 ShoppingCartListDel">{$module_data.BOX_DELETE}</div>
+	<div class="clearfix"></div>
 </div>
 {/foreach}
 <div class="ShoppingCartTotal">{$UST_CONTENT}<strong>{$TOTAL_CONTENT}</strong></div>

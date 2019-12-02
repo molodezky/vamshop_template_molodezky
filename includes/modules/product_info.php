@@ -117,7 +117,8 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		$info->assign('PRODUCTS_STATUS', $product->data['products_status']);
 		$info->assign('PRODUCTS_ORDERED', $product->data['products_ordered']);
       $info->assign('PRODUCTS_PRINT', '<img src="images/icons/buttons/print.png" alt="" />');
-		$info->assign('PRODUCTS_PRINT_LINK', vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']));      
+		$info->assign('PRODUCTS_PRINT_LINK', vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']));
+		if ($_SESSION['customers_status']['customers_status_id'] == 0) $info->assign('PRODUCTS_EDIT_LINK', vam_href_link_admin(FILENAME_EDIT_PRODUCTS, 'cPath=' . $cPath . '&amp;pID=' . $product->data['products_id'] . '&amp;action=new_product'));
 		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
 		$info->assign('PRODUCTS_SHORT_DESCRIPTION', stripslashes($product->data['products_short_description']));
 		
@@ -163,7 +164,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
           	foreach ($products_tags as $tags) {
                 $tags_data[] = array(
                 'NAME' => trim($tags),
-                'LINK' => vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, 'keywords='.trim($tags)));
+                'LINK' => vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, 'keywords='.rawurlencode(trim($tags))));
         $info->assign('tags_data', $tags_data);
             }
 

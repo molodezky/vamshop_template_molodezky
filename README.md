@@ -1,6 +1,6 @@
 # vamshop_template_molodezky
  
- Стартовый шаблон для актуальной версии (1.99.9) на основе фреймверка Bootstrap 3.4.1. Используется для натяжки дизайна на CMS Vamshop.
+ Стартовый шаблон для актуальной версии (1.99.10) на основе фреймверка Bootstrap 3.4.1. Используется для натяжки дизайна на CMS Vamshop.
  -
  Изменения в скрипте, необходимые для корректной работы шаблона:
 
@@ -12,7 +12,7 @@
  6. \includes\external\smarty\plugins_vam\outputfilter.note.php - убран текст "Работает на основе VamShop. Создание интернет магазина."
  7. \includes\functions\products_specifications.php - к ID форм фильтров добавлен индивидуальный идентификатор.
  8. \includes\modules\comparison.php - Добавлены стили и тексты для корректного отображения.
- 9. \includes\modules\order_details_cart.php - правки из-за проблем с ajax страницы корзины. Кнопкам +- изменены классы bootstrap.
+ 9. \includes\modules\order_details_cart.php - Кнопкам +- изменены классы bootstrap.
  10. \includes\modules\product_info.php - рейтинг звездами выведен шрифтом FontAwesome 4.x. Добавлены контурные звезды для рейтинга меньше 5.
  11. \includes\modules\products_filter.php - добавлена разметка bootstrap
  12. \includes\modules\reviews_all.php - рейтинг звездами выведен шрифтом FontAwesome 4.x. Добавлены контурные звезды для рейтинга меньше 5.
@@ -26,4 +26,3 @@
  20. \product_reviews_info.php - рейтинг звездами выведен шрифтом FontAwesome 4.x. Добавлены контурные звезды для рейтинга меньше 5.
  21. \reviews.php - рейтинг звездами выведен шрифтом FontAwesome 4.x. Добавлены контурные звезды для рейтинга меньше 5.
  22. \shop_content.php - раскомментирован вывод хлебных крошек.
- 23. \shopping_cart.php - правки из-за проблем с ajax страницы корзины. 

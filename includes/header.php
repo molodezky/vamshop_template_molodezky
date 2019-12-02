@@ -37,8 +37,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" />
 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 <meta name="theme-color" content="#dd2c00"/>
-<link rel="shortcut icon" href="<?php echo DIR_WS_CATALOG; ?>favicon.ico"/>
-<link rel="manifest" href="<?php echo DIR_WS_CATALOG; ?>manifest.json">
+<link rel="apple-touch-icon" href="<?php echo DIR_WS_CATALOG; ?>images/icons/vamshop-box-apple.png" />
+<link rel="shortcut icon" href="<?php echo DIR_WS_CATALOG; ?>favicon.ico" />
+<link rel="manifest" href="<?php echo DIR_WS_CATALOG; ?>manifest.json" />
 <?php
 if (ENABLE_SERVICE_WORKER == 'true') {
 ?>
@@ -51,48 +52,6 @@ if (ENABLE_SERVICE_WORKER == 'true') {
 <?php
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/css/css.php')) include('templates/'.CURRENT_TEMPLATE.'/css/css.php');
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/javascript/script.php')) include('templates/'.CURRENT_TEMPLATE.'/javascript/script.php');
-?>
-<?php
-if (isset($_GET['products_id']) && strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
-<?php
-if (isset($_GET['cat']) && isset($current_category_id) && strstr($PHP_SELF, FILENAME_DEFAULT)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
-<?php
-if (isset($_GET['articles_id']) && strstr($PHP_SELF, FILENAME_ARTICLE_INFO)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
-<?php
-if (isset($tPath) && strstr($PHP_SELF, FILENAME_ARTICLES)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
-<?php
-if (isset($_GET['news_id']) && strstr($PHP_SELF, FILENAME_NEWS)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
-<?php
-if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
 ?>
 </head>
 <body>
