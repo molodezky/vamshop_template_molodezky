@@ -10,7 +10,7 @@
 <div class="ProductName"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></div>
 <div class="ProductReview">
 <div class="ProductReview-title">{#heading_product_reviews#}</div>
-{$module_data.REVIEW.TEXT|vam_truncate:($smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION*3):"...":true}
+{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:($smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION*3):"...":true}
 </div>
 <div class="ProductRating">{if $module_data.PRODUCT.REVIEWS_TOTAL > 0}{$module_data.PRODUCT.REVIEWS_STAR_RATING}{/if}</div>
 <div class="ProductPrice">{$module_data.PRODUCT.PRODUCTS_PRICE}</div>
