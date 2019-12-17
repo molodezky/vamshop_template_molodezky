@@ -43,7 +43,7 @@
 				<!-- /заголовок бокса Контакты -->
 				<div class="collapse navbar-collapse" id="collapse-boxContacts" itemscope itemtype="http://schema.org/Organization">
 					<meta itemprop="name" content="{$store_name}">
-					{if $smarty.const.STORE_NAME_ADDRESS}<p>Адрес: {$smarty.const.STORE_NAME_ADDRESS}<meta itemprop="address" content="{$smarty.const.STORE_NAME_ADDRESS}"></p>{/if}
+					{if $smarty.const.STORE_NAME_ADDRESS}<p>Адрес: {$smarty.const.STORE_NAME_ADDRESS}<meta itemprop="address" content="{$smarty.const.STORE_NAME_ADDRESS|strip_tags}"></p>{/if}
 					{if $smarty.const.STORE_TELEPHONE}<div class="telnumber">Телефоны: {$smarty.const.STORE_TELEPHONE}<meta itemprop="telephone" content="{$smarty.const.STORE_TELEPHONE|strip_tags|replace:' ':''}"></div>{/if}
 					<div class="foot-callback"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CallBack">{#call_back#}</button></div>
 					{if $smarty.const.STORE_SKYPE}<p>Skype: <span>{$smarty.const.STORE_SKYPE}</span></p>{/if}

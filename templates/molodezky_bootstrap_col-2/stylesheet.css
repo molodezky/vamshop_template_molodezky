@@ -161,6 +161,8 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 	.cookie-alert {font-size: 11px;}
 	#back-top {bottom:4px;right:18px;}
 }
+/* техобслуживание] */
+.maintenanceContent {text-align: center;padding-top: 30px;padding-bottom: 20px;}
 
 /* главная */
 .MainText {}
