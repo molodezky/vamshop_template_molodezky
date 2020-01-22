@@ -98,7 +98,7 @@
 <meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
 <meta itemprop="priceCurrency" content="{$smarty.session.currency}">
 {if $PRODUCTS_QUANTITY > 0}<link itemprop="availability" href="http://schema.org/InStock" />{/if}
-<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
+<meta itemprop="priceValidUntil" content="{($smarty.now + (1200*60*24*7))|date_format:"%c"}" />
 <meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
 </div>
 {if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
@@ -108,16 +108,18 @@
 {if $PRODUCTS_VPE}<p>{$PRODUCTS_VPE}</p>{/if}
 {if $PRODUCTS_DISCOUNT}<p>{#text_discount#}&nbsp;{$PRODUCTS_DISCOUNT}</p>{/if}
 
-{if $MANUFACTURER}
-<p>
-{#text_manufacturer#}: <span itemprop="brand">{$MANUFACTURER}</span>
-</p>
-{/if}
-
-{if $PRODUCTS_MODEL}
-<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
-<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
-{/if}
+		{if $MANUFACTURER}
+			<p>{#text_manufacturer#}: <span itemprop="brand">{$MANUFACTURER}</span></p>
+		{else}
+			<meta itemprop="brand" content="{$PRODUCTS_MODEL}" />
+		{/if}
+		{if $PRODUCTS_MODEL}
+			<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
+			<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
+		{else}
+			<meta itemprop="sku" content="{$PRODUCTS_ID}" />
+			<meta itemprop="mpn" content="{$smarty.const.STORE_NAME}" />
+		{/if}
 
 <div class="ProductInfoSocials">
 Поделиться с друзьями:

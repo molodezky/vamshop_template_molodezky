@@ -1,21 +1,23 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
 <div class="page-content">
-<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-<meta itemprop="reviewCount" content="{$PRODUCTS_REVIEWS_COUNT}">
-<meta itemprop="ratingValue" content="{$PRODUCTS_REVIEWS_RATING|number_format:2}">
-</span>
-{foreach name=aussen item=module_data from=$module_content} 
-<div itemprop="review" itemscope itemtype="http://schema.org/Review">
-<meta itemprop="itemReviewed" content="{$PRODUCTS_NAME}">
-<div class="ReviewAuthor"><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span> <span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished"> | {$module_data.DATE}</span></div>
-<p><span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.STAR_RATING}</span></span></p>
-<p itemprop="reviewBody">{$module_data.TEXT}</p>      
-</div>
-{/foreach}
+	{if $PRODUCTS_REVIEWS_COUNT > 0}
+		<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+			<meta itemprop="reviewCount" content="{$PRODUCTS_REVIEWS_COUNT}">
+			<meta itemprop="ratingValue" content="{$PRODUCTS_REVIEWS_RATING|number_format:2}">
+		</span>
+	{/if}
+	{foreach name=aussen item=module_data from=$module_content} 
+		<div itemprop="review" itemscope itemtype="http://schema.org/Review">
+			<meta itemprop="itemReviewed" content="{$PRODUCTS_NAME}">
+			<div class="ReviewAuthor"><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span> <span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished"> | {$module_data.DATE}</span></div>
+			<p><span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.STAR_RATING}</span></span></p>
+			<p itemprop="reviewBody">{$module_data.TEXT}</p>      
+		</div>
+	{/foreach}
 </div>
 {if $TEXT_FIRST_REVIEW != ''}
-<div class="page-content">
-<p>{$TEXT_FIRST_REVIEW}</p>
-</div>
+	<div class="page-content">
+		<p>{$TEXT_FIRST_REVIEW}</p>
+	</div>
 {/if}
 <div class="page-content">{$BUTTON_WRITE}</div>
