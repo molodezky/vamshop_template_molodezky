@@ -39,7 +39,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 	$error = TEXT_PRODUCT_NOT_FOUND;
 	include (DIR_WS_MODULES.FILENAME_ERROR_HANDLER);
 
-}
+} 
 
 vam_db_query("update ".TABLE_REVIEWS." set reviews_read = reviews_read+1 where reviews_id = '".$reviews['reviews_id']."'");
 
@@ -55,7 +55,7 @@ if (!vam_db_num_rows($reviews_query))
 	vam_redirect(vam_href_link(FILENAME_REVIEWS));
 $reviews = vam_db_fetch_array($reviews_query, true);
 
-    $star_rating = '';
+		$star_rating = '';
 		for($i=0;$i<number_format($reviews['reviews_rating']);$i++)	{
 		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
 		}
@@ -74,6 +74,7 @@ $reviews = vam_db_fetch_array($reviews_query, true);
 		'REVIEWS_ALL_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$reviews['products_id']), 
 		'PRODUCTS_NAME' => $reviews['products_name'], 
 		'AUTHOR' => $reviews['customers_name'], 
+		'CUSTOMER' => $product->getReviewsCustomer((int)$reviews['products_id'],(int)$reviews['customers_id']), 
 		'ID' => $reviews['reviews_id'], 
 		'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 		'DATE' => vam_date_short($reviews['date_added']), 
