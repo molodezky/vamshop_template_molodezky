@@ -100,7 +100,7 @@ require_once (DIR_FS_INC.'vam_date_short.inc.php');
 
   if ($_GET['akeywords'] != ""){
   
-  $_GET['akeywords'] = urldecode($_GET['akeywords']);
+  $_GET['akeywords'] = urldecode(vam_db_input($_GET['akeywords']));
   
   if (isset($_GET['description'])) {
     $listing_sql = "select ad.articles_name, a.articles_date_added, a.articles_image, a.articles_keywords, a.articles_date_available, a.articles_id, ad.articles_viewed, ad.articles_description from " . TABLE_ARTICLES_DESCRIPTION . " ad inner join " . TABLE_ARTICLES . " a on ad.articles_id = a.articles_id where a.articles_status = '1' and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and (ad.articles_name like '%" . $_GET['akeywords'] . "%' or ad.articles_description like '%" . $_GET['akeywords'] . "%' or ad.articles_head_desc_tag like '%" . $_GET['akeywords'] . "%' or ad.articles_head_keywords_tag like '%" . $_GET['akeywords'] . "%' or ad.articles_head_title_tag like '%" . $_GET['akeywords'] . "%' or a.articles_keywords like '%" . $_GET['akeywords'] . "%') order by ad.articles_name ASC";
@@ -130,10 +130,14 @@ if (($articles_split->number_of_rows > 0)) {
 
 }
 
-  $tags_list_sql = "select articles_keywords, articles_id from ".TABLE_ARTICLES."";
+  if (($current_topic_id > 0)) {
+  $tags_list_sql = "select a.articles_keywords, a.articles_id from ".TABLE_ARTICLES." as a, ".TABLE_ARTICLES_TO_TOPICS." as a2t where a2t.articles_id = a.articles_id and a2t.topics_id = ".$current_topic_id."";
+} else {
+  $tags_list_sql = "select a.articles_keywords, a.articles_id from ".TABLE_ARTICLES." as a, ".TABLE_ARTICLES_TO_TOPICS." as a2t where a2t.articles_id = a.articles_id";
+}
 
-  $tags_list_query = vamDBquery($tags_list_sql);
-  if (vam_db_num_rows($tags_list_query, true) > 1) {
+  $tags_list_query = vamDBquery($tags_list_sql, true);
+  if (vam_db_num_rows($tags_list_query, true) >= 1) {
 
 
     while ($tags_list = vam_db_fetch_array($tags_list_query, true)) {
@@ -174,14 +178,19 @@ foreach($keys as $k) {
 
 		$all_tags = $manufacturer_sort;
 		$all_tags_data = array();
+		$i = 0;
 
           	foreach ($all_tags as $tags_all) {
                 $all_tags_data[] = array(
                 'NAME' => trim($tags_all),
                 'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.trim($tags_all)));
+								$i++;
             }
 
+//echo var_dump($all_tags_data);
+
 	$vamTemplate->assign('ARTICLE_KEYWORDS', $articles['articles_keywords']);
+	$vamTemplate->assign('ARTICLE_KEYWORDS_NUM', $i);
 	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY_TAGS', $all_tags_data);
 
 if ($_GET['authors_id'] && $_GET['authors_id'] > 0) {
@@ -309,6 +318,7 @@ $articles['articles_keywords'] = str_replace($value.",","",$articles['articles_k
 
 include_once(DIR_WS_BOXES . 'articles.php');
 
+$vamTemplate->assign('TOPICS', $box_content);
 
 require (DIR_WS_INCLUDES.'header.php');
 

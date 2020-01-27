@@ -1,6 +1,6 @@
 # vamshop_template_molodezky
  
- Стартовый шаблон для актуальной версии (1.99.10) на основе фреймверка Bootstrap 3.4.1. Используется для натяжки дизайна на CMS Vamshop.
+ Стартовый шаблон для актуальной версии (1.99.11) на основе фреймверка Bootstrap 3.4.1. Используется для натяжки дизайна на CMS Vamshop.
  -
  Изменения в скрипте, необходимые для корректной работы шаблона:
 
@@ -9,7 +9,7 @@
  3. \includes\classes\product.php - рейтинг звездами выведен шрифтом FontAwesome 4.x. Добавлены контурные звезды для рейтинга меньше 5. Добавлена метка для вывода количества товара в комплекте.
  4. \includes\classes\vam_template.php - добавленна поддерка тега {php}{/php}.
  5. \includes\classes\vam_price.php - добавленна обертка для обозначения валюты.
- 6. \includes\external\smarty\plugins_vam\outputfilter.note.php - убран текст "Работает на основе VamShop. Создание интернет магазина."
+ 
  7. \includes\functions\products_specifications.php - к ID форм фильтров добавлен индивидуальный идентификатор.
  8. \includes\modules\comparison.php - Добавлены стили и тексты для корректного отображения.
  9. \includes\modules\order_details_cart.php - Кнопкам +- изменены классы bootstrap.

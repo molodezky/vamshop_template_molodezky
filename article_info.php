@@ -63,12 +63,14 @@ $article_info['articles_keywords'] = str_replace($value.",","",$article_info['ar
 //$products_tags = explode (",", $article_info['articles_keywords']);
 
 		$tags_data = array();
+		$i = 0;
 
           	foreach ($products_tags as $tags) {
                 $tags_data[] = array(
                 'NAME' => trim($tags),
                 'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.trim($tags)));
         //$info->assign('tags_data', $tags_data);
+								$i++;
             }
 
 //echo var_dump($tags_data);
@@ -113,6 +115,7 @@ $article_info['articles_keywords'] = str_replace($value.",","",$article_info['ar
 	$vamTemplate->assign('ARTICLE_LINK', vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $article_info['articles_id'] . $SEF_parameter));
 	$vamTemplate->assign('ARTICLE_IMAGE', $article_info['articles_image']);
 	$vamTemplate->assign('ARTICLE_KEYWORDS', $article_info['articles_keywords']);
+	$vamTemplate->assign('ARTICLE_KEYWORDS_NUM', $i);
 	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY_TAGS', $tags_data);
 	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY', array($article_info['articles_keywords']));
 	//$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY', explode(",", $article_info['articles_keywords']));
@@ -124,6 +127,8 @@ $article_info['articles_keywords'] = str_replace($value.",","",$article_info['ar
 	$vamTemplate->assign('AUTHOR_IMAGE', $article_info['authors_image']);
 	$vamTemplate->assign('AUTHOR_ID', $article_info['authors_id']);
 	$vamTemplate->assign('AUTHOR_REVIEWS', $author_reviews['total']);
+	$vamTemplate->assign('ARTICLE_CATEGORY_NAME', $topics_name['topics_name']);
+	$vamTemplate->assign('ARTICLE_CATEGORY_LINK', $topics_link);
 
 	$author_rating_query = vam_db_query("select count(*) as total, TRUNCATE(SUM(reviews_rating),2) as rating from ".TABLE_AUTHOR_REVIEWS." r, ".TABLE_AUTHOR_REVIEWS_DESCRIPTION." rd where r.authors_id = '".(int)$article_info['authors_id']."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
 	$author_rating = vam_db_fetch_array($author_rating_query);

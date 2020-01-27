@@ -130,6 +130,8 @@
   // Output a menu as a list of links
   function vam_draw_links_menu ($name, $values, $target, $default = '') {
     $field = '';
+		
+		$field .= '<ul class="list-group">';
 
     foreach ($values as $link_data) {
 
@@ -138,18 +140,18 @@
           break;
         
         case ($link_data['count'] != '' && $link_data['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'grey'):
-          $field .= '&nbsp;&nbsp;';
+          $field .= '<li class="list-group-item">';
           $field .= '<span class="no_results">';
           $field .= vam_output_string ($link_data['text'] );
           $field .= '</span>';
           if ($link_data['count'] != '' && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
             $field .= ' (' . $link_data['count'] . ')';
           }
-          $field .= '<br>';
+          $field .= '</li>';
           break;
         
         default:
-          $field .= '&nbsp;&nbsp;';
+          $field .= '<li class="list-group-item list-group-item-action'.(($default == $link_data['id']) ? ' active' : '').'">';
           if ($default == $link_data['id']) {
             $field .= '<b>';
           }
@@ -164,10 +166,12 @@
           if ($link_data['count'] != '' && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
             $field .= ' (' . $link_data['count'] . ')';
           }
-          $field .= '<br>';
+          $field .= '</li>';
           break;
       } // switch (true)
     } // foreach ($values
+		
+		$field .= '</ul>';
 
     $field .= '<br clear=all>';
     return $field;
