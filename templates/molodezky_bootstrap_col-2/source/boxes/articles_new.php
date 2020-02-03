@@ -14,7 +14,7 @@
 $box = new vamTemplate;
 $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 
-$sql = "select a.articles_id, ad.articles_name, ad.articles_description from " . TABLE_ARTICLES . " a left join " . TABLE_ARTICLES_DESCRIPTION . " ad on ad.articles_id = a.articles_id where a.articles_status = '1' and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' ORDER BY articles_date_added DESC LIMIT " . MAX_NEW_ARTICLES_PER_PAGE . "";
+$sql = "select a.articles_id, a.articles_image, a.articles_date_added, ad.articles_name, ad.articles_description, ad.articles_head_desc_tag from " . TABLE_ARTICLES . " a left join " . TABLE_ARTICLES_DESCRIPTION . " ad on ad.articles_id = a.articles_id where a.articles_status = '1' and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' ORDER BY articles_date_added DESC LIMIT " . MAX_DISPLAY_LATEST_NEWS . "";
 
 $articles_content = array();
 $articles_query = vamDBquery($sql);
@@ -25,7 +25,10 @@ while ($articles = vam_db_fetch_array($articles_query,true)) {
 			$SEF_parameter = '&article='.vam_cleanName($articles['articles_name']);
 
     $articles_content[]=array(
+        'ARTICLES_DATE' => vam_date_short($articles['articles_date_added']),
         'ARTICLES_NAME' => $articles['articles_name'],
+        'ARTICLE_IMAGE' => $articles['articles_image'],
+				'ARTICLE_SHORT_DESCRIPTION' => $articles['articles_head_desc_tag'], 
         'ARTICLES_CONTENT' => $articles['articles_description'],
         'ARTICLES_URL'    => vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $articles['articles_id'] . $SEF_parameter)
         );

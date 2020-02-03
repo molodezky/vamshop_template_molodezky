@@ -1,4 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="login"}
+{config_load file="$language/template_lang_$language.conf" section="template"}
 <script type="text/javascript" src="jscript/modified.js"></script>
 <script type="text/javascript">
 {literal}
@@ -51,12 +52,23 @@ function reload(){
 <p><a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a></p>
 <p align="right">{$BUTTON_LOGIN}</p>
 
-{if {$smarty.const.SOCIAL_LOGIN} == "true"}
-<p>{$smarty.const.TEXT_SOCIAL_LOGIN}:</p>
-<p><a href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fa fa-vk" title="{$smarty.const.TEXT_SOCIAL_LOGIN_VK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_VK}</a></p>
-<p><a href="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=google"><i class="fa fa-google-plus" title="{$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}</a></p>
-<p><a href="https://www.facebook.com/dialog/oauth?client_id={$smarty.const.FACEBOOK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=fb&response_type=code&display=page&scope=public_profile,email"><i class="fa fa-facebook" title="{$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}</a></p>
+{if $smarty.const.SOCIAL_LOGIN == "true"}
+	<div class="LoginHead">{#head_login_social#}</div>	
+	{if $smarty.const.VK_OAUTH_CLIENT_ID}
+		<p class="accountLinks">
+			<a class="btn btn-primary btn-block btn-vk" href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fa fa-vk" title="{$smarty.const.TEXT_SOCIAL_LOGIN_VK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_VK}</a>
+		</p>
+	{/if}
+	<p class="accountLinks">
+		<a class="btn btn-primary btn-block btn-google" href="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=google"><img src="{$tpl_path}img/google.svg" alt="{$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}"> &nbsp; {#text_btn_social#}  {$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}</a>
+	</p>
+	{if $smarty.const.FACEBOOK_OAUTH_CLIENT_ID}
+		<p class="accountLinks">
+			<a class="btn btn-primary btn-block btn-fb" href="https://www.facebook.com/dialog/oauth?client_id={$smarty.const.FACEBOOK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=fb&response_type=code&display=page&scope=public_profile,email"><i class="fa fa-facebook" title="{$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}"></i> &nbsp; {#text_btn_social#} {$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}</a>
+		</p>
+	{/if}
 {/if}
+
 </div>
 </div>
 <div class="clearfix"></div>

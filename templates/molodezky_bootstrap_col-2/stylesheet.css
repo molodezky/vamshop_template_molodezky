@@ -510,6 +510,13 @@ span.Requirement {color: red;}
 .checkoutButton .btn-primary {background-color:#b70d0d;border-color:#b70d0d #b70d0d transparent;color:#fff;}
 .checkoutButton .btn-primary:hover {background-color:#212121;border-color:#212121 #212121 transparent;color:#fff;}
 .checkoutButton .btn-primary:focus, .checkoutButton .btn-primary:focus:active, .checkoutButton .btn-primary.active:focus, .checkoutButton .btn-primary.focus, .checkoutButton .btn-primary.focus:active, .checkoutButton .btn-primary.active.focus {background-color:#212121;border-color:#212121 #212121 transparent;color:#fff;}
+
+.accountLinks a.btn.btn-fb {background: #1877f2;border-bottom: 1px solid #4267b2;color:#fff;}
+.accountLinks a.btn.btn-fb:hover {background: #4267b2;border-bottom: 1px solid #4267b2;color:#fff;}
+.accountLinks a.btn.btn-fb .fa {min-width: 18px;text-align: center;}
+.accountLinks a.btn.btn-google {background: #fff;border:1px solid #ececec;border-bottom: 1px solid #d3d1d1;color: #000;}
+.accountLinks a.btn.btn-google:hover {background: #ececec;color: #000;}
+.accountLinks a.btn.btn-google img {max-height: 18px;max-width: 18px;display: inline-block;}
 /*label.shipping.selected .OrderBlock-int, label.payment.selected .OrderBlock-int	{background: #f4f4f4;}*/
 /*- Подсветка ошибок формы */
 #errormsg {border: 2px solid #c00;padding: 5px;width: 96%;}  
