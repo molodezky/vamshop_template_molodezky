@@ -130,8 +130,8 @@
   // Output a menu as a list of links
   function vam_draw_links_menu ($name, $values, $target, $default = '') {
     $field = '';
-		
-		$field .= '<ul class="list-group">';
+
+    $field .= '<ul class="list-inline">';
 
     foreach ($values as $link_data) {
 
@@ -140,7 +140,7 @@
           break;
         
         case ($link_data['count'] != '' && $link_data['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'grey'):
-          $field .= '<li class="list-group-item">';
+          $field .= '<li class="list-inline-item">';
           $field .= '<span class="no_results">';
           $field .= vam_output_string ($link_data['text'] );
           $field .= '</span>';
@@ -151,27 +151,29 @@
           break;
         
         default:
-          $field .= '<li class="list-group-item list-group-item-action'.(($default == $link_data['id']) ? ' active' : '').'">';
+          $field .= '<li class="list-inline-item'.(($default == $link_data['id']) ? ' active' : '').'">';
+          $field .= '<a class="rounded-pill btn btn-outline-primary'.(($default == $link_data['id']) ? ' btn-primary text-white' : '').'" href="' . vam_href_link ($target, vam_get_array_get_params (array ( $name, 'page') ) . ($link_data['id'] == '0' ? '' : $name . '=' . vam_output_string($link_data['id']))) . '">';
+
           if ($default == $link_data['id']) {
             $field .= '<b>';
           }
-          $field .= '<a href="' . vam_href_link ($target, vam_get_array_get_params (array ( $name, 'page') ) . ($link_data['id'] == '0' ? '' : $name . '=' . vam_output_string($link_data['id']))) . '">';
-          $field .= vam_output_string ($link_data['text'] );
-          $field .= '</a>';
 
-          if ($default == $link_data['id']) {
-            $field .= '</b>';
-          }
-            
+          $field .= vam_output_string ($link_data['text'] );
+
           if ($link_data['count'] != '' && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
             $field .= ' (' . $link_data['count'] . ')';
           }
+          if ($default == $link_data['id']) {
+            $field .= '</b>';
+          }
+          $field .= '</a>';
           $field .= '</li>';
           break;
       } // switch (true)
     } // foreach ($values
-		
-		$field .= '</ul>';
+    
+    $field .= '</ul>';
+  
 
     $field .= '<br clear=all>';
     return $field;
@@ -542,6 +544,7 @@
 
         case 'start' :
           if (strlen($products_column_name) > 1) {
+
             $sql_array['where'] .= " and " . $products_column_name . " like '" . $filter_array[0] . "%' ";
           } else {
             $sql_array['from'] .= " INNER JOIN " . TABLE_PRODUCTS_SPECIFICATIONS . " ps" . $specifications_id . " ON p.products_id = ps" . $specifications_id . ".products_id ";
@@ -657,7 +660,7 @@
 
       case 'multi':
         $box_text .= vam_draw_form ('filter'.$filter_name, $target, 'get');
-        $box_text .= vam_draw_multi_pull_down_menu ($filter_name . '[]', $filters_select_array, $filter_value, 'class="form-control" multiple="' . $filter_name . 'f"');
+        $box_text .= vam_draw_multi_pull_down_menu ($filter_name . '[]', $filters_select_array, $filter_value, 'class="select2 form-control" data-placeholder="'.PULL_DOWN_DEFAULT.'" multiple="' . $filter_name . 'f"');
         $box_text .= $additional_variables . vam_hide_session_id();
         $box_text .= vam_image_submit ('submit.png', TEXT_FIND_PRODUCTS);
         $box_text .= '</form>';

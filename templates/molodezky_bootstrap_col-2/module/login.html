@@ -1,76 +1,71 @@
 {config_load file="$language/lang_$language.conf" section="login"}
 {config_load file="$language/template_lang_$language.conf" section="template"}
-<script type="text/javascript" src="jscript/modified.js"></script>
-<script type="text/javascript">
+<script src="jscript/modified.js"></script>
+<script>
 {literal}
-$(document).ready(function(){
-
-$(function () {
-    $('#login :input:text:visible:enabled:first').focus();
-})
-
-})
+	$(document).ready(function(){
+		$(function () {
+			$('#login :input:text:visible:enabled:first').focus();
+		})
+	})
 {/literal}
 </script>
 <h1>{#heading_login#}</h1>
 {$FORM_ACTION}
-{if $info_message!=''}<div class="contacterror">{$info_message}</div>{/if}
-
-
-<div class="row">
-<!-- регистрация -->
-<div class="col-xs-12 col-sm-12 col-md-6">
-<div class="LoginHead">{#title_new#}</div>
-<div class="LoginContent">
-<p>{#text_new#}</p>
-<p align="right">{$BUTTON_NEW_ACCOUNT}</p>
-</div>
-</div>
-<!-- вход -->
-<div class="col-xs-12 col-sm-12 col-md-6">
-<div class="LoginHead">{#title_returning#}</div>
-<div class="LoginContent">
-
-<script type="text/javascript">
-{literal}
-src="captcha.php";
-function reload(){
-        document.captcha.src='loading.gif';
-        document.captcha.src=src+'?rand='+Math.random();
-}
-{/literal}
-</script>
-
-<!-- форма -->
-<fieldset class="form">
-
-{if $CAPTCHA_IMG !=''}<p>{$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a> {$CAPTCHA_INPUT}</p>{/if}
-<p><label>{#text_email#}</label> {$INPUT_MAIL}</p>
-<p><label>{#text_password#}</label> {$INPUT_PASSWORD}</p>
-</fieldset>
-<!-- /форма -->
-<p><a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a></p>
-<p align="right">{$BUTTON_LOGIN}</p>
-
-{if $smarty.const.SOCIAL_LOGIN == "true"}
-	<div class="LoginHead">{#head_login_social#}</div>	
-	{if $smarty.const.VK_OAUTH_CLIENT_ID}
-		<p class="accountLinks">
-			<a class="btn btn-primary btn-block btn-vk" href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fa fa-vk" title="{$smarty.const.TEXT_SOCIAL_LOGIN_VK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_VK}</a>
-		</p>
-	{/if}
-	<p class="accountLinks">
-		<a class="btn btn-primary btn-block btn-google" href="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=google"><img src="{$tpl_path}img/google.svg" alt="{$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}"> &nbsp; {#text_btn_social#}  {$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}</a>
-	</p>
-	{if $smarty.const.FACEBOOK_OAUTH_CLIENT_ID}
-		<p class="accountLinks">
-			<a class="btn btn-primary btn-block btn-fb" href="https://www.facebook.com/dialog/oauth?client_id={$smarty.const.FACEBOOK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=fb&response_type=code&display=page&scope=public_profile,email"><i class="fa fa-facebook" title="{$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}"></i> &nbsp; {#text_btn_social#} {$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}</a>
-		</p>
-	{/if}
-{/if}
-
-</div>
-</div>
-<div class="clearfix"></div>
-</div>
+	{if $info_message!=''}<div class="contacterror">{$info_message}</div>{/if}
+	<div class="row">
+		<!-- регистрация -->
+		<div class="col-xs-12 col-sm-12 col-md-6">
+			<div class="LoginHead">{#title_new#}</div>
+			<div class="LoginContent">
+				<p>{#text_new#}</p>
+				<p align="right">{$BUTTON_NEW_ACCOUNT}</p>
+			</div>
+		</div>
+		<!-- вход -->
+		<div class="col-xs-12 col-sm-12 col-md-6">
+			<div class="LoginHead">{#title_returning#}</div>
+			<div class="LoginContent">
+				<script>
+					{literal}
+						src="captcha.php";
+						function reload(){
+							document.captcha.src='loading.gif';
+							document.captcha.src=src+'?rand='+Math.random();
+						}
+					{/literal}
+				</script>
+				<!-- форма -->
+				<fieldset class="form">
+					{if $CAPTCHA_IMG !=''}<p>{$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a> {$CAPTCHA_INPUT}</p>{/if}
+					<p><label>{#text_email#}</label> {$INPUT_MAIL}</p>
+					<p><label>{#text_password#}</label> {$INPUT_PASSWORD}</p>
+				</fieldset>
+				<!-- /форма -->
+				{if {$smarty.const.ALLOW_AUTOLOGON} == 'true'}
+					<p><label>{$INPUT_REMEMBER} {$smarty.const.ENTRY_REMEMBER_ME}</label></p>
+				{/if}
+				<p><a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a></p>
+				<p align="right">{$BUTTON_LOGIN}</p>
+				<!-- логин через соцсети -->
+				{if $smarty.const.SOCIAL_LOGIN == "true"}
+					<div class="LoginHead">{#head_login_social#}</div>	
+					{if $smarty.const.VK_OAUTH_CLIENT_ID}
+						<p class="accountLinks">
+							<a class="btn btn-primary btn-block btn-vk" href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fa fa-vk" title="{$smarty.const.TEXT_SOCIAL_LOGIN_VK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_VK}</a>
+						</p>
+					{/if}
+					<p class="accountLinks">
+						<a class="btn btn-primary btn-block btn-google" href="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=google"><img src="{$tpl_path}img/google.svg" alt="{$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}"> &nbsp; {#text_btn_social#}  {$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}</a>
+					</p>
+					{if $smarty.const.FACEBOOK_OAUTH_CLIENT_ID}
+						<p class="accountLinks">
+							<a class="btn btn-primary btn-block btn-fb" href="https://www.facebook.com/dialog/oauth?client_id={$smarty.const.FACEBOOK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=fb&response_type=code&display=page&scope=public_profile,email"><i class="fa fa-facebook" title="{$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}"></i> &nbsp; {#text_btn_social#} {$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}</a>
+						</p>
+					{/if}
+				{/if}
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
 {$FORM_END}

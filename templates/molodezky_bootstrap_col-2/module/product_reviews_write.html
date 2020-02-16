@@ -46,9 +46,11 @@ function reload(){
 <legend>{#text_input#}</legend>
 	<p>{#text_input#} {$INPUT_TEXT}</p>
 	<p>{#text_note#}</p>
-	<p>{#text_rating#} <span class="bold">{#text_bad#}</span>{$INPUT_RATING}<span class="bold">{#text_good#}</span></p>
-   <p>{#text_sec_code#} {$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></p>
-   <p>{#text_sec_code_text#} {$CAPTCHA_INPUT}</p>
+	<p class="ratting-stars">{#text_rating#} {$INPUT_RATING}</p>
+  <div class="ratting-captcha">
+		<p><strong>{#text_sec_code_text#}</strong></p>
+		<p class="form-inline"><span class="">{$CAPTCHA_INPUT}</span> {$CAPTCHA_IMG} <a class="btn btn-primary" href="javascript:void(0)" title="{#text_update#}" onclick="reload()"><i class="fa fa-refresh" aria-hidden="true"></i> {#text_update#}</a></p>
+	</div>
 </fieldset>
 <!-- /форма -->
 

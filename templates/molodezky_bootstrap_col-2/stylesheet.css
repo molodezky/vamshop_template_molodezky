@@ -491,6 +491,35 @@ span.productNewPrice {color:#f63;}
 .ReviewImage { display:table-cell; height:181px; width:181px; vertical-align:middle;}
 .ReviewImage img {max-height:170px;}
 }
+/* выбор рейтинга при написании отзыва */
+.ratting-stars input  {width: 20px;height: 23px;font-size: 24px;visibility: hidden;position: relative;cursor: pointer;}
+.ratting-stars input:after {content: "★";color: #ef6c00;visibility: visible;position: absolute;left: 50%;top: 60%;transform: translateX(-50%) translateY(-50%) scale(1);transition: .25s all ease-out, 0s margin , 0s transform;opacity: 1;}
+.ratting-stars input:hover:after {transform: translateX(-50%) translateY(-50%) scale(1.1);}
+.ratting-stars input:checked {z-index: 11;}
+.ratting-stars input:checked:hover:after {transform: translateX(-50%) translateY(-50%) scale(1);}
+.ratting-stars input:checked:after {color: #ef6c00;animation: .25s 1 cubic-bezier(0, 1.64, 1, 1.48) star-pop;z-index: 10;}
+.ratting-stars input:after, .ratting-stars input:hover:after {color: #ff8e22 !important;}
+.ratting-stars input:hover ~ input:after, .ratting-stars input:checked ~ input:after, .ratting-stars input:hover ~ input:after {color: #bbb !important;text-shadow: none;}
+.ratting-stars input:before {content: "★";visibility: visible;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);color: #fff;z-index: 0;transition: .5s all ease-out;}
+.ratting-stars input:checked:before { z-index: -1; /*animation: .5s 1 ease-out star-pop-2;*/pointer-events: none;}
+@keyframes star-pop {
+	0% { color: #ef6c00; transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); text-shadow: 0 3px 2px rgba(0,0,0,.25); }
+	/*80% { color: #0099d5; transform: translateX(-50%) translateY(-50%) scale(1.75) rotate(-5deg); text-shadow: 0 0 0 rgba(255,255,255,0); }*/
+	100% { color: #ef6c00; transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); text-shadow: 0 3px 2px rgba(0,0,0,.25); }
+}
+@keyframes star-pop-2 {
+	0% { color: rgba(0,153,213,0); transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); }
+	20% { color: rgba(0,153,213,0); transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); }
+	60% { color: rgba(0,153,213,.325); transform: translateX(-50%) translateY(-57.5%) scale(2.5) rotate(-2.5deg); }
+	100% { color: rgba(255,255,255,0); transform: translateX(-50%) translateY(-65%) scale(4) rotate(0deg); }
+}
+@keyframes fade-in {
+	0% { opacity: 0; }
+	100% { opacity: 100%; }
+}
+.ratting-captcha {background: #f4f4f4;padding: 15px 15px 5px 15px;border-radius:4px;margin-top: 15px;margin-bottom: 30px;}
+.ratting-captcha .btn {margin-bottom: 0;}
+.ratting-captcha input[type=text] {height: 50px;}
 /* Сравнение товаров */
 table.productListingData td {border-bottom:1px solid #E9E9E9;padding:10px 5px;}
 table.productListingData tr:first-child td {vertical-align: top;}
