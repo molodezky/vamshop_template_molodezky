@@ -5,7 +5,7 @@
 <!-- центральная секция -->
 <div class="container">
 	<div class="row">
-		{if in_array($smarty.server.REQUEST_URI, array('/_bootstrap/', '/_bootstrap/index.php', '/_bootstrap/index.php?currency=USD', '/_bootstrap/index.php?currency=RUR'))}
+		{if in_array($smarty.server.REQUEST_URI, array('/', '/index.php', '/index.php?currency=USD', '/index.php?currency=RUR'))}
 			{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/slider/{$smarty.const.DEFAULT_SLIDER}.html"}
 		{/if}		
 		<!-- Навигация -->

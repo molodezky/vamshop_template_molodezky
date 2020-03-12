@@ -12,6 +12,8 @@
 E-mail: {$EMAIL_ADDRESS}
 Пароль: {$PASSWORD}
 
+{if $customer_extra_fields}{$customer_extra_fields}{/if}
+
 Якщо у Вас виникли питання, зв'яжіться з нами за адресою: {$content.MAIL_REPLY_ADDRESS}
 
 Попередження: Данна E-Mail адреса була отримана нами від клієнта. Якщо Ви ніде не вказували данну E-Mail адресу, зв'яжіться з нами: {$content.MAIL_REPLY_ADDRESS}

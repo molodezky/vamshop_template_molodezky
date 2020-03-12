@@ -126,6 +126,41 @@ $('#cookie-alert').on('closed.bs.alert', function (e) {
    $.cookie("cookie-alert", 1, { expires : 365, path: "/" });
 })
 
+// Like
+function doLike(id) {
+		var data = 'q=includes/modules/ajax/ajaxLike.php&products_id='+id;
+		$.ajax({
+					url : "index_ajax.php",
+					dataType : "html",
+					data : data,
+					type : "GET",
+					success : function(msg) {
+					 $("#likes").html(msg);
+					 $("#like").removeAttr("onclick");
+					 $("#dislike").removeAttr("onclick");
+					 $("#like").addClass("rounded-circle border border-primary");
+               }
+		});
+	}
+	
+// Dislike
+function doDislike(id) {
+		var data = 'q=includes/modules/ajax/ajaxDislike.php&products_id='+id;
+		$.ajax({
+					url : "index_ajax.php",
+					dataType : "html",
+					data : data,
+					type : "GET",
+					success : function(msg) {
+					 $("#dislikes").html(msg);
+					 $("#dislike").removeAttr("onclick");
+					 $("#like").removeAttr("onclick");
+					 $("#dislike").addClass("rounded-circle border border-danger text-danger");
+               }
+		});
+	}	
+	
+
 // антиспам Перезвоните мне
 $(function($){
 

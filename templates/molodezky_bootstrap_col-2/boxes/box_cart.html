@@ -58,7 +58,7 @@
 						{$products_data.QTY}&nbsp;x&nbsp;&nbsp;<a href="{$products_data.LINK}" title="{$products_data.NAME}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a>
 						{if $products_data.ATTRIBUTES!=''} 
 						{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
-							<div class="CartItem__attr">{$item_data.NAME}: {$item_data.VALUE}</div>
+							<div class="CartItem__attr">{if $item_data.NAME != ''}{$item_data.NAME}:{/if} {if $item_data.VALUE != ''}{$item_data.VALUE}{/if}</div>
 						{/foreach}
 						{/if}
 						</div>

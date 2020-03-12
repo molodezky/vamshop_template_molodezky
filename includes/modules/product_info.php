@@ -121,7 +121,9 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		if ($_SESSION['customers_status']['customers_status_id'] == 0) $info->assign('PRODUCTS_EDIT_LINK', vam_href_link_admin(FILENAME_EDIT_PRODUCTS, 'cPath=' . $cPath . '&amp;pID=' . $product->data['products_id'] . '&amp;action=new_product'));
 		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
 		$info->assign('PRODUCTS_SHORT_DESCRIPTION', stripslashes($product->data['products_short_description']));
-		
+		$info->assign('PRODUCT_LIKES', $product->data['likes']);
+		$info->assign('PRODUCT_DISLIKES', $product->data['dislikes']);
+	
       $i = 0;
       $max = count($_SESSION['tracking']['products_history']);
       
