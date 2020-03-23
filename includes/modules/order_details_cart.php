@@ -44,29 +44,45 @@ $module_content = array ();
 $any_out_of_stock = '';
 $mark_stock = '';
 
-for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
+//echo var_dump($products);
+
+$new_array = array();
+
+foreach($products as $value){
+    $new_array[$value["categories_name"]][] = $value;
+}
+
+//echo var_dump($new_array);
+
+
+foreach($new_array as $key => $value){
+	
+	$productss[$key]['products'] = $value;
+	
+
+for ($i = 0, $n = sizeof($productss[$key]['products']); $i < $n; $i ++) {
 
 	//if (STOCK_CHECK == 'true') {
-		//$mark_stock = vam_check_stock($products[$i]['id'], $products[$i]['quantity']);
+		//$mark_stock = vam_check_stock($productss[$key]['products'][$i]['id'], $productss[$key]['products'][$i]['quantity']);
 		//if ($mark_stock)
 			//$_SESSION['any_out_of_stock'] = 1;
 	//}
 	
       if (STOCK_CHECK == 'true') {
         // begin Bundled Products
-        if ($products[$i]['bundle'] == "yes") {
-          $mark_stock = $bundles_stock_check[$products[$i]['id']];
-        } elseif (in_array($products[$i]['id'], $product_ids_in_bundles)) {
+        if ($productss[$key]['products'][$i]['bundle'] == "yes") {
+          $mark_stock = $bundles_stock_check[$productss[$key]['products'][$i]['id']];
+        } elseif (in_array($productss[$key]['products'][$i]['id'], $product_ids_in_bundles)) {
           // if ordering individually product that is also contained in a bundle in this order must be able to cover both quantities
           // check against product left on hand after bundles have been sold
           $mark_stock = '';
-          if ($product_on_hand[$products[$i]['id']] <= 0) {
+          if ($product_on_hand[$productss[$key]['products'][$i]['id']] <= 0) {
             $mark_stock = '<span class="markProductOutOfStock">' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '<br />' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . TEXT_NOT_AVAILABLEINSTOCK . '</span>';
-          } elseif ($product_on_hand[$products[$i]['id']] < $products[$i]['quantity']) {
-            $mark_stock = '<span class="markProductOutOfStock">' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '<br />' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . TEXT_ONLY_THIS_AVAILABLEINSTOCK1 . $product_on_hand[$products[$i]['id']] . TEXT_ONLY_THIS_AVAILABLEINSTOCK2 . '</span>';
+          } elseif ($product_on_hand[$productss[$key]['products'][$i]['id']] < $productss[$key]['products'][$i]['quantity']) {
+            $mark_stock = '<span class="markProductOutOfStock">' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '<br />' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . TEXT_ONLY_THIS_AVAILABLEINSTOCK1 . $product_on_hand[$productss[$key]['products'][$i]['id']] . TEXT_ONLY_THIS_AVAILABLEINSTOCK2 . '</span>';
           }
         } else {
-          $mark_stock = vam_check_stock($products[$i]['id'], $products[$i]['quantity']);
+          $mark_stock = vam_check_stock($productss[$key]['products'][$i]['id'], $productss[$key]['products'][$i]['quantity']);
         }
         if (vam_not_null($mark_stock)) {
           $_SESSION['any_out_of_stock'] = 1;
@@ -74,7 +90,7 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
           $products_name .= $mark_stock;
         }
       }
-      if ($products[$i]['sold_in_bundle_only'] == 'yes') {
+      if ($productss[$key]['products'][$i]['sold_in_bundle_only'] == 'yes') {
         $products_name .= '<br /><span class="markProductOutOfStock">' . TEXT_BUNDLE_ONLY . '</span>';
         $any_bundle_only = true;
       }
@@ -82,50 +98,50 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 	
 
 	$image = '';
-	if ($products[$i]['image'] != '') {
-		$image = DIR_WS_THUMBNAIL_IMAGES.$products[$i]['image'];
+	if ($productss[$key]['products'][$i]['image'] != '') {
+		$image = DIR_WS_THUMBNAIL_IMAGES.$productss[$key]['products'][$i]['image'];
 	}
 	if (!is_file($image)) $image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
-	$module_content[$i] = array (
+	$module_content[$key][$i] = array (
 	
-	'PRODUCTS_NAME' => $products[$i]['name'].$mark_stock,
-	'PRODUCTS_CATEGORIES_ID' => $products[$i]['categories_id'], 
-	'PRODUCTS_CATEGORIES_NAME' => $products[$i]['categories_name'], 
-	'PRODUCTS_CATEGORIES_SORT_ORDER' => $products[$i]['categories_sort_order'],		
-	'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2" id="cart" class="form-control col-sm-4 text-center item-quantity input-small"').vam_draw_hidden_field('products_id[]', $products[$i]['id'],'class="ajax_qty"').vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 
-	'PRODUCTS_STOCK' => $products[$i]['stock'],
-	'PRODUCTS_MODEL' => $products[$i]['model'],
-	'PRODUCTS_SHIPPING_TIME'=>$products[$i]['shipping_time'], 
-	'PRODUCTS_TAX' => number_format($products[$i]['tax'], TAX_DECIMAL_PLACES), 
+	'PRODUCTS_NAME' => $productss[$key]['products'][$i]['name'].$mark_stock, 
+	'PRODUCTS_CATEGORIES_ID' => $productss[$key]['products'][$i]['categories_id'], 
+	'PRODUCTS_CATEGORIES_NAME' => $productss[$key]['products'][$i]['categories_name'], 
+	'PRODUCTS_CATEGORIES_SORT_ORDER' => $productss[$key]['products'][$i]['categories_sort_order'], 
+	'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $productss[$key]['products'][$i]['quantity'], 'size="2" id="cart" class="form-control text-center item-quantity input-small"').vam_draw_hidden_field('products_id[]', $productss[$key]['products'][$i]['id'],'class="ajax_qty"').vam_draw_hidden_field('old_qty[]', $productss[$key]['products'][$i]['quantity']), 
+	'PRODUCTS_STOCK' => $productss[$key]['products'][$i]['stock'],
+	'PRODUCTS_QUANTITY' => $productss[$key]['products'][$i]['quantity'],
+	'PRODUCTS_MODEL' => $productss[$key]['products'][$i]['model'],
+	'PRODUCTS_SHIPPING_TIME'=>$productss[$key]['products'][$i]['shipping_time'], 
+	'PRODUCTS_TAX' => number_format($productss[$key]['products'][$i]['tax'], TAX_DECIMAL_PLACES), 
 	'PRODUCTS_IMAGE' => $image, 
-	'IMAGE_ALT' => $products[$i]['name'], 
-	'BOX_DELETE' => '<button class="btn btn-primary cart_delete" type="button" value="'.$products[$i]['id'].'"><span>X</span></button>', 
-	'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'], $products[$i]['name'])), 
-  'PLUS' => '<button class="btn btn-primary cart_change cart_plus" type="button" value="1"><span>+</span></button>',
-  'MINUS' => '<button class="btn btn-primary cart_change cart_minus" type="button" value="-1"><span>-</span></button>',
-	'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'], $products[$i]['name'])), 
-	'PRODUCTS_PRICE' => $vamPrice->Format($products[$i]['price'] * $products[$i]['quantity'], true), 
-	'PRODUCTS_SINGLE_PRICE' =>$vamPrice->Format($products[$i]['price'], true), 
-	'PRODUCTS_SHORT_DESCRIPTION' => vam_get_short_description($products[$i]['id']), 
+	'IMAGE_ALT' => $productss[$key]['products'][$i]['name'], 
+	'BOX_DELETE' => '<button class="btn btn-primary add-to-cart cart_delete" type="button" value="'.$productss[$key]['products'][$i]['id'].'"><span>X</span></button>', 
+   'PLUS' => '<button class="btn btn-primary cart_change cart_plus" type="button" value="1"><span>+</span></button>',
+   'MINUS' => '<button class="btn btn-primary cart_change cart_minus" type="button" value="-1"><span>-</span></button>',
+	'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($productss[$key]['products'][$i]['id'], $productss[$key]['products'][$i]['name'])), 
+	'PRODUCTS_PRICE' => $vamPrice->Format($productss[$key]['products'][$i]['price'] * $productss[$key]['products'][$i]['quantity'], true), 
+	'PRODUCTS_SINGLE_PRICE' =>$vamPrice->Format($productss[$key]['products'][$i]['price'], true), 
+	'PRODUCTS_SHORT_DESCRIPTION' => vam_get_short_description($productss[$key]['products'][$i]['id']), 
 	'ATTRIBUTES' => ''
 	
 	);
 	// Product options names
-	$attributes_exist = ((isset ($products[$i]['attributes'])) ? 1 : 0);
+	$attributes_exist = ((isset ($productss[$key]['products'][$i]['attributes'])) ? 1 : 0);
 	if ($attributes_exist == 1) {
-		$module_content[$i]['ATTRIBUTES'] = array();
-		foreach ($products[$i]['attributes'] as $option => $value) {
+		$module_content[$key][$i]['ATTRIBUTES'] = array();
+		foreach ($productss[$key]['products'][$i]['attributes'] as $option => $value) {
 			if (ATTRIBUTE_STOCK_CHECK == 'true' && STOCK_CHECK == 'true') {
-				$attribute_stock_check = vam_check_stock_attributes($products[$i][$option]['products_attributes_id'], $products[$i]['quantity']);
+				$attribute_stock_check = vam_check_stock_attributes($productss[$key]['products'][$i][$option]['products_attributes_id'], $productss[$key]['products'][$i]['quantity']);
 				if ($attribute_stock_check)
 					$_SESSION['any_out_of_stock'] = 1;
 			}
 
-			$module_content[$i]['ATTRIBUTES'][] = array (
+			$module_content[$key][$i]['ATTRIBUTES'][] = array (
 			
-			'ID' => $products[$i][$option]['products_attributes_id'], 
-			'MODEL' => vam_get_attributes_model(vam_get_prid($products[$i]['id']), $products[$i][$option]['products_options_values_name'],$products[$i][$option]['products_options_name']), 
-			'NAME' => $products[$i][$option]['products_options_name'], 'VALUE_NAME' => $products[$i][$option]['products_options_values_name'].$attribute_stock_check
+			'ID' => $productss[$key]['products'][$i][$option]['products_attributes_id'], 
+			'MODEL' => vam_get_attributes_model(vam_get_prid($productss[$key]['products'][$i]['id']), $productss[$key]['products'][$i][$option]['products_options_values_name'],$productss[$key]['products'][$i][$option]['products_options_name']), 
+			'NAME' => $productss[$key]['products'][$i][$option]['products_options_name'], 'VALUE_NAME' => $productss[$key]['products'][$i][$option]['products_options_values_name'].$attribute_stock_check
 			
 			);
 
@@ -133,8 +149,18 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 	}
 
 }
+}
+
+//echo var_dump($productss);
+//echo var_dump($module_content);
 
 $total_content = '';
+$total_content_text = '';
+$total_content_value = '';
+$total_subtotal_text = '';
+$total_subtotal_value = '';
+$total_discount_text = '';
+$total_discount_value = '';
 $total =$_SESSION['cart']->show_total();
 if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1' && $_SESSION['customers_status']['customers_status_ot_discount'] != '0.00') {
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
@@ -144,6 +170,8 @@ if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1' &&
 	}
 	$discount = $vamPrice->GetDC($price, $_SESSION['customers_status']['customers_status_ot_discount']);
 	$total_content = $_SESSION['customers_status']['customers_status_ot_discount'].' % '.SUB_TITLE_OT_DISCOUNT.' -'.vam_format_price($discount, $price_special = 1, $calculate_currencies = false).'<br />';
+	$total_discount_name = SUB_TITLE_OT_DISCOUNT . " " . $_SESSION['customers_status']['customers_status_ot_discount'].'%';
+	$total_discount_value = vam_format_price($discount, $price_special = 1, $calculate_currencies = false);
 }
 
 if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
@@ -151,8 +179,12 @@ if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) $total-=$discount;
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 1) $total-=$discount;
 	$total_content .= SUB_TITLE_SUB_TOTAL.' ' .$vamPrice->Format($total, true).'<br />';
+	$total_subtotal_name = SUB_TITLE_SUB_TOTAL;
+	$total_subtotal_value = $vamPrice->Format($total, true);
 } else {
 	$total_content .= TEXT_INFO_SHOW_PRICE_NO.'<br />';
+	$total_subtotal_name = TEXT_INFO_SHOW_PRICE_NO;
+	$total_subtotal_value = '';
 }
 // display only if there is an ot_discount
 if ($customer_status_value['customers_status_ot_discount'] != 0) {
@@ -163,9 +195,19 @@ if (SHOW_SHIPPING == 'true') {
 }
 
 $module->assign('UST_CONTENT', $_SESSION['cart']->show_tax());
+$module->assign('UST_CONTENT_NAME', $_SESSION['cart']->show_tax_name());
+$module->assign('UST_CONTENT_VALUE', $_SESSION['cart']->show_tax_value());
 $module->assign('TOTAL_CONTENT', $total_content);
+$module->assign('TOTAL_QUANTITY', $_SESSION['cart']->count_contents());
+$module->assign('TOTAL_NAME', $total_content_name);
+$module->assign('TOTAL_VALUE', $total_content_value);
+$module->assign('TOTAL_SUBTOTAL_NAME', $total_subtotal_name);
+$module->assign('TOTAL_SUBTOTAL_VALUE', $total_subtotal_value);
+$module->assign('TOTAL_DISCOUNT_NAME', $total_discount_name);
+$module->assign('TOTAL_DISCOUNT_VALUE', $total_discount_value);
 $module->assign('language', $_SESSION['language']);
 $module->assign('module_content', $module_content);
+$module->assign('new_array', $new_array);
 
 $module->caching = 0;
 $module = $module->fetch(CURRENT_TEMPLATE.'/module/order_details.html');

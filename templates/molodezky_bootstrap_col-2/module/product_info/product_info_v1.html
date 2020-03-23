@@ -246,20 +246,21 @@
 {$FORM_END}
 
 
-{if $MODULE_bundle != ''}{$MODULE_bundle}{/if}
-{if $MODULE_products_media != ''}{$MODULE_products_media}{/if}
-{if $MODULE_cross_selling != ''}{$MODULE_cross_selling}{/if}
-{if $MODULE_reverse_cross_selling != ''}{$MODULE_reverse_cross_selling}{/if}
-{if $MODULE_also_purchased != ''}{$MODULE_also_purchased}{/if}
-{if $MODULE_bundle_products != ''}{$MODULE_bundle_products}{/if}
-
-{if $products_history}
-	<div class="h1">{#title_viewed_products#}</div>
-	<div class="row">
-		{foreach name=aussen item=module_data from=$products_history} 
-			{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
-		{/foreach}
-	</div>
+	{if $MODULE_bundle != ''}{$MODULE_bundle}{/if}
+	{if $MODULE_products_media != ''}{$MODULE_products_media}{/if}
+	{if $MODULE_cross_selling != ''}{$MODULE_cross_selling}{/if}
+	{if $MODULE_reverse_cross_selling != ''}{$MODULE_reverse_cross_selling}{/if}
+	{if $MODULE_also_purchased != ''}{$MODULE_also_purchased}{/if}
+	{if $MODULE_bundle_products != ''}{$MODULE_bundle_products}{/if}
+	{if $smarty.const.DISPLAY_LAST_VIEWED =='true'}
+		{if $products_history}
+			<div class="h1">{#title_viewed_products#}</div>
+			<div class="row">
+				{foreach name=aussen item=module_data from=$products_history} 
+					{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+				{/foreach}
+			</div>
+		{/if}
 	{/if}
 </div>
 

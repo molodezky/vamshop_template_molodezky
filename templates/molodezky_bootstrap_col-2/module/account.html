@@ -86,17 +86,15 @@
 </ul>
 
 </div>
-<!-- /Уведомления -->
-
-{if $products_history}
 <!-- Просмотренные товары -->
-<div class="h1">{#title_viewed_products#}</div>
-<div class="row">
-{foreach name=history_products item=module_data from=$products_history} 
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
-{/foreach} 
-
-<div class="clearfix"></div>
-<!-- /Просмотренные товары -->
-</div>
+{if $smarty.const.DISPLAY_LAST_VIEWED =='true'}
+	{if $products_history}
+		<div class="h1">{#title_viewed_products#}</div>
+		<div class="row">
+			{foreach name=history_products item=module_data from=$products_history} 
+				{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+			{/foreach} 
+			<div class="clearfix"></div>
+		</div>
+	{/if}
 {/if}

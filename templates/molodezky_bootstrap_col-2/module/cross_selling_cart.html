@@ -1,0 +1,11 @@
+{config_load file="$language/lang_$language.conf" section="cross_selling"}
+<div class="h1">{#heading_text#}</div>
+<div class="row">
+	{foreach name=aussen item=group_data from=$module_content}
+		<div class="col-xs-12 ProductGroup">{$group_data.GROUP}</div>
+		{foreach item=module_data from=$group_data.PRODUCTS}
+			{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+		{/foreach} 
+		<div class="clearfix"></div>
+	{/foreach}
+</div>

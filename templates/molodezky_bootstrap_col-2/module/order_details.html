@@ -8,7 +8,11 @@
 	<div class="hidden-xs hidden-sm hidden-md hidden-lg ShoppingCartListHeadDel">{#text_remove#}</div>
 	<div class="clearfix"></div>
 </div>
-{foreach name=aussen item=module_data from=$module_content}
+{foreach from=$module_content key=category_name item=cart_data}
+
+<div class="col-xs-12 ShoppingCartCat">{$category_name}</div>
+
+{foreach name=aussen item=module_data from=$cart_data}
 <div class="ShoppingCartList">
 	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-7 ShoppingCartListItem">
 		{if $module_data.PRODUCTS_IMAGE!=''}<div class="CartDetailsProductiImage"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.IMAGE_ALT}" /></div>{/if}
@@ -31,6 +35,7 @@
 	<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 ShoppingCartListDel">{$module_data.BOX_DELETE}</div>
 	<div class="clearfix"></div>
 </div>
+{/foreach}
 {/foreach}
 <div class="ShoppingCartTotal">{$UST_CONTENT}<strong>{$TOTAL_CONTENT}</strong></div>
 <div class="clearfix"></div>
