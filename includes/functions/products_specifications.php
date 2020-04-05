@@ -131,7 +131,7 @@
   function vam_draw_links_menu ($name, $values, $target, $default = '') {
     $field = '';
 
-    $field .= '<ul class="list-inline">';
+    $field .= '<div class="list-group">';
 
     foreach ($values as $link_data) {
 
@@ -140,20 +140,23 @@
           break;
         
         case ($link_data['count'] != '' && $link_data['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'grey'):
-          $field .= '<li class="list-inline-item">';
-          $field .= '<span class="no_results">';
+          //$field .= '<li class="list-group-item list-group-item-action">';
+          $field .= '<span class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">';
           $field .= vam_output_string ($link_data['text'] );
-          $field .= '</span>';
           if ($link_data['count'] != '' && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
             $field .= ' (' . $link_data['count'] . ')';
           }
-          $field .= '</li>';
+          $field .= '</span>';
+          //$field .= '</li>';
           break;
         
         default:
-          $field .= '<li class="list-inline-item'.(($default == $link_data['id']) ? ' active' : '').'">';
-          $field .= '<a class="rounded-pill btn btn-outline-primary'.(($default == $link_data['id']) ? ' btn-primary text-white' : '').'" href="' . vam_href_link ($target, vam_get_array_get_params (array ( $name, 'page') ) . ($link_data['id'] == '0' ? '' : $name . '=' . vam_output_string($link_data['id']))) . '">';
-
+          //$field .= '<li class="list-group-item list-group-item-action'.(($default == $link_data['id']) ? ' active' : '').'">';
+          if ($default == $link_data['id']) {
+          $field .= '<span class="list-group-item list-group-item-action'.(($default == $link_data['id']) ? ' active' : '').'">';
+          } else {
+          $field .= '<a class="list-group-item list-group-item-action'.(($default == $link_data['id']) ? ' active' : '').'" href="' . vam_href_link ($target, vam_get_array_get_params (array ( $name, 'page') ) . ($link_data['id'] == '0' ? '' : $name . '=' . vam_output_string($link_data['id']))) . '">';
+          }
           if ($default == $link_data['id']) {
             $field .= '<b>';
           }
@@ -166,16 +169,20 @@
           if ($default == $link_data['id']) {
             $field .= '</b>';
           }
+          if ($default == $link_data['id']) {
+          $field .= '</span>';
+          } else {
           $field .= '</a>';
-          $field .= '</li>';
+          }
+          //$field .= '</li>';
           break;
       } // switch (true)
     } // foreach ($values
     
-    $field .= '</ul>';
+    $field .= '</div>';
   
 
-    $field .= '<br clear=all>';
+    $field .= '<br />';
     return $field;
   } //  function vam_draw_links_menu
 
