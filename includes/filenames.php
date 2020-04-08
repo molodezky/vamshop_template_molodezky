@@ -156,10 +156,13 @@ define('FILENAME_BEST_SELLERS', 'best_sellers.php');
 
 define('FILENAME_BUNDLE_PRODUCTS', 'bundle_products.php');
 define('FILENAME_REVIEWS_ALL', 'reviews_all.php');
+
 define('FILENAME_AUTOLOGON', 'autologon.php');
 define('FILENAME_AUTOLOGIN', 'autologin.php');
 define('FILENAME_INFO_AUTOLOGON', 'info_autologon.php');
-
+  
+define('FILENAME_BANNER_MAINPAGE', 'banners_mainpage.php');
 // Molodezky
 define('FILENAME_ASK_PRODUCT_PRICE', 'ask_a_price.php');
+
 ?>
