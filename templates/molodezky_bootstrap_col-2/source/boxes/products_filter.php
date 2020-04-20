@@ -129,7 +129,7 @@ $box_content='';
         $first = false;
         
         if (isset ($_GET[$var]) && $_GET[$var] != '') {
-        $box_text .=  '<div class="ProductFilterGroup">' . $specs_array['specification_name'] . ' <a href="'.vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $specs_array['specifications_id']) ) ).'"><span class="close-box">[X]</span></a></div>';
+        $box_text .=  '<div class="ProductFilterGroup">' . $specs_array['specification_name'] . ' <a href="'.vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $specs_array['specifications_id']) ) ).'"><span class="filter-close circle text-danger cart_delete"><i class="fa fa-times"></i></span></a></div>';
         } else {
         $box_text .=  '<div class="ProductFilterGroup">' . $specs_array['specification_name'] . '</div>';
         }
@@ -142,10 +142,10 @@ $box_content='';
             $count = $spec_object->getFilterCount ('0', $specs_array['specifications_id'], $specs_array['filter_class'], $specs_array['products_column_name']);
           }
           // The ID value must be set as a string, not an integer
-          $filters_select_array[$filter_index] = array ('id' => '0',
-                                                        'text' => TEXT_SHOW_ALL,
-                                                        'count' => $count
-                                                       );
+          //$filters_select_array[$filter_index] = array ('id' => '0',
+//                                                        'text' => TEXT_SHOW_ALL,
+//                                                        'count' => $count
+//                                                       );
           $filter_index++;
         }
         
