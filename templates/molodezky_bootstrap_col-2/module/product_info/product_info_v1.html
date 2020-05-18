@@ -103,71 +103,73 @@
 </div>
 <!-- правый блок -->
 <div class="col-xs-12 col-sm-7">
-<h1 class="ProductInfoName" itemprop="name">{$PRODUCTS_NAME}</h1>
-<div class="row">
-<div class="col-xs-12 col-sm-6">
-<div class="ProductInfoQTY"><span class="{if $PRODUCTS_QUANTITY < 1}qty-no{elseif $PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $PRODUCTS_QUANTITY < 1}<i class="fa fa-exclamation" aria-hidden="true"></i> Товар отсутствует{elseif $PRODUCTS_QUANTITY < 10}<i class="fa fa-phone" aria-hidden="true"></i> Под заказ{else}<i class="fa fa-check" aria-hidden="true"></i> Есть в наличии{/if}</span></div>
-<div class="ProductInfoPopUp"><a class="btn btn-default quest iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a></div>
+  <h1 class="ProductInfoName" itemprop="name">{$PRODUCTS_NAME}</h1>
+  {if $smarty.session.customers_status.customers_status_id == 0}
+    {if $PRODUCTS_EDIT_LINK}<p><a class="btn btn-inverse" href="{$PRODUCTS_EDIT_LINK}"><i class="fa fa-pencil-alt"></i> {#text_product_edit#}</a></p>{/if}
+  {/if}  
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="ProductInfoQTY"><span class="{if $PRODUCTS_QUANTITY < 1}qty-no{elseif $PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $PRODUCTS_QUANTITY < 1}<i class="fa fa-exclamation" aria-hidden="true"></i> Товар отсутствует{elseif $PRODUCTS_QUANTITY < 10}<i class="fa fa-phone" aria-hidden="true"></i> Под заказ{else}<i class="fa fa-check" aria-hidden="true"></i> Есть в наличии{/if}</span></div>
+      <div class="ProductInfoPopUp"><a class="btn btn-default quest iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a></div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+    <div class="ProductInfoPrice" data-price="{$PRODUCTS_PRICE_PLAIN}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    {$PRODUCTS_PRICE}
+    <meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
+    <meta itemprop="priceCurrency" content="{$smarty.session.currency}">
+    {if $PRODUCTS_QUANTITY > 0}<link itemprop="availability" href="http://schema.org/InStock" />{/if}
+    <meta itemprop="priceValidUntil" content="{($smarty.now + (1200*60*24*7))|date_format:"%c"}" />
+    <meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
+    </div>
+    {if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
+    {if $PRODUCTS_FSK18=='true'}<p><img src="{$tpl_path}img/fsk18.gif" alt="" /></p>{/if}
+    {if $MODULE_graduated_price !=''}{$MODULE_graduated_price}{/if}
+    {/if}
+    {if $PRODUCTS_VPE}<p>{$PRODUCTS_VPE}</p>{/if}
+    {if $PRODUCTS_DISCOUNT}<p>{#text_discount#}&nbsp;{$PRODUCTS_DISCOUNT}</p>{/if}
 
-</div>
-<div class="col-xs-12 col-sm-6">
-<div class="ProductInfoPrice" data-price="{$PRODUCTS_PRICE_PLAIN}" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-{$PRODUCTS_PRICE}
-<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
-<meta itemprop="priceCurrency" content="{$smarty.session.currency}">
-{if $PRODUCTS_QUANTITY > 0}<link itemprop="availability" href="http://schema.org/InStock" />{/if}
-<meta itemprop="priceValidUntil" content="{($smarty.now + (1200*60*24*7))|date_format:"%c"}" />
-<meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
-</div>
-{if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
-{if $PRODUCTS_FSK18=='true'}<p><img src="{$tpl_path}img/fsk18.gif" alt="" /></p>{/if}
-{if $MODULE_graduated_price !=''}{$MODULE_graduated_price}{/if}
-{/if}
-{if $PRODUCTS_VPE}<p>{$PRODUCTS_VPE}</p>{/if}
-{if $PRODUCTS_DISCOUNT}<p>{#text_discount#}&nbsp;{$PRODUCTS_DISCOUNT}</p>{/if}
+        {if $MANUFACTURER}
+          <p>{#text_manufacturer#}: <span itemprop="brand">{$MANUFACTURER}</span></p>
+        {else}
+          <meta itemprop="brand" content="{$PRODUCTS_MODEL}" />
+        {/if}
+        {if $PRODUCTS_MODEL}
+          <meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
+          <meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
+        {else}
+          <meta itemprop="sku" content="{$PRODUCTS_ID}" />
+          <meta itemprop="mpn" content="{$smarty.const.STORE_NAME}" />
+        {/if}
 
-		{if $MANUFACTURER}
-			<p>{#text_manufacturer#}: <span itemprop="brand">{$MANUFACTURER}</span></p>
-		{else}
-			<meta itemprop="brand" content="{$PRODUCTS_MODEL}" />
-		{/if}
-		{if $PRODUCTS_MODEL}
-			<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
-			<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
-		{else}
-			<meta itemprop="sku" content="{$PRODUCTS_ID}" />
-			<meta itemprop="mpn" content="{$smarty.const.STORE_NAME}" />
-		{/if}
+    <div class="ProductInfoSocials">
+    Поделиться с друзьями:
+    <script src="//yastatic.net/share/share.js" charset="utf-8"></script>
+    <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus" data-yashareTheme="counter"></div>
+    </div>
 
-<div class="ProductInfoSocials">
-Поделиться с друзьями:
-<script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
-<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus" data-yashareTheme="counter"></div>
-</div>
-
-{if $REVIEWS_TOTAL > 0}<div class="ProductInfoRating">{$STAR_RATING}</div>{/if}
-</div>
-{if $PRODUCTS_SHORT_DESCRIPTION !=''}<div class="col-xs-12 ProductInfoShort">{$PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
-{if $MODULE_product_options !=''}<div class="col-xs-12 ProductInfoOption">{$MODULE_product_options}</div>{/if}
-<div class="ProductInfoQuantity">
-<span class="col-xs-4 col-sm-4 quantity-text">Количество</span>
-<span class="col-xs-8 col-sm-8">
-<span class="minus">-</span> {$ADD_QTY} <span class="plus">+</span>
-</span>
-<span class="clearfix"></span>
-</div>
-{if $PRODUCTS_QUANTITY > 0}
-<div class="col-xs-12 col-sm-6 ProductInfoButton">{$ADD_CART_BUTTON}</div>
-<div class="col-xs-12 col-sm-6 ProductInfoBuyOne"><a class="btn btn-primary"  data-toggle="modal" data-target="#BuyOneProductInfo">Быстрая покупка</a></div>
-{/if}
-<div class="col-xs-12">
-{if $PRODUCTS_WEIGHT}<p>Вес: {$PRODUCTS_WEIGHT} кг</p>{/if}
-{if $PRODUCTS_LENGTH}<p>Длина: {$PRODUCTS_LENGTH} см</p>{/if}
-{if $PRODUCTS_WIDTH}<p>Ширина: {$PRODUCTS_WIDTH} см</p>{/if}
-{if $PRODUCTS_HEIGHT}<p>Высота: {$PRODUCTS_HEIGHT} см</p>{/if}
-{if $PRODUCTS_VOLUME}<p>Объем: {$PRODUCTS_VOLUME} куб.м</p>{/if}
-</div>
-</div>
+    {if $REVIEWS_TOTAL > 0}<div class="ProductInfoRating">{$STAR_RATING}</div>{/if}
+    </div>
+    {if $PRODUCTS_SHORT_DESCRIPTION !=''}<div class="col-xs-12 ProductInfoShort">{$PRODUCTS_SHORT_DESCRIPTION}</div>{/if}
+    {if $MODULE_product_options !=''}<div class="col-xs-12 ProductInfoOption">{$MODULE_product_options}</div>{/if}
+    <div class="ProductInfoQuantity">
+    <span class="col-xs-4 col-sm-4 quantity-text">Количество</span>
+    <span class="col-xs-8 col-sm-8">
+    <span class="minus">-</span> {$ADD_QTY} <span class="plus">+</span>
+    </span>
+    <span class="clearfix"></span>
+    </div>
+    {if $PRODUCTS_QUANTITY > 0}
+    <div class="col-xs-12{if $smarty.const.ONE_CLICK_BUY == 'true'} col-sm-6{/if} ProductInfoButton">{$ADD_CART_BUTTON}</div>
+    {if $smarty.const.ONE_CLICK_BUY == 'true'}<div class="col-xs-12 col-sm-6 ProductInfoBuyOne"><a class="btn btn-primary"  data-toggle="modal" data-target="#BuyOneProductInfo">Быстрая покупка</a></div>{/if}
+    {/if}
+    <div class="col-xs-12">
+    {if $PRODUCTS_WEIGHT}<p>Вес: {$PRODUCTS_WEIGHT} кг</p>{/if}
+    {if $PRODUCTS_LENGTH}<p>Длина: {$PRODUCTS_LENGTH} см</p>{/if}
+    {if $PRODUCTS_WIDTH}<p>Ширина: {$PRODUCTS_WIDTH} см</p>{/if}
+    {if $PRODUCTS_HEIGHT}<p>Высота: {$PRODUCTS_HEIGHT} см</p>{/if}
+    {if $PRODUCTS_VOLUME}<p>Объем: {$PRODUCTS_VOLUME} куб.м</p>{/if}
+    </div>
+  </div>
 
 </div>
 </div>

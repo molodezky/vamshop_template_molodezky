@@ -107,6 +107,7 @@ class product {
 		return $reviews['total'];
 	}
 
+
 	/**
 	 * 
 	 * Query for reviews count
@@ -131,7 +132,7 @@ class product {
 		}
 	  }
 	   return $reviews_customer;
-	}	
+	}
 	
 	/**
 	 * 
@@ -146,7 +147,7 @@ class product {
 									                                 r.reviews_rating,
 									                                 r.reviews_id,
 									                                 r.customers_name,
-																									 r.customers_id,
+									                                 r.customers_id,
 									                                 r.date_added,
 									                                 r.last_modified,
 									                                 r.reviews_read,
@@ -171,7 +172,7 @@ class product {
 				}
 				for($i=0;$i<(5 - number_format($reviews['reviews_rating']));$i++)	{
 				$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
-				}
+				}				
 		
 				$data_reviews[] = array (
 				
@@ -184,8 +185,8 @@ class product {
 				'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 				'DATE' => vam_date_short($reviews['date_added']), 
 				//'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
-				'TEXT' => $reviews['reviews_text'],
-        'ANSWER' => $reviews['reviews_answer'],
+				'TEXT' => $reviews['reviews_text'], 
+				'ANSWER' => $reviews['reviews_answer'], 
 				'RATING' => $reviews['reviews_rating'],
 				'STAR_RATING' => $star_rating,
 				'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))
@@ -472,10 +473,19 @@ $orders_query = "select
 		global $vamPrice;
 		
 		$products = $_SESSION['cart']->get_products();
+		
+		foreach ($products AS $in_cart) {
+		$ids[] = intval($in_cart['id']);
+		}
+		
+		$products_ids = implode(",",$ids);
+		
+		//echo var_dump($ids);
+		//echo var_dump($products_ids);
 
   foreach ($products AS $product_id_in_cart) {
 
-		$cs_groups = "SELECT products_xsell_grp_name_id FROM ".TABLE_PRODUCTS_XSELL." WHERE products_id = '".intval($product_id_in_cart['id'])."' GROUP BY products_xsell_grp_name_id";
+		$cs_groups = "SELECT products_xsell_grp_name_id FROM ".TABLE_PRODUCTS_XSELL." WHERE products_id in (".$products_ids.") GROUP BY products_xsell_grp_name_id";
 		$cs_groups = vamDBquery($cs_groups);
 		$cross_sell_data = array ();
 		if (vam_db_num_rows($cs_groups, true)>0) {
@@ -490,25 +500,27 @@ $orders_query = "select
 				$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 			}
 
-				$cross_query = "select p.products_fsk18,
-																														 p.products_tax_class_id,
-																								                                                 p.products_id,
-																								                                                 p.label_id,
-																								                                                 p.products_image,
-																								                                                 p.products_quantity,
-																								                                                 pd.products_name,
-																														 						pd.products_short_description,
-																								                                                 p.products_fsk18,p.products_price,p.products_vpe,
-						                           																									p.products_vpe_status,
-						                           																									p.products_vpe_value,
-																								                                                 xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
-																								                                            where xp.products_id = '".intval($product_id_in_cart['id'])."' and xp.xsell_id = p.products_id ".$fsk_lock.$group_check."
-																								                                            and p.products_id = pd.products_id and xp.products_xsell_grp_name_id='".$cross_sells['products_xsell_grp_name_id']."'
-																								                                            and pd.language_id = '".$_SESSION['languages_id']."'
-																								                                            and p.products_status = '1'
-																								                                            order by xp.sort_order asc limit ".MAX_DISPLAY_ALSO_PURCHASED;
-
-			$cross_query = vamDBquery($cross_query);
+				$cross_query = vamDBquery("select p.products_fsk18,
+												p.products_tax_class_id,
+												p.products_id,
+												p.label_id,
+												p.products_image,
+												p.products_quantity,
+												pd.products_name,
+												pd.products_short_description,
+												p.products_fsk18,p.products_price,p.products_vpe,
+												p.products_vpe_status,
+												p.products_vpe_value,  
+												xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
+												where xp.products_id in (".$products_ids.") and xp.xsell_id not in (".$products_ids.") and xp.xsell_id = p.products_id ".$fsk_lock.$group_check."
+												and p.products_id = pd.products_id 
+												and xp.products_xsell_grp_name_id = ".$cross_sells['products_xsell_grp_name_id']."
+												and pd.language_id = '".$_SESSION['languages_id']."'
+												and p.products_status = '1'
+												and p.products_quantity > '0'
+												group by p.products_id
+												order by xp.sort_order asc limit ".MAX_DISPLAY_ALSO_PURCHASED."");
+												
 			if (vam_db_num_rows($cross_query, true) > 0)
 				$cross_sell_data[$cross_sells['products_xsell_grp_name_id']] = array ('GROUP' => vam_get_cross_sell_name($cross_sells['products_xsell_grp_name_id']), 'PRODUCTS' => array ());
 
@@ -577,9 +589,9 @@ $orders_query = "select
 		global $PHP_SELF;
 		$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
 		if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
-		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.$vam_get_all_get_params_return, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;">'.vam_image_button('buy.png', IMAGE_BUTTON_IN_CART).'</a>';
+		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;">'.vam_image_button('buy.png', TEXT_BUY_BUTTON).'</a>';
 		} else {
-		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.$vam_get_all_get_params_return, 'NONSSL').'">'.vam_image_button('buy.png', 	TEXT_SELECT_OPTIONS).'</a>';
+		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'">'.vam_image_button('buy.png', TEXT_SELECT_OPTIONS).'</a>';
 		}
 		
 		return $link;
@@ -590,9 +602,9 @@ $orders_query = "select
 		global $PHP_SELF;
 		$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
 		if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.$vam_get_all_get_params_return, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;"><i class="fa fa-shopping-cart"></i> '.TEXT_BUY_BUTTON.'</a>';
+		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;"><i class="fa fa-shopping-cart"></i> '.TEXT_BUY_BUTTON.'</a>';
 		} else {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id.'&'.$vam_get_all_get_params_return, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.TEXT_SELECT_OPTIONS.'</a>';
+		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.TEXT_SELECT_OPTIONS.'</a>';
 		}
 		
 		return $link;
@@ -614,7 +626,7 @@ $orders_query = "select
 		return;
 
 	}
-	
+
 	function getVPEtext_value($product, $price) {
 		global $vamPrice;
 
@@ -839,9 +851,9 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 		for($i=0;$i<number_format($this->getReviewsRating($array['products_id']));$i++)	{
 		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
 		}
-        for($i=0;$i<(5 - number_format($this->getReviewsRating($array['products_id'])));$i++)	{
+    for($i=0;$i<(5 - number_format($this->getReviewsRating($array['products_id'])));$i++)	{
 		$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
-		}
+		}		
 
 		return array ('PRODUCTS_NAME' => vam_parse_input_field_data($array['products_name'], array('"' => '&quot;')), 
 		    'PRODUCTS_MODEL'=>$array['products_model'],
@@ -852,9 +864,9 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 		    'PRODUCTS_VOLUME'=>$array['products_volume'],
 		    'PRODUCTS_EAN'=>$array['products_ean'],
 		    'PRODUCTS_QUANTITY'=>$array['products_quantity'],
+				'PRODUCTS_BANDLE_QTY'=>$array['subproduct_qty'],
 		    'LIKES'=>$array['likes'],
-		    'DISLIKES'=>$array['dislikes'],									
-		    'PRODUCTS_BANDLE_QTY'=>$array['subproduct_qty'],
+		    'DISLIKES'=>$array['dislikes'],
 		    'REVIEWS_TOTAL'=> $this->getReviewsCount($array['products_id']), 
 		    'REVIEWS_TOTAL_RATING'=> $this->getReviewsRating($array['products_id']), 
 		    'REVIEWS_STAR_RATING'=> $star_rating, 
@@ -862,7 +874,7 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'EXTRA_FIELDS'=>$extra_fields_data,
 				'SPECS'=>$specifications_data,
 				'PRODUCTS_ID'=>$array['products_id'],
-				'PRODUCTS_VPE' => $this->getVPEtext($array, $products_price['plain']),
+				'PRODUCTS_VPE' => $this->getVPEtext($array, $products_price['plain']), 
 				'PRODUCTS_VPE_TEXT' => $this->getVPEtext_value($array, $products_price['plain']), 
 				'PRODUCTS_VPE_VALUE' => $this->getVPEvalue($array, $products_price['plain']), 
 				'PRODUCTS_LABEL' => $this->getLabelText($array, $array['label_id']), 
@@ -875,7 +887,7 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'PRODUCTS_SPECIAL' => $products_special, 
 				'PRODUCTS_PRICE_PLAIN' => $products_price['plain'], 
 				'PRODUCTS_TAX_INFO' => $main->getTaxInfo($tax_rate), 
-				'MANUFACTURER' => vam_get_manufacturers_name($array['manufacturers_id']),									
+				'MANUFACTURER' => vam_get_manufacturers_name($array['manufacturers_id']), 
 				'PRODUCTS_SHIPPING_LINK' => $main->getShippingLink(), 
 				'PRODUCTS_BUTTON_BUY_NOW' => $buy_now,
 				'PRODUCTS_BUTTON_BUY_NOW_NEW' => $buy_now_new,

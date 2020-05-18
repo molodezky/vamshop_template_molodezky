@@ -13,6 +13,12 @@
 			<p><span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.STAR_RATING}</span></span></p>
 			<p itemprop="reviewBody">{$module_data.TEXT}</p>      
 		</div>
+    {if {$module_data.ANSWER} != ''}
+      <div class="ProductReview-answer">
+        <div class="ProductReview-answer__title">Ответ:</div>
+        {$module_data.ANSWER}
+      </div>
+    {/if}  
 	{/foreach}
 </div>
 {if $TEXT_FIRST_REVIEW != ''}

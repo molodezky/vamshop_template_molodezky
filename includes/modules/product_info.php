@@ -61,11 +61,11 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 			// fsk18
 			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
 				if ($product->data['products_fsk18'] == '0') {
-					$info->assign('ADD_QTY', vam_draw_input_field('products_qty', $product->data['products_quantity_min'], 'class="col-sm-1 form-control text-center" id="quantity'.$product->data['products_id'].'" size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
+					$info->assign('ADD_QTY', vam_draw_input_field('products_qty', $product->data['products_quantity_min'], 'class="form-control text-center" id="quantity'.$product->data['products_id'].'" size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
 					$info->assign('ADD_CART_BUTTON', vam_image_submit('buy.png', IMAGE_BUTTON_IN_CART, 'id="add_to_cart"'));
 				}
 			} else {
-				$info->assign('ADD_QTY', vam_draw_input_field('products_qty', $product->data['products_quantity_min'], 'class="col-sm-1 form-control text-center" id="quantity'.$product->data['products_id'].'" size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
+				$info->assign('ADD_QTY', vam_draw_input_field('products_qty', $product->data['products_quantity_min'], 'class="form-control text-center" id="quantity'.$product->data['products_id'].'" size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
 				$info->assign('ADD_CART_BUTTON', vam_image_submit('buy.png', IMAGE_BUTTON_IN_CART, 'id="add_to_cart"'));
 			}
 
@@ -81,7 +81,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 			$info->assign('SHIPPING_IMAGE', $main->getShippingStatusImage($product->data['products_shippingtime']));
 		}
 		if (AJAX_CART == 'true') {
-		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product'), 'post', 'class="form-inline" onsubmit="doAddProduct(\'\'); return false;" class="form-inline"'));
+		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product'), 'post', 'class="form-inline" onsubmit="doAddProduct(\'\'); return false;"'));
 		} else {
 		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product'), 'post', 'class="form-inline"'));
 		}
@@ -117,13 +117,15 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		$info->assign('PRODUCTS_STATUS', $product->data['products_status']);
 		$info->assign('PRODUCTS_ORDERED', $product->data['products_ordered']);
       $info->assign('PRODUCTS_PRINT', '<img src="images/icons/buttons/print.png" alt="" />');
-		$info->assign('PRODUCTS_PRINT_LINK', vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']));
-		if ($_SESSION['customers_status']['customers_status_id'] == 0) $info->assign('PRODUCTS_EDIT_LINK', vam_href_link_admin(FILENAME_EDIT_PRODUCTS, 'cPath=' . $cPath . '&amp;pID=' . $product->data['products_id'] . '&amp;action=new_product'));
+		$info->assign('PRODUCTS_PRINT_LINK', vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']));      
+		if ($_SESSION['customers_status']['customers_status_id'] == 0) $info->assign('PRODUCTS_EDIT_LINK', vam_href_link_admin(FILENAME_EDIT_PRODUCTS, 'cPath=' . $cPath . '&amp;pID=' . $product->data['products_id'] . '&amp;action=new_product'));      
 		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
 		$info->assign('PRODUCTS_SHORT_DESCRIPTION', stripslashes($product->data['products_short_description']));
+
 		$info->assign('PRODUCT_LIKES', $product->data['likes']);
 		$info->assign('PRODUCT_DISLIKES', $product->data['dislikes']);
-	
+
+
       $i = 0;
       $max = count($_SESSION['tracking']['products_history']);
       
@@ -142,14 +144,17 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
       }
       
       
-      $info->assign('products_history', $products_history);		
-		
+      $info->assign('products_history', $products_history);
+
 		$image = '';
 
 		$star_rating = '';
 		for($i=0;$i<number_format($product->getReviewsRating());$i++)	{
 		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
 		}
+    for($i=0;$i<(5 - number_format($product->getReviewsRating()));$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
+		}		
 
 		$info->assign('STAR_RATING', $star_rating);
 		$info->assign('REVIEWS_RATING', $product->getReviewsRating());
@@ -157,6 +162,8 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 
 		$info->assign('ASK_PRODUCT_QUESTION', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_ask_a_question.gif" alt="" />');
 		$info->assign('ASK_PRODUCT_QUESTION_LINK', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id']));
+
+		$info->assign('ONE_CLICK_BUY_LINK', vam_href_link(FILENAME_ONE_CLICK_BUY, 'products_id='.$product->data['products_id']));
 
 
 		if ($product->data['products_keywords'] != '') {
@@ -189,7 +196,7 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 		$info->assign('CATEGORY_ID', $current_category_id);
       $info->assign('MANUFACTURER_ID',$manufacturer['manufacturers_id']);
       $info->assign('MANUFACTURER_IMAGE',$manufacturer['manufacturers_image']);
-			$info->assign('MANUFACTURER_LINK',vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$manufacturer['manufacturers_id']));
+      $info->assign('MANUFACTURER_LINK',vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$manufacturer['manufacturers_id']));
       $info->assign('MANUFACTURER',$manufacturer['manufacturers_name']);
 
 		if ($product->data['products_image'] != '')

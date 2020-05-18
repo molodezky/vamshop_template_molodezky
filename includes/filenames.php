@@ -162,6 +162,8 @@ define('FILENAME_AUTOLOGIN', 'autologin.php');
 define('FILENAME_INFO_AUTOLOGON', 'info_autologon.php');
   
 define('FILENAME_BANNER_MAINPAGE', 'banners_mainpage.php');
+
+define('FILENAME_ONE_CLICK_BUY', 'one_click_buy.php');
 // Molodezky
 define('FILENAME_ASK_PRODUCT_PRICE', 'ask_a_price.php');
 
