@@ -45,7 +45,9 @@ $(function($){
 
 
 <div class="pagecontentfooter">{$BUTTON_SUBMIT}</div>
-<div class="alert alert-info privacy">{$smarty.const.PRIVACY_TEXT}</div>
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
+	<div class="alert alert-info privacy">{$smarty.const.PRIVACY_TEXT}</div>
+{/if}
 </div>
 </div>
 </div>

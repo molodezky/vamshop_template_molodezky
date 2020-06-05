@@ -1,90 +1,37 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
-<head>
-<meta charset="utf-8">
-<title></title>
-</head>
-<body>
-
-
-
-
-
-<table border="0" cellpadding="0" cellspacing="0" style="margin:0; padding:0;" width="100%">
-<tr>
-<td align="center">
-<center style="max-width: 600px; width: 100%;line-height:1.6;">
-
-<!--[if gte mso 9]>
-<table border="0" cellpadding="0" cellspacing="0" width="600" style="margin:0; padding:0"><tr><td>
-<![endif]-->
-
-<table border="0" cellpadding="0" cellspacing="0" style="margin:0; padding:0" width="100%">
-<!-- шапка -->
-<tr>
-<td style="padding:20px 0;width:50%;">
-<a href="{$smarty.const.HTTP_SERVER}"><img src="{$smarty.const.HTTP_SERVER}/{$tpl_path}img/logo.gif" alt="{$smarty.const.STORE_NAME}" style="border:none;"></a>
-</td>
-<td style="padding:20px 0; vertical-align:top;width:50%;">
-<p style="font-size:17px;font-family:Arial, sans-serif;text-align:right;"><strong>{$smarty.const.STORE_TELEPHONE}</strong></p>
-</td>
-</tr>
-<tr>
-<td colspan="2">
-<!-- меню -->
-<table width="100%" border="0" cellspacing="0" bgcolor="#d0d0d0" cellpadding="10">
-<tbody>
-<tr>
-<td><a href="{$smarty.const.HTTP_SERVER}/shop_content.php?coID=8" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Каталог</a></td>
-<td><a href="{$smarty.const.HTTP_SERVER}/featured.php" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Рекомендуем</a></td>
-<td><a href="{$smarty.const.HTTP_SERVER}/specials.php" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Скидки</a></td>
-<td><a href="{$smarty.const.HTTP_SERVER}/shop_content.php?coID=1" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Доставка</a></td>
-<td><a href="{$smarty.const.HTTP_SERVER}/shop_content.php?coID=2" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Оплата</a></td>
-<td><a href="{$smarty.const.HTTP_SERVER}/shop_content.php?coID=7" style="color:#000; text-decoration:none;margin:0 5px;font-family:Arial, sans-serif;">Контакты</a></td>
-</tr>
-</tbody>
-</table>
-<!-- /меню -->
-</td>
-</tr>
-<tr>
-<td colspan="2" style="padding:30px 0 0">
-<div style="text-align:center;color:#333;font-size:16px;font-family:Arial, sans-serif;padding:0 0 15px;">Уважаемый покупатель!</strong><br />Вы успешно зарегистрировались в нашем интернет-магазине, теперь Вам доступны следующие возможности нашего магазина:</div>
-
-</td>
-</tr>
-<!-- /шапка -->
-
-<tr>
-<td colspan="2" valign="top" style="padding:30px 0 0">
-<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:0 0 10px;">
-<b>- Корзина покупателя</font></b> - Все товары, которые Вы добавили в корзину до регистрации, сохранятся в Вашей корзине.<br>
-<b>- Адресная книга</b> - Вы можете делать заказы не только на свой домашний адрес, но и на любой другой. Например, Вы можете сделать подарок знакомым.<br>
-<b>- История заказов</b> - Вы можете следить за процессом исполнения Вашего заказа.<br>
-<b>- Отзывы</b> - Оставляйте свои отзывы о товарах, заказанных в нашем магазине.</p>
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top" style="padding:30px 0 0">
-<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:0 0 10px;">	
-<b>Ваши данные для входа в магазин:</b><br>
-E-mail: {$EMAIL_ADDRESS}<br />
-Пароль: {$PASSWORD}</p>
-{if $customer_extra_fields}<p>{$customer_extra_fields}</p>{/if}
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top" style="padding:30px 0 0">
-<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:0 0 10px;">
-Если у Вас возникли вопросы, свяжитесь с нами по адресу: {$smarty.const.CONTACT_US_EMAIL_ADDRESS}
-<br>
-Предупреждение: Данный E-Mail адрес был получен нами от клиента. Если Вы нигде не указывали данный E-Mail адрес, свяжитесь с нами:       {$smarty.const.CONTACT_US_EMAIL_ADDRESS}</p>
-</td>
-</tr>
-{if $SEND_GIFT==true}	
-<tr>
-<td colspan="2" valign="top" style="padding:30px 0 0">
-<p style="color:#333;font-family:Arial, sans-serif;font-size:12px;padding:0 0 10px;">	
+<table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr> 
+    <td style="border-bottom: 1px solid; border-color: #cccccc;"><div align="right"><img src="{$logo_path}logo.gif"></div></td>
+  </tr>
+  <tr> 
+    <td><p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Уважаемый покупатель!</strong></font> <br>
+        <br>
+        <font size="2" face="Verdana, Arial, Helvetica, sans-serif">Вы успешно зарегистрировались в нашем интернет-магазине, теперь Вам доступны следующие возможности нашего магазина:</font><br> 
+        <br>
+        <font size="2"><b><font face="Verdana, Arial, Helvetica, sans-serif">- Корзина покупателя</font></b><font face="Verdana, Arial, Helvetica, sans-serif"> - Все товары, которые Вы добавили в корзину до регистрации, сохранятся в Вашей корзине.<br>
+        <b>- Адресная книга</b> - Вы можете делать заказы не только на свой домашний адрес, но и на любой другой. Например, Вы можете сделать подарок знакомым.<br>
+        <b>- История заказов</b> - Вы можете следить за процессом исполнения Вашего заказа.<br>
+        <b>- Отзывы</b> - Оставляйте свои отзывы о товарах, заказанных в нашем магазине.</font></font></p>
+      <br>
+      <p>
+		Ваши данные для входа в магазин:
+      </p>
+      <p>
+		E-mail: {$EMAIL_ADDRESS}<br />
+		Пароль: {$PASSWORD}<br />
+      </p>
+      <p>
+        <font size="2" face="Verdana, Arial, Helvetica, sans-serif">Если у Вас возникли вопросы, свяжитесь с нами по адресу: 
+        {$content.MAIL_REPLY_ADDRESS}
+        <br>
+      Предупреждение: Данный E-Mail адрес был получен нами от клиента. Если Вы нигде не указывали данный E-Mail адрес, свяжитесь с нами:
+      {$content.MAIL_REPLY_ADDRESS}
+      <br>
+      
+{if $customer_extra_fields}{$customer_extra_fields}{/if}      
+      
+    <br>
+    {if $SEND_GIFT==true}
+      <br>
 Также мы отправили Вам подарочный сертификат на сумму: <b>{$GIFT_AMMOUNT}</b><br>
 <br>
 Код Вашего сертификата <b>{$GIFT_CODE}</b>, Вы можете использовать его при оформлении заказов в нашем интернет-магазине.<br>
@@ -94,22 +41,23 @@ E-mail: {$EMAIL_ADDRESS}<br />
 <br>
 Описание: <b>{$COUPON_DESC}</b> <br>
 <br>
-Вы можете использовать его для получения скидки в любой момент, просто укажите код Вашего купона {$COUPON_CODE} при оформлении заказа в нашем интернет-магазине.</p>
-</td>
-</tr>
+Вы можете использовать его для получения скидки в любой момент, просто укажите код Вашего купона {$COUPON_CODE} при оформлении заказа в нашем интернет-магазине. {/if} </font></p></td>
+  </tr>
+  
+{if $LINK}
+<table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td><p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><b>Вы подписались на нашу рассылку. <br>
+        Необходимо подтвердить Вашу подписку, перейдя по ссылке, указанной ниже.
+      <table width="100%"  border="0" bgcolor="f1f1f1">
+    <tr>
+          <td><b>Ссылка активации подписки:<br>
+            </b>><a href="{$LINK}">{$LINK}</a>
+      </td>
+    </tr>
+  </table></font></td>
+  </tr>
+</table>
 {/if}
-<tr>
-<td colspan="2" valign="top" style="padding:0"><p style=" text-align:right;color:#000;font-family:Arial, sans-serif;font-size:12px;padding:0 0 10px;">С уважением,<br /><strong>Ваш {$smarty.const.STORE_NAME}!</strong></p></td>
-</tr>
+  
 </table>
-<!--[if gte mso 9]>
-</td></tr></table>
-<![endif]-->
-</center>  
-</td>
-</tr>
-</table>
-
-
-</body>
-</html>

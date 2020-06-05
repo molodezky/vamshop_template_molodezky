@@ -31,6 +31,7 @@ $("#firstname").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+	scrollOnFocus: false,
   type: "NAME",
   params: {
     parts: ["NAME"]
@@ -41,6 +42,7 @@ $("#lastname").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+	scrollOnFocus: false,
   type: "NAME",
   params: {
     parts: ["SURNAME"]
@@ -51,6 +53,7 @@ $("#email_address").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+	scrollOnFocus: false,
   type: "EMAIL",
   params: {
     parts: ["SURNAME"]
@@ -61,6 +64,7 @@ $("#street_address").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+	scrollOnFocus: false,
   type: "ADDRESS",
   geoLocation: true,
   onSelect: showSelected
@@ -209,6 +213,9 @@ function showSelected(suggestion) {
 </div>
 
 <div class="text-right">{$BUTTON_SUBMIT}</div>
-<div class="alert alert-info privacy">{$smarty.const.PRIVACY_TEXT}</div>
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
+	<div class="alert alert-info privacy">{$smarty.const.PRIVACY_TEXT}</div>
+{/if}
+
 
 {$FORM_END}

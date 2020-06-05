@@ -103,7 +103,21 @@ if ($_GET['coID'] == 7) {
 	if (isset ($_GET['action']) && ($_GET['action'] == 'send') && $spam_flag == false) {
 		if (vam_validate_email(trim($_POST['email']))) {
 
-			vam_php_mail(CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_FORWARDING_STRING, $_POST['email'], $_POST['name'], '', '', CONTACT_US_EMAIL_SUBJECT, nl2br($_POST['message_body']), $_POST['message_body']);
+			// assign language to template for caching
+			$vamTemplate->assign('language', $_SESSION['language']);
+			$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+			$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+		
+			// assign vars
+			$vamTemplate->assign('CONTENT', nl2br($_POST['message_body']));
+			// dont allow cache
+			$vamTemplate->caching = false;
+		
+			// create mails
+			$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/contact_us_mail.html');
+			$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/contact_us_mail.txt');
+
+			vam_php_mail(CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_FORWARDING_STRING, $_POST['email'], $_POST['name'], '', '', CONTACT_US_EMAIL_SUBJECT, $html_mail, $txt_mail);
 
 			if (!isset ($mail_error)) {
 				vam_redirect(vam_href_link(FILENAME_CONTENT, 'action=success&coID='.(int) $_GET['coID']));
@@ -142,9 +156,9 @@ if ($_GET['coID'] == 7) {
 		require (DIR_WS_INCLUDES.'header.php');
 		$vamTemplate->assign('CONTACT_CONTENT', $contact_content);
 		$vamTemplate->assign('FORM_ACTION', vam_draw_form('contact_us', vam_href_link(FILENAME_CONTENT, 'action=send&coID='.(int) $_GET['coID'])));
-		$vamTemplate->assign('INPUT_NAME', vam_draw_input_field('name', ($error ? $_POST['name'] : $first_name)));
-		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', ($error ? $_POST['email'] : $email_address)));
-		$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 15, $_POST[''],''));
+		$vamTemplate->assign('INPUT_NAME', vam_draw_input_field('name', ($error ? $_POST['name'] : $first_name),'id="name" class="form-control"'));
+		$vamTemplate->assign('INPUT_EMAIL', vam_draw_input_field('email', ($error ? $_POST['email'] : $email_address),'id="email" class="form-control"'));
+		$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 50, 15, $_POST[''],'id="message_body" class="form-control"'));
 		$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE));
 		$vamTemplate->assign('FORM_END', '</form>');
 	}

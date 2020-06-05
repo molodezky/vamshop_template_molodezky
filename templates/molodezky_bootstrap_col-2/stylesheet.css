@@ -547,6 +547,13 @@ span.Requirement {color: red;}
 .accountLinks a.btn.btn-google:hover {background: #ececec;color: #000;}
 .accountLinks a.btn.btn-google img {max-height: 18px;max-width: 18px;display: inline-block;}
 /*label.shipping.selected .OrderBlock-int, label.payment.selected .OrderBlock-int	{background: #f4f4f4;}*/
+.dlist-align {display: -webkit-box;display: -ms-flexbox;display: flex;}
+[class*="dlist-"] {margin-bottom: 5px;}
+.dlist-align dt {width: 50%;word-wrap: break-word;font-weight: normal;}
+dt {font-weight: 700;}
+.dlist-align dd {-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;}
+[class*="dlist-"] dd {margin-bottom: 0;}
+dd {margin-bottom: .5rem;margin-left: 0;}
 /*- Подсветка ошибок формы */
 #errormsg {border: 2px solid #c00;padding: 5px;width: 96%;}  
 label.error {margin-left: 10px;width: auto;display: inline;color: red;font-weight: normal;background: transparent;border: 0px;}  

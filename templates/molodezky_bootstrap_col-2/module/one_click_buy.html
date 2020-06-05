@@ -52,9 +52,9 @@ $(function($){
 {$BUTTON_SUBMIT}
 </div>
 <br />
-<div>
-{$smarty.const.PRIVACY_TEXT}
-</div>
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
+	<div class="alert alert-info privacy">{$smarty.const.PRIVACY_TEXT}</div>
+{/if}
 {$FORM_END}
 
 <br />

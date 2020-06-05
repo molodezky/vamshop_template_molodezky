@@ -170,9 +170,6 @@ class product {
 				for($i=0;$i<number_format($reviews['reviews_rating']);$i++)	{
 				$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
 				}
-				for($i=0;$i<(5 - number_format($reviews['reviews_rating']));$i++)	{
-				$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
-				}				
 		
 				$data_reviews[] = array (
 				
@@ -589,7 +586,7 @@ $orders_query = "select
 		global $PHP_SELF;
 		$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
 		if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
-		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;">'.vam_image_button('buy.png', TEXT_BUY_BUTTON).'</a>';
+		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;">'.vam_image_button('buy.png', IMAGE_BUTTON_IN_CART).'</a>';
 		} else {
 		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'">'.vam_image_button('buy.png', TEXT_SELECT_OPTIONS).'</a>';
 		}
@@ -602,7 +599,7 @@ $orders_query = "select
 		global $PHP_SELF;
 		$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
 		if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;"><i class="fa fa-shopping-cart"></i> '.TEXT_BUY_BUTTON.'</a>';
+		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
 		} else {
 		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.TEXT_SELECT_OPTIONS.'</a>';
 		}
@@ -851,9 +848,6 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 		for($i=0;$i<number_format($this->getReviewsRating($array['products_id']));$i++)	{
 		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
 		}
-    for($i=0;$i<(5 - number_format($this->getReviewsRating($array['products_id'])));$i++)	{
-		$star_rating .= '<span class="rating"><i class="fa fa-star-o"></i></span> ';
-		}		
 
 		return array ('PRODUCTS_NAME' => vam_parse_input_field_data($array['products_name'], array('"' => '&quot;')), 
 		    'PRODUCTS_MODEL'=>$array['products_model'],

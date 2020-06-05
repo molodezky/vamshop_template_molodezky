@@ -70,6 +70,8 @@ function reload(){
 </div>
 </div>
 <div class="clearfix"></div>
-<div class="alert alert-info privacy">{$smarty.const.PRIVACY_TEXT}</div>
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
+	<div class="alert alert-info privacy">{$smarty.const.PRIVACY_TEXT}</div>
+{/if}
 {$FORM_END}
 {/if}
