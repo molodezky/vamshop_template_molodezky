@@ -141,11 +141,14 @@
           <meta itemprop="mpn" content="{$smarty.const.STORE_NAME}" />
         {/if}
 
-    <div class="ProductInfoSocials">
-    Поделиться с друзьями:
-    <script src="//yastatic.net/share/share.js" charset="utf-8"></script>
-    <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="big" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,gplus" data-yashareTheme="counter"></div>
-    </div>
+		<div class="ProductInfoSocial">
+		<!-- FB -->
+		<a href="https://www.facebook.com/sharer.php?u=http{if $smarty.server.HTTPS}s{/if}://{$smarty.server.HTTP_HOST}/{$smarty.server.REQUEST_URI}" onclick="javascript:window.open(this.href,
+			'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,left=350, top=170,height=600,width=600');return false;" class="social-link social-fb"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+		<!-- TW -->
+		<a href="https://twitter.com/share?text=http{if $smarty.server.HTTPS}s{/if}://{$smarty.server.HTTP_HOST}/{$smarty.server.REQUEST_URI}" onclick="javascript:window.open(this.href,
+			'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,left=350, top=170,height=600,width=600');return false;" class="social-link social-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+		</div>
 
     {if $REVIEWS_TOTAL > 0}<div class="ProductInfoRating">{$STAR_RATING}</div>{/if}
     </div>

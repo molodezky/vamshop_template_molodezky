@@ -1,145 +1,78 @@
 {config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/template_lang_$language.conf" section="template"}
 {if $smarty.get.keywords}<h1>{$smarty.get.keywords|capitalize} {if {$smarty.get.page} && {$smarty.get.page} > 0} {$smarty.const.TEXT_PAGE_IN_CAT} {$smarty.get.page}{/if}</h1>{/if}
 
 {if $CATEGORIES_NAME}<h1>{$CATEGORIES_NAME}{if $MANUFACTURERS_NAME} {$MANUFACTURERS_NAME}{/if}{$FILTER}</h1>{/if}
 {if $CATEGORIES_HEADING_TITLE or $CATEGORIES_DESCRIPTION}
 {if !$smarty.get.page}
-<div class="row">
-{if $CATEGORIES_HEADING_TITLE}<div class="col-xs-12 CatDesc">{$CATEGORIES_HEADING_TITLE}</div>{/if}
-{if $CATEGORIES_DESCRIPTION}<div class="col-xs-12 CatDesc">{$CATEGORIES_DESCRIPTION}</div>{/if}
+{if $CATEGORIES_HEADING_TITLE}<div class="CatDesc">{$CATEGORIES_HEADING_TITLE}</div>{/if}
+{if $CATEGORIES_DESCRIPTION}<div class="CatDesc">{$CATEGORIES_DESCRIPTION}</div>{/if}
 <div class="clearfix"></div>
-</div>
 {/if}
 {/if}
 
 {if $FILTER_DESCRIPTION}
-<div class="row">
-<div class="col-xs-12 CatDesc">{$FILTER_DESCRIPTION}</div>
-<div class="clearfix"></div>
-</div>
+	<div class="CatDesc">{$FILTER_DESCRIPTION}</div>
+	<div class="clearfix"></div>
 {/if}
 
 {if $MANUFACTURERS_NAME}<h1>{$MANUFACTURERS_NAME}</h1>{/if}
 {if $MANUFACTURERS_IMAGE or $MANUFACTURERS_DESCRIPTION}
-{if !$smarty.get.page}
-<div class="row">
-{if $MANUFACTURERS_DESCRIPTION}<div class="col-xs-12 CatDesc">{$MANUFACTURERS_DESCRIPTION}</div>{/if}
-</div>
-{/if}
+	{if !$smarty.get.page}
+		{if $MANUFACTURERS_DESCRIPTION}<div class="CatDesc">{$MANUFACTURERS_DESCRIPTION}</div>{/if}
+	{/if}
 {/if}
 
 {if $CATEGORIES_NAME}
-<div class="row">
-{$FILTERS}
-</div>
+<div class="row">{$FILTERS}</div>
 <div class="clearfix"></div>
-<input type="hidden" name="cat" value="{$smarty.get.cat}" />
-
 {if $PRODUCTS_COUNT >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
-<span class="SortCount">{#text_products_per_page#} {if $PRODUCTS_COUNT > 9}<a href="{$LINK_PAGE}9">9</a>{/if}{if $PRODUCTS_COUNT > 21} | <a href="{$LINK_PAGE}21">21</a>{/if}{if $PRODUCTS_COUNT > 48} | <a href="{$LINK_PAGE}48">48</a>{/if}{if $PRODUCTS_COUNT > 99} | <a href="{$LINK_PAGE}99">99</a>{/if}</span>
+	<span class="SortCount">
+		{#text_products_per_page#}
+		{if $PRODUCTS_COUNT > 9}<a href="{$LINK_PAGE}9">9</a>{/if}
+		{if $PRODUCTS_COUNT > 21} | <a href="{$LINK_PAGE}21">21</a>{/if}
+		{if $PRODUCTS_COUNT > 48} | <a href="{$LINK_PAGE}48">48</a>{/if}
+		{if $PRODUCTS_COUNT > 99} | <a href="{$LINK_PAGE}99">99</a>{/if}
+	</span>
 {/if}
 {if $MANUFACTURER_DROPDOWN}
-<div class="ManufSort"><span class="form-inline">{$MANUFACTURER_DROPDOWN}</span></div>
+	<div class="ManufSort"><span class="form-inline">{$MANUFACTURER_DROPDOWN}</span></div>
 {/if}
 <div class="clearfix"></div>
 
-
-<div class="hidden-xs hidden-sm selectstyle"><button class="btn btn-primary" id="sheettable"><i class="fa fa-th-large"></i></button> <button class="btn btn-primary" id="sheetlist"><i class="fa fa-th-list"></i></button></div>
+<div class="hidden-xs hidden-sm selectstyle">
+	<button class="btn btn-primary" id="sheettable"><i class="fa fa-th-large"></i></button> <button class="btn btn-primary" id="sheetlist"><i class="fa fa-th-list"></i></button>
+</div>
 
 <div class="SortLink">
-
-{#text_sort#}
-<a href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a> 
-<a href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a> | 
-<a href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a> 
-<a href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a> | 
-<a href="{$LINK_sort_ordered_asc}">{#text_sort_ordered_asc#}</a> 
-<a href="{$LINK_sort_ordered_desc}">{#text_sort_ordered_desc#}</a> |
-<a href="{$LINK_sort_id_asc}">{#text_sort_id_asc#}</a> 
-<a href="{$LINK_sort_id_desc}">{#text_sort_id_desc#}</a> | 
-<a href="{$LINK_sort_quantity_asc}">{#text_sort_quantity_asc#}</a> 
-<a href="{$LINK_sort_quantity_desc}">{#text_sort_quantity_desc#}</a>
+	{#text_sort#}
+	<a href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a> 
+	<a href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a> | 
+	<a href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a> 
+	<a href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a> | 
+	<a href="{$LINK_sort_ordered_asc}">{#text_sort_ordered_asc#}</a> 
+	<a href="{$LINK_sort_ordered_desc}">{#text_sort_ordered_desc#}</a> |
+	<a href="{$LINK_sort_id_asc}">{#text_sort_id_asc#}</a> 
+	<a href="{$LINK_sort_id_desc}">{#text_sort_id_desc#}</a> | 
+	<a href="{$LINK_sort_quantity_asc}">{#text_sort_quantity_asc#}</a> 
+	<a href="{$LINK_sort_quantity_desc}">{#text_sort_quantity_desc#}</a>
 </div>
 <div class="clearfix"></div>
-
 {/if}
 
 <div id="productlist" class="sheettable">
-<div class="row">
-{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
-{foreach name=aussen item=module_data from=$module_content}
-<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 Product">
-<div class="Product-int">
-{if $module_data.PRODUCTS_IMAGE}
-<div class="thumbnail ProductImage">
-{if $module_data.PRODUCTS_LABEL}<div class="ProductLabel">{$module_data.PRODUCTS_LABEL}</div>{/if}
-{if $module_data.PRODUCTS_SPECIAL}<div class="labelSpecials"><span class="label">- {$module_data.PRODUCTS_SPECIAL|round}%</span></div>{/if}
-<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a>
-</div>
-{/if}
+	<div class="row">
+		{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
+		{foreach name=aussen item=module_data from=$module_content}
+			{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+		{/foreach}
 
-<div class="ProductContent">
-<div class="ProductName"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></div>
-{if $module_data.PRODUCTS_SHORT_DESCRIPTION}
-<div class="ProductDesc">{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</div>
-{/if}
-{if $module_data.EXTRA_FIELDS or $module_data.SPECS}
-<div class="ProductDop">
-<table class="table table-condensed">
-{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
-<tr><td>{$extra_fields.NAME}:</td><td>{$extra_fields.VALUE}</td></tr>
-{/foreach}
-{foreach name=outer item=spec_group from=$module_data.SPECS}
-{foreach key=key_data item=spec from=$spec_group.DATA}
-<tr><td>{$spec.NAME}:</td><td>{$spec.VALUE}</td></tr>
-{/foreach}
-{/foreach}
-</table>
+		<div class="clearfix"></div>
+		{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
+		<div class="col-xs-12 ProductCompareButton"><input type="hidden" name="cat" value="{$smarty.get.cat}" />{$BUTTON_COMPARE}</div>
+		</form>
+		{/if}
+		<div class="col-xs-12 navigation-page"><span class="pull-right">{$NAVIGATION}</span>{$NAVIGATION_PAGES}</div>
+		<div class="clearfix"></div>
+	</div>
 </div>
-{/if}
-
-<div class="ProductRating">{if $module_data.REVIEWS_TOTAL > 0}{$module_data.REVIEWS_STAR_RATING}{/if}</div>
-<div class="ProductPrice">{$module_data.PRODUCTS_PRICE}</div>
-<div class="ProductQuantity"><span class="{if $module_data.PRODUCTS_QUANTITY < 1}qty-no{elseif $module_data.PRODUCTS_QUANTITY < 10}qty-order{else}qty-yes{/if}">{if $module_data.PRODUCTS_QUANTITY < 1}отсутствует{elseif $module_data.PRODUCTS_QUANTITY < 10}под заказ{else}в наличии{/if}</span></div>
-<div class="ProductMore"><a href="{$module_data.PRODUCTS_LINK}" class="btn btn-primary">Подробнее</a></div>
-{if $module_data.PRODUCTS_QUANTITY > 0}
-<div class="ProductButton">{$module_data.PRODUCTS_BUTTON_BUY_NOW}</div>
-<div class="ProductBuyOne"><a class="btn btn-primary"  data-toggle="modal" data-name="{$module_data.PRODUCTS_NAME}" data-link="{$module_data.PRODUCTS_LINK}" data-target="#BuyOne">Быстрый заказ</a></div>
-{/if}
-{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
-<div class="clearfix"></div>
-<div class="ProductCompare"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
-<div class="clearfix"></div>
-</div>
-</div>
-</div>
-{/foreach}
-
-<div class="clearfix"></div>
-{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
-<div class="col-xs-12 ProductCompareButton"><input type="hidden" name="cat" value="{$smarty.get.cat}" />{$BUTTON_COMPARE}</div>
-</form>
-{/if}
-<div class="col-xs-12 navigation-page"><span class="pull-right">{$NAVIGATION}</span>{$NAVIGATION_PAGES}</div>
-<div class="clearfix"></div>
-</div>
-</div>
-
-{if $CATEGORIES_NAME}
-<script>
-{literal}
-var count = 0;
-$(function() {
-	count = $('input[type=checkbox]#s_:checked').length;
-	displayCount();
-	$('input[type=checkbox]').bind('click' , function(e, a) {
-		if (this.checked) {count += a ? -1 : 1;} else {count += a ? 1 : -1;}
-    displayCount();
-	});
-});
-function displayCount() {
-    $('#count').text(count);
-}
-{/literal}
-</script>
-{/if}

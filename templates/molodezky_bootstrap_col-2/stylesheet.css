@@ -401,9 +401,11 @@ input[type="checkbox"].chk_compare:checked + label.chk_compare {background-posit
 .qty-order {color:#212121;}
 .qty-no {color:#ccc;}
 .ProductInfoQTY i { font-size:18px;}
-.ProductInfoSocials { text-align:right;color:#212121;padding:0 0 10px;}
-.ProductInfoSocials .yashare-auto-init { display:inline;}
-.ProductInfoSocials .b-share-btn__wrap {}
+.ProductInfoSocial .social-link {display: inline-block;width: 30px;height: 30px;color:#fff;text-align: center;border-radius: 3px;font-size: 16px;cursor:pointer;}
+.ProductInfoSocial .social-fb {background: #3b5998;}
+.ProductInfoSocial .social-google {background: #dd4d39;}
+.ProductInfoSocial .social-twitter {background: #55acee;}
+.ProductInfoSocial .social-link .fa {line-height: 30px;}
 .ProductInfoRating { text-align:right;padding:0 0 20px;}
 .ProductInfoRating img { display:inline-block;padding:1px 4px 5px 0;}
 @media (max-width: 767px) {
