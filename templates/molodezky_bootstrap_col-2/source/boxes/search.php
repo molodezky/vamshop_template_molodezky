@@ -23,9 +23,9 @@ $box_content = '';
 require_once (DIR_FS_INC.'vam_image_submit.inc.php');
 require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
 
-$box->assign('FORM_ACTION', vam_draw_form('quick_find', vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get').vam_hide_session_id());
-$box->assign('INPUT_SEARCH', vam_draw_input_field('keywords', '', 'id="quick_find_keyword"'));
-$box->assign('BUTTON_SUBMIT', '<button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>');
+$box->assign('FORM_ACTION', vam_draw_form('search', vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get', 'class="form-inline topmenusearch" autocomplete="off"  itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction"').vam_hide_session_id());
+$box->assign('INPUT_SEARCH', vam_draw_input_field('keywords', '', 'class="form-control" id="quick_find_keyword" itemprop="query-input"'));
+$box->assign('BUTTON_SUBMIT', vam_image_submit('search.png', IMAGE_BUTTON_SEARCH));
 $box->assign('FORM_END', '</form>');
 $box->assign('LINK_ADVANCED', vam_href_link(FILENAME_ADVANCED_SEARCH));
 $box->assign('BOX_CONTENT', $box_content);

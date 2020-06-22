@@ -22,6 +22,8 @@
   if (SET_BOX_CATEGORIES == 'true') include(DIR_WS_BOXES . 'categories.php');
   if (SET_BOX_CATEGORIES == 'true') include(DIR_WS_BOXES . 'categories2.php');
   if (SET_BOX_CATEGORIES == 'true') include(DIR_WS_BOXES . 'categories_left.php');
+  if (SET_BOX_CATEGORIES == 'true') include(DIR_WS_BOXES . 'categories_fullscreen.php');
+  if (SET_BOX_CATEGORIES == 'true') include(DIR_WS_BOXES . 'categories_slide.php');
   if (SET_BOX_AUTHORS == 'true') include(DIR_WS_BOXES . 'authors.php');
   if (SET_BOX_ARTICLES == 'true') include(DIR_WS_BOXES . 'articles.php');
   if (SET_BOX_ARTICLESNEW == 'true') include(DIR_WS_BOXES . 'articles_new.php');
@@ -31,7 +33,6 @@
   }
   if (SET_BOX_LAST_VIEWED == 'true') require(DIR_WS_BOXES . 'last_viewed.php');
   if (substr(basename($PHP_SELF), 0,8) != 'advanced') { if (SET_BOX_WHATSNEW == 'true') require(DIR_WS_BOXES . 'whats_new.php'); }
-  if (substr(basename($PHP_SELF), 0,8) != 'advanced') { if (SET_BOX_WHATSNEW == 'true') require(DIR_WS_BOXES . 'whats_new_multiproduct.php'); }
   if (SET_BOX_SEARCH == 'true') require(DIR_WS_BOXES . 'search.php');
   if (SET_BOX_CONTENT == 'true') require(DIR_WS_BOXES . 'content.php');
   if (SET_BOX_INFORMATION == 'true') require(DIR_WS_BOXES . 'information.php');
@@ -53,12 +54,10 @@
 
   if (!$product->isProduct()) {
     if (SET_BOX_SPECIALS == 'true') include(DIR_WS_BOXES . 'specials.php');
-    if (SET_BOX_SPECIALS == 'true') include(DIR_WS_BOXES . 'specials_multiproduct.php');
   }
 
   if (!$product->isProduct()) {
     if (SET_BOX_FEATURED == 'true') include(DIR_WS_BOXES . 'featured.php');
-    if (SET_BOX_FEATURED == 'true') include(DIR_WS_BOXES . 'featured_multiproduct.php');
   }
 
   if ($_SESSION['customers_status']['customers_status_read_reviews'] == 1) { if (SET_BOX_REVIEWS == 'true') require(DIR_WS_BOXES . 'reviews.php'); }

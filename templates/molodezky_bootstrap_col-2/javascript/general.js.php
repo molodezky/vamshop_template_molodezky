@@ -18,9 +18,6 @@
    // this javascriptfile get includes at every template page in shop, you can add your template specific
    // js scripts here
 ?>
-<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bootstrap/bootstrap.min.js'; ?>"></script> 
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
-
 <script>
 $(document).ready(function(){
 	// hide #back-top first

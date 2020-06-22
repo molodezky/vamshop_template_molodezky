@@ -1,4 +1,5 @@
 <footer>
+	{$box_NEWSLETTER}
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-4 col-md-3">{$box_CONTENT}</div>
@@ -41,14 +42,29 @@
 					<span class="box-title">Контакты</span>
 				</div>
 				<!-- /заголовок бокса Контакты -->
-				<div class="collapse navbar-collapse" id="collapse-boxContacts" itemscope itemtype="http://schema.org/Organization">
-					<meta itemprop="name" content="{$store_name}">
-					{if $smarty.const.STORE_NAME_ADDRESS}<p>Адрес: {$smarty.const.STORE_NAME_ADDRESS}<meta itemprop="address" content="{$smarty.const.STORE_NAME_ADDRESS|strip_tags}"></p>{/if}
-					{if $smarty.const.STORE_TELEPHONE}<div class="telnumber">Телефоны: {$smarty.const.STORE_TELEPHONE}<meta itemprop="telephone" content="{$smarty.const.STORE_TELEPHONE|strip_tags|replace:' ':''}"></div>{/if}
-					<div class="foot-callback"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CallBack">{#call_back#}</button></div>
-					{if $smarty.const.STORE_SKYPE}<p>Skype: <span>{$smarty.const.STORE_SKYPE}</span></p>{/if}
-					{if $smarty.const.STORE_ICQ}<p>ICQ: <span>{$smarty.const.STORE_ICQ}</span></p>{/if}
-					{if $smarty.const.ENABLE_SERVICE_WORKER == 'true'}<p><button class="btn btn-primary a2hs-button" id="a2hs-button">{#text_a2hs#}</button></p>{/if}
+				<div class="collapse navbar-collapse" id="collapse-boxContacts">
+					<div class="foot-contacts" itemscope itemtype="http://schema.org/Organization">
+						<meta itemprop="name" content="{$store_name}">
+						{if $smarty.const.STORE_NAME_ADDRESS}
+							<p>Адрес: <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">{$smarty.const.STORE_NAME_ADDRESS}</span></p>
+						{/if}
+						{if $smarty.const.STORE_TELEPHONE}
+							<div class="telnumber">Телефоны: {$smarty.const.STORE_TELEPHONE}<meta itemprop="telephone" content="{$smarty.const.STORE_TELEPHONE|strip_tags|replace:' ':''}"></div>
+						{/if}
+						<div class="foot-callback"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CallBack">{#call_back#}</button></div>
+						{if $smarty.const.STORE_SKYPE}<p>Skype: <span>{$smarty.const.STORE_SKYPE}</span></p>{/if}
+						{if $smarty.const.STORE_ICQ}<p>ICQ: <span>{$smarty.const.STORE_ICQ}</span></p>{/if}
+						{if $smarty.const.ENABLE_SERVICE_WORKER == 'true'}<p><button class="btn btn-primary a2hs-button" id="a2hs-button">{#text_a2hs#}</button></p>{/if}
+					</div>
+					<ul class="foot-socials">
+							{if $smarty.const.STORE_VK}<li><a target="_blank" href="https://vk.com/{$smarty.const.STORE_VK}" title="Vkontakte"><i class="fa fa-vk" aria-hidden="true"></i></a></li>{/if}
+							{if $smarty.const.STORE_FACEBOOK}<li><a target="_blank" href="https://www.facebook.com/{$smarty.const.STORE_FACEBOOK}/" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>{/if}
+							{if $smarty.const.STORE_INSTAGRAM}<li><a target="_blank" href="https://instagram.com/{$smarty.const.STORE_INSTAGRAM}" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>{/if}
+							{if $smarty.const.STORE_TWITTER}<li><a target="_blank" href="https://twitter.com/{$smarty.const.STORE_TWITTER}"><i class="fa fa-twitter"></i></a></li>{/if}
+							{if $smarty.const.STORE_TELEGRAM}<li><a target="_blank" href="https://tmtr.me/{$smarty.const.STORE_TELEGRAM}"><i class="fa fa-telegram"></i></a></li>{/if}
+							{if $smarty.const.STORE_YOUTUBE}<li><a href="https://youtube.com/{$smarty.const.STORE_YOUTUBE}"><i class="fa fa-youtube"></i></a></li>{/if}
+							<li><a href="vam_rss2_info.php"><i class="fa fa-rss"></i></a></li> 
+					</ul>
 				</div>
 				</div>
 				<!-- /Контакты -->

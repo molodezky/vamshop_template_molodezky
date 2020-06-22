@@ -1,13 +1,74 @@
-﻿/* -----------------------------------------------------------------------------------------
-   VaM Shop - open source ecommerce solution
-   http://vamshop.ru
-
-   Copyright (c) 2005-2008 VaM Shop 
-   -----------------------------------------------------------------------------------------
-   Released under the GNU General Public License 
-   ---------------------------------------------------------------------------------------*/
-
-/*<![CDATA[*/
+/* шрифты */
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans Light'), local('OpenSans-Light'), url('../fonts/opensanslight.woff2') format('woff2'), url('../fonts/opensanslight.woff') format('woff'), url('../fonts/opensanslight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+		font-display: swap;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url('../fonts/opensanslightitalic.woff2') format('woff2'), url('../fonts/opensanslightitalic.woff') format('woff'), url('../fonts/opensanslightitalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+		font-display: swap;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans'), local('OpenSans'), url('../fonts/opensans.woff2') format('woff2'), url('../fonts/opensans.woff') format('woff'), url('../fonts/opensans.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+		font-display: swap;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans Italic'), local('OpenSans-Italic'), url('../fonts/opensansitalic.woff2') format('woff2'), url('../fonts/opensansitalic.woff') format('woff'), url('../fonts/opensansitalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+		font-display: swap;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url('../fonts/opensanssemibold.woff2') format('woff2'), url('../fonts/opensanssemibold.woff') format('woff'), url('opensanssemibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+		font-display: swap;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url('../fonts/opensanssemibolditalic.woff2') format('woff2'), url('../fonts/opensanssemibolditalic.woff') format('woff'), url('../fonts/opensanssemibolditalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+		font-display: swap;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../fonts/opensansbold.woff2') format('woff2'), url('../fonts/opensansbold.woff') format('woff'), url('../fonts/opensansbold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+		font-display: swap;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url('../fonts/opensansbolditalic.woff2') format('woff2'), url('../fonts/opensansbolditalic.woff') format('woff'), url('../fonts/opensansbolditalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+		font-display: swap;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url('../fonts/opensansextrabold.woff2') format('woff2'), url('../fonts/opensansextrabold.woff') format('woff'), url('../fonts/opensansextrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+		font-display: swap;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: local('Open Sans Extrabold Italic'), local('OpenSans-ExtraboldItalic'), url('opensansextrabolditalic.woff2') format('woff2'), url('opensansextrabolditalic.woff') format('woff'), url('opensansextrabolditalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+		font-display: swap;
+} 
 /* общие правила */
 body {font-family: 'Open Sans', sans-serif;background: #f8f8f8;}
 a {color:#333;outline: none;}
@@ -51,102 +112,97 @@ h1 a:hover, .h1 a:hover {}
 .slider-banners {padding-bottom:30px;}
 .slider-banners .item {background: #f4f4f4;}
 /* ------------ шапка ------------ */
+/* шапка slide-menu */
 /* полоса */
-header {padding-top:7px; background:#fff;}
-/* аккаунт */
+header.slide-menu {}
+.top-menu {border-bottom: 1px solid #e4e4e4}
+.bottom-menu {background: #e4e4e4;padding-top: 10px;padding-bottom: 5px;}
 @media (min-width: 768px) {
-.head-login {float:right;padding:7px 0;min-height:41px;}
-.head-login:before {font-family:'FontAwesome';content:"\f007"; font-size:16px;padding:0 6px 0 0;display:inline-block; float:left;color:#c2c2c2;}
-.navbar-default .head-login > li > a {display:inline;padding:0;}
-.navbar-default .head-login > li > a {text-decoration:underline;color:#666;}
-.navbar-default .head-login > li > a:hover, .navbar-default .head-login > li > a:focus {text-decoration:none;color:#b70d0d;}
-.menu-separator { display:inline-block;padding:0; width:20px; height:21px; background: url(img/separator.png) center center no-repeat; float:right;}
+	.head-menu {}
+	.navbar-default .head-menu > li {padding-left:38px;}
+	.navbar-default .head-menu > li > a {padding:10px 0;}
+	.navbar-default .head-menu > li:first-child {padding-left:0;}
+	.navbar-default .head-menu > li > a {}
+	.navbar-default .head-menu > li > a:hover, .navbar-default .head-login > li > a:focus {}
+	.head-login {float:right;padding:10px 0;}
+	.navbar-default .head-login > li {padding-left:10px;}
+	.navbar-default .head-login > li > a {padding:2px 15px 4px;bfont-size: 13px;}
+	.navbar-default .head-login > li > a {}
+	.navbar-default .head-login > li > a:hover, .navbar-default .head-login > li > a:focus {}
 }
 @media (max-width: 767px) {
-.menu-separator { display:none;}
-}
-.head-currencies {padding:0 0 0 10px;}
-@media (max-width: 767px) {
-.head-currencies {padding:0;}
-}
-/* логотип */
-.head-logo {padding-top:30px;}
-@media (max-width: 767px) {
-.head-logo {text-align:center;padding-top:12px;padding-bottom:14px;}
-.head-logo img { max-width:170px;}
-}
-/* контакты в шапке */
-.head-contacts {font-size:17px;font-weight:300;padding-top:12px; text-align:center;}
-.head-contacts i {color:#c2c2c2;}
-.head-contacts p { display:inline-block;color:#212121;padding:12px 20px 12px 4px;margin-bottom:0;}
-.head-contacts p {}
-.head-city {padding: 0 5px;}
-.head-phone {padding: 0 5px;}
-@media (max-width: 991px) {
-.head-phone {padding-top:0;}
-.head-phone p {display:none;}
-.head-phone p:first-child {background:none;padding:12px 0;display:inline-block;}
-}
-@media (max-width: 767px) {
-.head-contacts {border-top:1px solid #dcdbdb; font-size:20px;}
 }
 @media (min-width: 768px) and (max-width: 991px) {
+	.navbar-default .head-menu > li {padding-left:8px;}
+	.navbar-default .head-menu > li > a {text-transform: none;}
+	.navbar-default .head-login > li.head-login__admin {display: none;}	
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-.head-contacts {font-size:13px;padding-top:10px;}
+	.navbar-default .head-menu > li {padding-left:20px;}
+	.navbar-default .head-menu > li > a {text-transform: none;}
 }
-.head-skype {margin:14px 0 24px;}
-.head-skype i {color:#c2c2c2; font-size:22px;padding-right:10px;float:left;}
-.head-icq { float:right;margin:14px 0 24px;padding:0 0 3px 24px; background:url(img/icon_icq.png) 0 0 no-repeat;}
+.head-currencies {}
+/* логотип */
+.head-logo {display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;padding-top: 25px;padding-bottom: 25px;}
+.head-slogan {padding-left: 30px;padding-top: 5px;}
 @media (max-width: 767px) {
-.head-skype, .head-icq { display:none;}
+	.head-logo {display: block;text-align:center;padding-top:12px;padding-bottom:14px;}
+	.head-slogan {display: none;}
 }
+
+/* контакты в шапке */
+.head-contacts {display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;padding-top: 28px;}
+.head-contacts p {margin-bottom: 0;}
+.head-phone {padding-left: 48px;font-size: 22px;}
+.head-messendgers {padding-top: 3px;display: -webkit-flex;display: -moz-flex;display: -ms-flex;display: -o-flex;display: flex;}
+.head-messendgers-telegram {}
+.head-messendgers-whatsup {}
+.head-messendgers-viber {}
+.head-callback {line-height: 14px;}
+.head-callback .btn {padding: 0;border-radius:0;line-height: 14px;}
+.head-callback .btn-link {}
+.head-callback .btn-link:hover, .head-callback .btn-link:focus, .head-callback .btn-link:focus:active, .head-callback .btn-link.active:focus, .head-callback .btn-link.focus, .head-callback  .btn-link.focus:active, .head-callback .btn-link.active.focus {}
 /* корзина и время работы */
-.head-cart {padding-top:28px;}
+.head-cart {padding-top:28px;padding-bottom: 20px;}
 .head-cart-block { height:36px;}
-.head-work {padding:16px 0 0 27px;background: url(img/icon_clock.png) 0 18px no-repeat;color:#212121;}
 @media (max-width: 767px) {
-.head-cart {float:right;position:absolute;right:0;top:0;padding-top:0;}
-.head-search-block, .head-login-block {padding:6px 20px 6px 0;;}
-.head-search-block a i {font-size:26px;color:#c2c2c2;}
-.head-login-block a i {font-size:26px;color:#c2c2c2}
-.cart-head-text { display:none;}
-.head-work {display:none;}
-}
-/* верхнее меню */
-@media (min-width: 768px) {
-	.head-menu {float:left;padding:7px 0 7px;min-height:41px;}
-	.navbar-default .head-menu > li > a {display:inline;padding:0 0 0 38px;}
-	.navbar-default .head-menu > li:first-child > a {padding:0;}
-	.navbar-default .head-menu > li > a {color:#666;}
-	.navbar-default .head-menu > li > a:hover, .navbar-default .head-login > li > a:focus {color:#b70d0d;text-decoration:none;}
-	.home-link:before {font-family:'FontAwesome';content:"\f015";color:#b70d0d;font-size:18px;} 
-	.home-link span {display:none;}
-}
-@media (max-width: 767px) {
-	home-link:before { display:none;}
+	.head-contacts {padding-top: 0;justify-content: center;}
+	.head-phone {font-size: 16px;}
+	.head-cart {float:right;position:absolute;right:0;top:5px;padding-top:0;}
+	.cart-head-text { display:none;}
+	.head-messendgers-viber.visible-xs {display: inline-block !important;}
 }
 @media (min-width: 768px) and (max-width: 991px) {
-	.navbar-default .head-menu > li > a {padding:0 0 0 6px;}
+	.head-slogan {display: none;}
 }
+@media (min-width: 992px) and (max-width: 1199px) {
+	.head-phone {font-size: 18px;}
+}
+
 /* коллапс */
-header .navbar {margin-bottom:16px;min-height:48px;}
-header .navbar-default {background:none;border:none;}
-header .navbar {border-radius:0;}
-header .navbar-header {padding-bottom:14px;}
-header .navbar-header .navbar-toggle {border:none;border-radius:0;margin:0 0 0 15px;padding:0;background:none;font-size:26px;color:#c2c2c2;float:left;}
-header .navbar-header .navbar-toggle:hover, header .navbar-header .navbar-toggle:focus {background:none;color:#b70d0d;}
+header.slide-menu .navbar {margin-bottom:16px;min-height:48px;}
+header.slide-menu .navbar-default {background:none;border:none;}
+header.slide-menu .navbar {border-radius:0;}
+header.slide-menu .navbar-header {padding-bottom:14px;}
+header .navbar-header .navbar-toggle {border:none;border-radius:0;margin:7px 0 7px 15px;padding:0;background:none;font-size:26px;color:#c2c2c2;float:left;}
+header.slide-menu .navbar-header .navbar-toggle:hover, header.slide-menu .navbar-header .navbar-toggle:focus {background:none;color:#cc0;}
 @media (max-width: 767px) {
-#collapse-Account {background:#333;border-color:#222;}
-header .navbar-default .navbar-nav > li > a {color: #fff;}
-header .navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {color:#b70d0d;background-color:#222;}
+	header.slide-menu .navbar-header {padding-bottom:0;}
+	header.slide-menu .navbar-default .navbar-nav > li > a {color: #fff;}
+	header.slide-menu .navbar-default .navbar-nav > li > a:hover,
+	.navbar-default .navbar-nav > li > a:focus {color:#cc0;background-color:#222;}
 }
 
 /* подвал */
-footer {background:#DBDBDB;color:#999;padding-top:30px}
+footer {background:#DBDBDB;color:#999;}
 .telnumber {margin-bottom:10px;}
 .telnumber p {padding:0;margin:0; font-size:16px;color:#212121;}
+
+footer .box .navbar-collapse .foot-socials {list-style-type: none;margin: 0;padding: 0;}
+footer .box .navbar-collapse .foot-socials li {display: inline;}
+footer .box .navbar-collapse .foot-socials li a {display: inline-block;width:24px;height:24px;border-radius: 50%;border:1px solid #444;text-align: center;margin-left:4px;line-height:22px;color: #fff;background: #444;}
+.foot-socials li a:hover {}
+
 /* куки */
 .cookie-alert {position: fixed;z-index: 9999999;bottom: 0px;width:100%;background: #000;border:none;border-radius:0;margin-bottom: 0;padding: 10px 0;font-size: 13px;color: #fff;}
 /* кнопка вверх */
@@ -201,8 +257,8 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 .btn-cart .badge { float:right;}
 .btn-cart:hover, .btn-cart:focus, .btn-cart:focus:active, .btn-cart.active:focus, .btn-cart.focus, .btn-cart.focus:active, .btn-cart.active.focus {color:#fff; text-decoration:underline;}
 @media (max-width: 767px) {
-.btn-cart {background: url(img/bg_cart_mobile.png) 0 center no-repeat;padding:1px 0 7px 14px; width:auto;}
-.btn-cart:hover, .btn-cart:focus, .btn-cart:focus:active, .btn-cart.active:focus, .btn-cart.focus, .btn-cart.focus:active, .btn-cart.active.focus {background: url(img/bg_cart_mobile.png) 0 center no-repeat; box-shadow:none;}
+.btn-cart {background: url(../img/bg_cart_mobile.png) 0 center no-repeat;padding:1px 0 7px 14px; width:auto;}
+.btn-cart:hover, .btn-cart:focus, .btn-cart:focus:active, .btn-cart.active:focus, .btn-cart.focus, .btn-cart.focus:active, .btn-cart.active.focus {background: url(../img/bg_cart_mobile.png) 0 center no-repeat; box-shadow:none;}
 .btn-cart .badge {padding:5px 8px;color: #fff;font-size:12px;background-color:#b70d0d;border:1px solid #fff;margin-right:0;}
 }
 .CartItem {border-top:1px solid #e3e3e3;padding:9px 14px;}
@@ -276,6 +332,53 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 .boxCategoriesLeft ul#navmenu-v ul ul, .boxCategoriesLeft ul#navmenu-v ul ul ul {display: none;position: absolute;top: 0;left:304px;border:none;}
 /* светим второй уровень при переходе на третий */
 .boxCategoriesLeft ul#navmenu-v ul li:hover > a {}
+.head-catalog {padding-right: 0;}
+.head-catalog > .dropdown > .btn {text-align: left;padding-left: 54px;}
+.head-catalog > .dropdown > .btn::after {display: block;content: '';position: absolute;width: 14px;height: 12px;top: 15px;left: 24px;}
+.head-catalog > .dropdown > .btn > .fa-bars {float: right;font-size: 1rem;}
+.head-catalog > .dropdown > .dropdown-menu {border-radius:0;border:none;box-shadow:0 6px 21px rgba(0,0,0,.09);top: 52px !important;padding: 2rem;background: #014161;color: #fff;}
+.head-catalog > .dropdown > .dropdown-menu.show {top: 52px !important;}
+.catalog-content::-webkit-scrollbar {width:0.5rem;}
+.catalog-content::-webkit-scrollbar-track {background: #02354f;}
+.catalog-content::-webkit-scrollbar-thumb {background: #09c;border:2px solid #09c;height: 122px;}
+.catalog-content::-webkit-scrollbar-thumb:hover {background: #09c;}
+.catalog-content ul {margin: 0;padding: 0;}
+.catalog-content ul li {list-style: none;}
+/* первый уровень */
+.catalog-content > ul > li {-webkit-column-break-inside: avoid;page-break-inside: avoid;break-inside: avoid;}
+.catalog-content > ul > li > a {display: block;position: relative;text-transform: uppercase;font-weight: 400;color: #fff;padding-bottom: .5rem;margin-bottom: .875rem;}
+/* второй уровень */
+.catalog-content > ul > li > ul {padding-bottom: .625rem;padding-left: 10px;}
+.catalog-content > ul > li > ul > li > a {display: block;position: relative;color: #fff;padding-bottom: .25rem;}
+/* третий уровень */
+.catalog-content > ul > li > ul > li > ul {padding-bottom: .625rem;padding-left: 20px;}
+.catalog-content > ul > li > ul > li > ul > li > a {display: block;position: relative;color: #09c;padding-bottom: .25rem;}
+/* четвертый уровень */
+.catalog-content > ul > li > ul > li > ul > li > ul {display: none;}
+
+@media (max-width: 767px) {
+	.head-catalog > .dropdown > .dropdown-menu {width:100%;}
+	.head-catalog {padding-right: 15px;}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+.head-catalog > .dropdown > .dropdown-menu {width:720px;}
+.catalog-content {max-height:calc(100vh - 266px);overflow-x: auto;}
+.catalog-content > ul {columns: 2 2rem;}
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+.head-catalog > .dropdown > .dropdown-menu {width:930px;}
+.catalog-content {max-height:calc(100vh - 266px);overflow-x: auto;}
+.catalog-content > ul {columns: 3 2rem;}
+}
+
+@media (min-width: 1200px) {
+.head-catalog > .dropdown > .dropdown-menu {width:1140px;}
+.catalog-content {max-height:calc(100vh - 266px);overflow-x: auto;}
+.catalog-content > ul {columns: 3 2rem;}
+}
+
 /* Валюты */
 .navbar-default .head-login > li.head-currencies {padding-top:1px;}
 .navbar-default .head-login > li.head-currencies > a {text-decoration:none;}
@@ -287,6 +390,15 @@ footer {background:#DBDBDB;color:#999;padding-top:30px}
 .navbar-default .head-login .open .dropdown-menu > li > a:hover, .navbar-default .head-login .open .dropdown-menu > li > a:focus {color: #fff;}
 .navbar-default .head-login > li.head-currencies > .dropdown-menu.UAH li.UAH a {background:#222;color:#fff;}
 .navbar-default .head-login > li.head-currencies > .dropdown-menu.USD li.USD a {background:#222;color:#fff;}
+}
+/* Подписка */
+.boxNewsletter {background: #ccc;margin-bottom: 30px;padding-top: 15px;}
+.boxNewsletter strong {display: block;font-size: 16px;border-bottom: 1px solid #ccc;}
+.newsletter-desc {padding-bottom: 20px;}
+.boxNewsletter input {}
+.boxNewsletter .btn {padding-left: 0;padding-right: 0;width: 100%;}
+@media (max-width: 767px) {
+  .boxNewsletter input {margin-bottom: 10px;}
 }
 /* Поиск */
 .boxSearch {padding:0; height:34px; position:relative;}
@@ -377,7 +489,7 @@ li.ajaxQuickFind {font-size: 80%;padding:2px 0 5px;}
 
 input[type="checkbox"].chk_compare {margin:0;width:30px;height:30px;}
 input[type="checkbox"].chk_compare {display:none;}
-label.chk_compare { content: ""; display: inline-block; height:15px; width:22px;padding:2px 5px 0;cursor:pointer;background:url(img/icon_compate.png) 0 2px no-repeat;margin-bottom: 0;}
+label.chk_compare { content: ""; display: inline-block; height:15px; width:22px;padding:2px 5px 0;cursor:pointer;background:url(../img/icon_compate.png) 0 2px no-repeat;margin-bottom: 0;}
 label.chk_compare:hover {background-position:right 2px;}
 input[type="checkbox"].chk_compare:checked + label.chk_compare {background-position:right -18px;}
 
@@ -413,10 +525,10 @@ input[type="checkbox"].chk_compare:checked + label.chk_compare {background-posit
 }
 .ProductInfoPopUp {padding:0 0 24px;}
 .ProductInfoPopUp .btn {border-color:#dbdbdb; border-radius:2px;font-size:12px;padding:4px 10px 4px 34px;}
-.ProductInfoPopUp .btn.quest { background:url(img/icon_quest.png) 10px center no-repeat;}
-.ProductInfoPopUp .btn.quest:hover { background:url(img/icon_quest.png) 10px center no-repeat #fff;}
-.ProductInfoPopUp .btn.garantie { background:url(img/icon_garantie.png) 10px center no-repeat;}
-.ProductInfoPopUp .btn.garantie:hover { background:url(img/icon_garantie.png) 10px center no-repeat #fff;}
+.ProductInfoPopUp .btn.quest { background:url(../img/icon_quest.png) 10px center no-repeat;}
+.ProductInfoPopUp .btn.quest:hover { background:url(../img/icon_quest.png) 10px center no-repeat #fff;}
+.ProductInfoPopUp .btn.garantie { background:url(../img/icon_garantie.png) 10px center no-repeat;}
+.ProductInfoPopUp .btn.garantie:hover { background:url(../img/icon_garantie.png) 10px center no-repeat #fff;}
 .ProductInfoShort {padding-bottom:24px;}
 .ProductInfoOption {padding-bottom:10px;}
 .ProductOptionName {font-size:13px; font-weight:300;padding-top:7px;padding-bottom:7px;}
@@ -623,8 +735,8 @@ div.contacterror {border: 1px solid;border-color: #ff0000;background-color: #FFC
 	.ProductAdded-items {padding-right: 0;padding-bottom: 15px;}
 }
 /* загрузчик на чекауте */
-#load_status_bg {background: url(img/wind_bg.png) repeat; position: fixed;z-index: 2300;width: 100%;height: 100%;top: 0px;left: 0px;}
-#load_status_bg .load_status_image {background:url(img/ajax-loader.gif);margin: 270px auto 0;z-index: 2300;width: 54px;height: 55px;}
+#load_status_bg {background: url(../img/wind_bg.png) repeat; position: fixed;z-index: 2300;width: 100%;height: 100%;top: 0px;left: 0px;}
+#load_status_bg .load_status_image {background:url(../img/ajax-loader.gif);margin: 270px auto 0;z-index: 2300;width: 54px;height: 55px;}
 
 @media (max-width: 767px) {
 }
@@ -634,4 +746,3 @@ div.contacterror {border: 1px solid;border-color: #ff0000;background-color: #FFC
 }
 @media (min-width: 1200px) {
 }
-/*]]>*/

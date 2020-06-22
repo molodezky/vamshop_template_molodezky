@@ -37,6 +37,7 @@ $(document).ready(function(){
  }
 ?>
 
+<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bootstrap/bootstrap.min.js'; ?>"></script>
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop.js'; ?>"></script>
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bootstrap/jqBootstrapValidation/jqBootstrapValidation.js'; ?>"></script>
 <script src="<?php echo 'jscript/jquery/plugins/jquery-ui/jquery-ui-min.js'; ?>"></script>
