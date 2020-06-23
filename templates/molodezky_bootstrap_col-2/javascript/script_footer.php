@@ -42,6 +42,7 @@ $(document).ready(function(){
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bootstrap/jqBootstrapValidation/jqBootstrapValidation.js'; ?>"></script>
 <script src="<?php echo 'jscript/jquery/plugins/jquery-ui/jquery-ui-min.js'; ?>"></script>
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/jquery-cookie/jquery.cookie.js'; ?>"></script>
+<script src="<?php echo 'jscript/jquery/plugins/lazyload/lazyload.min.js'; ?>"></script>
 
 <?php
 if (file_exists(dirname(__FILE__) . '/local_footer.js.php')) include('local_footer.js.php');

@@ -1,24 +1,12 @@
 {config_load file="$language/lang_$language.conf" section="error_handler"}
 <h1><span>{if $CATEGORIES_NAME}{$CATEGORIES_NAME}{else}{$ERROR}{/if}</span></h1>
 {$FORM_ACTION}
-<div class="page">
-<div class="pagecontent">
-{if $CATEGORIES_DESCRIPTION}{$CATEGORIES_DESCRIPTION}<br />{/if}
-{#text_search_again#}
-<br />
-<br />
-<!-- форма -->
-<fieldset class="form">
-<legend>{#text_search#}</legend>
-<p>{$INPUT_SEARCH}</p>
-<p>{$BUTTON_SUBMIT}</p>
-</fieldset>
-<!-- /форма -->
-</div>
-</div>
-
-<div class="pagecontentfooter">
-{$BUTTON}
-</div>
-
+	{if $CATEGORIES_DESCRIPTION}<div class="CatDesc">{$CATEGORIES_DESCRIPTION}</div>{/if}
+	<p>{#text_search_again#}</p>
+	<fieldset class="form">
+		<legend>{#text_search#}</legend>
+		<p>{$INPUT_SEARCH}</p>
+		<p>{$BUTTON_SUBMIT}</p>
+	</fieldset>
+	<div class="pagecontentfooter">{$BUTTON}</div>
 {$FORM_END}

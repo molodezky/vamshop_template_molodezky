@@ -112,12 +112,12 @@ window.onload = function() {
 });
 });            
 
-  $(function() {
-$("#submit-modal1").on("click", function(e) {
-    e.preventDefault();
-   $.cookie("vamshop-city", $("#vamshop-city").val(), { expires : 10, path: "/" });
-    location.reload();
-});
+$(function() {
+	$("#submit-modal1").on("click", function(e) {
+			e.preventDefault();
+		 $.cookie("vamshop-city", $("#vamshop-city").val(), { expires : 10, path: "/" });
+			location.reload();
+	});
 }); 
  
  // Согласие на использование cookie
@@ -229,6 +229,14 @@ function _transcriptHandler(e) {
         $searchForm.submit();
     }
 }
+
+// Lazy Load
+$(document).ready(function(){
+	var lazyLoadInstance = new LazyLoad({
+		elements_selector: ".lazy",
+		//use_native: true
+	});
+});
 
 // антиспам Перезвоните мне
 $(function($){

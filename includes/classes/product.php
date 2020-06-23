@@ -849,6 +849,22 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
 		}
 
+		if(file_exists(DIR_FS_CATALOG.$this->productImage($array['products_image'], $image)) && is_file(DIR_FS_CATALOG.$this->productImage($array['products_image'], $image))) {
+			list($width_thumbnail, $height_thumbnail, $type_thumbnail, $attr_thumbnail) = getimagesize(DIR_FS_CATALOG.$this->productImage($array['products_image'], $image));
+		}
+
+		if(file_exists(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'info')) && is_file(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'info'))) {
+			list($width_info, $height_info, $type_info, $attr_info) = getimagesize(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'info'));
+		}
+
+		if(file_exists(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'popup')) && is_file(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'popup'))) {
+			list($width_popup, $height_popup, $type_popup, $attr_popup) = getimagesize(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'popup'));
+		}
+
+		if(file_exists(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'original')) && is_file(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'original'))) {
+			list($width_original, $height_original, $type_original, $attr_original) = getimagesize(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'original'));
+		}
+	
 		return array ('PRODUCTS_NAME' => vam_parse_input_field_data($array['products_name'], array('"' => '&quot;')), 
 		    'PRODUCTS_MODEL'=>$array['products_model'],
 		    'PRODUCTS_WEIGHT'=>$array['products_weight'],
@@ -873,9 +889,17 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'PRODUCTS_VPE_VALUE' => $this->getVPEvalue($array, $products_price['plain']), 
 				'PRODUCTS_LABEL' => $this->getLabelText($array, $array['label_id']), 
 				'PRODUCTS_IMAGE' => $this->productImage($array['products_image'], $image), 
+				'PRODUCTS_IMAGE_WIDTH' => $width_thumbnail, 
+				'PRODUCTS_IMAGE_HEIGHT' => $height_thumbnail, 
 				'PRODUCTS_IMAGE_INFO' => $this->productImage($array['products_image'], 'info'), 
+				'PRODUCTS_IMAGE_INFO_WIDTH' => $width_info, 
+				'PRODUCTS_IMAGE_INFO_HEIGHT' => $height_info, 
 				'PRODUCTS_IMAGE_POPUP' => $this->productImage($array['products_image'], 'popup'), 
+				'PRODUCTS_IMAGE_POPUP_WIDTH' => $width_popup, 
+				'PRODUCTS_IMAGE_POPUP_HEIGHT' => $height_popup, 
 				'PRODUCTS_IMAGE_ORIGINAL' => $this->productImage($array['products_image'], 'original'), 
+				'PRODUCTS_IMAGE_ORIGINAL_WIDTH' => $width_original, 
+				'PRODUCTS_IMAGE_ORIGINAL_HEIGHT' => $height_original, 
 				'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($array['products_id'], $array['products_name'])), 
 				'PRODUCTS_PRICE' => $products_price['formated'], 
 				'PRODUCTS_SPECIAL' => $products_special, 

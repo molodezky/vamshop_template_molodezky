@@ -1,18 +1,18 @@
-{if {$slider_basic|@count} > 1}
+{if {$slider_bootstrap|@count} > 0}
 	<div class="col-xs-12 slider-banners">
 		<div id="carousel-Banners" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<meta content="{counter start=-1}">
 		<ol class="carousel-indicators">
-			{foreach item=banner from=$slider_basic}
+			{foreach item=banner from=$slider_bootstrap}
 				<li data-target="#carousel-Banners" data-slide-to="{counter}"></li>
 			{/foreach}
 		</ol>
 			<!-- Wrapper for slides -->
 		<div class="carousel-inner">
-		{foreach item=banner from=$slider_basic}
+		{foreach item=banner from=$slider_bootstrap}
 			<div class="item">
-				<img src="images/banner/{$banner.image}" alt="{$banner.title}">
+				<img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="img-fluid lazy" data-src="images/banner/{$banner.image}"{if {$banner.image_width} > 0} width="{$banner.image_width}"{/if} {if {$banner.image_height} > 0} height="{$banner.image_height}"{/if}{else} src="images/banner/{$banner.image}"{/if} alt="{$banner.title}" />
 				<div class="carousel-caption">
         	<h3>{$banner.title}</h3>
         	<p>{$banner.description}</p>
