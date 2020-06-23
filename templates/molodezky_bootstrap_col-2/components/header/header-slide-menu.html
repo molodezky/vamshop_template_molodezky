@@ -1,7 +1,5 @@
 <header class="slide-menu">
-
-
-<div class="navbar navbar-default">
+	<div class="navbar navbar-default">
 		<div class="top-menu">
 			<div class="container"> 
 				<div class="row">
@@ -10,12 +8,11 @@
 					<div class="collapse navbar-collapse" id="collapse-Menu">
 						<!-- общее меню -->
 						<ul class="nav navbar-nav head-menu">
-							<li{$content_4_current}><a href="shop_content.php?coID=4"><span>О нас</span></a></li>
-							<li{$content_1_current}><a href="shop_content.php?coID=1"><span>Доставка и оплата</span></a></li>
-							<li{$content_6_current}><a href="shop_content.php?coID=6"><span>Как заказать</span></a></li>
-							<li{$content_16_current}><a href="shop_content.php?coID=16"><span>Обмен и возврат</span></a></li>
-							<li{$content_17_current}><a href="shop_content.php?coID=17"><span>Акции</span></a></li>
-							<li{$content_7_current}><a href="shop_content.php?coID=7"><span>Контакты</span></a></li>
+							<li><a href="{$smarty.const.FILENAME_SPECIALS}">{$smarty.const.TITLE_SPECIALS_DEFAULT}</a></li>
+		     			<li><a href="{$smarty.const.FILENAME_MANUFACTURERS}">{$smarty.const.TITLE_MANUFACTURERS_DEFAULT}</a></li>
+		     			<li><a href="{$smarty.const.FILENAME_PRODUCTS_NEW}">{$smarty.const.TITLE_NEW_PRODUCTS_DEFAULT}</a></li>
+		     			<li><a href="{$smarty.const.FILENAME_FEATURED}">{$smarty.const.TITLE_FEATURED_DEFAULT_SHORT}</a></li>
+		     			<li><a href="{$smarty.const.FILENAME_REVIEWS}">{$smarty.const.TEXT_PRODUCT_REVIEWS}</a></li> 							
 						</ul>
 						<!-- меню акаунт -->
 						<ul class="nav navbar-nav head-login">
@@ -24,7 +21,7 @@
 								<li{$account_current}><a href="{$account}">{#link_account#}</a></li>
 								<li{$logoff_current}><a href="{$logoff}">{#link_logoff#}</a></li>
 							{else}
-								<li{$create_account_current}><a href="create_account.php">Регистрация</a></li>
+								<li{$create_account_current}><a href="create_account.php">{#link_create_account#}</a></li>
 								<li{$login_current}><a href="{$login}">{#link_login#}</a></li>
 							{/if}
 							{$box_CURRENCIES}
@@ -46,12 +43,12 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-3 col-md-6 col-lg-6 head-logo">
 					<a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" /></a>
-					<span class="head-slogan">Интернет-магазин <br />спортивной одежды и обуви</span>
+					<span class="head-slogan">{$smarty.const.STORE_NAME}</span>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 head-contacts">
 					<div class="head-phone">
 						<p>{$smarty.const.STORE_TELEPHONE}</p>
-						<p class="head-callback"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#CallBack">обратный звонок</button></p>
+						<p class="head-callback"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#CallBack">{#text_callback#}</button></p>
 					</div>
 					<div class="head-messendgers">
 						<a class="head-messendgers-telegram" href="tg://resolve?domain=#"><img src="{$tpl_path}img/telegram.svg" alt="telegram"></a>
@@ -71,14 +68,18 @@
 			<div class="container"> 
 				<div class="row">
 					<div class="col-xs-12 col-sm-4 col-lg-3 head-catalog">{$box_CATEGORIES_SLIDE}</div>
-					<div class="col-xs-8 col-lg-9 head-search hidden-xs">{$box_SEARCH}</div>
+					<div class="col-xs-12 col-lg-4 head-search hidden-xs">{$box_SEARCH}</div>
+					<div class="col-xs-12 col-sm-4 col-lg-5 head-bottom-menu">					
+						<ul class="nav navbar-nav">
+							<li><a href="shop_content.php?coID=4">{#text_about_us#}</a></li>
+							<li><a href="shop_content.php?coID=1">{#text_shipping#}</a></li>
+							<li><a href="shop_content.php?coID=1">{#text_payment#}</a></li>
+							<li><a href="shop_content.php?coID=7">{#headindg_contacts#}</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>		
 	</div>
-
-
-
-
 </header>
 <!-- /шапка -->
