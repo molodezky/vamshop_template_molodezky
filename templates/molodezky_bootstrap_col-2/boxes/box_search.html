@@ -5,14 +5,12 @@
 	{$FORM_ACTION}
 		<meta itemprop="target" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_ADVANCED_SEARCH_RESULT}?keywords={literal}{keywords}{/literal}"/>
 		<div class="input-group">
-					<input type="text" name="keywords" class="form-control border-right-0" id="quick_find_keyword" placeholder="{$smarty.const.BOX_HEADING_SEARCH}" aria-label="{$smarty.const.BOX_HEADING_SEARCH}" itemprop="query-input" />
-					<div class="input-group-append">
-					 <span class="input-group-text microphone bg-white" id="voice-trigger"><i title="{$smarty.const.VOICE_SEARCH}" class="fa fa-microphone text-secondary"></i></span>
-					</div>
-					<div class="input-group-append">
-						 <button class="btn btn-primary fa fa-search" type="submit" aria-label="{$smarty.const.BOX_HEADING_SEARCH}"></button>
-					</div>
-		</div>
+			<input type="text" name="keywords" class="form-control" id="quick_find_keyword" placeholder="{$smarty.const.BOX_HEADING_SEARCH}" itemprop="query-input" />
+			<div class="input-group-btn">
+				<span class="btn btn-default microphone" id="voice-trigger"><i title="{$smarty.const.VOICE_SEARCH}" class="fa fa-microphone text-secondary"></i></span>
+				<button class="btn btn-primary" type="submit" aria-label="{$smarty.const.BOX_HEADING_SEARCH}"><i class="glyphicon glyphicon-search"></i></button>
+		  </div>
+		</div>		
 	{$FORM_END}
 	<div class="ajaxQuickFind" id="ajaxQuickFind"></div>
 </div>

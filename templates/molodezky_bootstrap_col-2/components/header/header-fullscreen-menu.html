@@ -1,84 +1,65 @@
 <header class="fullscreen-menu">
-
-
-<div class="navbar navbar-default">
-		<div class="top-menu">
-			<div class="container"> 
-				<div class="row">
-					<!-- меню акаунт -->
-					<div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-Menu" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></button></div>
-					<div class="collapse navbar-collapse" id="collapse-Menu">
-						<!-- общее меню -->
-						<ul class="nav navbar-nav head-menu">
-							<li{$content_4_current}><a href="shop_content.php?coID=4"><span>О нас</span></a></li>
-							<li{$content_1_current}><a href="shop_content.php?coID=1"><span>Доставка и оплата</span></a></li>
-							<li{$content_6_current}><a href="shop_content.php?coID=6"><span>Как заказать</span></a></li>
-							<li{$content_16_current}><a href="shop_content.php?coID=16"><span>Обмен и возврат</span></a></li>
-							<li{$content_17_current}><a href="shop_content.php?coID=17"><span>Акции</span></a></li>
-							<li{$content_7_current}><a href="shop_content.php?coID=7"><span>Контакты</span></a></li>
-						</ul>
-						<!-- меню акаунт -->
-						<ul class="nav navbar-nav head-login">
-							{if $smarty.session.customers_status.customers_status_id == 0}<li class="head-login__admin"><a href="{$admin_area_link}">{#text_admin#}</a></li>{/if} 			
-							{if $smarty.session.customer_id}
-								<li{$account_current}><a href="{$account}">{#link_account#}</a></li>
-								<li{$logoff_current}><a href="{$logoff}">{#link_logoff#}</a></li>
-							{else}
-								<li{$create_account_current}><a href="create_account.php">Регистрация</a></li>
-								<li{$login_current}><a href="{$login}">{#link_login#}</a></li>
-							{/if}
-							{$box_CURRENCIES}
-							{$box_LANGUAGES}
-							<div class="boxSearch visible-xs">
-								<form name="quick_find" id="quick_find" action="https://ligabega.ru/advanced_search_result.php" method="get">
-									<div class="input-group">
-										<div class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button></div>
-										<input class="form-control" type="text" name="keywords" id="quick_find_keyword" placeholder="Поиск по каталогу">
-									</div>
-								</form>
-							</div>							
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+<div class="navbar navbar-default nav-top">
 		<div class="container"> 
 			<div class="row">
-				<div class="col-xs-12 col-sm-3 col-md-6 col-lg-6 head-logo">
-					<a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" /></a>
-					<span class="head-slogan">Интернет-магазин <br />спортивной одежды и обуви</span>
+				<div class="col-xs-2 visible-xs">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="slide-collapse" data-target="#collapse-menu" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></button>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 head-contacts">
-					<div class="head-phone">
-						<p>{$smarty.const.STORE_TELEPHONE}</p>
-						<p class="head-callback"><button type="button" class="btn btn-link" data-toggle="modal" data-target="#CallBack">обратный звонок</button></p>
-					</div>
-					<div class="head-messendgers">
-						<a class="head-messendgers-telegram" href="tg://resolve?domain=#"></a>
-						<a class="head-messendgers-whatsup" href="whatsapp://send?phone=+79000000"></a>
-						<a class="head-messendgers-viber visible-xs" href="viber://add?number=790000000"></a>
-						<a class="head-messendgers-viber hidden-xs" href="viber://chat?number=+79000000"></a>
-					</div>
+				<div class="col-xs-10 col-sm-12">
+					<!-- меню акаунт -->
+					<ul class="nav navbar-nav head-account-menu hidden-xs">
+						{if $smarty.session.customer_id}
+							<li class="head-account"><a href="{$account}">{#link_account#}</a><span class="menu-separator"></span></li>
+							<li class="head-logout"><a href="{$logoff}">{#link_logoff#}</a></li>
+						{else}
+							<li class="head-create-account"><a href="create_account.php">Регистрация</a><span class="menu-separator"></span></li>
+							<li class="head-login"><a href="{$login}">{#link_login#}</a></li>
+						{/if}
+					</ul>
+					<!-- /меню акаунт -->
+					<ul class="nav navbar-nav navbar-right head-right">
+						<li class="head-search">{$box_SEARCH}</li>
+						<li class="head-cart">{$box_CART}</li>
+						{$box_CURRENCIES}
+						{$box_LANGUAGES}			
+					</ul>
 				</div>
-				<div class="col-xs-5 col-sm-3 col-md-2 col-lg-2 head-cart">
-					<div class="head-cart-block">{$box_CART}</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
 		</div>
-		<div class="bottom-menu">
-			<div class="container"> 
-				<div class="row">
-					<div class="col-xs-12 col-sm-4 col-lg-3 head-catalog">{$box_CATEGORIES_FULLSCREEN}</div>
-					<div class="col-xs-8 col-lg-9 head-search hidden-xs">{$box_SEARCH}</div>
+	</div>
+	</div>
+	<div class="container"> 
+		<div class="row">	
+			<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 head-logo">
+				<a href="{$mainpage}">
+					<a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" /></a>
+					<!--<span class="head-slogan">{$smarty.const.STORE_NAME}</span>-->
+				</a>
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+				<div class="collapse navbar-collapse" id="collapse-menu">
+					<ul class="nav navbar-nav head-menu">
+						{$box_CATEGORIES2}
+						<li{$content_1_current}><a href="shop_content.php?coID=1">Доставка и оплата</a></li>
+						<li{$articles_current}><a href="articles.php">Статьи</a></li>
+						<li{$content_4_current}><a href="shop_content.php?coID=4">О магазине</a></li>
+						<li{$content_7_current}><a href="shop_content.php?coID=7">Контакты</a></li>
+						{if $smarty.session.customer_id}
+							<li class="visible-xs"><a href="{$account}">{#link_account#}</a><span class="menu-separator"></span></li>
+							<li class="visible-xs"><a href="{$logoff}">{#link_logoff#}</a></li>
+						{else}
+							<li class="visible-xs"><a href="create_account.php">Регистрация</a><span class="menu-separator"></span></li>
+							<li class="visible-xs"><a href="{$login}">{#link_login#}</a></li>
+						{/if}
+					</ul>
 				</div>
 			</div>
-		</div>		
+
+
+
+
+		</div>
 	</div>
-
-
-
-
 </header>
+<div class="menu-overlay"></div>
 <!-- /шапка -->

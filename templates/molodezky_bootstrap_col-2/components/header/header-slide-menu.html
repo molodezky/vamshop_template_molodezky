@@ -8,11 +8,14 @@
 					<div class="collapse navbar-collapse" id="collapse-Menu">
 						<!-- общее меню -->
 						<ul class="nav navbar-nav head-menu">
+							<li class="visible-xs"><a href="shop_content.php?coID=4">{#text_about_us#}</a></li>
 							<li><a href="{$smarty.const.FILENAME_SPECIALS}">{$smarty.const.TITLE_SPECIALS_DEFAULT}</a></li>
 		     			<li><a href="{$smarty.const.FILENAME_MANUFACTURERS}">{$smarty.const.TITLE_MANUFACTURERS_DEFAULT}</a></li>
 		     			<li><a href="{$smarty.const.FILENAME_PRODUCTS_NEW}">{$smarty.const.TITLE_NEW_PRODUCTS_DEFAULT}</a></li>
 		     			<li><a href="{$smarty.const.FILENAME_FEATURED}">{$smarty.const.TITLE_FEATURED_DEFAULT_SHORT}</a></li>
-		     			<li><a href="{$smarty.const.FILENAME_REVIEWS}">{$smarty.const.TEXT_PRODUCT_REVIEWS}</a></li> 							
+		     			<li><a href="{$smarty.const.FILENAME_REVIEWS}">{$smarty.const.TEXT_PRODUCT_REVIEWS}</a></li>
+							<li class="visible-xs"><a href="shop_content.php?coID=1">{#text_shipping#}</a></li>
+							<li class="visible-xs"><a href="shop_content.php?coID=1">{#text_payment#}</a></li>
 						</ul>
 						<!-- меню акаунт -->
 						<ul class="nav navbar-nav head-login">
@@ -24,17 +27,18 @@
 								<li{$create_account_current}><a href="create_account.php">{#link_create_account#}</a></li>
 								<li{$login_current}><a href="{$login}">{#link_login#}</a></li>
 							{/if}
+							<li class="visible-xs"><a href="shop_content.php?coID=7">{#headindg_contacts#}</a></li>									
 							{$box_CURRENCIES}
 							{$box_LANGUAGES}
-							<div class="boxSearch visible-xs">
-								<form name="quick_find" id="quick_find" action="https://ligabega.ru/advanced_search_result.php" method="get">
-									<div class="input-group">
-										<div class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button></div>
-										<input class="form-control" type="text" name="keywords" id="quick_find_keyword" placeholder="Поиск по каталогу">
-									</div>
-								</form>
-							</div>							
 						</ul>
+						<div class="boxSearch visible-xs">
+							<form name="quick_find" id="quick_find" action="advanced_search_result.php" method="get">
+								<div class="input-group">
+									<div class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button></div>
+									<input class="form-control" type="text" name="keywords" id="quick_find_keyword_xs" placeholder="Поиск по каталогу">
+								</div>
+							</form>
+						</div>						
 					</div>
 				</div>
 			</div>
@@ -69,7 +73,7 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-4 col-lg-3 head-catalog">{$box_CATEGORIES_SLIDE}</div>
 					<div class="col-xs-12 col-lg-4 head-search hidden-xs">{$box_SEARCH}</div>
-					<div class="col-xs-12 col-sm-4 col-lg-5 head-bottom-menu">					
+					<div class="col-xs-12 col-sm-4 col-lg-5 head-bottom-menu hidden-xs">					
 						<ul class="nav navbar-nav">
 							<li><a href="shop_content.php?coID=4">{#text_about_us#}</a></li>
 							<li><a href="shop_content.php?coID=1">{#text_shipping#}</a></li>
