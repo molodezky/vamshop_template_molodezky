@@ -195,51 +195,52 @@
 <div class="row-fluid product-tabs">
 <section class="widget">
 <ul class="nav nav-tabs">
-<li class="active"><a href="#description" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_DESCRIPTION}</a></li>
-{if $extra_fields_data or $specifications}<li><a href="#propertis" data-toggle="tab">Характеристики</a></li>{/if}
-<li><a href="#reviews" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_REVIEWS}{if $REVIEWS_TOTAL > 0} ({$REVIEWS_TOTAL}){/if}</a></li>
-<li><a href="#shipping" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_SHIPPING}</a></li>
-<li><a href="#payment" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_PAYMENT}</a></li>
+	<li class="active"><a href="#description" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_DESCRIPTION}</a></li>
+	{if $extra_fields_data or $specifications}<li><a href="#propertis" data-toggle="tab">Характеристики</a></li>{/if}
+	<li><a href="#reviews" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_REVIEWS}{if $REVIEWS_TOTAL > 0} ({$REVIEWS_TOTAL}){/if}</a></li>
+	<li><a href="#shipping" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_SHIPPING}</a></li>
+	<li><a href="#payment" data-toggle="tab">{$smarty.const.TEXT_PRODUCT_PAYMENT}</a></li>
+	{if $MODULE_latest_news}<li><a href="#news" data-toggle="tab">{$smarty.const.TEXT_RSS_NEWS}</a></li>{/if}
+	{if $MODULE_faq}<li><a href="#faq" data-toggle="tab">{$smarty.const.NAVBAR_TITLE_FAQ}</a></li>{/if}
+	{if $MODULE_articles}<li><a href="#articles" data-toggle="tab">{$smarty.const.TEXT_RSS_ARTICLES}</a></li>{/if}
 </ul>
 <div class="tab-content">
-<div class="tab-pane inner fade in notop active" id="description">
-{if $PRODUCTS_DESCRIPTION !=''}<div itemprop="description">{$PRODUCTS_DESCRIPTION}</div>{/if}
-{if $MODULE_tpt != ''}<p>{$MODULE_tpt}</p>{/if}
-{if $PRODUCTS_URL != ''}<p align="center">{$PRODUCTS_URL}</p>{/if}
-{if $PRODUCTS_DATE_AVIABLE != ''}<p align="center">{$PRODUCTS_DATE_AVIABLE}</p>{/if}
-
-{if $PRODUCTS_TAGS}
-<h3 class="ProductInfoHead">{#text_tags#}:</h3>
-{#text_tags#}: 
-{foreach name=tags item=tag from=$tags_data}
-<a href="{$tag.LINK}">{$tag.NAME}</a> 
-{/foreach}
-{/if}
-
-{if $MODULE_products_media != ''}{$MODULE_products_media}{/if}
+	<div class="tab-pane inner fade in notop active" id="description">
+		{if $PRODUCTS_DESCRIPTION !=''}<div itemprop="description">{$PRODUCTS_DESCRIPTION}</div>{/if}
+		{if $MODULE_tpt != ''}<p>{$MODULE_tpt}</p>{/if}
+		{if $PRODUCTS_URL != ''}<p align="center">{$PRODUCTS_URL}</p>{/if}
+		{if $PRODUCTS_DATE_AVIABLE != ''}<p align="center">{$PRODUCTS_DATE_AVIABLE}</p>{/if}
+		{if $PRODUCTS_TAGS}
+			<h3 class="ProductInfoHead">{#text_tags#}:</h3>
+			{#text_tags#}: 
+			{foreach name=tags item=tag from=$tags_data}
+				<a href="{$tag.LINK}">{$tag.NAME}</a> 
+			{/foreach}
+		{/if}
+		{if $MODULE_products_media != ''}{$MODULE_products_media}{/if}
+	</div>
+	{if $extra_fields_data or $specifications}
+		<div class="tab-pane inner fade in notop" id="propertis">
+			<table class="table">
+				{foreach name=aussen item=extra_fields from=$extra_fields_data} 
+					<tr><td class="ProductInfoDopName">{$extra_fields.NAME}:</td><td class="ProductInfoDopValue">{$extra_fields.VALUE}</td></tr> 
+				{/foreach}
+				{foreach name=outer item=spec_group from=$specifications_data}
+					{foreach key=key_data item=spec from=$spec_group.DATA}
+						<tr><td class="ProductInfoDopName">{$spec.NAME}:</td><td class="ProductInfoDopValue">{$spec.VALUE}</td></tr>
+					{/foreach}
+				{/foreach}
+				<!-- /Specifications -->
+			</table>
+		</div>
+	{/if}
+	<div class="tab-pane inner fade in notop" id="reviews">{$MODULE_products_reviews}</div>
+	<div class="tab-pane inner fade in notop" id="shipping">{$text_shipping_info}</div>
+	<div class="tab-pane inner fade in notop" id="payment">{$text_payment_info}</div>
+	{if $MODULE_latest_news}<div class="tab-pane inner fade in notop" id="news">{$MODULE_latest_news}</div>{/if}
+	{if $MODULE_faq}<div class="tab-pane inner fade in notop" id="faq">{$MODULE_faq}</div>{/if}
+	{if $MODULE_articles}<div class="tab-pane inner fade in notop" id="articles">{$MODULE_articles}</div>{/if}
 </div>
-
-{if $extra_fields_data or $specifications}
-<div class="tab-pane inner fade in notop" id="propertis">
-<table class="table">
-{foreach name=aussen item=extra_fields from=$extra_fields_data} 
-<tr><td class="ProductInfoDopName">{$extra_fields.NAME}:</td><td class="ProductInfoDopValue">{$extra_fields.VALUE}</td></tr> 
-{/foreach}
-{foreach name=outer item=spec_group from=$specifications_data}
-{foreach key=key_data item=spec from=$spec_group.DATA}
-<tr><td class="ProductInfoDopName">{$spec.NAME}:</td><td class="ProductInfoDopValue">{$spec.VALUE}</td></tr>
-{/foreach}
-{/foreach}
-<!-- /Specifications -->
-</table>
-</div>
-{/if}
-
-<div class="tab-pane inner fade in notop" id="reviews">{$MODULE_products_reviews}</div>
-<div class="tab-pane inner fade in notop" id="shipping">{$text_shipping_info}</div>
-<div class="tab-pane inner fade in notop" id="payment">{$text_payment_info}</div>
-</div>
-
 </section>
 </div>
 </div>

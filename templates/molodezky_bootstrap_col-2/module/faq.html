@@ -2,20 +2,28 @@
 <h1><span>{#heading_text#}</span></h1>
 {if $ONE eq 1}
 {assign var="module_data" value=$module_content[0]}
-<div class="ArticlesItem">
-<div class="NewsDate">{$module_data.FAQ_DATA}</div>
-<div class="NewsName"><a href="{$module_data.FAQ_LINK_MORE}">{$module_data.FAQ_QUESTION}</a></div>
-<p>{$module_data.FAQ_ANSWER}</p>
-<div class="clearfix"></div>
-<div class="all"><a href="{$FAQ_LINK}" class="btn btn-link btn-block">Все вопросы и ответы <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+<div class="ArticlesItem" itemscope itemtype="https://schema.org/FAQPage">
+	<div class="page" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+		<div class="NewsDate">{$module_data.FAQ_DATA}</div>
+		<div class="NewsName" itemprop="name">{$module_data.FAQ_QUESTION}</div>
+		<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+			<div itemprop="text">{$module_data.FAQ_ANSWER}</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="all">
+			<a href="{$FAQ_LINK}" class="btn btn-link btn-block">Все вопросы и ответы</a>
+		</div>
+	</div>
 </div>
 {else}
-{foreach name=aussen item=module_data from=$module_content}
-<div class="NewsDate">{$module_data.FAQ_DATA}</div>
-<div class="NewsName"><a href="{$module_data.FAQ_LINK_MORE}">{$module_data.FAQ_QUESTION}</a></div>
-<p>{$module_data.FAQ_ANSWER|vam_truncate:$smarty.const.MAX_DISPLAY_FAQ_ANSWER:" ..."}</p>
-<div class="clearfix"></div>
-{/foreach} 
+<div itemscope itemtype="https://schema.org/FAQPage">
+	{foreach name=aussen item=module_data from=$module_content}
+	<div class="NewsDate">{$module_data.FAQ_DATA}</div>
+	<div class="NewsName"><a href="{$module_data.FAQ_LINK_MORE}">{$module_data.FAQ_QUESTION}</a></div>
+	<p>{$module_data.FAQ_ANSWER|vam_truncate:$smarty.const.MAX_DISPLAY_FAQ_ANSWER:" ..."}</p>
+	<div class="clearfix"></div>
+	{/foreach} 
+</div>
 <div class="row">
 <div class="clearfix"></div>
 <div class="col-xs-12 navigation-page">{$NAVIGATION_BAR}</div>
