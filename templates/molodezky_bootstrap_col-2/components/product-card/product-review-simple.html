@@ -15,7 +15,27 @@
 			{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:($smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION*3):"...":true}
 		</div>
 		{if {$module_data.REVIEW.ANSWER} != ''}<div class="ProductReview-answer">{$module_data.REVIEW.ANSWER}</div>{/if}
-		<div class="ProductRating">{if $module_data.PRODUCT.REVIEWS_TOTAL > 0}{$module_data.PRODUCT.REVIEWS_STAR_RATING}{/if}</div>
+		<div class="ProductRating">
+			{if $module_data.PRODUCT.REVIEWS_TOTAL > 0}
+				{$module_data.PRODUCT.REVIEWS_STAR_RATING}
+				{if $module_data.PRODUCT.REVIEWS_TOTAL_RATING|number_format:0 == 4}
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+				{elseif $module_data.PRODUCT.REVIEWS_TOTAL_RATING|number_format:0 == 3}
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+				{elseif $module_data.PRODUCT.REVIEWS_TOTAL_RATING|number_format:0 == 2}
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+				{elseif $module_data.PRODUCT.REVIEWS_TOTAL_RATING|number_format:0 == 1}
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+				{else}
+				{/if}				
+			{/if}
+		</div>
 		<div class="ProductPrice">{$module_data.PRODUCT.PRODUCTS_PRICE}</div>
 		<div class="ProductMore"><a class="btn btn-info" href="{$module_data.REVIEW.URL}">{#text_read#}</a></div>
 	</div>

@@ -22,7 +22,27 @@
 				</table>
 			</div>
 		{/if}
-		<div class="ProductRating">{if $module_data.REVIEWS_TOTAL > 0}{$module_data.REVIEWS_STAR_RATING}{/if}</div>
+		<div class="ProductRating">
+			{if $module_data.REVIEWS_TOTAL > 0}
+				{$module_data.REVIEWS_STAR_RATING}
+				{if $module_data.REVIEWS_TOTAL_RATING|number_format:0 == 4}
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+				{elseif $module_data.REVIEWS_TOTAL_RATING|number_format:0 == 3}
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+				{elseif $module_data.REVIEWS_TOTAL_RATING|number_format:0 == 2}
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+				{elseif $module_data.REVIEWS_TOTAL_RATING|number_format:0 == 1}
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+					<span class="rating"><i class="fa fa-star-o"></i></span>
+				{else}
+				{/if}
+			{/if}
+		</div>
 		<div class="ProductPrice">{$module_data.PRODUCTS_PRICE}</div>
 		<div class="ProductMore"><a href="{$module_data.PRODUCTS_LINK}" class="btn btn-info">Подробнее</a></div>
 		<div class="ProductButton">
