@@ -22,9 +22,39 @@
 Отзывы о статье: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">{$module_data.ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">читать все отзывы о статье</a>, <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$module_data.ARTICLE_ID}">добавить отзыв о статье</a>)
 </p>
 {if {$module_data.ARTICLE_RATING} > 0 }
-<p>
-Рейтинг статьи: {$module_data.ARTICLE_STAR_RATING}
-</p>
+					<p>Рейтинг статьи:
+					{if $module_data.ARTICLE_RATING|number_format:0 == 4}
+						<span class="rating"><i class="fa fa-star"></i></span>
+						<span class="rating"><i class="fa fa-star"></i></span>
+						<span class="rating"><i class="fa fa-star"></i></span>
+						<span class="rating"><i class="fa fa-star"></i></span>
+						<span class="rating"><i class="fa fa-star-o"></i></span>
+					{elseif $module_data.ARTICLE_RATING|number_format:0 == 3}
+						<span class="rating"><i class="fa fa-star"></i></span>
+						<span class="rating"><i class="fa fa-star"></i></span>
+						<span class="rating"><i class="fa fa-star"></i></span>						
+						<span class="rating"><i class="fa fa-star-o"></i></span>
+						<span class="rating"><i class="fa fa-star-o"></i></span>
+					{elseif $module_data.ARTICLE_RATING|number_format:0 == 2}
+						<span class="rating"><i class="fa fa-star"></i></span>
+						<span class="rating"><i class="fa fa-star"></i></span>						
+						<span class="rating"><i class="fa fa-star-o"></i></span>
+						<span class="rating"><i class="fa fa-star-o"></i></span>
+						<span class="rating"><i class="fa fa-star-o"></i></span>
+					{elseif $module_data.ARTICLE_RATING|number_format:0 == 1}
+						<span class="rating"><i class="fa fa-star"></i></span>					
+						<span class="rating"><i class="fa fa-star-o"></i></span>
+						<span class="rating"><i class="fa fa-star-o"></i></span>
+						<span class="rating"><i class="fa fa-star-o"></i></span>
+						<span class="rating"><i class="fa fa-star-o"></i></span>
+					{else}
+						<span class="rating"><i class="fa fa-star"></i></span>					
+						<span class="rating"><i class="fa fa-star"></i></span>					
+						<span class="rating"><i class="fa fa-star"></i></span>					
+						<span class="rating"><i class="fa fa-star"></i></span>					
+						<span class="rating"><i class="fa fa-star"></i></span>					
+					{/if}
+					</p>
 {/if}
 {/if}
 
